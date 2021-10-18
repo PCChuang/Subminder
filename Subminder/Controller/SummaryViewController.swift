@@ -12,18 +12,44 @@ class SummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupBarItems()
+        
+    }
+
+    func setupBarItems() {
+        
+        let customView = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        customView.text = "訂閱"
+        customView.font = UIFont(name: "PingFang TC Medium", size: 18)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            customView: customView
+        )
+        
+        navigationController?.navigationBar.tintColor = .label
+        
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(
+                image: UIImage(named: "Icons_24px_Drawer"),
+                style: .done,
+                target: self,
+                action: nil
+            ),
+            UIBarButtonItem(
+                image: UIImage(named: "Icons_24px_Add01"),
+                style: .done,
+                target: self,
+                action: #selector(navAdd)
+            )
+        ]
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func navAdd() {
+        
+        if let controller = storyboard?.instantiateViewController(identifier: "AddToSub") as? AddToSubViewController {
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        
     }
-    */
 
 }

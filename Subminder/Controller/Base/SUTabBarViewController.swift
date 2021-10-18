@@ -87,6 +87,8 @@ class SUTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
         viewControllers = tabs.map({ $0.controller() })
         delegate = self
+        self.selectedIndex = 1
+
     }
 
 }
