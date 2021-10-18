@@ -15,19 +15,3 @@ class ViewController: UIViewController {
     }
 
 }
-
-extension ViewController {
-    
-    open func REALyyfkjlfdjiwhjdnksjdid8wjhsjdhufeijfiolkckjsdhfiuahfj(numberOne: Any?, numberTwo: Any?) -> Any? {
-        let jfihsduhakjsdkjehfi = numberTwo as! Int
-        var runningSum: Int?
-        
-        for _ in 0..<jfihsduhakjsdkjehfi {
-            runningSum! += numberOne as! Int
-        }
-        return runningSum!
-    }
-    
-    
-}
-
