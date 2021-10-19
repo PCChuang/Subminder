@@ -26,7 +26,7 @@ extension UIStoryboard {
     static var main: UIStoryboard { return suStoryboard(name: StoryboardCategory.main) }
 
     static var summary: UIStoryboard { return suStoryboard(name: StoryboardCategory.summary) }
-    
+
     static var statistics: UIStoryboard { return suStoryboard(name: StoryboardCategory.statistics) }
 
     static var setting: UIStoryboard { return suStoryboard(name: StoryboardCategory.setting) }
@@ -36,5 +36,5 @@ extension UIStoryboard {
     private static func suStoryboard(name: String) -> UIStoryboard {
         return UIStoryboard(name: name, bundle: nil)
     }
-    
+
 }
