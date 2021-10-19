@@ -59,18 +59,63 @@
         <!--Add To Sub View Controller-->
         <scene sceneID="Ewl-h4-mly">
             <objects>
-                <viewController storyboardIdentifier="AddToSub" id="SdS-w1-0j4" customClass="AddToSubViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddToSub" hidesBottomBarWhenPushed="YES" id="SdS-w1-0j4" customClass="AddToSubViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eG5-ES-iWD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aK5-2Z-2c7">
+                                <rect key="frame" x="16" y="820" width="382" height="42"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="G1U-K7-I4T"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="刪除項目">
+                                    <fontDescription key="titleFontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eF2-G7-raJ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="718"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1be-MC-gH3">
+                                <rect key="frame" x="16" y="770" width="382" height="42"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="Yaf-ir-0BY"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="新增項目">
+                                    <fontDescription key="titleFontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="JmF-xn-9Sv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JmF-xn-9Sv" firstAttribute="trailing" secondItem="eF2-G7-raJ" secondAttribute="trailing" id="3b6-VT-Bvs"/>
+                            <constraint firstItem="aK5-2Z-2c7" firstAttribute="top" secondItem="1be-MC-gH3" secondAttribute="bottom" constant="8" id="EfO-4U-rQJ"/>
+                            <constraint firstItem="1be-MC-gH3" firstAttribute="leading" secondItem="JmF-xn-9Sv" secondAttribute="leading" constant="16" id="Ssj-J0-AmS"/>
+                            <constraint firstItem="eF2-G7-raJ" firstAttribute="leading" secondItem="JmF-xn-9Sv" secondAttribute="leading" id="TDf-xp-WG9"/>
+                            <constraint firstItem="aK5-2Z-2c7" firstAttribute="bottom" secondItem="JmF-xn-9Sv" secondAttribute="bottom" id="VoP-Dn-HC8"/>
+                            <constraint firstItem="aK5-2Z-2c7" firstAttribute="leading" secondItem="JmF-xn-9Sv" secondAttribute="leading" constant="16" id="XVj-B6-J6S"/>
+                            <constraint firstItem="1be-MC-gH3" firstAttribute="top" secondItem="eF2-G7-raJ" secondAttribute="bottom" constant="8" id="Yvq-5E-Ktc"/>
+                            <constraint firstItem="JmF-xn-9Sv" firstAttribute="trailing" secondItem="1be-MC-gH3" secondAttribute="trailing" constant="16" id="hqv-7v-XPf"/>
+                            <constraint firstItem="JmF-xn-9Sv" firstAttribute="trailing" secondItem="aK5-2Z-2c7" secondAttribute="trailing" constant="16" id="vba-df-EsJ"/>
+                            <constraint firstItem="eF2-G7-raJ" firstAttribute="top" secondItem="JmF-xn-9Sv" secondAttribute="top" id="x2D-wM-G4n"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="orm-UE-kMN"/>
+                    <connections>
+                        <outlet property="tableView" destination="eF2-G7-raJ" id="U6z-HA-cpA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nJ-PF-axX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1988" y="108"/>
+            <point key="canvasLocation" x="1986.9565217391305" y="107.8125"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="B8D-dg-lhf">
@@ -81,6 +126,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="51u-k4-O97">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

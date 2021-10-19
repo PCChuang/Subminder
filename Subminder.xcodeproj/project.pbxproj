@@ -26,6 +26,12 @@
 		F66A1C36271D6ECA000A863A /* AddToSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C35271D6ECA000A863A /* AddToSubViewController.swift */; };
 		F66A1C3C271DB9C6000A863A /* SummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C3A271DB9C6000A863A /* SummaryCell.swift */; };
 		F66A1C3D271DB9C6000A863A /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66A1C3B271DB9C6000A863A /* SummaryCell.xib */; };
+		F66A1C44271E75FA000A863A /* AddSubTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C42271E75FA000A863A /* AddSubTextCell.swift */; };
+		F66A1C45271E75FA000A863A /* AddSubTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66A1C43271E75FA000A863A /* AddSubTextCell.xib */; };
+		F66A1C4C271E9CC2000A863A /* AddSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C4A271E9CC2000A863A /* AddSubCell.swift */; };
+		F66A1C4D271E9CC2000A863A /* AddSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66A1C4B271E9CC2000A863A /* AddSubCell.xib */; };
+		F66A1C4F271EA171000A863A /* SubSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C4E271EA171000A863A /* SubSetting.swift */; };
+		F66A1C51271EB8FC000A863A /* SUBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C50271EB8FC000A863A /* SUBaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +58,12 @@
 		F66A1C35271D6ECA000A863A /* AddToSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToSubViewController.swift; sourceTree = "<group>"; };
 		F66A1C3A271DB9C6000A863A /* SummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
 		F66A1C3B271DB9C6000A863A /* SummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
+		F66A1C42271E75FA000A863A /* AddSubTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubTextCell.swift; sourceTree = "<group>"; };
+		F66A1C43271E75FA000A863A /* AddSubTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubTextCell.xib; sourceTree = "<group>"; };
+		F66A1C4A271E9CC2000A863A /* AddSubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubCell.swift; sourceTree = "<group>"; };
+		F66A1C4B271E9CC2000A863A /* AddSubCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubCell.xib; sourceTree = "<group>"; };
+		F66A1C4E271EA171000A863A /* SubSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSetting.swift; sourceTree = "<group>"; };
+		F66A1C50271EB8FC000A863A /* SUBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUBaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +110,7 @@
 				F66A1C05271D0B0C000A863A /* AppDelegate.swift */,
 				F66A1C07271D0B0C000A863A /* SceneDelegate.swift */,
 				F66A1C2A271D5518000A863A /* Extension */,
+				F66A1C3F271E6E68000A863A /* Model */,
 				F66A1C1F271D4FD6000A863A /* Controller */,
 				F66A1C20271D4FFB000A863A /* View */,
 				F66A1C0E271D0B10000A863A /* Assets.xcassets */,
@@ -110,8 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				F66A1C21271D504A000A863A /* Base */,
-				F66A1C2D271D6652000A863A /* SummaryViewController.swift */,
-				F66A1C35271D6ECA000A863A /* AddToSubViewController.swift */,
+				F66A1C3E271E6058000A863A /* Summary */,
 				F66A1C2F271D6664000A863A /* StatisticsViewController.swift */,
 				F66A1C31271D666F000A863A /* SettingViewController.swift */,
 				F66A1C33271D667B000A863A /* GroupViewController.swift */,
@@ -137,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				F66A1C09271D0B0C000A863A /* SUTabBarViewController.swift */,
+				F66A1C50271EB8FC000A863A /* SUBaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -154,8 +167,29 @@
 			children = (
 				F66A1C3A271DB9C6000A863A /* SummaryCell.swift */,
 				F66A1C3B271DB9C6000A863A /* SummaryCell.xib */,
+				F66A1C42271E75FA000A863A /* AddSubTextCell.swift */,
+				F66A1C43271E75FA000A863A /* AddSubTextCell.xib */,
+				F66A1C4A271E9CC2000A863A /* AddSubCell.swift */,
+				F66A1C4B271E9CC2000A863A /* AddSubCell.xib */,
 			);
 			path = Summary;
+			sourceTree = "<group>";
+		};
+		F66A1C3E271E6058000A863A /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				F66A1C2D271D6652000A863A /* SummaryViewController.swift */,
+				F66A1C35271D6ECA000A863A /* AddToSubViewController.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		F66A1C3F271E6E68000A863A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F66A1C4E271EA171000A863A /* SubSetting.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FD87C124CA64FF049EC8C084 /* Pods */ = {
@@ -229,7 +263,9 @@
 			files = (
 				F66A1C12271D0B10000A863A /* LaunchScreen.storyboard in Resources */,
 				F66A1C0F271D0B10000A863A /* Assets.xcassets in Resources */,
+				F66A1C45271E75FA000A863A /* AddSubTextCell.xib in Resources */,
 				F66A1C29271D5485000A863A /* Group.storyboard in Resources */,
+				F66A1C4D271E9CC2000A863A /* AddSubCell.xib in Resources */,
 				F66A1C25271D5467000A863A /* Setting.storyboard in Resources */,
 				F66A1C27271D5478000A863A /* Statistics.storyboard in Resources */,
 				F66A1C0D271D0B0C000A863A /* Main.storyboard in Resources */,
@@ -292,11 +328,15 @@
 				F66A1C0A271D0B0C000A863A /* SUTabBarViewController.swift in Sources */,
 				F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */,
 				F66A1C2C271D5551000A863A /* UIStoryboard+Extension.swift in Sources */,
+				F66A1C44271E75FA000A863A /* AddSubTextCell.swift in Sources */,
 				F66A1C3C271DB9C6000A863A /* SummaryCell.swift in Sources */,
 				F66A1C36271D6ECA000A863A /* AddToSubViewController.swift in Sources */,
 				F66A1C30271D6664000A863A /* StatisticsViewController.swift in Sources */,
 				F66A1C08271D0B0C000A863A /* SceneDelegate.swift in Sources */,
+				F66A1C51271EB8FC000A863A /* SUBaseViewController.swift in Sources */,
 				F66A1C32271D666F000A863A /* SettingViewController.swift in Sources */,
+				F66A1C4F271EA171000A863A /* SubSetting.swift in Sources */,
+				F66A1C4C271E9CC2000A863A /* AddSubCell.swift in Sources */,
 				F66A1C2E271D6652000A863A /* SummaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

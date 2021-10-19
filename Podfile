@@ -7,5 +7,6 @@ target 'Subminder' do
 
   # Pods for Subminder
   pod 'SwiftLint'
+  pod 'IQKeyboardManagerSwift'
 
 end
