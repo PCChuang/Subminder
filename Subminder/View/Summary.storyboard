@@ -117,6 +117,36 @@
             </objects>
             <point key="canvasLocation" x="1986.9565217391305" y="107.8125"/>
         </scene>
+        <!--Category View Controller-->
+        <scene sceneID="pjg-aJ-udW">
+            <objects>
+                <viewController storyboardIdentifier="Category" id="0wx-AH-6Dg" customClass="CategoryViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sxL-0K-tiM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UNN-k0-p1c">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ymk-b4-JcR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ymk-b4-JcR" firstAttribute="bottom" secondItem="UNN-k0-p1c" secondAttribute="bottom" id="CLd-Ha-xvJ"/>
+                            <constraint firstItem="Ymk-b4-JcR" firstAttribute="trailing" secondItem="UNN-k0-p1c" secondAttribute="trailing" id="TbB-kF-E7J"/>
+                            <constraint firstItem="UNN-k0-p1c" firstAttribute="top" secondItem="Ymk-b4-JcR" secondAttribute="top" id="jTY-0d-5dj"/>
+                            <constraint firstItem="UNN-k0-p1c" firstAttribute="leading" secondItem="Ymk-b4-JcR" secondAttribute="leading" id="mtD-kJ-NxA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="UNN-k0-p1c" id="Yux-7e-eTs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vjo-5G-l1x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3016" y="108"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="B8D-dg-lhf">
             <objects>

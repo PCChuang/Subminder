@@ -83,7 +83,19 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate {
             cell.title.text = subSettings[indexPath.row]
             return cell
 
-        case 6, 7, 8:
+        case 6:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCell", for: indexPath)
+            guard let cell = cell as? AddSubCell else {
+                return cell
+            }
+            cell.title.text = subSettings[indexPath.row]
+
+            let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.navCategory))
+            cell.nextPageBtn.addGestureRecognizer(tapGR)
+            cell.nextPageBtn.isUserInteractionEnabled = true
+            return cell
+
+        case 7, 8:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCell", for: indexPath)
             guard let cell = cell as? AddSubCell else {
                 return cell
@@ -100,5 +112,12 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
 
+    }
+
+    @objc func navCategory() {
+
+        if let controller = storyboard?.instantiateViewController(identifier: "Category") as? CategoryViewController {
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }

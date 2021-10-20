@@ -38,6 +38,7 @@
 		F66A1C59271F0F0F000A863A /* AddSubDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66A1C57271F0F0F000A863A /* AddSubDateCell.xib */; };
 		F66A1C5C271F18D0000A863A /* AddSubCurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C5A271F18D0000A863A /* AddSubCurrencyCell.swift */; };
 		F66A1C5D271F18D0000A863A /* AddSubCurrencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66A1C5B271F18D0000A863A /* AddSubCurrencyCell.xib */; };
+		F66A1C5F271FAA3D000A863A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C5E271FAA3C000A863A /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		F66A1C57271F0F0F000A863A /* AddSubDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubDateCell.xib; sourceTree = "<group>"; };
 		F66A1C5A271F18D0000A863A /* AddSubCurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubCurrencyCell.swift; sourceTree = "<group>"; };
 		F66A1C5B271F18D0000A863A /* AddSubCurrencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubCurrencyCell.xib; sourceTree = "<group>"; };
+		F66A1C5E271FAA3C000A863A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 			children = (
 				F66A1C2D271D6652000A863A /* SummaryViewController.swift */,
 				F66A1C35271D6ECA000A863A /* AddToSubViewController.swift */,
+				F66A1C5E271FAA3C000A863A /* CategoryViewController.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				F66A1C4F271EA171000A863A /* SubSetting.swift in Sources */,
 				F66A1C4C271E9CC2000A863A /* AddSubCell.swift in Sources */,
 				F66A1C54271EC53F000A863A /* AddSubCycleCell.swift in Sources */,
+				F66A1C5F271FAA3D000A863A /* CategoryViewController.swift in Sources */,
 				F66A1C2E271D6652000A863A /* SummaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

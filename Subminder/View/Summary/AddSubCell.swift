@@ -10,7 +10,8 @@ import UIKit
 class AddSubCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
-    
+    @IBOutlet weak var nextPageBtn: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
