@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SummaryViewController: UIViewController {
+class SummaryViewController: STBaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView! {
 

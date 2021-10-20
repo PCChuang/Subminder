@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddToSubViewController: UIViewController {
+class AddToSubViewController: STBaseViewController {
 
     @IBOutlet weak var tableView: UITableView! {
         
@@ -29,12 +29,24 @@ class AddToSubViewController: UIViewController {
 
         let textNib = UINib(nibName: "AddSubTextCell", bundle: nil)
         tableView.register(textNib, forCellReuseIdentifier: "AddSubTextCell")
+        
+        let pickerNib = UINib(nibName: "AddSubCycleCell", bundle: nil)
+        tableView.register(pickerNib, forCellReuseIdentifier: "AddSubCycleCell")
+
+        let dateNib = UINib(nibName: "AddSubDateCell", bundle: nil)
+        tableView.register(dateNib, forCellReuseIdentifier: "AddSubDateCell")
+
+        let currencyNib = UINib(nibName: "AddSubCurrencyCell", bundle: nil)
+        tableView.register(currencyNib, forCellReuseIdentifier: "AddSubCurrencyCell")
     }
 
     func setupBarItems() {
 
         self.navigationItem.title = "新增訂閱項目"
     }
+    
+    //
+    
 }
 
 extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate {
@@ -46,6 +58,30 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         switch indexPath.row {
+
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCurrencyCell", for: indexPath)
+            guard let cell = cell as? AddSubCurrencyCell else {
+                return cell
+            }
+            cell.title.text = subSettings[indexPath.row]
+            return cell
+
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubDateCell", for: indexPath)
+            guard let cell = cell as? AddSubDateCell else {
+                return cell
+            }
+            cell.title.text = subSettings[indexPath.row]
+            return cell
+
+        case 4, 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCycleCell", for: indexPath)
+            guard let cell = cell as? AddSubCycleCell else {
+                return cell
+            }
+            cell.title.text = subSettings[indexPath.row]
+            return cell
 
         case 6, 7, 8:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCell", for: indexPath)

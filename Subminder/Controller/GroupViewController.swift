@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GroupViewController: UIViewController {
+class GroupViewController: STBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
