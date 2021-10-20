@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,18 +30,30 @@
                             <constraint firstAttribute="height" constant="28" id="yda-Aw-0Mq"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbT-wa-x1O">
+                        <rect key="frame" x="239" y="16" width="21" height="21"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="21" id="Hr6-Ls-ZmW"/>
+                            <constraint firstAttribute="height" constant="21" id="QVs-eQ-g64"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="UU0-TY-tnq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="8X3-7a-xJL"/>
+                    <constraint firstItem="pbT-wa-x1O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="BhP-re-XnE"/>
                     <constraint firstAttribute="bottom" secondItem="UU0-TY-tnq" secondAttribute="bottom" constant="13" id="EbT-AW-PZR"/>
                     <constraint firstItem="JcV-8l-uem" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ImS-6R-XrU"/>
                     <constraint firstAttribute="trailing" secondItem="UU0-TY-tnq" secondAttribute="trailing" constant="16" id="Wqz-A4-eOy"/>
+                    <constraint firstItem="UU0-TY-tnq" firstAttribute="leading" secondItem="pbT-wa-x1O" secondAttribute="trailing" constant="16" id="cmZ-VN-w7z"/>
+                    <constraint firstAttribute="bottom" secondItem="pbT-wa-x1O" secondAttribute="bottom" constant="16" id="d3x-t4-vCM"/>
                     <constraint firstAttribute="bottom" secondItem="JcV-8l-uem" secondAttribute="bottom" constant="16" id="p4g-1i-wvi"/>
                     <constraint firstItem="JcV-8l-uem" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="rs2-lG-zO5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="colorView" destination="pbT-wa-x1O" id="Khh-gX-3Lr"/>
                 <outlet property="nextPageBtn" destination="UU0-TY-tnq" id="p2O-g7-AxC"/>
                 <outlet property="title" destination="JcV-8l-uem" id="h4c-qi-iTV"/>
             </connections>
@@ -49,5 +62,8 @@
     </objects>
     <resources>
         <image name="Icons_44px_Next01" width="44" height="44"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -19,6 +19,8 @@ class AddToSubViewController: STBaseViewController {
         }
     }
 
+    var subColor: UIColor?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,7 +51,7 @@ class AddToSubViewController: STBaseViewController {
     
 }
 
-extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate {
+extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UIColorPickerViewControllerDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         subSettings.count
@@ -89,18 +91,26 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate {
                 return cell
             }
             cell.title.text = subSettings[indexPath.row]
+            cell.colorView.isHidden = true
 
-            let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.navCategory))
-            cell.nextPageBtn.addGestureRecognizer(tapGR)
-            cell.nextPageBtn.isUserInteractionEnabled = true
             return cell
 
-        case 7, 8:
+        case 7:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCell", for: indexPath)
             guard let cell = cell as? AddSubCell else {
                 return cell
             }
             cell.title.text = subSettings[indexPath.row]
+            cell.colorView.backgroundColor = subColor
+            return cell
+            
+        case 8:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCell", for: indexPath)
+            guard let cell = cell as? AddSubCell else {
+                return cell
+            }
+            cell.title.text = subSettings[indexPath.row]
+            cell.colorView.isHidden = true
             return cell
 
         default:
@@ -114,10 +124,33 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate {
 
     }
 
-    @objc func navCategory() {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        if let controller = storyboard?.instantiateViewController(identifier: "Category") as? CategoryViewController {
-            self.navigationController?.pushViewController(controller, animated: true)
+        switch indexPath.row {
+
+        case 6:
+            if let controller = storyboard?.instantiateViewController(identifier: "Category") as? CategoryViewController {
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+
+        case 7:
+
+            let colorPicker = UIColorPickerViewController()
+
+            colorPicker.delegate = self
+
+            present(colorPicker, animated: true)
+
+        default:
+
+            return
         }
+    }
+
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+
+        let color = viewController.selectedColor
+        subColor = color
+        tableView.reloadData()
     }
 }
