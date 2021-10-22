@@ -39,6 +39,11 @@
 		F66A1C5C271F18D0000A863A /* AddSubCurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C5A271F18D0000A863A /* AddSubCurrencyCell.swift */; };
 		F66A1C5D271F18D0000A863A /* AddSubCurrencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66A1C5B271F18D0000A863A /* AddSubCurrencyCell.xib */; };
 		F66A1C5F271FAA3D000A863A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C5E271FAA3C000A863A /* CategoryViewController.swift */; };
+		F66A1C61271FF7AB000A863A /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C60271FF7AB000A863A /* Subscription.swift */; };
+		F66A1C63271FF9FC000A863A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C62271FF9FC000A863A /* User.swift */; };
+		F66A1C65272004DE000A863A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F66A1C64272004DE000A863A /* GoogleService-Info.plist */; };
+		F66A1C6727200D71000A863A /* SubsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C6627200D71000A863A /* SubsManager.swift */; };
+		F66A1C692721AA54000A863A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C682721AA54000A863A /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +83,11 @@
 		F66A1C5A271F18D0000A863A /* AddSubCurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubCurrencyCell.swift; sourceTree = "<group>"; };
 		F66A1C5B271F18D0000A863A /* AddSubCurrencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubCurrencyCell.xib; sourceTree = "<group>"; };
 		F66A1C5E271FAA3C000A863A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		F66A1C60271FF7AB000A863A /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		F66A1C62271FF9FC000A863A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F66A1C64272004DE000A863A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F66A1C6627200D71000A863A /* SubsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubsManager.swift; sourceTree = "<group>"; };
+		F66A1C682721AA54000A863A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +139,7 @@
 				F66A1C20271D4FFB000A863A /* View */,
 				F66A1C0E271D0B10000A863A /* Assets.xcassets */,
 				F66A1C13271D0B10000A863A /* Info.plist */,
+				F66A1C64272004DE000A863A /* GoogleService-Info.plist */,
 			);
 			path = Subminder;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				F66A1C2B271D5551000A863A /* UIStoryboard+Extension.swift */,
+				F66A1C682721AA54000A863A /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -209,6 +221,9 @@
 			isa = PBXGroup;
 			children = (
 				F66A1C4E271EA171000A863A /* SubSetting.swift */,
+				F66A1C60271FF7AB000A863A /* Subscription.swift */,
+				F66A1C6627200D71000A863A /* SubsManager.swift */,
+				F66A1C62271FF9FC000A863A /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,6 +311,7 @@
 				F66A1C0D271D0B0C000A863A /* Main.storyboard in Resources */,
 				F66A1C3D271DB9C6000A863A /* SummaryCell.xib in Resources */,
 				F66A1C23271D5402000A863A /* Summary.storyboard in Resources */,
+				F66A1C65272004DE000A863A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,12 +383,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F66A1C58271F0F0F000A863A /* AddSubDateCell.swift in Sources */,
+				F66A1C6727200D71000A863A /* SubsManager.swift in Sources */,
 				F66A1C34271D667B000A863A /* GroupViewController.swift in Sources */,
+				F66A1C692721AA54000A863A /* UIColor+Extension.swift in Sources */,
 				F66A1C0A271D0B0C000A863A /* SUTabBarViewController.swift in Sources */,
 				F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */,
+				F66A1C61271FF7AB000A863A /* Subscription.swift in Sources */,
 				F66A1C2C271D5551000A863A /* UIStoryboard+Extension.swift in Sources */,
 				F66A1C44271E75FA000A863A /* AddSubTextCell.swift in Sources */,
 				F66A1C3C271DB9C6000A863A /* SummaryCell.swift in Sources */,
+				F66A1C63271FF9FC000A863A /* User.swift in Sources */,
 				F66A1C36271D6ECA000A863A /* AddToSubViewController.swift in Sources */,
 				F66A1C30271D6664000A863A /* StatisticsViewController.swift in Sources */,
 				F66A1C08271D0B0C000A863A /* SceneDelegate.swift in Sources */,

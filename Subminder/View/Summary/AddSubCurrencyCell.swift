@@ -13,8 +13,42 @@ class AddSubCurrencyCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
     @IBOutlet weak var currencyTextField: UITextField!
 
     let currencyPicker = UIPickerView()
-    
-    var countries: [Country] = []
+
+    var currencies = [
+        "USD ($)",
+        "EUR (€)",
+        "AUD (A$)",
+        "BRL (R$)",
+        "GBP (£)",
+        "BGN (лв)",
+        "CAD (C$)",
+        "CNY (¥)",
+        "HRK (kn)",
+        "CZK (Kč)",
+        "DKK (kr)",
+        "HKD (HK$)",
+        "HUF (Ft)",
+        "ISK (kr)",
+        "INR (₹)",
+        "IDR (Rp)",
+        "ILS (₪)",
+        "JPY (¥)",
+        "MYR (M$)",
+        "TWD (NT$)",
+        "NZD (NZ$)",
+        "NOK (kr)",
+        "PHP (₱)",
+        "PLN (zł)",
+        "RON (lei)",
+        "RUB (₽)",
+        "SGD (S$)",
+        "ZAR (R)",
+        "KRW (₩)",
+        "SEK (kr)",
+        "CHF (Fr.)",
+        "THB (฿)",
+        "TRY (₺)"
+    ]
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,37 +57,8 @@ class AddSubCurrencyCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
         currencyPicker.delegate = self
         currencyTextField.inputView = currencyPicker
 
-        let localeList = NSLocale.isoCountryCodes
-
-        for localeListItem in localeList {
-            
-            let localeIdentifier = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: localeListItem])
-            
-            let locale = NSLocale(localeIdentifier: localeIdentifier)
-
-            guard let countryName = locale.displayName(forKey: NSLocale.Key.identifier, value: localeIdentifier) else {
-                return
-            }
-
-//            guard let currencyName = locale.currencyCode else {
-//                return
-//            }
-            
-            let currencyName = locale.currencyCode ?? ""
-
-            let currencySymbol = locale.currencySymbol
-
-            countries.append(Country(countryName: countryName, currencyName: currencyName, currencySymbol: currencySymbol))
-        }
-        
-        currencyPicker.reloadAllComponents()
-    }
-
-    struct Country {
-
-        let countryName: String
-        let currencyName: String
-        let currencySymbol: String
+        let defaultCurrency = NSLocale.current.currencySymbol
+        currencyTextField.placeholder = defaultCurrency
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -67,11 +72,17 @@ class AddSubCurrencyCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return countries.count
+
+        return currencies.count
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let item = "\(countries[row].countryName) \(countries[row].currencyName): \(countries[row].currencySymbol)"
-        return item
+
+        return "\(currencies[row])"
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+
+        currencyTextField.text = "\(currencies[row])"
     }
 }

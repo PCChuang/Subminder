@@ -91,6 +91,9 @@
                                     <fontDescription key="titleFontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="onTapPublish:" destination="SdS-w1-0j4" eventType="touchUpInside" id="u0w-qL-sx9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JmF-xn-9Sv"/>

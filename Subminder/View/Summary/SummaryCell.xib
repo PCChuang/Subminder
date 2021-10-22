@@ -58,6 +58,12 @@
                 <constraint firstItem="7dp-Lg-Uqv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="zdN-ct-EE1"/>
             </constraints>
             <size key="customSize" width="414" height="91"/>
+            <connections>
+                <outlet property="cycle" destination="Myy-c2-QDq" id="9SB-zo-noQ"/>
+                <outlet property="dueDate" destination="Dkd-dq-HiR" id="oZk-4Y-3g4"/>
+                <outlet property="name" destination="7dp-Lg-Uqv" id="G05-GL-Gck"/>
+                <outlet property="price" destination="IqK-oN-bCT" id="IHU-xJ-WAI"/>
+            </connections>
             <point key="canvasLocation" x="294.20289855072468" y="67.96875"/>
         </collectionViewCell>
     </objects>

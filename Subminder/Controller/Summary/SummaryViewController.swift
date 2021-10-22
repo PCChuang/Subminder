@@ -21,6 +21,13 @@ class SummaryViewController: STBaseViewController {
         
     }
 
+    var datas: [Subscription] = [] {
+
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +35,33 @@ class SummaryViewController: STBaseViewController {
         
         setupCollectionView()
 
+        fetchData()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        fetchData()
+    }
+
+    func fetchData() {
+
+        SubsManager.shared.fetchSubs { [weak self] result in
+
+            switch result {
+
+            case .success(let subscriptions):
+
+                print("fetchSubs success")
+
+                self?.datas.removeAll()
+                for subscription in subscriptions {
+                    self?.datas.append(subscription)
+                }
+
+            case .failure(let error):
+
+                print("fetchData.failure: \(error)")
+            }
+        }
     }
 
     func setupBarItems() {
@@ -98,13 +132,17 @@ class SummaryViewController: STBaseViewController {
 extension SummaryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        datas.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SummaryCell", for: indexPath) as? SummaryCell else {
             fatalError()
         }
+        cell.name.text = datas[indexPath.item].name
+        cell.price.text = "\(datas[indexPath.item].price)"
+        cell.cycle.text = datas[indexPath.item].cycle
+        cell.backgroundColor = UIColor.hexStringToUIColor(hex: datas[indexPath.item].color)
         return cell
     }
     
