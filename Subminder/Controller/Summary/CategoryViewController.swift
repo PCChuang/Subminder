@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CategoryDelegate: AnyObject {
+    
+    func didSelectCategory(_ contentOfText: String)
+}
 class CategoryViewController: STBaseViewController {
 
     @IBOutlet weak var tableView: UITableView! {
@@ -21,11 +25,15 @@ class CategoryViewController: STBaseViewController {
         }
     }
 
+    weak var delegate: CategoryDelegate?
+
     var categories: [String] = [] {
         didSet {
             tableView.reloadData()
         }
     }
+
+    var contentOfText: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +79,6 @@ class CategoryViewController: STBaseViewController {
         let okAction = UIAlertAction(title: "新增", style: .default) { [unowned controller] _ in
             guard let category = controller.textFields?[0].text else { return }
             self.categories.append(category)
-//            self.tableView.reloadData()
             print("\(category) is added")
             print(self.categories)
         }
@@ -102,6 +109,14 @@ extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
         }
         cell.title.text = categories[indexPath.row]
         cell.nextPageBtn.isHidden = true
+        cell.colorView.isHidden = true
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        contentOfText = categories[indexPath.row]
+        delegate?.didSelectCategory(contentOfText)
+    }
+
 }

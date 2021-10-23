@@ -7,19 +7,29 @@
 
 import UIKit
 
+protocol DateComponentDelegate: AnyObject {
+
+    func dateComponentDidChange(_ dateComponent: DateComponents, _ cell: AddSubCycleCell)
+}
+
 class AddSubCycleCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var cycleTextField: UITextField!
 
+    weak var delegate: DateComponentDelegate?
+
     let cyclePicker = UIPickerView()
-    
+
     let cycleList = ["每"]
-    
+
     let cycleListNumber = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"]
         
     let cycleListPeriod = ["天", "週", "月", "年"]
     
+    let date = Date()
+    var dateComponent = DateComponents()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -68,7 +78,34 @@ class AddSubCycleCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
         let cycle = pickerView.selectedRow(inComponent: 0)
         let number = pickerView.selectedRow(inComponent: 1)
         let time = pickerView.selectedRow(inComponent: 2)
+        
         cycleTextField.text = "\(cycleList[cycle]) \(cycleListNumber[number]) \(cycleListPeriod[time])"
+
+        guard let cycleNumber = Int(cycleListNumber[number]) else { return }
+        switch time {
+
+        case 0:
+            dateComponent.day = Int(cycleNumber)
+            dateComponent.month = 0
+            dateComponent.year = 0
+
+        case 1:
+            dateComponent.day = Int(cycleNumber) * 7
+            dateComponent.month = 0
+            dateComponent.year = 0
+
+        case 2:
+            dateComponent.day = 0
+            dateComponent.month = Int(cycleNumber)
+            dateComponent.year = 0
+
+        default:
+            dateComponent.day = 0
+            dateComponent.month = 0
+            dateComponent.year = Int(cycleNumber)
+        }
+
+        delegate?.dateComponentDidChange(dateComponent, self)
     }
 
 }

@@ -26,13 +26,21 @@ class AddToSubViewController: STBaseViewController {
     }
 
     var subColor: UIColor?
-//    let date = Date.distantPast
+    var category: String? {
+
+        didSet {
+
+            tableView.reloadData()
+        }
+    }
+
     var subscription: Subscription = Subscription(
         id: "",
         name: "",
         price: 0,
         currency: "",
         startDate: Date(),
+        dueDate: Date(),
         cycle: "",
         duration: "",
         category: "",
@@ -64,51 +72,15 @@ class AddToSubViewController: STBaseViewController {
 
         let currencyNib = UINib(nibName: "AddSubCurrencyCell", bundle: nil)
         tableView.register(currencyNib, forCellReuseIdentifier: "AddSubCurrencyCell")
+
+        let categoryNib = UINib(nibName: "AddSubCategoryCell", bundle: nil)
+        tableView.register(categoryNib, forCellReuseIdentifier: "AddSubCategoryCell")
     }
 
     func setupBarItems() {
 
         self.navigationItem.title = "新增訂閱項目"
     }
-
-//    func onNameChanged(text name: String) {
-//        subscription.name = name
-//    }
-//
-//    func onCurrencyChanged(text currency: String) {
-//        subscription.currency = currency
-//    }
-//
-//    func onStartDateChanged(text startDate: Int64) {
-//        subscription.startDate = startDate
-//    }
-//
-//    func onCycleChanged(text cycle: Int64) {
-//        subscription.cycle = cycle
-//    }
-//
-//    func onDurationChanged(text duration: Int64) {
-//        subscription.duration = duration
-//    }
-//
-//    func onCategoryChanged(text category: String) {
-//        subscription.category = category
-//    }
-//
-//    func onColorChanged(text color: String) {
-//        subscription.color = color
-//    }
-//
-//    func onNoteChanged(text note: String) {
-//        subscription.note = note
-//    }
-
-//    var onPublished: (() -> ())?
-
-//    func onTapPublish() {
-//
-//        self.publish(with: &subscription)
-//    }
 
     func publish(with subscription: inout Subscription) {
 
@@ -130,7 +102,7 @@ class AddToSubViewController: STBaseViewController {
 
 }
 
-extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UIColorPickerViewControllerDelegate {
+extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UIColorPickerViewControllerDelegate, DateComponentDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         subSettings.count
@@ -190,6 +162,9 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
             }
             cell.title.text = subSettings[indexPath.row]
             cell.cycleTextField.addTarget(self, action: #selector(onCycleChanged), for: .editingDidEnd)
+
+            cell.delegate = self
+
             return cell
 
         case 5:
@@ -202,12 +177,13 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
             return cell
 
         case 6:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCell", for: indexPath)
-            guard let cell = cell as? AddSubCell else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCategoryCell", for: indexPath)
+            guard let cell = cell as? AddSubCategoryCell else {
                 return cell
             }
             cell.title.text = subSettings[indexPath.row]
-            cell.colorView.isHidden = true
+
+            cell.category.text = category
 
             return cell
 
@@ -217,6 +193,7 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                 return cell
             }
             cell.title.text = subSettings[indexPath.row]
+            cell.colorView.isHidden = false
             cell.colorView.backgroundColor = subColor
 
             let subColorHex = subColor?.toHexString()
@@ -250,6 +227,7 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         case 6:
             if let controller = storyboard?.instantiateViewController(identifier: "Category") as? CategoryViewController {
                 self.navigationController?.pushViewController(controller, animated: true)
+                controller.delegate = self
             }
 
         case 7:
@@ -301,7 +279,6 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
 
     @objc func onCurrencyChanged(_ sender: UITextField) {
         subscription.currency = sender.text ?? ""
-//        self.tableView.reloadData()
     }
 
     @objc func onStartDateChanged(_ sender: UITextField) {
@@ -310,13 +287,17 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         }
 
         let dateFormatter = DateFormatter()
-        guard let date = dateFormatter.date(from: dateString) else {
-            return
-        }
-        subscription.startDate = date
+
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+00:00")
+
+        dateFormatter.dateFormat = "MMMM dd yyyy"
+
+        let date = dateFormatter.date(from: dateString)
+
+        subscription.startDate = date ?? Date()
     }
 
-    @objc func onCycleChanged(_ sender: UITextField) {
+    @objc func onCycleChanged(_ sender: UITextField, _ cell: AddSubCycleCell) {
         subscription.cycle = sender.text ?? ""
     }
 
@@ -324,6 +305,22 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         subscription.duration = sender.text ?? ""
     }
 
+    func dateComponentDidChange(_ dateComponent: DateComponents, _ cell: AddSubCycleCell) {
+        let dueDate = Calendar.current.date(byAdding: cell.dateComponent, to: subscription.startDate)
+        subscription.dueDate = dueDate ?? Date()
+    }
+
+}
+
+// Get data for category page
+extension AddToSubViewController: CategoryDelegate {
+
+    func didSelectCategory(_ contentOfText: String) {
+
+        category = contentOfText
+
+        subscription.category = category ?? ""
+    }
 }
 
 extension String {

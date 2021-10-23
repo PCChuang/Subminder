@@ -53,6 +53,7 @@ class SummaryViewController: STBaseViewController {
                 print("fetchSubs success")
 
                 self?.datas.removeAll()
+
                 for subscription in subscriptions {
                     self?.datas.append(subscription)
                 }
@@ -143,6 +144,10 @@ extension SummaryViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.price.text = "\(datas[indexPath.item].price)"
         cell.cycle.text = datas[indexPath.item].cycle
         cell.backgroundColor = UIColor.hexStringToUIColor(hex: datas[indexPath.item].color)
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM dd yyyy"
+        cell.dueDate.text = formatter.string(from: datas[indexPath.item].dueDate)
         return cell
     }
     
