@@ -31,6 +31,7 @@
       "size" : "40x40"
     },
     {
+      "filename" : "iTunesArtwork@2x-1.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
@@ -86,6 +87,7 @@
       "size" : "83.5x83.5"
     },
     {
+      "filename" : "iTunesArtwork@2x.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

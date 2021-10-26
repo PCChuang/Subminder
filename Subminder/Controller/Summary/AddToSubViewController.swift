@@ -23,6 +23,8 @@ class AddToSubViewController: STBaseViewController {
 
         self.publish(with: &subscription)
         _ = navigationController?.popViewController(animated: true)
+
+        setReminder()
     }
 
     var subColor: UIColor?
@@ -33,6 +35,8 @@ class AddToSubViewController: STBaseViewController {
             tableView.reloadData()
         }
     }
+
+    var reminderDayComp = DateComponents()
 
     var subscription: Subscription = Subscription(
         id: "",
@@ -47,6 +51,8 @@ class AddToSubViewController: STBaseViewController {
         color: "",
         note: ""
     )
+
+    let reminderManager = LocalNotificationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +81,9 @@ class AddToSubViewController: STBaseViewController {
 
         let categoryNib = UINib(nibName: "AddSubCategoryCell", bundle: nil)
         tableView.register(categoryNib, forCellReuseIdentifier: "AddSubCategoryCell")
+
+        let reminderNib = UINib(nibName: "AddSubReminderCell", bundle: nil)
+        tableView.register(reminderNib, forCellReuseIdentifier: "AddSubReminderCell")
     }
 
     func setupBarItems() {
@@ -102,7 +111,7 @@ class AddToSubViewController: STBaseViewController {
 
 }
 
-extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UIColorPickerViewControllerDelegate, DateComponentDelegate {
+extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UIColorPickerViewControllerDelegate, DateComponentDelegate, ReminderDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         subSettings.count
@@ -201,12 +210,14 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
             return cell
             
         case 8:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCell", for: indexPath)
-            guard let cell = cell as? AddSubCell else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubReminderCell", for: indexPath)
+            guard let cell = cell as? AddSubReminderCell else {
                 return cell
             }
             cell.title.text = subSettings[indexPath.row]
-            cell.colorView.isHidden = true
+
+            cell.delegate = self
+
             return cell
 
         default:
@@ -310,6 +321,26 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         subscription.dueDate = dueDate ?? Date()
     }
 
+    // set up reminder
+    func reminderDidSet(_ dateComponent: DateComponents, _ cell: AddSubReminderCell) {
+        guard let day = dateComponent.day else { return }
+        let dateComp = DateComponents(day: -day)
+        guard let reminderDay = Calendar.current.date(byAdding: dateComp, to: subscription.dueDate) else { return }
+        reminderDayComp = Calendar.current.dateComponents([.day, .month, .year], from: reminderDay as Date)
+    }
+
+    func setReminder() {
+
+        reminderManager.notifications = [Notification(id: "reminder - \(subscription.id)",
+                                                      title: "\(subscription.name) 付款時間到囉!",
+                                                      dateTime: DateComponents(calendar: Calendar.current,
+                                                                               year: reminderDayComp.year,
+                                                                               month: reminderDayComp.month,
+                                                                               day: reminderDayComp.day,
+                                                                               hour: 15,
+                                                                               minute: 29))]
+        reminderManager.schedule()
+    }
 }
 
 // Get data for category page

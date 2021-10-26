@@ -46,6 +46,9 @@
 		F66A1C692721AA54000A863A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C682721AA54000A863A /* UIColor+Extension.swift */; };
 		F688856C2723D73E00637295 /* AddSubCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688856A2723D73E00637295 /* AddSubCategoryCell.swift */; };
 		F688856D2723D73E00637295 /* AddSubCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F688856B2723D73E00637295 /* AddSubCategoryCell.xib */; };
+		F6888570272461AA00637295 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688856F272461AA00637295 /* NotificationManager.swift */; };
+		F6888573272475BC00637295 /* AddSubReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6888571272475BC00637295 /* AddSubReminderCell.swift */; };
+		F6888574272475BC00637295 /* AddSubReminderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6888572272475BC00637295 /* AddSubReminderCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +95,10 @@
 		F66A1C682721AA54000A863A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		F688856A2723D73E00637295 /* AddSubCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubCategoryCell.swift; sourceTree = "<group>"; };
 		F688856B2723D73E00637295 /* AddSubCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubCategoryCell.xib; sourceTree = "<group>"; };
+		F688856E2724462200637295 /* Subminder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Subminder.entitlements; sourceTree = "<group>"; };
+		F688856F272461AA00637295 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		F6888571272475BC00637295 /* AddSubReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubReminderCell.swift; sourceTree = "<group>"; };
+		F6888572272475BC00637295 /* AddSubReminderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubReminderCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +142,7 @@
 		F66A1C04271D0B0C000A863A /* Subminder */ = {
 			isa = PBXGroup;
 			children = (
+				F688856E2724462200637295 /* Subminder.entitlements */,
 				F66A1C05271D0B0C000A863A /* AppDelegate.swift */,
 				F66A1C07271D0B0C000A863A /* SceneDelegate.swift */,
 				F66A1C2A271D5518000A863A /* Extension */,
@@ -219,6 +227,7 @@
 				F66A1C60271FF7AB000A863A /* Subscription.swift */,
 				F66A1C6627200D71000A863A /* SubsManager.swift */,
 				F66A1C62271FF9FC000A863A /* User.swift */,
+				F688856F272461AA00637295 /* NotificationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,6 +239,8 @@
 				F66A1C43271E75FA000A863A /* AddSubTextCell.xib */,
 				F66A1C52271EC53F000A863A /* AddSubCycleCell.swift */,
 				F66A1C53271EC53F000A863A /* AddSubCycleCell.xib */,
+				F6888571272475BC00637295 /* AddSubReminderCell.swift */,
+				F6888572272475BC00637295 /* AddSubReminderCell.xib */,
 				F66A1C4A271E9CC2000A863A /* AddSubCell.swift */,
 				F66A1C4B271E9CC2000A863A /* AddSubCell.xib */,
 				F688856A2723D73E00637295 /* AddSubCategoryCell.swift */,
@@ -312,6 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6888574272475BC00637295 /* AddSubReminderCell.xib in Resources */,
 				F66A1C12271D0B10000A863A /* LaunchScreen.storyboard in Resources */,
 				F66A1C0F271D0B10000A863A /* Assets.xcassets in Resources */,
 				F688856D2723D73E00637295 /* AddSubCategoryCell.xib in Resources */,
@@ -401,8 +413,10 @@
 				F66A1C6727200D71000A863A /* SubsManager.swift in Sources */,
 				F66A1C34271D667B000A863A /* GroupViewController.swift in Sources */,
 				F66A1C692721AA54000A863A /* UIColor+Extension.swift in Sources */,
+				F6888573272475BC00637295 /* AddSubReminderCell.swift in Sources */,
 				F66A1C0A271D0B0C000A863A /* SUTabBarViewController.swift in Sources */,
 				F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */,
+				F6888570272461AA00637295 /* NotificationManager.swift in Sources */,
 				F66A1C61271FF7AB000A863A /* Subscription.swift in Sources */,
 				F688856C2723D73E00637295 /* AddSubCategoryCell.swift in Sources */,
 				F66A1C2C271D5551000A863A /* UIStoryboard+Extension.swift in Sources */,
@@ -496,7 +510,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -551,7 +565,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -567,6 +581,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = Subminder/Subminder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2FTGGYY3M4;
@@ -599,6 +615,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = Subminder/Subminder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2FTGGYY3M4;

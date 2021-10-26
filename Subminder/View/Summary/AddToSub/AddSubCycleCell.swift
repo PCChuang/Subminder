@@ -82,6 +82,7 @@ class AddSubCycleCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
         cycleTextField.text = "\(cycleList[cycle]) \(cycleListNumber[number]) \(cycleListPeriod[time])"
 
         guard let cycleNumber = Int(cycleListNumber[number]) else { return }
+
         switch time {
 
         case 0:
