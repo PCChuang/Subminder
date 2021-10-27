@@ -7,5 +7,9 @@ target 'Subminder' do
 
   # Pods for Subminder
   pod 'SwiftLint'
+  pod 'IQKeyboardManagerSwift'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'CurrencyTextField'
 
 end
