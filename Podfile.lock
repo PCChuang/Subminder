@@ -218,6 +218,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
+  - CurrencyTextField (2.3)
   - Firebase/CoreOnly (6.34.0):
     - FirebaseCore (= 6.10.4)
   - Firebase/Firestore (6.34.0):
@@ -287,6 +288,7 @@ PODS:
   - SwiftLint (0.44.0)
 
 DEPENDENCIES:
+  - CurrencyTextField
   - Firebase/Firestore
   - FirebaseFirestoreSwift
   - IQKeyboardManagerSwift
@@ -296,6 +298,7 @@ SPEC REPOS:
   trunk:
     - abseil
     - BoringSSL-GRPC
+    - CurrencyTextField
     - Firebase
     - FirebaseCore
     - FirebaseCoreDiagnostics
@@ -314,6 +317,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
+  CurrencyTextField: 75d8ee80cf245925684b34c9a49ba886f258e2dc
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
   FirebaseCore: d3a978a3cfa3240bf7e4ba7d137fdf5b22b628ec
   FirebaseCoreDiagnostics: 770ac5958e1372ce67959ae4b4f31d8e127c3ac1
@@ -329,6 +333,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SwiftLint: e96c0a8c770c7ebbc4d36c55baf9096bb65c4584
 
-PODFILE CHECKSUM: 932d454fc49361b911db3cbd3620ef0e6f1ab8fb
+PODFILE CHECKSUM: 71a78961cd484f5d67a009fb2dcf1d564c4f5239
 
 COCOAPODS: 1.11.2

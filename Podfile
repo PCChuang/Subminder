@@ -10,5 +10,6 @@ target 'Subminder' do
   pod 'IQKeyboardManagerSwift'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'CurrencyTextField'
 
 end

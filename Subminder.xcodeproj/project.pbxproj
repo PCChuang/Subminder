@@ -53,6 +53,8 @@
 		F688857B2728F5EF00637295 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688857A2728F5EF00637295 /* String+Extension.swift */; };
 		F688857D2729222B00637295 /* Decimal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688857C2729222B00637295 /* Decimal+Extension.swift */; };
 		F68885812729261800637295 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68885802729261800637295 /* Double+Extension.swift */; };
+		F688858427292F4D00637295 /* AddSubPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688858227292F4D00637295 /* AddSubPriceCell.swift */; };
+		F688858527292F4D00637295 /* AddSubPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F688858327292F4D00637295 /* AddSubPriceCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +109,8 @@
 		F688857A2728F5EF00637295 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		F688857C2729222B00637295 /* Decimal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extension.swift"; sourceTree = "<group>"; };
 		F68885802729261800637295 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		F688858227292F4D00637295 /* AddSubPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubPriceCell.swift; sourceTree = "<group>"; };
+		F688858327292F4D00637295 /* AddSubPriceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubPriceCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +265,8 @@
 				F66A1C57271F0F0F000A863A /* AddSubDateCell.xib */,
 				F66A1C5A271F18D0000A863A /* AddSubCurrencyCell.swift */,
 				F66A1C5B271F18D0000A863A /* AddSubCurrencyCell.xib */,
+				F688858227292F4D00637295 /* AddSubPriceCell.swift */,
+				F688858327292F4D00637295 /* AddSubPriceCell.xib */,
 			);
 			path = AddToSub;
 			sourceTree = "<group>";
@@ -345,6 +351,7 @@
 				F66A1C25271D5467000A863A /* Setting.storyboard in Resources */,
 				F66A1C55271EC53F000A863A /* AddSubCycleCell.xib in Resources */,
 				F66A1C27271D5478000A863A /* Statistics.storyboard in Resources */,
+				F688858527292F4D00637295 /* AddSubPriceCell.xib in Resources */,
 				F66A1C5D271F18D0000A863A /* AddSubCurrencyCell.xib in Resources */,
 				F66A1C59271F0F0F000A863A /* AddSubDateCell.xib in Resources */,
 				F66A1C0D271D0B0C000A863A /* Main.storyboard in Resources */,
@@ -449,6 +456,7 @@
 				F68885792728551500637295 /* CurrencyManager.swift in Sources */,
 				F66A1C54271EC53F000A863A /* AddSubCycleCell.swift in Sources */,
 				F66A1C5F271FAA3D000A863A /* CategoryViewController.swift in Sources */,
+				F688858427292F4D00637295 /* AddSubPriceCell.swift in Sources */,
 				F66A1C2E271D6652000A863A /* SummaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

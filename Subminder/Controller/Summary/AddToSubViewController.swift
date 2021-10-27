@@ -84,6 +84,9 @@ class AddToSubViewController: STBaseViewController {
 
         let textNib = UINib(nibName: "AddSubTextCell", bundle: nil)
         tableView.register(textNib, forCellReuseIdentifier: "AddSubTextCell")
+
+        let priceNib = UINib(nibName: "AddSubPriceCell", bundle: nil)
+        tableView.register(priceNib, forCellReuseIdentifier: "AddSubPriceCell")
         
         let pickerNib = UINib(nibName: "AddSubCycleCell", bundle: nil)
         tableView.register(pickerNib, forCellReuseIdentifier: "AddSubCycleCell")
@@ -155,16 +158,16 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
             return cell
 
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubTextCell", for: indexPath)
-            guard let cell = cell as? AddSubTextCell else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubPriceCell", for: indexPath)
+            guard let cell = cell as? AddSubPriceCell else {
                 return cell
             }
             cell.title.text = subSettings[indexPath.row]
-            cell.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-            cell.textField.keyboardType = .numberPad
-
-            cell.textField.placeholder = "$0.00"
-            cell.textField.addTarget(self, action: #selector(onPriceChanged), for: .editingDidEnd)
+//            cell.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+//            cell.textField.keyboardType = .numberPad
+//
+//            cell.textField.placeholder = "$0.00"
+            cell.priceTextField.addTarget(self, action: #selector(onPriceChanged), for: .editingDidEnd)
             return cell
 
         case 2:
@@ -292,13 +295,13 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         tableView.reloadData()
     }
 
-    @objc func textFieldDidChange(_ sender: UITextField) {
-
-        if let amountString = sender.text?.currencyInputFormatting() {
-
-            sender.text = amountString
-        }
-    }
+//    @objc func textFieldDidChange(_ sender: UITextField) {
+//
+//        if let amountString = sender.text?.currencyInputFormatting() {
+//
+//            sender.text = amountString
+//        }
+//    }
 
     @objc func onNameChanged(_ sender: UITextField) {
         subscription.name = sender.text ?? ""
@@ -435,36 +438,36 @@ extension AddToSubViewController: CategoryDelegate {
     }
 }
 
-extension String {
-
-    // formatting text for currency textField
-    func currencyInputFormatting() -> String {
-
-        var number: NSNumber!
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currencyAccounting
-        formatter.currencySymbol = "$"
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
-
-        var amountWithPrefix = self
-
-        // remove from String: "$", ".", ","
-        if let regex = try? NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive) {
-            print("regex is \(regex))")
-            amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
-        } else {
-            print("fail")
-        }
-
-        let double = (amountWithPrefix as NSString).doubleValue
-        number = NSNumber(value: (double / 100))
-
-        // if first number is 0 or all numbers were deleted
-        guard number != 0 as NSNumber else {
-            return ""
-        }
-
-        return formatter.string(from: number)!
-    }
-}
+//extension String {
+//
+//    // formatting text for currency textField
+//    func currencyInputFormatting() -> String {
+//
+//        var number: NSNumber!
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .currencyAccounting
+//        formatter.currencySymbol = "$"
+//        formatter.maximumFractionDigits = 2
+//        formatter.minimumFractionDigits = 2
+//
+//        var amountWithPrefix = self
+//
+//        // remove from String: "$", ".", ","
+//        if let regex = try? NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive) {
+//            print("regex is \(regex))")
+//            amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
+//        } else {
+//            print("fail")
+//        }
+//
+//        let double = (amountWithPrefix as NSString).doubleValue
+//        number = NSNumber(value: (double / 100))
+//
+//        // if first number is 0 or all numbers were deleted
+//        guard number != 0 as NSNumber else {
+//            return ""
+//        }
+//
+//        return formatter.string(from: number)!
+//    }
+//}
