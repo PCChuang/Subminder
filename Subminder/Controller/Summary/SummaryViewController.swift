@@ -21,6 +21,8 @@ class SummaryViewController: STBaseViewController {
         
     }
 
+    let currencyManager = CurrencyManager()
+
     var datas: [Subscription] = [] {
 
         didSet {
@@ -36,6 +38,8 @@ class SummaryViewController: STBaseViewController {
         setupCollectionView()
 
         fetchData()
+
+        currencyManager.getConversionRate()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -125,9 +129,7 @@ class SummaryViewController: STBaseViewController {
         flowLayout.minimumLineSpacing = 8.0
 
         collectionView.collectionViewLayout = flowLayout
-
     }
-
 }
 
 extension SummaryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -141,7 +143,7 @@ extension SummaryViewController: UICollectionViewDelegate, UICollectionViewDataS
             fatalError()
         }
         cell.name.text = datas[indexPath.item].name
-        cell.price.text = "\(datas[indexPath.item].price)"
+        cell.price.text = "NT$ \(datas[indexPath.item].exchangePrice)"
         cell.cycle.text = datas[indexPath.item].cycle
         cell.backgroundColor = UIColor.hexStringToUIColor(hex: datas[indexPath.item].color)
 

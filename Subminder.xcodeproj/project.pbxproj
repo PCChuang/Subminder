@@ -49,6 +49,10 @@
 		F6888570272461AA00637295 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688856F272461AA00637295 /* NotificationManager.swift */; };
 		F6888573272475BC00637295 /* AddSubReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6888571272475BC00637295 /* AddSubReminderCell.swift */; };
 		F6888574272475BC00637295 /* AddSubReminderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6888572272475BC00637295 /* AddSubReminderCell.xib */; };
+		F68885792728551500637295 /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68885782728551500637295 /* CurrencyManager.swift */; };
+		F688857B2728F5EF00637295 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688857A2728F5EF00637295 /* String+Extension.swift */; };
+		F688857D2729222B00637295 /* Decimal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688857C2729222B00637295 /* Decimal+Extension.swift */; };
+		F68885812729261800637295 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68885802729261800637295 /* Double+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +103,10 @@
 		F688856F272461AA00637295 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		F6888571272475BC00637295 /* AddSubReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubReminderCell.swift; sourceTree = "<group>"; };
 		F6888572272475BC00637295 /* AddSubReminderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubReminderCell.xib; sourceTree = "<group>"; };
+		F68885782728551500637295 /* CurrencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManager.swift; sourceTree = "<group>"; };
+		F688857A2728F5EF00637295 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		F688857C2729222B00637295 /* Decimal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extension.swift"; sourceTree = "<group>"; };
+		F68885802729261800637295 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +204,9 @@
 			children = (
 				F66A1C2B271D5551000A863A /* UIStoryboard+Extension.swift */,
 				F66A1C682721AA54000A863A /* UIColor+Extension.swift */,
+				F688857A2728F5EF00637295 /* String+Extension.swift */,
+				F688857C2729222B00637295 /* Decimal+Extension.swift */,
+				F68885802729261800637295 /* Double+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -228,6 +239,7 @@
 				F66A1C6627200D71000A863A /* SubsManager.swift */,
 				F66A1C62271FF9FC000A863A /* User.swift */,
 				F688856F272461AA00637295 /* NotificationManager.swift */,
+				F68885782728551500637295 /* CurrencyManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -418,6 +430,7 @@
 				F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */,
 				F6888570272461AA00637295 /* NotificationManager.swift in Sources */,
 				F66A1C61271FF7AB000A863A /* Subscription.swift in Sources */,
+				F688857D2729222B00637295 /* Decimal+Extension.swift in Sources */,
 				F688856C2723D73E00637295 /* AddSubCategoryCell.swift in Sources */,
 				F66A1C2C271D5551000A863A /* UIStoryboard+Extension.swift in Sources */,
 				F66A1C44271E75FA000A863A /* AddSubTextCell.swift in Sources */,
@@ -428,9 +441,12 @@
 				F66A1C08271D0B0C000A863A /* SceneDelegate.swift in Sources */,
 				F66A1C51271EB8FC000A863A /* SUBaseViewController.swift in Sources */,
 				F66A1C5C271F18D0000A863A /* AddSubCurrencyCell.swift in Sources */,
+				F688857B2728F5EF00637295 /* String+Extension.swift in Sources */,
 				F66A1C32271D666F000A863A /* SettingViewController.swift in Sources */,
 				F66A1C4F271EA171000A863A /* SubSetting.swift in Sources */,
 				F66A1C4C271E9CC2000A863A /* AddSubCell.swift in Sources */,
+				F68885812729261800637295 /* Double+Extension.swift in Sources */,
+				F68885792728551500637295 /* CurrencyManager.swift in Sources */,
 				F66A1C54271EC53F000A863A /* AddSubCycleCell.swift in Sources */,
 				F66A1C5F271FAA3D000A863A /* CategoryViewController.swift in Sources */,
 				F66A1C2E271D6652000A863A /* SummaryViewController.swift in Sources */,

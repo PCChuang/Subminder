@@ -13,6 +13,7 @@ struct Subscription: Codable {
     var name: String
     var price: Decimal
     var currency: String
+    var exchangePrice: Double
     var startDate: Date
     var dueDate: Date
     var cycle: String
@@ -26,6 +27,7 @@ struct Subscription: Codable {
         case id
         case name
         case price
+        case exchangePrice
         case currency
         case startDate
         case dueDate
@@ -42,6 +44,7 @@ struct Subscription: Codable {
             "id": id as Any,
             "name": name as Any,
             "price": price as Any,
+            "exchangePrice": exchangePrice as Any,
             "currency": currency as Any,
             "startDate": startDate as Any,
             "dueDate": dueDate as Any,

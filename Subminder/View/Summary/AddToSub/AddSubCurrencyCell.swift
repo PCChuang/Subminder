@@ -7,48 +7,27 @@
 
 import UIKit
 
+protocol CurrencyCellDelegate: AnyObject {
+
+    func currencyRateDidChange(_ activeRate: Double, _ cell: AddSubCurrencyCell)
+}
+
 class AddSubCurrencyCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var currencyTextField: UITextField!
 
+    weak var delegate: CurrencyCellDelegate?
+
+    let currencyManager = CurrencyManager()
+
     let currencyPicker = UIPickerView()
 
-    var currencies = [
-        "USD ($)",
-        "EUR (€)",
-        "AUD (A$)",
-        "BRL (R$)",
-        "GBP (£)",
-        "BGN (лв)",
-        "CAD (C$)",
-        "CNY (¥)",
-        "HRK (kn)",
-        "CZK (Kč)",
-        "DKK (kr)",
-        "HKD (HK$)",
-        "HUF (Ft)",
-        "ISK (kr)",
-        "INR (₹)",
-        "IDR (Rp)",
-        "ILS (₪)",
-        "JPY (¥)",
-        "MYR (M$)",
-        "TWD (NT$)",
-        "NZD (NZ$)",
-        "NOK (kr)",
-        "PHP (₱)",
-        "PLN (zł)",
-        "RON (lei)",
-        "RUB (₽)",
-        "SGD (S$)",
-        "ZAR (R)",
-        "KRW (₩)",
-        "SEK (kr)",
-        "CHF (Fr.)",
-        "THB (฿)",
-        "TRY (₺)"
-    ]
+    var currencies: [String] = []
+
+    var values: [Double] = []
+
+    var activeRate: Double = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -57,8 +36,11 @@ class AddSubCurrencyCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
         currencyPicker.delegate = self
         currencyTextField.inputView = currencyPicker
 
-        let defaultCurrency = NSLocale.current.currencySymbol
-        currencyTextField.placeholder = defaultCurrency
+        currencyManager.delegate = self
+        currencyManager.getConversionRate()
+
+        currencyPicker.selectRow(10, inComponent: 0, animated: false)
+        currencyTextField.text = pickerView(currencyPicker, titleForRow: currencyPicker.selectedRow(inComponent: 0), forComponent: 0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -84,5 +66,22 @@ class AddSubCurrencyCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 
         currencyTextField.text = "\(currencies[row])"
+
+        activeRate = values[row]
+
+        delegate?.currencyRateDidChange(activeRate, self)
+    }
+}
+
+extension AddSubCurrencyCell: CurrencyManagerDelegate {
+
+    func manager(_ manager: CurrencyManager, didGet currencies: [String]) {
+
+        self.currencies = currencies
+    }
+
+    func manager(_ manager: CurrencyManager, didGet values: [Double]) {
+
+        self.values = values
     }
 }
