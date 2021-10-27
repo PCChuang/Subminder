@@ -8,35 +8,35 @@
 import UIKit
 
 private enum Tab {
-    
+
     case summary
-    
+
     case setting
-    
+
     case statistics
-    
+
     case group
-    
+
     func controller() -> UIViewController {
-        
+
         var controller: UIViewController
 
         switch self {
-            
+
         case .summary: controller = UIStoryboard.summary.instantiateInitialViewController()!
-          
+
         case .statistics: controller = UIStoryboard.statistics.instantiateInitialViewController()!
-            
+
         case .setting: controller = UIStoryboard.setting.instantiateInitialViewController()!
-            
+
         case .group: controller = UIStoryboard.group.instantiateInitialViewController()!
-            
+
         }
-        
+
         controller.tabBarItem = tabBarItem()
 
         controller.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
-        
+
         return controller
 
     }
@@ -87,6 +87,8 @@ class SUTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
         viewControllers = tabs.map({ $0.controller() })
         delegate = self
+        self.selectedIndex = 1
+
     }
 
 }
