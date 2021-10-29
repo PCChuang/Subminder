@@ -7,14 +7,14 @@
 
 import UIKit
 
-class AddToSubViewController: STBaseViewController {
+class AddToSubViewController: SUBaseViewController {
 
     @IBOutlet weak var tableView: UITableView! {
-        
+
         didSet {
-            
+
             tableView.dataSource = self
-            
+
             tableView.delegate = self
         }
     }
@@ -34,7 +34,7 @@ class AddToSubViewController: STBaseViewController {
 
         showDiscardAlert()
     }
-    
+
     var subColor: UIColor?
     var category: String? {
 

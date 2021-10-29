@@ -11,7 +11,7 @@ protocol CategoryDelegate: AnyObject {
     
     func didSelectCategory(_ contentOfText: String)
 }
-class CategoryViewController: STBaseViewController {
+class CategoryViewController: SUBaseViewController {
 
     @IBOutlet weak var tableView: UITableView! {
 

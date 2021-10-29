@@ -16,8 +16,8 @@ struct User: Codable {
     var friendList: [String]
     var groupList: [String]
     var subList: [String]
-    var payable: Int64
-    var receivable: Int64
+    var payable: Decimal
+    var receivable: Decimal
     var currency: String
 
     enum CodinKeys: String, CodingKey {
