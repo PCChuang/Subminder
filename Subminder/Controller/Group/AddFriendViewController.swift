@@ -24,6 +24,20 @@ class AddFriendViewController: SUBaseViewController {
         searchFriend()
     }
 
+    @IBAction func onTapSendRequest(_ sender: UIButton) {
+
+        sendFriendRequest(with: &request)
+    }
+
+    private let userID = "NrNEOstTuDxTmkTkCVEY"
+
+    var searchText: String = ""
+
+    var request: Request = Request(
+        to: "",
+        from: ""
+    )
+
     var searchResults: [User] = []
 
     override func viewDidLoad() {
@@ -56,7 +70,9 @@ class AddFriendViewController: SUBaseViewController {
 
     func searchFriend() {
 
-        guard let searchText = searchTextField.text else { return }
+        guard let text = searchTextField.text else { return }
+
+        searchText = text
 
         UserManager.shared.searchUser(id: searchText) { [weak self] result in
 
@@ -93,6 +109,34 @@ class AddFriendViewController: SUBaseViewController {
                 print("searchFriend.failure: \(error)")
             }
         }
+    }
+
+    func sendFriendRequest(with request: inout Request) {
+
+        request.to = searchText
+
+        request.from = userID
+
+        RequestManager.shared.sendRequest(request: &request) { result in
+
+            switch result {
+
+            case .success:
+                print("onTapSend, success")
+                self.disableSendBtn()
+
+            case .failure(let error):
+                print("sendFriendRequest.failure: \(error)")
+            }
+        }
+    }
+
+    func disableSendBtn() {
+
+        sendRequestBtn.isEnabled = false
+        sendRequestBtn.setTitle("已發送好友邀請", for: .disabled)
+        sendRequestBtn.backgroundColor = .lightGray
+        sendRequestBtn.tintColor = .white
     }
 
 }

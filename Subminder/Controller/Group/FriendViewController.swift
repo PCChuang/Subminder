@@ -32,7 +32,7 @@ class FriendViewController: SUBaseViewController {
                 image: UIImage(systemName: "mail"),
                 style: .done,
                 target: self,
-                action: nil
+                action: #selector(navFriendRequest)
             )
         ]
     }
@@ -40,6 +40,13 @@ class FriendViewController: SUBaseViewController {
     @objc func navAddFriend() {
 
         if let controller = storyboard?.instantiateViewController(identifier: "AddFriend") as? AddFriendViewController {
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+
+    @objc func navFriendRequest() {
+
+        if let controller = storyboard?.instantiateViewController(identifier: "FriendRequest") as? FriendRequestViewController {
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
