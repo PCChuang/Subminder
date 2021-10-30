@@ -19,8 +19,32 @@ class FriendRequestViewController: SUBaseViewController {
         }
     }
 
+    private let userID = "NrNEOstTuDxTmkTkCVEY"
+
+    var requestsFetched: [Request] = [] {
+
+        didSet {
+
+            tableView.reloadData()
+        }
+    }
+
+//    var senderID: String = ""
+
+    var senderIDs: [String] = []
+
+    var sendersInfo: [User] = [] {
+
+        didSet {
+
+            tableView.reloadData()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.fetchFriendRequest()
 
         setupBarItems()
 
@@ -44,7 +68,8 @@ class FriendRequestViewController: SUBaseViewController {
 extension FriendRequestViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+
+        requestsFetched.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,8 +80,67 @@ extension FriendRequestViewController: UITableViewDataSource, UITableViewDelegat
             return cell
         }
 
-        cell.setupCell(friendName: "123")
+        if sendersInfo.count > 0 {
+            
+            cell.setupCell(friendName: sendersInfo[indexPath.row].name)
+        }
 
         return cell
+    }
+}
+
+extension FriendRequestViewController {
+
+    // fetch received friend request
+    func fetchFriendRequest() {
+
+        RequestManager.shared.fetchRequest(id: userID) { [weak self] result in
+
+            switch result {
+
+            case .success(let requests):
+
+                print("fetchRequests success")
+
+                for request in requests {
+                    self?.requestsFetched.append(request)
+                    let senderID = request.to
+                    self?.senderIDs.append(senderID)
+                    self?.fetchSenderInfo(senderID: senderID)
+                }
+
+                print(self?.requestsFetched)
+
+            case .failure(let error):
+
+                print("fetchRequests.failure: \(error)")
+            }
+        }
+    }
+
+    // get sender's name and image with user ID
+    // 拿到request array -> 拿出to的ID -> user ID array
+    // 用user ID array去搜尋對應的user Name跟image
+    func fetchSenderInfo(senderID: String) {
+        
+        UserManager.shared.searchUser(id: senderID) { [weak self] result in
+
+            switch result {
+
+            case .success(let users):
+
+                print("fetchSenderInfo success")
+
+                for user in users {
+                    self?.sendersInfo.append(user)
+                }
+
+                print(self?.sendersInfo)
+
+            case .failure(let error):
+
+                print("fetchSenderInfo.failure: \(error)")
+            }
+        }
     }
 }

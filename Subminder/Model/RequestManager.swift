@@ -30,4 +30,33 @@ class RequestManager {
             }
         }
     }
+
+    func fetchRequest(id: String = "", completion: @escaping (Result<[Request], Error>) -> Void) {
+
+        db.collection("requests").whereField("to", isEqualTo: id).getDocuments() { (querySnapshot, error) in
+
+            if let error = error {
+
+                completion(.failure(error))
+            } else {
+
+                var results = [Request]()
+
+                for document in querySnapshot!.documents {
+
+                    do {
+
+                        if let result = try document.data(as: Request.self, decoder: Firestore.Decoder()) {
+                            results.append(result)
+                        }
+                    } catch {
+
+                        completion(.failure(error))
+                    }
+                }
+
+                completion(.success(results))
+            }
+        }
+    }
 }
