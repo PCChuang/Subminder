@@ -19,12 +19,40 @@ class FriendViewController: SUBaseViewController {
         }
     }
 
+    private let userID = "NrNEOstTuDxTmkTkCVEY"
+
+    var friendsList: [String] = [] {
+
+        didSet {
+
+            tableView.reloadData()
+        }
+    }
+
+    var friendsName: [String] = []
+
+    var friendsInfo: [User] = [] {
+
+        didSet {
+
+            tableView.reloadData()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+//        fetchFriendList(userID: userID)
 
         setupBarItems()
 
         registerCell()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        fetchFriendList(userID: userID)
     }
 
     func setupBarItems() {
@@ -74,7 +102,8 @@ class FriendViewController: SUBaseViewController {
 extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+
+        friendsInfo.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,12 +114,69 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
 
-        cell.setupCell(friendName: "123")
+        if friendsInfo.count > 0 {
+            
+            cell.setupCell(friendName: friendsInfo[indexPath.row].name)
+        }
 
         cell.confirmBtn.isHidden = true
 
         cell.deleteBtn.isHidden = true
 
         return cell
+    }
+}
+
+extension FriendViewController {
+
+    func fetchFriendList(userID: String) {
+
+        UserManager.shared.searchUser(id: userID) { [weak self] result in
+
+            switch result {
+
+            case .success(let users):
+
+                print("fetchFriendList success")
+                
+                self?.friendsInfo.removeAll()
+
+                for user in users {
+
+                    let friends = user.friendList
+                    self?.friendsList = friends
+
+                    for friend in friends {
+
+                        self?.fetchFriendInfo(friendID: friend)
+                    }
+                }
+
+            case .failure(let error):
+
+                print("fetchFriendList.failure: \(error)")
+            }
+        }
+    }
+
+    func fetchFriendInfo(friendID: String) {
+
+        UserManager.shared.searchUser(id: friendID) { [weak self] result in
+
+            switch result {
+
+            case .success(let users):
+                
+                print("fetchFriendInfo success")
+
+                for user in users {
+                    self?.friendsInfo.append(user)
+                }
+
+            case .failure(let error):
+
+                print("fetchFriendInfo.failure: \(error)")
+            }
+        }
     }
 }

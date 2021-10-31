@@ -29,8 +29,6 @@ class FriendRequestViewController: SUBaseViewController {
         }
     }
 
-//    var senderID: String = ""
-
     var senderIDs: [String] = []
 
     var sendersInfo: [User] = [] {

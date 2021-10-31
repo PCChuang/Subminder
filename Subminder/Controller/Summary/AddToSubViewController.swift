@@ -422,6 +422,8 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         currencyValue = activeRate
 
         exchangePrice = (subscription.price).doubleValue / currencyValue
+        
+        print(currencyValue, exchangePrice)
 
         subscription.exchangePrice = exchangePrice.rounded(toPlaces: 2)
     }
