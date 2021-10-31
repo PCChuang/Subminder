@@ -85,7 +85,66 @@ extension FriendRequestViewController: UITableViewDataSource, UITableViewDelegat
             cell.setupCell(friendName: sendersInfo[indexPath.row].name)
         }
 
+        cell.confirmBtn.tag = indexPath.row
+
+        cell.confirmBtn.addTarget(self, action: #selector(acceptRequest), for: .touchUpInside)
+
         return cell
+    }
+
+    // update friend lists of sender and receiver
+    @objc func acceptRequest(_ sender: UIButton) {
+
+        UserManager.shared.addFriend(userID: userID, newFreind: senderIDs[sender.tag]) { result in
+
+            switch result {
+
+            case .success(let senderID):
+
+                print(senderID)
+
+            case .failure(let error):
+
+                print("acceptFriend.failure: \(error)")
+            }
+
+        }
+
+        UserManager.shared.addFriend(userID: senderIDs[sender.tag], newFreind: userID) { result in
+
+            switch result {
+
+            case .success(let userID):
+
+                print(userID)
+
+            case .failure(let error):
+
+                print("acceptFriend.failure: \(error)")
+            }
+
+        }
+
+        RequestManager.shared.closeRequest(userID: userID, senderID: senderIDs[sender.tag]) { result in
+
+            switch result {
+
+            case .success(let userID):
+
+                print(userID)
+
+            case .failure(let error):
+
+                print("closeRequest.failure: \(error)")
+            }
+        }
+
+        // delete indexPath.row
+        let hitPoint = sender.convert(CGPoint.zero, to: tableView)
+        if let indexPath = tableView.indexPathForRow(at: hitPoint) {
+            
+            requestsFetched.remove(at: indexPath.row)
+        }
     }
 }
 
@@ -104,7 +163,7 @@ extension FriendRequestViewController {
 
                 for request in requests {
                     self?.requestsFetched.append(request)
-                    let senderID = request.to
+                    let senderID = request.from
                     self?.senderIDs.append(senderID)
                     self?.fetchSenderInfo(senderID: senderID)
                 }
@@ -119,8 +178,6 @@ extension FriendRequestViewController {
     }
 
     // get sender's name and image with user ID
-    // 拿到request array -> 拿出to的ID -> user ID array
-    // 用user ID array去搜尋對應的user Name跟image
     func fetchSenderInfo(senderID: String) {
         
         UserManager.shared.searchUser(id: senderID) { [weak self] result in

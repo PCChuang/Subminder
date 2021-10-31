@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
+import UIKit
 
 class RequestManager {
 
@@ -58,5 +59,32 @@ class RequestManager {
                 completion(.success(results))
             }
         }
+    }
+
+    func closeRequest(userID: String, senderID: String, completion: @escaping (Result<String, Error>) -> Void) {
+
+        db.collection("requests").whereField("to", isEqualTo: userID).whereField("from", isEqualTo: senderID).getDocuments() { (querySnapshot, error) in
+
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+
+                for document in querySnapshot!.documents {
+
+                    self.db.collection("requests").document(document.documentID).delete() { error in
+
+                        if let error = error {
+
+                            completion(.failure(error))
+                        } else {
+
+                            completion(.success(document.documentID))
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

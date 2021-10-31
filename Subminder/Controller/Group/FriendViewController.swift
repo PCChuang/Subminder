@@ -9,10 +9,22 @@ import UIKit
 
 class FriendViewController: SUBaseViewController {
 
+    @IBOutlet weak var tableView: UITableView! {
+
+        didSet {
+
+            tableView.dataSource = self
+
+            tableView.delegate = self
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupBarItems()
+
+        registerCell()
     }
 
     func setupBarItems() {
@@ -37,6 +49,13 @@ class FriendViewController: SUBaseViewController {
         ]
     }
 
+    func registerCell() {
+
+        let nib = UINib(nibName: "FriendRequestCell", bundle: nil)
+
+        tableView.register(nib, forCellReuseIdentifier: "FriendRequestCell")
+    }
+
     @objc func navAddFriend() {
 
         if let controller = storyboard?.instantiateViewController(identifier: "AddFriend") as? AddFriendViewController {
@@ -49,5 +68,29 @@ class FriendViewController: SUBaseViewController {
         if let controller = storyboard?.instantiateViewController(identifier: "FriendRequest") as? FriendRequestViewController {
             self.navigationController?.pushViewController(controller, animated: true)
         }
+    }
+}
+
+extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        3
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendRequestCell", for: indexPath)
+
+        guard let cell = cell as? FriendRequestCell else {
+            return cell
+        }
+
+        cell.setupCell(friendName: "123")
+
+        cell.confirmBtn.isHidden = true
+
+        cell.deleteBtn.isHidden = true
+
+        return cell
     }
 }

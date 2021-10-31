@@ -43,4 +43,20 @@ class UserManager {
             }
         }
     }
+
+    func addFriend(userID: String, newFreind: String, completion: @escaping (Result<String, Error>) -> Void) {
+
+        let document = db.collection("users").document(userID)
+
+        document.updateData(["friendList": FieldValue.arrayUnion([newFreind])]) { error in
+
+            if let error = error {
+
+                completion(.failure(error))
+            } else {
+
+                completion(.success("Success"))
+            }
+        }
+    }
 }

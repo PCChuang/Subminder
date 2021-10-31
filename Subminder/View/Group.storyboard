@@ -180,6 +180,9 @@
                             <constraint firstItem="UuY-zd-xPQ" firstAttribute="top" secondItem="9oN-Bz-pzt" secondAttribute="top" id="h6c-4s-6Gd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="UuY-zd-xPQ" id="1Nx-iv-hcr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWR-gC-jb0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
