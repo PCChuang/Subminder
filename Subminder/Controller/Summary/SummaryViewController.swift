@@ -37,7 +37,10 @@ class SummaryViewController: SUBaseViewController {
 
         fetchData()
 
-        currencyManager.getConversionRate()
+//        currencyManager.getConversionRate(currencies: <#T##[String]#>, values: <#T##[Double]#>, completion: <#T##() -> Void#>) {
+//
+//            
+//        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
