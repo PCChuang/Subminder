@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendRequestCell" rowHeight="99" id="KGk-i7-Jjw" customClass="FriendRequestCell" customModule="Subminder" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="387" height="92"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="387" height="92"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_36px_Profile_Selected" translatesAutoresizingMaskIntoConstraints="NO" id="bc3-xb-QtQ">
+                        <rect key="frame" x="16" y="16" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="DnQ-88-HFo"/>
+                            <constraint firstAttribute="width" constant="60" id="n9b-XQ-x8I"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjE-bQ-WGO">
+                        <rect key="frame" x="263" y="31" width="50" height="30"/>
+                        <color key="backgroundColor" red="0.2470588235" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="2gu-QC-j4z"/>
+                            <constraint firstAttribute="height" constant="30" id="kqh-We-nWI"/>
+                        </constraints>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="確認">
+                            <fontDescription key="titleFontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="13"/>
+                        </buttonConfiguration>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CzQ-21-aEx">
+                        <rect key="frame" x="321" y="31" width="50" height="30"/>
+                        <color key="backgroundColor" red="0.2470588235" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="8oN-Vw-Drv"/>
+                            <constraint firstAttribute="height" constant="30" id="kKM-U4-x8i"/>
+                        </constraints>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="刪除">
+                            <fontDescription key="titleFontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="13"/>
+                        </buttonConfiguration>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iu-0W-ke0">
+                        <rect key="frame" x="108" y="35.5" width="123" height="21"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="CzQ-21-aEx" secondAttribute="trailing" constant="16" id="0e2-rD-aD0"/>
+                    <constraint firstAttribute="bottom" secondItem="bc3-xb-QtQ" secondAttribute="bottom" constant="16" id="40i-Vz-gEL"/>
+                    <constraint firstItem="CzQ-21-aEx" firstAttribute="leading" secondItem="DjE-bQ-WGO" secondAttribute="trailing" constant="8" id="5aX-lW-quR"/>
+                    <constraint firstItem="DjE-bQ-WGO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6lV-Sg-h1p"/>
+                    <constraint firstItem="bc3-xb-QtQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="9DS-zm-Ra0"/>
+                    <constraint firstItem="DjE-bQ-WGO" firstAttribute="leading" secondItem="2iu-0W-ke0" secondAttribute="trailing" constant="32" id="Aym-2S-pOk"/>
+                    <constraint firstItem="2iu-0W-ke0" firstAttribute="leading" secondItem="bc3-xb-QtQ" secondAttribute="trailing" constant="32" id="C0o-hY-5xs"/>
+                    <constraint firstItem="2iu-0W-ke0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Fzy-d3-gG4"/>
+                    <constraint firstItem="bc3-xb-QtQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="QbM-sv-iTv"/>
+                    <constraint firstItem="CzQ-21-aEx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bkh-Vd-Iql"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="confirmBtn" destination="DjE-bQ-WGO" id="y3h-CP-Gh5"/>
+                <outlet property="deleteBtn" destination="CzQ-21-aEx" id="Idj-4m-UcY"/>
+                <outlet property="friendImg" destination="bc3-xb-QtQ" id="AEO-Mx-ut0"/>
+                <outlet property="friendNameLbl" destination="2iu-0W-ke0" id="r2W-cz-7sf"/>
+            </connections>
+            <point key="canvasLocation" x="186.23188405797103" y="103.79464285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Icons_36px_Profile_Selected" width="36" height="36"/>
+    </resources>
+</document>

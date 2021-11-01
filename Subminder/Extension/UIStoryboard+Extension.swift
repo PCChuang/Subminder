@@ -18,7 +18,6 @@ private struct StoryboardCategory {
     static let setting = "Setting"
 
     static let group = "Group"
-
 }
 
 extension UIStoryboard {
