@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SummaryViewController: STBaseViewController {
+class SummaryViewController: SUBaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView! {
 
@@ -16,9 +16,7 @@ class SummaryViewController: STBaseViewController {
             collectionView.delegate = self
             
             collectionView.dataSource = self
-
         }
-        
     }
 
     let currencyManager = CurrencyManager()
@@ -34,7 +32,7 @@ class SummaryViewController: STBaseViewController {
         super.viewDidLoad()
 
         setupBarItems()
-        
+
         setupCollectionView()
 
         fetchData()
@@ -43,6 +41,8 @@ class SummaryViewController: STBaseViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
         fetchData()
     }
 
@@ -94,7 +94,6 @@ class SummaryViewController: STBaseViewController {
                 action: #selector(navAdd)
             )
         ]
-
     }
 
     @objc func navAdd() {
@@ -102,7 +101,6 @@ class SummaryViewController: STBaseViewController {
         if let controller = storyboard?.instantiateViewController(identifier: "AddToSub") as? AddToSubViewController {
             self.navigationController?.pushViewController(controller, animated: true)
         }
-
     }
 
     private func setupCollectionView() {
@@ -133,11 +131,11 @@ class SummaryViewController: STBaseViewController {
 }
 
 extension SummaryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         datas.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SummaryCell", for: indexPath) as? SummaryCell else {
             fatalError()
