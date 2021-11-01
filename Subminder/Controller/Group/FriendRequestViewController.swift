@@ -87,6 +87,10 @@ extension FriendRequestViewController: UITableViewDataSource, UITableViewDelegat
 
         cell.confirmBtn.addTarget(self, action: #selector(acceptRequest), for: .touchUpInside)
 
+        cell.deleteBtn.tag = indexPath.row
+
+        cell.deleteBtn.addTarget(self, action: #selector(rejectRequest), for: .touchUpInside)
+
         return cell
     }
 
@@ -123,7 +127,22 @@ extension FriendRequestViewController: UITableViewDataSource, UITableViewDelegat
 
         }
 
-        RequestManager.shared.closeRequest(userID: userID, senderID: senderIDs[sender.tag]) { result in
+        closeFriendRequest(userID: userID, senderID: senderIDs[sender.tag])
+
+        // delete indexPath.row
+        deleteRow(sender: sender)
+    }
+
+    @objc func rejectRequest(_ sender: UIButton) {
+
+        closeFriendRequest(userID: userID, senderID: senderIDs[sender.tag])
+
+        deleteRow(sender: sender)
+    }
+
+    func closeFriendRequest(userID: String, senderID: String) {
+
+        RequestManager.shared.closeRequest(userID: userID, senderID: senderID) { result in
 
             switch result {
 
@@ -136,8 +155,10 @@ extension FriendRequestViewController: UITableViewDataSource, UITableViewDelegat
                 print("closeRequest.failure: \(error)")
             }
         }
+    }
 
-        // delete indexPath.row
+    func deleteRow(sender: UIButton) {
+
         let hitPoint = sender.convert(CGPoint.zero, to: tableView)
         if let indexPath = tableView.indexPathForRow(at: hitPoint) {
             

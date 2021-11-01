@@ -91,7 +91,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="searchFieldDidEnter:" destination="ErL-bb-WHd" eventType="editingDidEnd" id="dE4-Kk-fps"/>
+                                    <action selector="searchFieldDidEnter:" destination="ErL-bb-WHd" eventType="editingDidEnd" id="KR7-f9-CXH"/>
                                 </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_36px_Profile_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="oFF-gI-yTI">
