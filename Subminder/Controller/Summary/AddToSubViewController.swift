@@ -7,14 +7,14 @@
 
 import UIKit
 
-class AddToSubViewController: STBaseViewController {
+class AddToSubViewController: SUBaseViewController {
 
     @IBOutlet weak var tableView: UITableView! {
-        
+
         didSet {
-            
+
             tableView.dataSource = self
-            
+
             tableView.delegate = self
         }
     }
@@ -34,7 +34,7 @@ class AddToSubViewController: STBaseViewController {
 
         showDiscardAlert()
     }
-    
+
     var subColor: UIColor?
     var category: String? {
 
@@ -422,6 +422,8 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         currencyValue = activeRate
 
         exchangePrice = (subscription.price).doubleValue / currencyValue
+        
+        print(currencyValue, exchangePrice)
 
         subscription.exchangePrice = exchangePrice.rounded(toPlaces: 2)
     }

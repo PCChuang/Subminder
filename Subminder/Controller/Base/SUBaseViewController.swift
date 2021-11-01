@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SUBaseViewController.swift
 //  Subminder
 //
 //  Created by PoChieh Chuang on 2021/10/19.
@@ -8,7 +8,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-class STBaseViewController: UIViewController {
+class SUBaseViewController: UIViewController {
 
     static var identifier: String {
         
