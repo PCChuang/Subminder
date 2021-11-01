@@ -21,10 +21,33 @@ class AddToSubViewController: SUBaseViewController {
 
     @IBAction func onTapPublish(_ sender: UIButton) {
 
-        publishAfterValidation()
+        // validate name textfield
+        if subscription.name == "" {
+
+            let controller = UIAlertController(title: "Oops!", message: "請輸入訂閱名稱", preferredStyle: .alert)
+
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+
+            controller.addAction(okAction)
+
+            present(controller, animated: true, completion: nil)
+        } else {
+
+            // call currency API when clicking publish
+            currenyManager.getConversionRate(currencies: currencies, values: values) {
+                
+                self.calculateRate(index: self.selectedCurrencyIndex)
+                
+                self.publishSubscription()
+                
+                DispatchQueue.main.async {
+                    
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
 
 //        self.publish(with: &subscription)
-        _ = navigationController?.popViewController(animated: true)
 
         setReminder()
 
@@ -35,7 +58,10 @@ class AddToSubViewController: SUBaseViewController {
         showDiscardAlert()
     }
 
+    var currenyManager = CurrencyManager()
+
     var subColor: UIColor?
+
     var category: String? {
 
         didSet {
@@ -47,6 +73,10 @@ class AddToSubViewController: SUBaseViewController {
     var reminderDayComp = DateComponents()
 
     var currencies: [String] = []
+
+    var values: [Double] = []
+
+    var selectedCurrencyIndex: Int = 0
 
     var currencyValue: Double = 0
 
@@ -72,6 +102,8 @@ class AddToSubViewController: SUBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        currenyManager.delegate = self
+        
         setupBarItems()
 
 //        self.onPublished = { [weak self] () in
@@ -163,10 +195,7 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                 return cell
             }
             cell.title.text = subSettings[indexPath.row]
-//            cell.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-//            cell.textField.keyboardType = .numberPad
-//
-//            cell.textField.placeholder = "$0.00"
+
             cell.priceTextField.addTarget(self, action: #selector(onPriceChanged), for: .editingDidEnd)
             return cell
 
@@ -295,14 +324,6 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         tableView.reloadData()
     }
 
-//    @objc func textFieldDidChange(_ sender: UITextField) {
-//
-//        if let amountString = sender.text?.currencyInputFormatting() {
-//
-//            sender.text = amountString
-//        }
-//    }
-
     @objc func onNameChanged(_ sender: UITextField) {
         subscription.name = sender.text ?? ""
     }
@@ -379,21 +400,9 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         reminderManager.schedule()
     }
 
-    func publishAfterValidation() {
-
-        if subscription.name == "" {
-
-            let controller = UIAlertController(title: "Oops!", message: "請輸入訂閱名稱", preferredStyle: .alert)
-
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-
-            controller.addAction(okAction)
-
-            present(controller, animated: true, completion: nil)
-        } else {
+    func publishSubscription() {
 
             self.publish(with: &subscription)
-        }
     }
 
     func showDiscardAlert() -> Void {
@@ -417,9 +426,14 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         }
     }
 
-    func currencyRateDidChange(_ activeRate: Double, _ cell: AddSubCurrencyCell) {
+    func currencyRateDidChange(_ cell: AddSubCurrencyCell, _ index: Int) {
 
-        currencyValue = activeRate
+        selectedCurrencyIndex = index
+    }
+
+    func calculateRate(index: Int) {
+
+        currencyValue = values[index]
 
         exchangePrice = (subscription.price).doubleValue / currencyValue
         
@@ -440,36 +454,15 @@ extension AddToSubViewController: CategoryDelegate {
     }
 }
 
-//extension String {
-//
-//    // formatting text for currency textField
-//    func currencyInputFormatting() -> String {
-//
-//        var number: NSNumber!
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = .currencyAccounting
-//        formatter.currencySymbol = "$"
-//        formatter.maximumFractionDigits = 2
-//        formatter.minimumFractionDigits = 2
-//
-//        var amountWithPrefix = self
-//
-//        // remove from String: "$", ".", ","
-//        if let regex = try? NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive) {
-//            print("regex is \(regex))")
-//            amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
-//        } else {
-//            print("fail")
-//        }
-//
-//        let double = (amountWithPrefix as NSString).doubleValue
-//        number = NSNumber(value: (double / 100))
-//
-//        // if first number is 0 or all numbers were deleted
-//        guard number != 0 as NSNumber else {
-//            return ""
-//        }
-//
-//        return formatter.string(from: number)!
-//    }
-//}
+extension AddToSubViewController: CurrencyManagerDelegate {
+
+    func manager(_ manager: CurrencyManager, didGet currencies: [String]) {
+
+        self.currencies = currencies
+    }
+
+    func manager(_ manager: CurrencyManager, didGet values: [Double]) {
+
+        self.values = values
+    }
+}

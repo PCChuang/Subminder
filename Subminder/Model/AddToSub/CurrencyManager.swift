@@ -22,13 +22,13 @@ class CurrencyManager {
 
     weak var delegate: CurrencyManagerDelegate?
 
-    func getConversionRate() {
+    func getConversionRate(currencies: [String], values: [Double], completion: @escaping () -> Void) {
 
         let configuration = URLSessionConfiguration.default
 
         let session = URLSession(configuration: configuration)
 
-        guard let url = URL(string: "https://apilayer.net/api/live?access_key=2a6f4e22f7dde24f64f38725d7a0897d&currencies=USD,EUR,JPY,GBP,AUD,CAD,CHF,CNY,HKD,NZD,TWD&source=TWD&format=1") else {
+        guard let url = URL(string: "https://apilayer.net/api/live?access_key=2a6f4e22f7dde24f64f38725d7a0897d&currencies=TWD,USD,EUR,JPY,GBP,AUD,CAD,CHF,CNY,HKD,NZD&source=TWD&format=1") else {
             return
         }
 
@@ -63,6 +63,7 @@ class CurrencyManager {
 
                                 self.delegate?.manager(self, didGet: self.values)
                             }
+                            completion()
                         }
                     } catch {
 
