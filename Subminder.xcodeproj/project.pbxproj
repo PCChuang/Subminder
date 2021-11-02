@@ -19,6 +19,7 @@
 		F60E2A3E272D22520048A85E /* FriendRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A3D272D22520048A85E /* FriendRequestViewController.swift */; };
 		F60E2A41272D24EE0048A85E /* FriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A3F272D24EE0048A85E /* FriendRequestCell.swift */; };
 		F60E2A42272D24EE0048A85E /* FriendRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60E2A40272D24EE0048A85E /* FriendRequestCell.xib */; };
+		F60E2A442730E5A50048A85E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A432730E5A50048A85E /* AuthViewController.swift */; };
 		F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C05271D0B0C000A863A /* AppDelegate.swift */; };
 		F66A1C08271D0B0C000A863A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C07271D0B0C000A863A /* SceneDelegate.swift */; };
 		F66A1C0A271D0B0C000A863A /* SUTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C09271D0B0C000A863A /* SUTabBarViewController.swift */; };
@@ -85,6 +86,7 @@
 		F60E2A3D272D22520048A85E /* FriendRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestViewController.swift; sourceTree = "<group>"; };
 		F60E2A3F272D24EE0048A85E /* FriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestCell.swift; sourceTree = "<group>"; };
 		F60E2A40272D24EE0048A85E /* FriendRequestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendRequestCell.xib; sourceTree = "<group>"; };
+		F60E2A432730E5A50048A85E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		F66A1C02271D0B0C000A863A /* Subminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66A1C05271D0B0C000A863A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F66A1C07271D0B0C000A863A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +199,14 @@
 			path = AddToSub;
 			sourceTree = "<group>";
 		};
+		F60E2A452730E5B20048A85E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				F60E2A432730E5A50048A85E /* AuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		F66A1BF9271D0B0C000A863A = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				F66A1C21271D504A000A863A /* Base */,
+				F60E2A452730E5B20048A85E /* Auth */,
 				F66A1C3E271E6058000A863A /* Summary */,
 				F66A1C2F271D6664000A863A /* StatisticsViewController.swift */,
 				F66A1C31271D666F000A863A /* SettingViewController.swift */,
@@ -499,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F66A1C58271F0F0F000A863A /* AddSubDateCell.swift in Sources */,
+				F60E2A442730E5A50048A85E /* AuthViewController.swift in Sources */,
 				F66A1C6727200D71000A863A /* SubsManager.swift in Sources */,
 				F66A1C34271D667B000A863A /* GroupViewController.swift in Sources */,
 				F66A1C692721AA54000A863A /* UIColor+Extension.swift in Sources */,
