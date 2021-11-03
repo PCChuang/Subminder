@@ -68,6 +68,7 @@
 		F68885812729261800637295 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68885802729261800637295 /* Double+Extension.swift */; };
 		F688858427292F4D00637295 /* AddSubPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688858227292F4D00637295 /* AddSubPriceCell.swift */; };
 		F688858527292F4D00637295 /* AddSubPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F688858327292F4D00637295 /* AddSubPriceCell.xib */; };
+		F69C0EDB273270F6005D2D84 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0EDA273270F6005D2D84 /* KeyChainManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +138,7 @@
 		F68885802729261800637295 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		F688858227292F4D00637295 /* AddSubPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubPriceCell.swift; sourceTree = "<group>"; };
 		F688858327292F4D00637295 /* AddSubPriceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubPriceCell.xib; sourceTree = "<group>"; };
+		F69C0EDA273270F6005D2D84 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,8 +319,7 @@
 				F66A1C4E271EA171000A863A /* SubSetting.swift */,
 				F66A1C60271FF7AB000A863A /* Subscription.swift */,
 				F66A1C6627200D71000A863A /* SubsManager.swift */,
-				F66A1C62271FF9FC000A863A /* User.swift */,
-				F60E2A34272B9AF30048A85E /* UserManager.swift */,
+				F69C0ED9273270CE005D2D84 /* User */,
 				F60E2A39272BEC110048A85E /* Request.swift */,
 				F60E2A3B272BEC200048A85E /* RequestManager.swift */,
 				F60E2A38272BEBD30048A85E /* AddToSub */,
@@ -348,6 +349,16 @@
 				F688858327292F4D00637295 /* AddSubPriceCell.xib */,
 			);
 			path = AddToSub;
+			sourceTree = "<group>";
+		};
+		F69C0ED9273270CE005D2D84 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F66A1C62271FF9FC000A863A /* User.swift */,
+				F60E2A34272B9AF30048A85E /* UserManager.swift */,
+				F69C0EDA273270F6005D2D84 /* KeyChainManager.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		FD87C124CA64FF049EC8C084 /* Pods */ = {
@@ -528,6 +539,7 @@
 				F66A1C44271E75FA000A863A /* AddSubTextCell.swift in Sources */,
 				F66A1C3C271DB9C6000A863A /* SummaryCell.swift in Sources */,
 				F66A1C63271FF9FC000A863A /* User.swift in Sources */,
+				F69C0EDB273270F6005D2D84 /* KeyChainManager.swift in Sources */,
 				F60E2A35272B9AF30048A85E /* UserManager.swift in Sources */,
 				F66A1C36271D6ECA000A863A /* AddToSubViewController.swift in Sources */,
 				F66A1C30271D6664000A863A /* StatisticsViewController.swift in Sources */,

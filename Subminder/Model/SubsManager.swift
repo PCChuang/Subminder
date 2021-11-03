@@ -15,9 +15,9 @@ class SubsManager {
 
     lazy var db = Firestore.firestore()
 
-    func fetchSubs(completion: @escaping (Result<[Subscription], Error>) -> Void) {
+    func fetchSubs(uid: String, completion: @escaping (Result<[Subscription], Error>) -> Void) {
 
-        db.collection("subscriptions").getDocuments() { (querySnapshot, error) in
+        db.collection("subscriptions").whereField("userUID", isEqualTo: uid).getDocuments() { (querySnapshot, error) in
 
             if let error = error {
 

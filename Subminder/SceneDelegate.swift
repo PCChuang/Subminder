@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if user != nil {
                 // instantiate the main tab bar controller and set it as root view controller
                 // using the storyboard identifier we set earlier
-                print("\(user?.uid), \(user?.email)")
+                KeyChainManager.shared.userUID = user?.uid
                 let mainTabBarController = storyboard.instantiateViewController(identifier: "TabBar")
                 self.window?.rootViewController = mainTabBarController
             } else {
