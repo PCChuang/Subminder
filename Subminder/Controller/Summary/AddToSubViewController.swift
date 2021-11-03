@@ -83,8 +83,6 @@ class AddToSubViewController: SUBaseViewController {
     var exchangePrice: Double = 0
 
     var subscription: Subscription = Subscription(
-
-        userUID: "",
         id: "",
         name: "",
         price: 0,
@@ -151,10 +149,6 @@ class AddToSubViewController: SUBaseViewController {
     }
 
     func publish(with subscription: inout Subscription) {
-
-        guard let userUID = KeyChainManager.shared.userUID else { return }
-
-        subscription.userUID = userUID
 
         SubsManager.shared.publishSub(subscription: &subscription) { result in
 

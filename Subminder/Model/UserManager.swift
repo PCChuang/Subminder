@@ -15,45 +15,20 @@ class UserManager {
 
     lazy var db = Firestore.firestore()
 
-    func checkUserRegistration(uid: String = "", completion: @escaping (Result<[User], Error>) -> Void) {
-        
-        db.collection("users").whereField("uid", isEqualTo: uid).getDocuments() { (querySnapshot, error) in
-
-            if let error = error {
-
-                completion(.failure(error))
-            } else {
-
-                var results = [User]()
-
-                for document in querySnapshot!.documents {
-
-                    do {
-                        if let result = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-                            results.append(result)
-                        }
-
-                    } catch {
-
-                        completion(.failure(error))
-                    }
-                }
-
-                completion(.success(results))
-            }
-        }
-    }
-
-    func addUser(user: inout User, completion: @escaping (Result<String, Error>) -> Void) {
+    func addUser(user: inout User, userUID: String, userEmail: String, completion: @escaping (Result<String, Error>) -> Void) {
 
         let document = db.collection("users").document()
 
+        user.uid = userUID
+
+        user.email = userEmail
+        
         user.id = document.documentID
 
         document.setData(user.toDict) { error in
 
             if let error = error {
-
+                
                 completion(.failure(error))
             } else {
 
