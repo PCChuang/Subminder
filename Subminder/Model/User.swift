@@ -9,6 +9,7 @@ import Foundation
 
 struct User: Codable {
 
+    var uid: String
     var id: String
     var name: String
     var email: String
@@ -22,6 +23,7 @@ struct User: Codable {
 
     enum CodinKeys: String, CodingKey {
 
+        case uid
         case id
         case name
         case email
@@ -37,6 +39,7 @@ struct User: Codable {
     var toDict: [String: Any] {
 
         return [
+            "uid": uid as Any,
             "id": id as Any,
             "name": name as Any,
             "email": email as Any,

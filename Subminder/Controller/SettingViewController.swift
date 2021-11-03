@@ -6,9 +6,25 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SettingViewController: SUBaseViewController {
 
+    @IBAction func logOut(_ sender: UIButton) {
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            print("logout btn did tap")
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let authNavController = storyboard.instantiateViewController(identifier: "AuthNavController")
+
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(authNavController)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

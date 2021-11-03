@@ -12,6 +12,20 @@ import FirebaseAuth
 
 class AuthViewController: SUBaseViewController {
 
+    var user: User = User(
+        uid: "",
+        id: "",
+        name: "",
+        email: "",
+        image: "",
+        friendList: [],
+        groupList: [],
+        subList: [],
+        payable: 0,
+        receivable: 0,
+        currency: ""
+    )
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +46,16 @@ class AuthViewController: SUBaseViewController {
     @objc func loginDidTap(_ sender: ASAuthorizationAppleIDButton) {
 
         performSignIn()
+
+        // ...
+        // after login is done, maybe put this in the login web service completion block
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let mainTabBarController = storyboard.instantiateViewController(identifier: "TabBar")
+        
+        // This is to get the SceneDelegate object from your view controller
+        // then call the change root view controller function to change to main tab bar
+//        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
     }
 
     func performSignIn() {
@@ -156,7 +180,18 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
 
                     print("Nice! You're now signed in as \(user.uid), email: \(user.email ?? "unknown")")
 
-                    self.performSegue(withIdentifier: "showTab", sender: nil)
+                    UserManager.shared.addUser(user: &self.user, userUID: user.uid, userEmail: user.email ?? "") { result in
+
+                        switch result {
+
+                        case .success:
+                            print("addUser, success")
+
+                        case .failure(let error):
+                            print("addUser.failure: \(error)")
+                        }
+                    }
+//                    self.performSegue(withIdentifier: "showTab", sender: nil)
                 }
 
                 if let error = error {
