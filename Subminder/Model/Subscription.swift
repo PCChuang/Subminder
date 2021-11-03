@@ -9,6 +9,7 @@ import Foundation
 
 struct Subscription: Codable {
 
+    var userUID: String
     var id: String
     var name: String
     var price: Decimal
@@ -24,6 +25,7 @@ struct Subscription: Codable {
 
     enum CodinKeys: String, CodingKey {
 
+        case userUID
         case id
         case name
         case price
@@ -41,6 +43,7 @@ struct Subscription: Codable {
     var toDict: [String: Any] {
 
         return [
+            "userUID": userUID as Any,
             "id": id as Any,
             "name": name as Any,
             "price": price as Any,

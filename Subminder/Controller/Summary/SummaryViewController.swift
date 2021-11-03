@@ -19,6 +19,8 @@ class SummaryViewController: SUBaseViewController {
         }
     }
 
+    let userUID = KeyChainManager.shared.userUID
+
     let currencyManager = CurrencyManager()
 
     var datas: [Subscription] = [] {
@@ -51,7 +53,7 @@ class SummaryViewController: SUBaseViewController {
 
     func fetchData() {
 
-        SubsManager.shared.fetchSubs { [weak self] result in
+        SubsManager.shared.fetchSubs(uid: userUID ?? "") { [weak self] result in
 
             switch result {
 

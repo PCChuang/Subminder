@@ -26,6 +26,8 @@ class AuthViewController: SUBaseViewController {
         currency: ""
     )
 
+    var checkUserResults: [User] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,9 +54,9 @@ class AuthViewController: SUBaseViewController {
         
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let mainTabBarController = storyboard.instantiateViewController(identifier: "TabBar")
-        
-        // This is to get the SceneDelegate object from your view controller
-        // then call the change root view controller function to change to main tab bar
+//
+//        // This is to get the SceneDelegate object from your view controller
+//        // then call the change root view controller function to change to main tab bar
 //        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
     }
 
@@ -180,17 +182,31 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
 
                     print("Nice! You're now signed in as \(user.uid), email: \(user.email ?? "unknown")")
 
-                    UserManager.shared.addUser(user: &self.user, userUID: user.uid, userEmail: user.email ?? "") { result in
+                    self.checkRegistrationStatus(userUID: user.uid) {
+                    
+                        if self.checkUserResults.count == 0 {
+                            
+                            self.user.uid = user.uid
+                            self.user.email = user.email ?? ""
 
-                        switch result {
-
-                        case .success:
-                            print("addUser, success")
-
-                        case .failure(let error):
-                            print("addUser.failure: \(error)")
+                            self.addNewUser(with: &self.user)
                         }
                     }
+
+//                    if self.checkUserResults.count == 0 {
+//
+//                        self.user.uid = user.uid
+//                        self.user.email = user.email ?? ""
+//
+//                        self.addNewUser(with: &self.user)
+//                    } else {
+//
+//                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//                        let mainTabBarController = storyboard.instantiateViewController(identifier: "TabBar")
+//
+//                        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+//                    }
 //                    self.performSegue(withIdentifier: "showTab", sender: nil)
                 }
 
@@ -211,6 +227,47 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
 //                        print("Updated display name: \(Auth.auth().currentUser!.displayName!)")
 //                    }
 //                })
+            }
+        }
+    }
+
+    func checkRegistrationStatus(userUID: String, completion: @escaping () -> Void) {
+
+        UserManager.shared.checkUserRegistration(uid: userUID) { [weak self] result in
+
+            switch result {
+
+            case .success(let users):
+
+                print("checkRegistrationStatus success")
+
+                for user in users {
+
+                    self?.checkUserResults.append(user)
+
+                }
+
+            case .failure(let error):
+
+                print("checkRegistrationStatus.failure: \(error)")
+            }
+            completion()
+        }
+    }
+
+    func addNewUser(with user: inout User) {
+
+        UserManager.shared.addUser(user: &user) { result in
+
+            switch result {
+
+            case .success:
+
+                print("Add New User, Success")
+
+            case .failure(let error):
+
+                print("Add New User, failuer: \(error)")
             }
         }
     }
