@@ -202,15 +202,31 @@ class AddToSubViewController: SUBaseViewController {
 
             case .success:
 
-                print("onTapPublish, success")
+                print("onTapSave, success")
 
             case .failure(let error):
 
-                print("publishSub.failure: \(error)")
+                print("saveSub.failure: \(error)")
             }
         }
     }
 
+    func delete() {
+
+        SubsManager.shared.deleteSub(subscription: subscription) { result in
+            
+            switch result {
+
+            case .success:
+
+                print("onTapDelete, success")
+
+            case .failure(let error):
+
+                print("deleteSub.failure: \(error)")
+            }
+        }
+    }
 }
 
 extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UIColorPickerViewControllerDelegate, DateComponentDelegate, ReminderDelegate, CurrencyCellDelegate {
@@ -615,15 +631,29 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         self.save(with: &subscription)
     }
 
-    func showDiscardAlert() -> Void {
+    func deleteSubscription(completion: @escaping () -> Void) {
+
+        self.delete()
+        completion()
+    }
+
+    func showDiscardAlert() {
 
         DispatchQueue.main.async {
 
-            let alertController = UIAlertController(title: "放棄編輯", message: "即將退出頁面，確認要放棄新增項目嗎?", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "刪除項目", message: "即將刪除項目，確認要刪除嗎?", preferredStyle: .alert)
 
             let okAction = UIAlertAction(title: "確認", style: .default) { _ in
 
-                _ = self.navigationController?.popViewController(animated: true)
+                if self.subscriptionsInEdit.count > 0 {
+
+                    self.deleteSubscription {
+                        _ = self.navigationController?.popViewController(animated: true)
+                    }
+                } else {
+
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
             }
 
             let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
