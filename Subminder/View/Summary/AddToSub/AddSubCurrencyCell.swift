@@ -9,37 +9,45 @@ import UIKit
 
 protocol CurrencyCellDelegate: AnyObject {
 
-    func currencyRateDidChange(_ activeRate: Double, _ cell: AddSubCurrencyCell)
+    func currencyRateDidChange(_ cell: AddSubCurrencyCell, _ index: Int)
 }
 
 class AddSubCurrencyCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var title: UILabel!
+
     @IBOutlet weak var currencyTextField: UITextField!
 
     weak var delegate: CurrencyCellDelegate?
 
-    let currencyManager = CurrencyManager()
-
     let currencyPicker = UIPickerView()
 
-    var currencies: [String] = []
-
-    var values: [Double] = []
-
-    var activeRate: Double = 0
+    var currencies = ["TWD",
+                      "USD",
+                      "EUR",
+                      "JPY",
+                      "GBP",
+                      "AUD",
+                      "CAD",
+                      "CHF",
+                      "CNY",
+                      "HKD",
+                      "NZD"
+    ]
+    
+    var selectedIndex = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
         currencyPicker.dataSource = self
+
         currencyPicker.delegate = self
+
         currencyTextField.inputView = currencyPicker
 
-        currencyManager.delegate = self
-        currencyManager.getConversionRate()
+        currencyPicker.selectRow(0, inComponent: 0, animated: false)
 
-        currencyPicker.selectRow(10, inComponent: 0, animated: false)
         currencyTextField.text = pickerView(currencyPicker, titleForRow: currencyPicker.selectedRow(inComponent: 0), forComponent: 0)
     }
 
@@ -67,21 +75,9 @@ class AddSubCurrencyCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
 
         currencyTextField.text = "\(currencies[row])"
 
-        activeRate = values[row]
+        // pass data of selected row
+        selectedIndex = pickerView.selectedRow(inComponent: 0)
 
-        delegate?.currencyRateDidChange(activeRate, self)
-    }
-}
-
-extension AddSubCurrencyCell: CurrencyManagerDelegate {
-
-    func manager(_ manager: CurrencyManager, didGet currencies: [String]) {
-
-        self.currencies = currencies
-    }
-
-    func manager(_ manager: CurrencyManager, didGet values: [Double]) {
-
-        self.values = values
+        delegate?.currencyRateDidChange(self, selectedIndex)
     }
 }

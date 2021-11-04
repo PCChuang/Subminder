@@ -19,6 +19,7 @@
 		F60E2A3E272D22520048A85E /* FriendRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A3D272D22520048A85E /* FriendRequestViewController.swift */; };
 		F60E2A41272D24EE0048A85E /* FriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A3F272D24EE0048A85E /* FriendRequestCell.swift */; };
 		F60E2A42272D24EE0048A85E /* FriendRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60E2A40272D24EE0048A85E /* FriendRequestCell.xib */; };
+		F60E2A442730E5A50048A85E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A432730E5A50048A85E /* AuthViewController.swift */; };
 		F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C05271D0B0C000A863A /* AppDelegate.swift */; };
 		F66A1C08271D0B0C000A863A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C07271D0B0C000A863A /* SceneDelegate.swift */; };
 		F66A1C0A271D0B0C000A863A /* SUTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C09271D0B0C000A863A /* SUTabBarViewController.swift */; };
@@ -67,6 +68,7 @@
 		F68885812729261800637295 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68885802729261800637295 /* Double+Extension.swift */; };
 		F688858427292F4D00637295 /* AddSubPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688858227292F4D00637295 /* AddSubPriceCell.swift */; };
 		F688858527292F4D00637295 /* AddSubPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F688858327292F4D00637295 /* AddSubPriceCell.xib */; };
+		F69C0EDB273270F6005D2D84 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0EDA273270F6005D2D84 /* KeyChainManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,7 @@
 		F60E2A3D272D22520048A85E /* FriendRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestViewController.swift; sourceTree = "<group>"; };
 		F60E2A3F272D24EE0048A85E /* FriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestCell.swift; sourceTree = "<group>"; };
 		F60E2A40272D24EE0048A85E /* FriendRequestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendRequestCell.xib; sourceTree = "<group>"; };
+		F60E2A432730E5A50048A85E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		F66A1C02271D0B0C000A863A /* Subminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66A1C05271D0B0C000A863A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F66A1C07271D0B0C000A863A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 		F68885802729261800637295 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		F688858227292F4D00637295 /* AddSubPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubPriceCell.swift; sourceTree = "<group>"; };
 		F688858327292F4D00637295 /* AddSubPriceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubPriceCell.xib; sourceTree = "<group>"; };
+		F69C0EDA273270F6005D2D84 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +201,14 @@
 			path = AddToSub;
 			sourceTree = "<group>";
 		};
+		F60E2A452730E5B20048A85E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				F60E2A432730E5A50048A85E /* AuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		F66A1BF9271D0B0C000A863A = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				F66A1C21271D504A000A863A /* Base */,
+				F60E2A452730E5B20048A85E /* Auth */,
 				F66A1C3E271E6058000A863A /* Summary */,
 				F66A1C2F271D6664000A863A /* StatisticsViewController.swift */,
 				F66A1C31271D666F000A863A /* SettingViewController.swift */,
@@ -306,8 +319,7 @@
 				F66A1C4E271EA171000A863A /* SubSetting.swift */,
 				F66A1C60271FF7AB000A863A /* Subscription.swift */,
 				F66A1C6627200D71000A863A /* SubsManager.swift */,
-				F66A1C62271FF9FC000A863A /* User.swift */,
-				F60E2A34272B9AF30048A85E /* UserManager.swift */,
+				F69C0ED9273270CE005D2D84 /* User */,
 				F60E2A39272BEC110048A85E /* Request.swift */,
 				F60E2A3B272BEC200048A85E /* RequestManager.swift */,
 				F60E2A38272BEBD30048A85E /* AddToSub */,
@@ -337,6 +349,16 @@
 				F688858327292F4D00637295 /* AddSubPriceCell.xib */,
 			);
 			path = AddToSub;
+			sourceTree = "<group>";
+		};
+		F69C0ED9273270CE005D2D84 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F66A1C62271FF9FC000A863A /* User.swift */,
+				F60E2A34272B9AF30048A85E /* UserManager.swift */,
+				F69C0EDA273270F6005D2D84 /* KeyChainManager.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		FD87C124CA64FF049EC8C084 /* Pods */ = {
@@ -499,6 +521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F66A1C58271F0F0F000A863A /* AddSubDateCell.swift in Sources */,
+				F60E2A442730E5A50048A85E /* AuthViewController.swift in Sources */,
 				F66A1C6727200D71000A863A /* SubsManager.swift in Sources */,
 				F66A1C34271D667B000A863A /* GroupViewController.swift in Sources */,
 				F66A1C692721AA54000A863A /* UIColor+Extension.swift in Sources */,
@@ -516,6 +539,7 @@
 				F66A1C44271E75FA000A863A /* AddSubTextCell.swift in Sources */,
 				F66A1C3C271DB9C6000A863A /* SummaryCell.swift in Sources */,
 				F66A1C63271FF9FC000A863A /* User.swift in Sources */,
+				F69C0EDB273270F6005D2D84 /* KeyChainManager.swift in Sources */,
 				F60E2A35272B9AF30048A85E /* UserManager.swift in Sources */,
 				F66A1C36271D6ECA000A863A /* AddToSubViewController.swift in Sources */,
 				F66A1C30271D6664000A863A /* StatisticsViewController.swift in Sources */,

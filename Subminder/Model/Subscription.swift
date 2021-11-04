@@ -9,6 +9,7 @@ import Foundation
 
 struct Subscription: Codable {
 
+    var userUID: String
     var id: String
     var name: String
     var price: Decimal
@@ -20,10 +21,12 @@ struct Subscription: Codable {
     var duration: String
     var category: String
     var color: String
+    var reminder: String
     var note: String
 
     enum CodinKeys: String, CodingKey {
 
+        case userUID
         case id
         case name
         case price
@@ -35,12 +38,14 @@ struct Subscription: Codable {
         case duration
         case category
         case color
+        case reminder
         case note
     }
 
     var toDict: [String: Any] {
 
         return [
+            "userUID": userUID as Any,
             "id": id as Any,
             "name": name as Any,
             "price": price as Any,
@@ -52,6 +57,7 @@ struct Subscription: Codable {
             "duration": duration as Any,
             "category": category as Any,
             "color": color as Any,
+            "reminder": reminder as Any,
             "note": note as Any
         ]
     }
