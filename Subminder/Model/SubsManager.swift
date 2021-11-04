@@ -44,10 +44,54 @@ class SubsManager {
         }
     }
 
+    func fetchSubsToEdit(subscriptionID: String, completion: @escaping (Result<[Subscription], Error>) -> Void) {
+        
+        db.collection("subscriptions").whereField("id", isEqualTo: subscriptionID).getDocuments() { (querySnapshot, error) in
+
+            if let error = error {
+
+                completion(.failure(error))
+            } else {
+
+                var subscriptions = [Subscription]()
+
+                for document in querySnapshot!.documents {
+
+                    do {
+                        if let subscription = try document.data(as: Subscription.self, decoder: Firestore.Decoder()) {
+                            subscriptions.append(subscription)
+                        }
+
+                    } catch {
+
+                        completion(.failure(error))
+                    }
+                }
+
+                completion(.success(subscriptions))
+            }
+        }
+    }
+
     func publishSub(subscription: inout Subscription, completion: @escaping (Result<String, Error>) -> Void) {
 
         let document = db.collection("subscriptions").document()
         subscription.id = document.documentID
+        document.setData(subscription.toDict) { error in
+
+            if let error = error {
+
+                completion(.failure(error))
+            } else {
+
+                completion(.success("Success"))
+            }
+        }
+    }
+
+    func saveEditedSub(subscription: inout Subscription,subscriptionID: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("subscriptions").document(subscriptionID)
         document.setData(subscription.toDict) { error in
 
             if let error = error {

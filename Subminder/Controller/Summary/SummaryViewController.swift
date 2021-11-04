@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import nanopb
 
 class SummaryViewController: SUBaseViewController {
 
@@ -23,12 +24,14 @@ class SummaryViewController: SUBaseViewController {
 
     let currencyManager = CurrencyManager()
 
-    var datas: [Subscription] = [] {
+    var subscriptions: [Subscription] = [] {
 
         didSet {
             collectionView.reloadData()
         }
     }
+
+    var subscriptionsToEdit: [Subscription] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +41,6 @@ class SummaryViewController: SUBaseViewController {
         setupCollectionView()
 
         fetchData()
-
-//        currencyManager.getConversionRate(currencies: <#T##[String]#>, values: <#T##[Double]#>, completion: <#T##() -> Void#>) {
-//
-//            
-//        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -61,10 +59,10 @@ class SummaryViewController: SUBaseViewController {
 
                 print("fetchSubs success")
 
-                self?.datas.removeAll()
+                self?.subscriptions.removeAll()
 
                 for subscription in subscriptions {
-                    self?.datas.append(subscription)
+                    self?.subscriptions.append(subscription)
                 }
 
             case .failure(let error):
@@ -138,22 +136,72 @@ class SummaryViewController: SUBaseViewController {
 extension SummaryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        datas.count
+        subscriptions.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SummaryCell", for: indexPath) as? SummaryCell else {
             fatalError()
         }
-        cell.name.text = datas[indexPath.item].name
-        cell.price.text = "NT$ \(datas[indexPath.item].exchangePrice)"
-        cell.cycle.text = datas[indexPath.item].cycle
-        cell.backgroundColor = UIColor.hexStringToUIColor(hex: datas[indexPath.item].color)
+        cell.name.text = subscriptions[indexPath.item].name
+        cell.price.text = "NT$ \(subscriptions[indexPath.item].exchangePrice)"
+        cell.cycle.text = subscriptions[indexPath.item].cycle
+        cell.backgroundColor = UIColor.hexStringToUIColor(hex: subscriptions[indexPath.item].color)
 
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd yyyy"
-        cell.dueDate.text = formatter.string(from: datas[indexPath.item].dueDate)
+        cell.dueDate.text = formatter.string(from: subscriptions[indexPath.item].dueDate)
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        var selectedSubscription = ""
+
+        selectedSubscription = subscriptions[indexPath.item].id
+
+        if let controller = storyboard?.instantiateViewController(identifier: "AddToSub") as? AddToSubViewController {
+
+            controller.subscription.id = selectedSubscription
+
+            fetchSubscriptionToEdit(subscriptionID: selectedSubscription) {
+
+                controller.subscriptionsInEdit = self.subscriptionsToEdit
+
+                DispatchQueue.main.async {
+
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+            }
+
+        }
+    }
+}
+
+extension SummaryViewController {
+
+    func fetchSubscriptionToEdit(subscriptionID: String, completion: @escaping () -> Void) {
+
+        SubsManager.shared.fetchSubsToEdit(subscriptionID: subscriptionID) { [weak self] result in
+            
+            switch result {
+
+            case .success(let subscriptions):
+
+                print("fetchSubs success")
+
+                self?.subscriptionsToEdit.removeAll()
+
+                for subscription in subscriptions {
+                    self?.subscriptionsToEdit.append(subscription)
+                }
+
+                completion()
+
+            case .failure(let error):
+
+                print("fetchData.failure: \(error)")
+            }
+        }
+    }
 }

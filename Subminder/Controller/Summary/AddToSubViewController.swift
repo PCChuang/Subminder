@@ -37,12 +37,21 @@ class AddToSubViewController: SUBaseViewController {
             currenyManager.getConversionRate(currencies: currencies, values: values) {
                 
                 self.calculateRate(index: self.selectedCurrencyIndex)
-                
-                self.publishSubscription()
+
+                if self.subscriptionsInEdit.count > 0 {
+
+                    self.saveSubscription()
+                } else {
+
+                    self.publishSubscription()
+                }
                 
                 DispatchQueue.main.async {
                     
-                    _ = self.navigationController?.popViewController(animated: true)
+//                    _ = self.navigationController?.popViewController(animated: true)
+                    if let controller = self.storyboard?.instantiateViewController(identifier: "Summary") as? SummaryViewController {
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    }
                 }
             }
         }
@@ -61,6 +70,10 @@ class AddToSubViewController: SUBaseViewController {
     var currenyManager = CurrencyManager()
 
     var subColor: UIColor?
+
+    var subColorOld: UIColor?
+
+    var colorIsSelected: Bool?
 
     var category: String? {
 
@@ -96,17 +109,22 @@ class AddToSubViewController: SUBaseViewController {
         duration: "",
         category: "",
         color: "",
+        reminder: "",
         note: ""
     )
 
     let reminderManager = LocalNotificationManager()
 
+    var subscriptionsInEdit: [Subscription] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         currenyManager.delegate = self
-        
+
         setupBarItems()
+
+        print(subscriptionsInEdit)
 
 //        self.onPublished = { [weak self] () in
 //            self?.onPublished?()
@@ -172,6 +190,27 @@ class AddToSubViewController: SUBaseViewController {
         }
     }
 
+    func save(with subscription: inout Subscription) {
+        
+        guard let userUID = KeyChainManager.shared.userUID else { return }
+
+        subscription.userUID = userUID
+
+        SubsManager.shared.saveEditedSub(subscription: &subscription, subscriptionID: subscription.id) { result in
+
+            switch result {
+
+            case .success:
+
+                print("onTapPublish, success")
+
+            case .failure(let error):
+
+                print("publishSub.failure: \(error)")
+            }
+        }
+    }
+
 }
 
 extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UIColorPickerViewControllerDelegate, DateComponentDelegate, ReminderDelegate, CurrencyCellDelegate {
@@ -180,121 +219,276 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         subSettings.count
     }
 
-    // swiftlint:disable:next cyclomatic_complexity
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        switch indexPath.row {
+        // editing subscription
+        if subscriptionsInEdit.count > 0 {
 
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubTextCell", for: indexPath)
-            guard let cell = cell as? AddSubTextCell else {
+            switch indexPath.row {
+
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubTextCell", for: indexPath)
+                guard let cell = cell as? AddSubTextCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.textField.text = subscriptionsInEdit.first?.name
+                subscription.name = cell.textField.text ?? ""
+                cell.textField.addTarget(self, action: #selector(onNameChanged), for: .editingDidEnd)
                 return cell
-            }
-            cell.title.text = subSettings[indexPath.row]
-            cell.textField.placeholder = "輸入名稱"
-            cell.textField.addTarget(self, action: #selector(onNameChanged), for: .editingDidEnd)
-            return cell
 
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubPriceCell", for: indexPath)
-            guard let cell = cell as? AddSubPriceCell else {
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubPriceCell", for: indexPath)
+                guard let cell = cell as? AddSubPriceCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.priceTextField.addTarget(self, action: #selector(onPriceChanged), for: .editingDidEnd)
                 return cell
-            }
-            cell.title.text = subSettings[indexPath.row]
 
-            cell.priceTextField.addTarget(self, action: #selector(onPriceChanged), for: .editingDidEnd)
-            return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCurrencyCell", for: indexPath)
+                guard let cell = cell as? AddSubCurrencyCell else {
+                    return cell
+                }
 
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCurrencyCell", for: indexPath)
-            guard let cell = cell as? AddSubCurrencyCell else {
+                cell.delegate = self
+
+                cell.title.text = subSettings[indexPath.row]
+                cell.currencyTextField.text = subscriptionsInEdit.first?.currency
+                subscription.currency = cell.currencyTextField.text ?? ""
+
+                cell.currencyTextField.addTarget(self, action: #selector(onCurrencyChanged), for: .editingDidEnd)
                 return cell
-            }
 
-            cell.delegate = self
+            case 3:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubDateCell", for: indexPath)
+                guard let cell = cell as? AddSubDateCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
 
-            cell.title.text = subSettings[indexPath.row]
+                // convert date to String to render in cell
+                let date = subscriptionsInEdit.first?.startDate
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMMM dd yyyy"
+                let dateString = dateFormatter.string(from: date ?? Date())
 
-            cell.currencyTextField.addTarget(self, action: #selector(onCurrencyChanged), for: .editingDidEnd)
-            return cell
+                cell.dateTextField.text = dateString
 
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubDateCell", for: indexPath)
-            guard let cell = cell as? AddSubDateCell else {
+                // convert String to date to upload to db
+                dateFormatter.timeZone = TimeZone(abbreviation: "GMT+00:00")
+                let dateToUpload = dateFormatter.date(from: dateString)
+                subscription.startDate = dateToUpload ?? Date()
+
+                cell.dateTextField.addTarget(self, action: #selector(onStartDateChanged), for: .editingDidEnd)
                 return cell
-            }
-            cell.title.text = subSettings[indexPath.row]
-            cell.dateTextField.addTarget(self, action: #selector(onStartDateChanged), for: .editingDidEnd)
-            return cell
 
-        case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCycleCell", for: indexPath)
-            guard let cell = cell as? AddSubCycleCell else {
+            case 4:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCycleCell", for: indexPath)
+                guard let cell = cell as? AddSubCycleCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.cycleTextField.text = subscriptionsInEdit.first?.cycle
+                subscription.cycle = cell.cycleTextField.text ?? ""
+                cell.cycleTextField.addTarget(self, action: #selector(onCycleChanged), for: .editingDidEnd)
+
+                cell.delegate = self
+
                 return cell
-            }
-            cell.title.text = subSettings[indexPath.row]
-            cell.cycleTextField.addTarget(self, action: #selector(onCycleChanged), for: .editingDidEnd)
 
-            cell.delegate = self
-
-            return cell
-
-        case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCycleCell", for: indexPath)
-            guard let cell = cell as? AddSubCycleCell else {
+            case 5:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCycleCell", for: indexPath)
+                guard let cell = cell as? AddSubCycleCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.cycleTextField.text = subscriptionsInEdit.first?.duration
+                subscription.duration = cell.cycleTextField.text ?? ""
+                cell.cycleTextField.addTarget(self, action: #selector(onDurationChanged), for: .editingDidEnd)
                 return cell
-            }
-            cell.title.text = subSettings[indexPath.row]
-            cell.cycleTextField.addTarget(self, action: #selector(onDurationChanged), for: .editingDidEnd)
-            return cell
 
-        case 6:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCategoryCell", for: indexPath)
-            guard let cell = cell as? AddSubCategoryCell else {
+            case 6:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCategoryCell", for: indexPath)
+                guard let cell = cell as? AddSubCategoryCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.category.text = subscriptionsInEdit.first?.category
+
+                cell.category.text = category
+
                 return cell
-            }
-            cell.title.text = subSettings[indexPath.row]
 
-            cell.category.text = category
+            case 7:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCell", for: indexPath)
+                guard let cell = cell as? AddSubCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.colorView.isHidden = false
+                subColorOld = UIColor.hexStringToUIColor(hex: subscriptionsInEdit.first?.color ?? "")
 
-            return cell
+                // check if color is selected
+                var subColorHex: String?
 
-        case 7:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCell", for: indexPath)
-            guard let cell = cell as? AddSubCell else {
+                if colorIsSelected == true {
+
+                    cell.colorView.backgroundColor = subColor
+                    subColorHex = subColor?.toHexString()
+                    subscription.color = subColorHex ?? ""
+                } else {
+
+                    cell.colorView.backgroundColor = subColorOld
+                    subColorHex = subColorOld?.toHexString()
+                    subscription.color = subColorHex ?? ""
+                }
                 return cell
-            }
-            cell.title.text = subSettings[indexPath.row]
-            cell.colorView.isHidden = false
-            cell.colorView.backgroundColor = subColor
+                
+            case 8:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubReminderCell", for: indexPath)
+                guard let cell = cell as? AddSubReminderCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.reminderTextField.text = subscriptionsInEdit.first?.reminder
+                subscription.reminder = cell.reminderTextField.text ?? ""
+                cell.reminderTextField.addTarget(self, action: #selector(onReminderChanged), for: .editingDidEnd)
+                cell.delegate = self
 
-            let subColorHex = subColor?.toHexString()
-            subscription.color = subColorHex ?? ""
-            return cell
+                return cell
+
+            case 9:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubTextCell", for: indexPath)
+                guard let cell = cell as? AddSubTextCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.textField.text = subscriptionsInEdit.first?.note
+                subscription.note = cell.textField.text ?? ""
+                cell.textField.addTarget(self, action: #selector(onNoteChanged), for: .editingDidEnd)
+                return cell
+
+            default:
+                return UITableViewCell()
+            }
+        } else {
             
-        case 8:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubReminderCell", for: indexPath)
-            guard let cell = cell as? AddSubReminderCell else {
+            switch indexPath.row {
+                
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubTextCell", for: indexPath)
+                guard let cell = cell as? AddSubTextCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.textField.placeholder = "輸入名稱"
+                cell.textField.addTarget(self, action: #selector(onNameChanged), for: .editingDidEnd)
                 return cell
-            }
-            cell.title.text = subSettings[indexPath.row]
-
-            cell.delegate = self
-
-            return cell
-
-        case 9:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubTextCell", for: indexPath)
-            guard let cell = cell as? AddSubTextCell else {
+                
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubPriceCell", for: indexPath)
+                guard let cell = cell as? AddSubPriceCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                
+                cell.priceTextField.addTarget(self, action: #selector(onPriceChanged), for: .editingDidEnd)
                 return cell
+                
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCurrencyCell", for: indexPath)
+                guard let cell = cell as? AddSubCurrencyCell else {
+                    return cell
+                }
+                
+                cell.delegate = self
+                
+                cell.title.text = subSettings[indexPath.row]
+                
+                cell.currencyTextField.addTarget(self, action: #selector(onCurrencyChanged), for: .editingDidEnd)
+                return cell
+                
+            case 3:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubDateCell", for: indexPath)
+                guard let cell = cell as? AddSubDateCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.dateTextField.addTarget(self, action: #selector(onStartDateChanged), for: .editingDidEnd)
+                return cell
+                
+            case 4:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCycleCell", for: indexPath)
+                guard let cell = cell as? AddSubCycleCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.cycleTextField.addTarget(self, action: #selector(onCycleChanged), for: .editingDidEnd)
+                
+                cell.delegate = self
+                
+                return cell
+                
+            case 5:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCycleCell", for: indexPath)
+                guard let cell = cell as? AddSubCycleCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.cycleTextField.addTarget(self, action: #selector(onDurationChanged), for: .editingDidEnd)
+                return cell
+                
+            case 6:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCategoryCell", for: indexPath)
+                guard let cell = cell as? AddSubCategoryCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                
+                cell.category.text = category
+                
+                return cell
+                
+            case 7:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCell", for: indexPath)
+                guard let cell = cell as? AddSubCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.colorView.isHidden = false
+                cell.colorView.backgroundColor = subColor
+                
+                let subColorHex = subColor?.toHexString()
+                subscription.color = subColorHex ?? ""
+                return cell
+                
+            case 8:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubReminderCell", for: indexPath)
+                guard let cell = cell as? AddSubReminderCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.reminderTextField.addTarget(self, action: #selector(onReminderChanged), for: .editingDidEnd)
+                cell.delegate = self
+                
+                return cell
+                
+            case 9:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubTextCell", for: indexPath)
+                guard let cell = cell as? AddSubTextCell else {
+                    return cell
+                }
+                cell.title.text = subSettings[indexPath.row]
+                cell.textField.placeholder = "輸入備註"
+                cell.textField.addTarget(self, action: #selector(onNoteChanged), for: .editingDidEnd)
+                return cell
+                
+            default:
+                return UITableViewCell()
             }
-            cell.title.text = subSettings[indexPath.row]
-            cell.textField.placeholder = "輸入備註"
-            cell.textField.addTarget(self, action: #selector(onNoteChanged), for: .editingDidEnd)
-            return cell
-
-        default:
-            return UITableViewCell()
         }
 
     }
@@ -327,6 +521,7 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
 
         let color = viewController.selectedColor
         subColor = color
+        colorIsSelected = true
         tableView.reloadData()
     }
 
@@ -380,6 +575,10 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         subscription.note = sender.text ?? ""
     }
 
+    @objc func onReminderChanged(_ sender: UITextField) {
+        subscription.reminder = sender.text ?? ""
+    }
+
     func dateComponentDidChange(_ dateComponent: DateComponents, _ cell: AddSubCycleCell) {
         let dueDate = Calendar.current.date(byAdding: cell.dateComponent, to: subscription.startDate)
         subscription.dueDate = dueDate ?? Date()
@@ -408,7 +607,12 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
 
     func publishSubscription() {
 
-            self.publish(with: &subscription)
+        self.publish(with: &subscription)
+    }
+
+    func saveSubscription() {
+        
+        self.save(with: &subscription)
     }
 
     func showDiscardAlert() -> Void {

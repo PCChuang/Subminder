@@ -21,6 +21,7 @@ struct Subscription: Codable {
     var duration: String
     var category: String
     var color: String
+    var reminder: String
     var note: String
 
     enum CodinKeys: String, CodingKey {
@@ -37,6 +38,7 @@ struct Subscription: Codable {
         case duration
         case category
         case color
+        case reminder
         case note
     }
 
@@ -55,6 +57,7 @@ struct Subscription: Codable {
             "duration": duration as Any,
             "category": category as Any,
             "color": color as Any,
+            "reminder": reminder as Any,
             "note": note as Any
         ]
     }
