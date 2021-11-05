@@ -19,8 +19,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dean.juang" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6c4-Ab-aXf">
-                                <rect key="frame" x="32" y="104" width="102" height="28"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                <rect key="frame" x="32" y="104" width="104.5" height="28"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -51,29 +51,72 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="訂閱群組" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpI-QL-jcK">
+                                <rect key="frame" x="32" y="240" width="60" height="21"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1A-dU-KOO">
+                                <rect key="frame" x="334" y="231.5" width="48" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Icons_24px_Add02"/>
+                                <connections>
+                                    <action selector="navSelectGroupMember:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="x7W-Di-YIV"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Fpv-b7-Mxp">
+                                <rect key="frame" x="16" y="277" width="382" height="585"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="kpI-QL-jcK" firstAttribute="top" secondItem="gQI-Zn-W5Z" secondAttribute="bottom" constant="32" id="2pg-5K-UYy"/>
                             <constraint firstItem="gQI-Zn-W5Z" firstAttribute="top" secondItem="6c4-Ab-aXf" secondAttribute="bottom" constant="16" id="4A1-ID-zga"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Fpv-b7-Mxp" secondAttribute="bottom" id="MNg-AI-szI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Fpv-b7-Mxp" secondAttribute="trailing" constant="16" id="N5x-3Q-wUC"/>
                             <constraint firstItem="bCu-Mn-J4f" firstAttribute="leading" secondItem="gQI-Zn-W5Z" secondAttribute="trailing" constant="32" id="NiP-vd-Yc0"/>
+                            <constraint firstItem="Fpv-b7-Mxp" firstAttribute="top" secondItem="kpI-QL-jcK" secondAttribute="bottom" constant="16" id="Ntl-IB-nti"/>
                             <constraint firstItem="6c4-Ab-aXf" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="P6V-Wg-7jS"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="y1A-dU-KOO" secondAttribute="trailing" constant="32" id="Urp-xt-5dQ"/>
+                            <constraint firstItem="y1A-dU-KOO" firstAttribute="centerY" secondItem="kpI-QL-jcK" secondAttribute="centerY" id="oIi-Rs-W0O"/>
                             <constraint firstItem="bCu-Mn-J4f" firstAttribute="top" secondItem="gQI-Zn-W5Z" secondAttribute="top" id="oeM-ZS-rlK"/>
                             <constraint firstItem="bCu-Mn-J4f" firstAttribute="bottom" secondItem="gQI-Zn-W5Z" secondAttribute="bottom" id="pDI-bv-Eo0"/>
                             <constraint firstItem="6c4-Ab-aXf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="qZJ-4b-Md5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bCu-Mn-J4f" secondAttribute="trailing" constant="16" id="r1c-0f-QuN"/>
+                            <constraint firstItem="Fpv-b7-Mxp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="t2w-7n-9BU"/>
+                            <constraint firstItem="kpI-QL-jcK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="zSI-AV-MkI"/>
                             <constraint firstItem="gQI-Zn-W5Z" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="zzX-73-gxk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aLC-qY-J5m"/>
                     <connections>
+                        <outlet property="addGroupBtn" destination="y1A-dU-KOO" id="cyY-1E-myr"/>
                         <outlet property="profileCollection" destination="bCu-Mn-J4f" id="x61-IY-XGm"/>
                         <outlet property="profileImage" destination="gQI-Zn-W5Z" id="Xct-1e-emx"/>
+                        <outlet property="tableView" destination="Fpv-b7-Mxp" id="yaQ-R0-nmO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="87.723214285714278"/>
+        </scene>
+        <!--Select Group Member View Controller-->
+        <scene sceneID="jhd-Ik-8wI">
+            <objects>
+                <viewController storyboardIdentifier="SelectGroupMember" id="rlZ-1l-KGF" customClass="SelectGroupMemberViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8SY-4E-nvs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="IU7-3f-bNt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Op-ZJ-60A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042" y="948"/>
         </scene>
         <!--Add Friend View Controller-->
         <scene sceneID="aMv-sA-MV8">
@@ -238,6 +281,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icons_24px_Add02" width="24" height="24"/>
         <image name="Icons_36px_Profile_Normal" width="36" height="36"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">

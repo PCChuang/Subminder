@@ -48,10 +48,10 @@ class AddToSubViewController: SUBaseViewController {
                 
                 DispatchQueue.main.async {
                     
-//                    _ = self.navigationController?.popViewController(animated: true)
-                    if let controller = self.storyboard?.instantiateViewController(identifier: "Summary") as? SummaryViewController {
-                        self.navigationController?.pushViewController(controller, animated: true)
-                    }
+                    _ = self.navigationController?.popViewController(animated: true)
+//                    if let controller = self.storyboard?.instantiateViewController(identifier: "Summary") as? SummaryViewController {
+//                        self.navigationController?.pushViewController(controller, animated: true)
+//                    }
                 }
             }
         }
