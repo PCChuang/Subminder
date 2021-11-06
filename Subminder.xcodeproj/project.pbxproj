@@ -74,6 +74,10 @@
 		F69C0EE12734EAF6005D2D84 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0EE02734EAF5005D2D84 /* Group.swift */; };
 		F69C0EE32734FDA8005D2D84 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0EE22734FDA8005D2D84 /* GroupManager.swift */; };
 		F69C0EE527351524005D2D84 /* SelectGroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0EE427351524005D2D84 /* SelectGroupMemberViewController.swift */; };
+		F69C0F0827353408005D2D84 /* GroupInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F0627353408005D2D84 /* GroupInviteCell.swift */; };
+		F69C0F0927353408005D2D84 /* GroupInviteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C0F0727353408005D2D84 /* GroupInviteCell.xib */; };
+		F69C0F0C27358E12005D2D84 /* GroupRemoveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F0A27358E12005D2D84 /* GroupRemoveCell.swift */; };
+		F69C0F0D27358E12005D2D84 /* GroupRemoveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C0F0B27358E12005D2D84 /* GroupRemoveCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +153,10 @@
 		F69C0EE02734EAF5005D2D84 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F69C0EE22734FDA8005D2D84 /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		F69C0EE427351524005D2D84 /* SelectGroupMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGroupMemberViewController.swift; sourceTree = "<group>"; };
+		F69C0F0627353408005D2D84 /* GroupInviteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInviteCell.swift; sourceTree = "<group>"; };
+		F69C0F0727353408005D2D84 /* GroupInviteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupInviteCell.xib; sourceTree = "<group>"; };
+		F69C0F0A27358E12005D2D84 /* GroupRemoveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRemoveCell.swift; sourceTree = "<group>"; };
+		F69C0F0B27358E12005D2D84 /* GroupRemoveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupRemoveCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +188,10 @@
 				F60E2A40272D24EE0048A85E /* FriendRequestCell.xib */,
 				F69C0EDC2734E186005D2D84 /* GroupCell.swift */,
 				F69C0EDD2734E186005D2D84 /* GroupCell.xib */,
+				F69C0F0627353408005D2D84 /* GroupInviteCell.swift */,
+				F69C0F0727353408005D2D84 /* GroupInviteCell.xib */,
+				F69C0F0A27358E12005D2D84 /* GroupRemoveCell.swift */,
+				F69C0F0B27358E12005D2D84 /* GroupRemoveCell.xib */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -447,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6888574272475BC00637295 /* AddSubReminderCell.xib in Resources */,
+				F69C0F0927353408005D2D84 /* GroupInviteCell.xib in Resources */,
 				F66A1C12271D0B10000A863A /* LaunchScreen.storyboard in Resources */,
 				F66A1C0F271D0B10000A863A /* Assets.xcassets in Resources */,
 				F69C0EDF2734E186005D2D84 /* GroupCell.xib in Resources */,
@@ -456,6 +469,7 @@
 				F60E2A42272D24EE0048A85E /* FriendRequestCell.xib in Resources */,
 				F66A1C4D271E9CC2000A863A /* AddSubCell.xib in Resources */,
 				F66A1C25271D5467000A863A /* Setting.storyboard in Resources */,
+				F69C0F0D27358E12005D2D84 /* GroupRemoveCell.xib in Resources */,
 				F66A1C55271EC53F000A863A /* AddSubCycleCell.xib in Resources */,
 				F66A1C27271D5478000A863A /* Statistics.storyboard in Resources */,
 				F688858527292F4D00637295 /* AddSubPriceCell.xib in Resources */,
@@ -547,8 +561,10 @@
 				F60E2A2E272AAA3B0048A85E /* FriendViewController.swift in Sources */,
 				F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */,
 				F60E2A25272A8E270048A85E /* ProfileCell.swift in Sources */,
+				F69C0F0C27358E12005D2D84 /* GroupRemoveCell.swift in Sources */,
 				F69C0EE12734EAF6005D2D84 /* Group.swift in Sources */,
 				F6888570272461AA00637295 /* NotificationManager.swift in Sources */,
+				F69C0F0827353408005D2D84 /* GroupInviteCell.swift in Sources */,
 				F66A1C61271FF7AB000A863A /* Subscription.swift in Sources */,
 				F688857D2729222B00637295 /* Decimal+Extension.swift in Sources */,
 				F688856C2723D73E00637295 /* AddSubCategoryCell.swift in Sources */,

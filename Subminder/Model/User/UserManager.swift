@@ -62,9 +62,9 @@ class UserManager {
         }
     }
 
-    func searchUser(id: String = "", completion: @escaping (Result<[User], Error>) -> Void) {
+    func searchUser(uid: String = "", completion: @escaping (Result<[User], Error>) -> Void) {
         
-        db.collection("users").whereField("id", isEqualTo: id).getDocuments() { (querySnapshot, error) in
+        db.collection("users").whereField("uid", isEqualTo: uid).getDocuments() { (querySnapshot, error) in
 
             if let error = error {
 
@@ -91,9 +91,9 @@ class UserManager {
         }
     }
 
-    func addFriend(userID: String, newFreind: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func addFriend(userUID: String, newFreind: String, completion: @escaping (Result<String, Error>) -> Void) {
 
-        let document = db.collection("users").document(userID)
+        let document = db.collection("users").document(userUID)
 
         document.updateData(["friendList": FieldValue.arrayUnion([newFreind])]) { error in
 

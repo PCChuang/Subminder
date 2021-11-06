@@ -32,9 +32,9 @@ class RequestManager {
         }
     }
 
-    func fetchRequest(id: String = "", completion: @escaping (Result<[Request], Error>) -> Void) {
+    func fetchRequest(uid: String = "", completion: @escaping (Result<[Request], Error>) -> Void) {
 
-        db.collection("requests").whereField("to", isEqualTo: id).getDocuments() { (querySnapshot, error) in
+        db.collection("requests").whereField("to", isEqualTo: uid).getDocuments() { (querySnapshot, error) in
 
             if let error = error {
 
@@ -61,9 +61,9 @@ class RequestManager {
         }
     }
 
-    func closeRequest(userID: String, senderID: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func closeRequest(userUID: String, senderUID: String, completion: @escaping (Result<String, Error>) -> Void) {
 
-        db.collection("requests").whereField("to", isEqualTo: userID).whereField("from", isEqualTo: senderID).getDocuments() { (querySnapshot, error) in
+        db.collection("requests").whereField("to", isEqualTo: userUID).whereField("from", isEqualTo: senderUID).getDocuments() { (querySnapshot, error) in
 
             if let error = error {
                 
