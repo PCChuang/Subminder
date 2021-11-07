@@ -78,6 +78,7 @@
 		F69C0F0927353408005D2D84 /* GroupInviteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C0F0727353408005D2D84 /* GroupInviteCell.xib */; };
 		F69C0F0C27358E12005D2D84 /* GroupRemoveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F0A27358E12005D2D84 /* GroupRemoveCell.swift */; };
 		F69C0F0D27358E12005D2D84 /* GroupRemoveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C0F0B27358E12005D2D84 /* GroupRemoveCell.xib */; };
+		F69C0F1027365E06005D2D84 /* NameGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F0E27365E06005D2D84 /* NameGroupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,6 +158,7 @@
 		F69C0F0727353408005D2D84 /* GroupInviteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupInviteCell.xib; sourceTree = "<group>"; };
 		F69C0F0A27358E12005D2D84 /* GroupRemoveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRemoveCell.swift; sourceTree = "<group>"; };
 		F69C0F0B27358E12005D2D84 /* GroupRemoveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupRemoveCell.xib; sourceTree = "<group>"; };
+		F69C0F0E27365E06005D2D84 /* NameGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameGroupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				F60E2A32272AE60B0048A85E /* AddFriendViewController.swift */,
 				F60E2A3D272D22520048A85E /* FriendRequestViewController.swift */,
 				F69C0EE427351524005D2D84 /* SelectGroupMemberViewController.swift */,
+				F69C0F0E27365E06005D2D84 /* NameGroupViewController.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				F60E2A41272D24EE0048A85E /* FriendRequestCell.swift in Sources */,
 				F66A1C5F271FAA3D000A863A /* CategoryViewController.swift in Sources */,
 				F688858427292F4D00637295 /* AddSubPriceCell.swift in Sources */,
+				F69C0F1027365E06005D2D84 /* NameGroupViewController.swift in Sources */,
 				F66A1C2E271D6652000A863A /* SummaryViewController.swift in Sources */,
 				F69C0EE527351524005D2D84 /* SelectGroupMemberViewController.swift in Sources */,
 				F60E2A3E272D22520048A85E /* FriendRequestViewController.swift in Sources */,

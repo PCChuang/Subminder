@@ -32,9 +32,9 @@ class RequestManager {
         }
     }
 
-    func fetchRequest(uid: String = "", completion: @escaping (Result<[Request], Error>) -> Void) {
+    func fetchRequest(id: String = "", completion: @escaping (Result<[Request], Error>) -> Void) {
 
-        db.collection("requests").whereField("to", isEqualTo: uid).getDocuments() { (querySnapshot, error) in
+        db.collection("requests").whereField("to", isEqualTo: id).getDocuments() { (querySnapshot, error) in
 
             if let error = error {
 

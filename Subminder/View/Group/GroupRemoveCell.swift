@@ -22,11 +22,13 @@ class GroupRemoveCell: UICollectionViewCell {
         removalBtn.tintColor = .white
     }
     
-    func setupCell(friendName: String) {
+    func setupCell(friendName: String, hideRemovalBtn: Bool) {
         
         friendImg.image = UIImage(named: "Icons_36px_Profile_Selected")
         
         friendNameLbl.text = friendName
+        
+        removalBtn.isHidden = hideRemovalBtn
     }
 
 }

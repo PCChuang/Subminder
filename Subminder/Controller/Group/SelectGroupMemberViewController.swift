@@ -128,8 +128,18 @@ class SelectGroupMemberViewController: SUBaseViewController {
                 image: UIImage(named: "Icons_24px_Add01"),
                 style: .done,
                 target: self,
-                action: nil
+                action: #selector(navNameGroupMember)
             )
+    }
+    
+    @objc func navNameGroupMember() {
+        
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "NameGroup") as? NameGroupViewController {
+            
+            controller.membersInfo = self.selectedFriends
+
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }
 
@@ -146,7 +156,7 @@ extension SelectGroupMemberViewController: UICollectionViewDataSource, UICollect
 
         guard let removalCell = cell as? GroupRemoveCell else { return cell }
         
-        removalCell.setupCell(friendName: selectedFriends[indexPath.item].name)
+        removalCell.setupCell(friendName: selectedFriends[indexPath.item].name, hideRemovalBtn: false)
 
         return removalCell
     }

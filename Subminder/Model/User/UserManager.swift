@@ -91,9 +91,9 @@ class UserManager {
         }
     }
 
-    func addFriend(userUID: String, newFreind: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func addFriend(userID: String, newFreind: String, completion: @escaping (Result<String, Error>) -> Void) {
 
-        let document = db.collection("users").document(userUID)
+        let document = db.collection("users").document(userID)
 
         document.updateData(["friendList": FieldValue.arrayUnion([newFreind])]) { error in
 
@@ -102,6 +102,40 @@ class UserManager {
                 completion(.failure(error))
             } else {
 
+                completion(.success("Success"))
+            }
+        }
+    }
+    
+    func joinGroup(userUIDs: [String], hostUID: String, newGroup: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        // update users groupList
+        for userUID in userUIDs {
+            
+            let document = db.collection("users").document(userUID)
+            
+            document.updateData(["groupList": FieldValue.arrayUnion([newGroup])]) { error in
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    completion(.success("Success"))
+                }
+            }
+        }
+        
+        // update host groupList
+        let document = db.collection("users").document(hostUID)
+        
+        document.updateData(["groupList": FieldValue.arrayUnion([newGroup])]) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
                 completion(.success("Success"))
             }
         }
