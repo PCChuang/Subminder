@@ -13,7 +13,7 @@
         <!--Group View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="GroupViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Group" id="Y6W-OH-hqX" customClass="GroupViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -182,8 +182,8 @@
                                     <constraint firstAttribute="width" constant="120" id="Meo-9L-ckq"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入群組名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gC0-iV-6yZ">
-                                <rect key="frame" x="152" y="102.5" width="230" height="35"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="訂閱項目名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gC0-iV-6yZ">
+                                <rect key="frame" x="152" y="87" width="230" height="35"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -222,22 +222,30 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入群組名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZEJ-AC-Nxd">
+                                <rect key="frame" x="152" y="130" width="230" height="35"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hKq-8k-G87"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="hKq-8k-G87" firstAttribute="trailing" secondItem="ZEJ-AC-Nxd" secondAttribute="trailing" constant="32" id="9ph-EV-4Lv"/>
                             <constraint firstItem="6Fk-Ao-rSz" firstAttribute="leading" secondItem="hKq-8k-G87" secondAttribute="leading" constant="16" id="ANS-Ds-b2W"/>
-                            <constraint firstItem="hKq-8k-G87" firstAttribute="trailing" secondItem="gC0-iV-6yZ" secondAttribute="trailing" constant="32" id="CWs-e1-N7u"/>
                             <constraint firstItem="6Fk-Ao-rSz" firstAttribute="top" secondItem="hKq-8k-G87" secondAttribute="top" constant="16" id="GK7-q2-TZ9"/>
                             <constraint firstItem="WIe-Bf-Z5n" firstAttribute="leading" secondItem="hKq-8k-G87" secondAttribute="leading" constant="8" id="TBg-gZ-qGj"/>
                             <constraint firstItem="b2U-cB-3dV" firstAttribute="leading" secondItem="hKq-8k-G87" secondAttribute="leading" constant="32" id="Tsu-el-apD"/>
                             <constraint firstItem="WIe-Bf-Z5n" firstAttribute="top" secondItem="iSM-Fn-Ota" secondAttribute="bottom" id="WLt-Gb-8bR"/>
+                            <constraint firstItem="ZEJ-AC-Nxd" firstAttribute="leading" secondItem="6Fk-Ao-rSz" secondAttribute="trailing" constant="16" id="YTn-fs-mwZ"/>
                             <constraint firstItem="iSM-Fn-Ota" firstAttribute="leading" secondItem="hKq-8k-G87" secondAttribute="leading" constant="32" id="ax0-g3-AhT"/>
-                            <constraint firstItem="gC0-iV-6yZ" firstAttribute="centerY" secondItem="6Fk-Ao-rSz" secondAttribute="centerY" id="dVf-IM-zOh"/>
+                            <constraint firstItem="ZEJ-AC-Nxd" firstAttribute="top" secondItem="gC0-iV-6yZ" secondAttribute="bottom" constant="8" symbolic="YES" id="dIH-op-Ib6"/>
                             <constraint firstItem="WIe-Bf-Z5n" firstAttribute="trailing" secondItem="hKq-8k-G87" secondAttribute="trailing" id="dli-Kh-nS0"/>
-                            <constraint firstItem="gC0-iV-6yZ" firstAttribute="leading" secondItem="6Fk-Ao-rSz" secondAttribute="trailing" constant="16" id="goA-CT-7Id"/>
+                            <constraint firstItem="gC0-iV-6yZ" firstAttribute="leading" secondItem="6Fk-Ao-rSz" secondAttribute="trailing" constant="16" id="hf7-Ih-M59"/>
                             <constraint firstItem="iSM-Fn-Ota" firstAttribute="top" secondItem="b2U-cB-3dV" secondAttribute="bottom" constant="16" id="pnR-wY-0MF"/>
+                            <constraint firstItem="hKq-8k-G87" firstAttribute="trailing" secondItem="gC0-iV-6yZ" secondAttribute="trailing" constant="32" id="r1u-Mc-uHx"/>
                             <constraint firstItem="b2U-cB-3dV" firstAttribute="top" secondItem="6Fk-Ao-rSz" secondAttribute="bottom" constant="8" id="x3B-ny-zUo"/>
+                            <constraint firstItem="gC0-iV-6yZ" firstAttribute="top" secondItem="hKq-8k-G87" secondAttribute="top" constant="43" id="zK2-DP-BTR"/>
                         </constraints>
                     </view>
                     <connections>

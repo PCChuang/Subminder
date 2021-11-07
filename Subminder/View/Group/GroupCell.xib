@@ -57,6 +57,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="groupImg" destination="ys5-Fp-Ta2" id="Wla-IF-9TY"/>
+                <outlet property="groupNameLbl" destination="oDD-3X-hRs" id="apD-hb-kXT"/>
+                <outlet property="memberCountLbl" destination="Sdj-lt-JLU" id="es1-tU-F9c"/>
+                <outlet property="subscriptionLbl" destination="NAu-Tc-elz" id="PYV-R8-7KY"/>
+            </connections>
             <point key="canvasLocation" x="139" y="102"/>
         </tableViewCell>
     </objects>

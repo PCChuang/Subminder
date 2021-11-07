@@ -33,7 +33,21 @@ class GroupViewController: SUBaseViewController {
         }
     }
 
+    let userUID = KeyChainManager.shared.userUID
+    
     let manager = ProfileManager()
+    
+    var usersInfo: [User] = []
+    
+    var groupsList: [String] = []
+    
+    var groupsInfo: [Group] = [] {
+        
+        didSet {
+            
+            tableView.reloadData()
+        }
+    }
 
     var group: Group = Group(
         
@@ -55,6 +69,12 @@ class GroupViewController: SUBaseViewController {
         setupAddGroupBtn()
 
         registerCell()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchUserGroupList(userUID: userUID ?? "")
     }
 
     @IBAction func navSelectGroupMember(_ sender: UIButton) {
@@ -144,7 +164,8 @@ extension GroupViewController: UICollectionViewDelegate, UICollectionViewDataSou
 extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        
+        groupsInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -153,6 +174,11 @@ extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = cell as? GroupCell else {
             return cell
         }
+        
+        cell.setupCell(
+            subscriptionName: "123",
+            groupName: groupsInfo[indexPath.row].name,
+            numberOfMember: groupsInfo[indexPath.row].userUIDs.count + 1)
         
         return cell
     }
@@ -174,6 +200,60 @@ extension GroupViewController {
             case .failure(let error):
                 
                 print("Add New Group, failure: \(error)")
+            }
+        }
+    }
+    
+    func fetchUserGroupList(userUID: String) {
+        
+        UserManager.shared.searchUser(uid: userUID) { [weak self] result in
+
+            switch result {
+
+            case .success(let users):
+
+                print("fetchGroupList success")
+                
+                self?.groupsInfo.removeAll()
+                
+                for user in users {
+                    
+                    self?.usersInfo.append(user)
+                    
+                    let groups = user.groupList
+                    self?.groupsList = groups
+                    print(self?.groupsList)
+                    for group in groups {
+                        
+                        self?.fetchGroupInfo(groupID: group)
+                    }
+                }
+                
+            case .failure(let error):
+
+                print("fetchFriendList.failure: \(error)")
+            }
+        }
+    }
+    
+    func fetchGroupInfo(groupID: String) {
+        
+        GroupManager.shared.searchGroup(id: groupID) { [weak self] result in
+            
+            switch result {
+                
+            case .success(let groups):
+                
+                print("fetchGroupInfo success")
+
+                for group in groups {
+                    self?.groupsInfo.append(group)
+                    print(self?.groupsInfo)
+                }
+
+            case .failure(let error):
+
+                print("fetchGroupInfo.failure: \(error)")
             }
         }
     }

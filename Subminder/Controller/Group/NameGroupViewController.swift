@@ -91,16 +91,15 @@ class NameGroupViewController: SUBaseViewController {
                 title: "建立",
                 style: .done,
                 target: self,
-                action: #selector(navAddToSub)
+                action: #selector(navGroup)
             )
     }
     
-    @objc func navAddToSub() {
+    @objc func navGroup() {
         
         createGroup()
         
-        let summaryStoryBoard = UIStoryboard(name: "Summary", bundle: nil)
-        if let controller = summaryStoryBoard.instantiateViewController(withIdentifier: "AddToSub") as? AddToSubViewController {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "Group") as? GroupViewController {
 
             self.navigationController?.pushViewController(controller, animated: true)
         }

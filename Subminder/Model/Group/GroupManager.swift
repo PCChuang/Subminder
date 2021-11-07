@@ -32,4 +32,33 @@ class GroupManager {
             }
         }
     }
+    
+    func searchGroup(id: String, completion: @escaping (Result<[Group], Error>) -> Void) {
+        
+        db.collection("groups").whereField("id", isEqualTo: id).getDocuments() { (querySnapshot, error) in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                var results = [Group]()
+                
+                for document in querySnapshot!.documents {
+                    
+                    do {
+                        if let result = try document.data(as: Group.self, decoder: Firestore.Decoder()) {
+                            results.append(result)
+                        }
+
+                    } catch {
+
+                        completion(.failure(error))
+                    }
+                }
+                
+                completion(.success(results))
+            }
+        }
+    }
 }
