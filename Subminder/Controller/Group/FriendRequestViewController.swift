@@ -38,11 +38,15 @@ class FriendRequestViewController: SUBaseViewController {
             tableView.reloadData()
         }
     }
+    
+    var receiversInfo: [User] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.fetchFriendRequest()
+        
+        fetchReceiverInfo(receiverUID: userUID ?? "")
 
         setupBarItems()
 
@@ -112,7 +116,7 @@ extension FriendRequestViewController: UITableViewDataSource, UITableViewDelegat
 
         }
 
-        UserManager.shared.addFriend(userID: senderUIDs[sender.tag], newFreind: userUID ?? "") { result in
+        UserManager.shared.addFriend(userID: sendersInfo[sender.tag].id, newFreind: userUID ?? "") { result in
 
             switch result {
 
@@ -172,7 +176,8 @@ extension FriendRequestViewController {
     // fetch received friend request
     func fetchFriendRequest() {
 
-        RequestManager.shared.fetchRequest(id: userUID ?? "") { [weak self] result in
+        guard let receiverID = receiversInfo.first?.id else { return }
+        RequestManager.shared.fetchRequest(id: receiverID) { [weak self] result in
 
             switch result {
 
@@ -220,8 +225,26 @@ extension FriendRequestViewController {
         }
     }
     
-    func fetchReceiverInfo() {
+    func fetchReceiverInfo(receiverUID: String) {
         
-        User
+        UserManager.shared.searchUser(uid: receiverUID) { [weak self] result in
+            
+            switch result {
+                
+            case .success(let users):
+
+                print("fetchReceiverInfo success")
+
+                for user in users {
+                    self?.receiversInfo.append(user)
+                }
+
+                print(self?.receiversInfo)
+
+            case .failure(let error):
+
+                print("fetchReceiverInfo.failure: \(error)")
+            }
+        }
     }
 }

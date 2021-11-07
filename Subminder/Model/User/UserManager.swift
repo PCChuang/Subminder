@@ -93,6 +93,7 @@ class UserManager {
 
     func addFriend(userID: String, newFreind: String, completion: @escaping (Result<String, Error>) -> Void) {
 
+        // update user friendList by locating document.id
         let document = db.collection("users").document(userID)
 
         document.updateData(["friendList": FieldValue.arrayUnion([newFreind])]) { error in
@@ -107,12 +108,12 @@ class UserManager {
         }
     }
     
-    func joinGroup(userUIDs: [String], hostUID: String, newGroup: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func joinGroup(userIDs: [String], hostID: String, newGroup: String, completion: @escaping (Result<String, Error>) -> Void) {
         
         // update users groupList
-        for userUID in userUIDs {
+        for userID in userIDs {
             
-            let document = db.collection("users").document(userUID)
+            let document = db.collection("users").document(userID)
             
             document.updateData(["groupList": FieldValue.arrayUnion([newGroup])]) { error in
                 
@@ -127,7 +128,7 @@ class UserManager {
         }
         
         // update host groupList
-        let document = db.collection("users").document(hostUID)
+        let document = db.collection("users").document(hostID)
         
         document.updateData(["groupList": FieldValue.arrayUnion([newGroup])]) { error in
             

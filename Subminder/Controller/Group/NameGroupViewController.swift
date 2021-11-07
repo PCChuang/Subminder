@@ -14,6 +14,8 @@ class NameGroupViewController: SUBaseViewController {
     
     var membersInfo: [User] = []
     
+    var hostsInfo: [User] = []
+    
     var group: Group = Group(
         
         id: "",
@@ -36,6 +38,10 @@ class NameGroupViewController: SUBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let userUID = KeyChainManager.shared.userUID else { return }
+        
+        fetchHostInfo(hostUID: userUID)
 
         setupCollectionView()
         
@@ -131,6 +137,10 @@ extension NameGroupViewController {
         
         group.userUIDs = membersInfo.map { $0.uid }
         
+        let userIDs = membersInfo.map { $0.id }
+        
+        let hostID = hostsInfo.first?.id ?? ""
+        
         group.name = groupNameTextField.text ?? ""
         
         // create group collection
@@ -149,7 +159,7 @@ extension NameGroupViewController {
         }
         
         // update groupList users and host
-        UserManager.shared.joinGroup(userUIDs: group.userUIDs, hostUID: group.hostUID, newGroup: group.id) { result in
+        UserManager.shared.joinGroup(userIDs: userIDs, hostID: hostID, newGroup: group.id) { result in
             
             switch result {
                 
@@ -159,7 +169,28 @@ extension NameGroupViewController {
 
             case .failure(let error):
 
-                print("acceptFriend.failure: \(error)")
+                print("joinGroup.failure: \(error)")
+            }
+        }
+    }
+    
+    func fetchHostInfo(hostUID: String) {
+        
+        UserManager.shared.searchUser(uid: hostUID) { [weak self] result in
+            
+            switch result {
+                
+            case .success(let users):
+
+                print("fetchHostInfo success")
+
+                for user in users {
+                    self?.hostsInfo.append(user)
+                }
+
+            case .failure(let error):
+
+                print("fetchHostInfo.failure: \(error)")
             }
         }
     }
