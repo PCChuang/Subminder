@@ -9,12 +9,17 @@ import UIKit
 
 class NameGroupViewController: SUBaseViewController {
     
-    
     @IBOutlet weak var groupNameTextField: UITextField!
     
+    @IBAction func subscriptionName(_ sender: UITextField) {
+        
+        groupSubscriptionName = sender.text
+    }
     var membersInfo: [User] = []
     
     var hostsInfo: [User] = []
+    
+    var groupSubscriptionName: String?
     
     var group: Group = Group(
         
@@ -24,6 +29,26 @@ class NameGroupViewController: SUBaseViewController {
         hostUID: "",
         userUIDs: [],
         subscriptionID: ""
+    )
+    
+    var groupSubscription: Subscription = Subscription(
+        
+        userUID: "",
+        id: "",
+        name: "",
+        price: 0,
+        currency: "",
+        exchangePrice: 0,
+        startDate: Date(),
+        dueDate: Date(),
+        cycle: "",
+        duration: "",
+        category: "",
+        color: "",
+        reminder: "",
+        note: "",
+        groupID: "",
+        groupName: ""
     )
 
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -91,15 +116,25 @@ class NameGroupViewController: SUBaseViewController {
                 title: "建立",
                 style: .done,
                 target: self,
-                action: #selector(navGroup)
+                action: #selector(navAddToSub)
             )
     }
     
-    @objc func navGroup() {
+    @objc func navAddToSub() {
         
         createGroup()
         
-        if let controller = storyboard?.instantiateViewController(withIdentifier: "Group") as? GroupViewController {
+        let summaryStoryboard = UIStoryboard(name: "Summary", bundle: nil)
+        
+        if let controller = summaryStoryboard.instantiateViewController(withIdentifier: "AddToSub") as? AddToSubViewController {
+            
+//            controller.group.id = self.group.id
+//
+//            controller.group.name = self.group.name
+            
+            controller.group = self.group
+            
+            controller.groupSubscriptionName = self.groupSubscriptionName
 
             self.navigationController?.pushViewController(controller, animated: true)
         }

@@ -186,6 +186,9 @@
                                 <rect key="frame" x="152" y="87" width="230" height="35"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="subscriptionName:" destination="obF-NI-2Ae" eventType="editingDidEnd" id="IEd-ga-bv5"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用戶在收到邀請後就會加入群組。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2U-cB-3dV">
                                 <rect key="frame" x="32" y="188" width="225" height="21"/>
@@ -250,7 +253,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="WIe-Bf-Z5n" id="izZ-yc-H4c"/>
-                        <outlet property="groupNameTextField" destination="gC0-iV-6yZ" id="KP0-wb-n4y"/>
+                        <outlet property="groupNameTextField" destination="ZEJ-AC-Nxd" id="1Xp-o5-87z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NzZ-Jx-J4G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

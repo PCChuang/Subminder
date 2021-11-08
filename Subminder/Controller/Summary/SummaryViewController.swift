@@ -32,6 +32,8 @@ class SummaryViewController: SUBaseViewController {
     }
 
     var subscriptionsToEdit: [Subscription] = []
+    
+    var groupInfoOfSubs: [Group] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,16 +158,18 @@ extension SummaryViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        var selectedSubscription = ""
+        var selectedSubscription: Subscription?
 
-        selectedSubscription = subscriptions[indexPath.item].id
+        selectedSubscription = subscriptions[indexPath.item]
 
         if let controller = storyboard?.instantiateViewController(identifier: "AddToSub") as? AddToSubViewController {
 
-            controller.subscription.id = selectedSubscription
+            controller.subscription.id = selectedSubscription?.id ?? ""
+            
+            controller.group.id = selectedSubscription?.groupID ?? ""
 
-            fetchSubscriptionToEdit(subscriptionID: selectedSubscription) {
-
+            fetchSubscriptionToEdit(subscriptionID: selectedSubscription?.id ?? "") {
+                
                 controller.subscriptionsInEdit = self.subscriptionsToEdit
 
                 DispatchQueue.main.async {
@@ -204,4 +208,25 @@ extension SummaryViewController {
             }
         }
     }
+    
+//    func fetchGroupInfo(groupID: String) {
+//        
+//        GroupManager.shared.searchGroup(id: groupID) { [weak self] result in
+//            
+//            switch result {
+//                
+//            case .success(let groups):
+//                
+//                print("fetchGroup success")
+//                
+//                for group in groups {
+//                    self?.groupInfoOfSubs.append(group)
+//                }
+//                
+//            case .failure(let error):
+//                
+//                print("fetchGroup.failure: \(error)")
+//            }
+//        }
+//    }
 }

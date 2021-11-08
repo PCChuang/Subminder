@@ -19,8 +19,4 @@ var subSettings: [String] = [
     "顏色",
     "付款提醒",
     "備註"
-
 ]
-
-
-
