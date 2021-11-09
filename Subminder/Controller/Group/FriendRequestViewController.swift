@@ -19,7 +19,7 @@ class FriendRequestViewController: SUBaseViewController {
         }
     }
 
-    private let userID = "NrNEOstTuDxTmkTkCVEY"
+    let userUID = KeyChainManager.shared.userUID
 
     var requestsFetched: [Request] = [] {
 
@@ -29,7 +29,7 @@ class FriendRequestViewController: SUBaseViewController {
         }
     }
 
-    var senderIDs: [String] = []
+    var senderUIDs: [String] = []
 
     var sendersInfo: [User] = [] {
 
@@ -38,11 +38,15 @@ class FriendRequestViewController: SUBaseViewController {
             tableView.reloadData()
         }
     }
+    
+    var receiversInfo: [User] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.fetchFriendRequest()
+        
+        fetchReceiverInfo(receiverUID: userUID ?? "")
 
         setupBarItems()
 
@@ -87,19 +91,23 @@ extension FriendRequestViewController: UITableViewDataSource, UITableViewDelegat
 
         cell.confirmBtn.addTarget(self, action: #selector(acceptRequest), for: .touchUpInside)
 
+        cell.deleteBtn.tag = indexPath.row
+
+        cell.deleteBtn.addTarget(self, action: #selector(rejectRequest), for: .touchUpInside)
+
         return cell
     }
 
     // update friend lists of sender and receiver
     @objc func acceptRequest(_ sender: UIButton) {
 
-        UserManager.shared.addFriend(userID: userID, newFreind: senderIDs[sender.tag]) { result in
+        UserManager.shared.addFriend(userID: sendersInfo[sender.tag].id, newFreind: senderUIDs[sender.tag]) { result in
 
             switch result {
 
-            case .success(let senderID):
+            case .success(let senderUID):
 
-                print(senderID)
+                print(senderUID)
 
             case .failure(let error):
 
@@ -108,13 +116,13 @@ extension FriendRequestViewController: UITableViewDataSource, UITableViewDelegat
 
         }
 
-        UserManager.shared.addFriend(userID: senderIDs[sender.tag], newFreind: userID) { result in
+        UserManager.shared.addFriend(userID: sendersInfo[sender.tag].id, newFreind: userUID ?? "") { result in
 
             switch result {
 
-            case .success(let userID):
+            case .success(let userUID):
 
-                print(userID)
+                print(userUID)
 
             case .failure(let error):
 
@@ -123,21 +131,38 @@ extension FriendRequestViewController: UITableViewDataSource, UITableViewDelegat
 
         }
 
-        RequestManager.shared.closeRequest(userID: userID, senderID: senderIDs[sender.tag]) { result in
+        closeFriendRequest(userUID: userUID ?? "", senderUID: senderUIDs[sender.tag])
+
+        // delete indexPath.row
+        deleteRow(sender: sender)
+    }
+
+    @objc func rejectRequest(_ sender: UIButton) {
+
+        closeFriendRequest(userUID: userUID ?? "", senderUID: senderUIDs[sender.tag])
+
+        deleteRow(sender: sender)
+    }
+
+    func closeFriendRequest(userUID: String, senderUID: String) {
+
+        RequestManager.shared.closeRequest(userUID: userUID, senderUID: senderUID) { result in
 
             switch result {
 
-            case .success(let userID):
+            case .success(let userUID):
 
-                print(userID)
+                print(userUID)
 
             case .failure(let error):
 
                 print("closeRequest.failure: \(error)")
             }
         }
+    }
 
-        // delete indexPath.row
+    func deleteRow(sender: UIButton) {
+
         let hitPoint = sender.convert(CGPoint.zero, to: tableView)
         if let indexPath = tableView.indexPathForRow(at: hitPoint) {
             
@@ -151,7 +176,8 @@ extension FriendRequestViewController {
     // fetch received friend request
     func fetchFriendRequest() {
 
-        RequestManager.shared.fetchRequest(id: userID) { [weak self] result in
+        guard let receiverID = receiversInfo.first?.id else { return }
+        RequestManager.shared.fetchRequest(id: receiverID) { [weak self] result in
 
             switch result {
 
@@ -161,9 +187,9 @@ extension FriendRequestViewController {
 
                 for request in requests {
                     self?.requestsFetched.append(request)
-                    let senderID = request.from
-                    self?.senderIDs.append(senderID)
-                    self?.fetchSenderInfo(senderID: senderID)
+                    let senderUID = request.from
+                    self?.senderUIDs.append(senderUID)
+                    self?.fetchSenderInfo(senderUID: senderUID)
                 }
 
                 print(self?.requestsFetched)
@@ -176,9 +202,9 @@ extension FriendRequestViewController {
     }
 
     // get sender's name and image with user ID
-    func fetchSenderInfo(senderID: String) {
+    func fetchSenderInfo(senderUID: String) {
         
-        UserManager.shared.searchUser(id: senderID) { [weak self] result in
+        UserManager.shared.searchUser(uid: senderUID) { [weak self] result in
 
             switch result {
 
@@ -195,6 +221,29 @@ extension FriendRequestViewController {
             case .failure(let error):
 
                 print("fetchSenderInfo.failure: \(error)")
+            }
+        }
+    }
+    
+    func fetchReceiverInfo(receiverUID: String) {
+        
+        UserManager.shared.searchUser(uid: receiverUID) { [weak self] result in
+            
+            switch result {
+                
+            case .success(let users):
+
+                print("fetchReceiverInfo success")
+
+                for user in users {
+                    self?.receiversInfo.append(user)
+                }
+
+                print(self?.receiversInfo)
+
+            case .failure(let error):
+
+                print("fetchReceiverInfo.failure: \(error)")
             }
         }
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         configureUserNotifications()
+
+        if let user = Auth.auth().currentUser {
+            print("You're signed in as user: \(user.uid), email: \(user.email ?? "unknown")")
+        }
         return true
     }
 

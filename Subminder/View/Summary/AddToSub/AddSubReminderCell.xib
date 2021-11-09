@@ -20,7 +20,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5r-Js-5Ga">
                         <rect key="frame" x="16" y="16" width="38" height="21"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7zF-9w-tAH">
@@ -29,10 +29,12 @@
                             <constraint firstAttribute="width" constant="160" id="M7W-vQ-ENr"/>
                             <constraint firstAttribute="width" constant="160" id="u1w-nW-6jP"/>
                         </constraints>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
+                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="o5r-Js-5Ga" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="H8i-KK-yaP"/>
                     <constraint firstAttribute="bottom" secondItem="7zF-9w-tAH" secondAttribute="bottom" constant="5" id="Qjf-NR-F0P"/>

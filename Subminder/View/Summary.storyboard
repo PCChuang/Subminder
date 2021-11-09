@@ -13,14 +13,14 @@
         <!--Summary View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="SummaryViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Summary" id="Y6W-OH-hqX" customClass="SummaryViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wfc-OQ-4Ax">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SpY-mi-pel">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -67,14 +67,14 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aK5-2Z-2c7">
                                 <rect key="frame" x="16" y="820" width="382" height="42"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="G1U-K7-I4T"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="刪除項目">
+                                <buttonConfiguration key="configuration" style="plain" title="刪除">
                                     <fontDescription key="titleFontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="onTapGoBack:" destination="SdS-w1-0j4" eventType="touchUpInside" id="Ahl-sE-mgA"/>
@@ -82,18 +82,18 @@
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eF2-G7-raJ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="718"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1be-MC-gH3">
                                 <rect key="frame" x="16" y="770" width="382" height="42"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.87450980392156863" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="Yaf-ir-0BY"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="新增項目">
+                                <buttonConfiguration key="configuration" style="plain" title="保存">
                                     <fontDescription key="titleFontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="onTapPublish:" destination="SdS-w1-0j4" eventType="touchUpInside" id="u0w-qL-sx9"/>
@@ -101,7 +101,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JmF-xn-9Sv"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="JmF-xn-9Sv" firstAttribute="trailing" secondItem="eF2-G7-raJ" secondAttribute="trailing" id="3b6-VT-Bvs"/>
                             <constraint firstItem="aK5-2Z-2c7" firstAttribute="top" secondItem="1be-MC-gH3" secondAttribute="bottom" constant="8" id="EfO-4U-rQJ"/>
@@ -117,6 +117,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="orm-UE-kMN"/>
                     <connections>
+                        <outlet property="deleteBtn" destination="aK5-2Z-2c7" id="VBe-xS-t2n"/>
+                        <outlet property="publishBtn" destination="1be-MC-gH3" id="G5L-Dy-OK2"/>
                         <outlet property="tableView" destination="eF2-G7-raJ" id="U6z-HA-cpA"/>
                     </connections>
                 </viewController>
@@ -162,8 +164,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="51u-k4-O97">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
