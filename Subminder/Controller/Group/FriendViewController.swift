@@ -19,7 +19,7 @@ class FriendViewController: SUBaseViewController {
         }
     }
 
-    private let userID = "NrNEOstTuDxTmkTkCVEY"
+    let userUID = KeyChainManager.shared.userUID
 
     var friendsList: [String] = [] {
 
@@ -28,8 +28,6 @@ class FriendViewController: SUBaseViewController {
             tableView.reloadData()
         }
     }
-
-    var friendsName: [String] = []
 
     var friendsInfo: [User] = [] {
 
@@ -52,7 +50,7 @@ class FriendViewController: SUBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        fetchFriendList(userID: userID)
+        fetchFriendList(userUID: userUID ?? "")
     }
 
     func setupBarItems() {
@@ -129,9 +127,9 @@ extension FriendViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension FriendViewController {
 
-    func fetchFriendList(userID: String) {
+    func fetchFriendList(userUID: String) {
 
-        UserManager.shared.searchUser(id: userID) { [weak self] result in
+        UserManager.shared.searchUser(uid: userUID) { [weak self] result in
 
             switch result {
 
@@ -148,7 +146,7 @@ extension FriendViewController {
 
                     for friend in friends {
 
-                        self?.fetchFriendInfo(friendID: friend)
+                        self?.fetchFriendInfo(friendUID: friend)
                     }
                 }
 
@@ -159,9 +157,9 @@ extension FriendViewController {
         }
     }
 
-    func fetchFriendInfo(friendID: String) {
+    func fetchFriendInfo(friendUID: String) {
 
-        UserManager.shared.searchUser(id: friendID) { [weak self] result in
+        UserManager.shared.searchUser(uid: friendUID) { [weak self] result in
 
             switch result {
 

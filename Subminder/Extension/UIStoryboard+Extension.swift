@@ -11,6 +11,8 @@ private struct StoryboardCategory {
 
     static let main = "Main"
 
+    static let auth = "Auth"
+
     static let summary = "Summary"
 
     static let statistics = "Statistics"
@@ -24,6 +26,8 @@ extension UIStoryboard {
 
     static var main: UIStoryboard { return suStoryboard(name: StoryboardCategory.main) }
 
+    static var auth: UIStoryboard { return suStoryboard(name: StoryboardCategory.auth) }
+
     static var summary: UIStoryboard { return suStoryboard(name: StoryboardCategory.summary) }
 
     static var statistics: UIStoryboard { return suStoryboard(name: StoryboardCategory.statistics) }
@@ -33,6 +37,7 @@ extension UIStoryboard {
     static var group: UIStoryboard { return suStoryboard(name: StoryboardCategory.group) }
 
     private static func suStoryboard(name: String) -> UIStoryboard {
+
         return UIStoryboard(name: name, bundle: nil)
     }
 

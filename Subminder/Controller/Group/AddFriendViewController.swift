@@ -29,7 +29,7 @@ class AddFriendViewController: SUBaseViewController {
         sendFriendRequest(with: &request)
     }
 
-    private let userID = "NrNEOstTuDxTmkTkCVEY"
+    let userUID = KeyChainManager.shared.userUID
 
     var searchText: String = ""
 
@@ -74,7 +74,7 @@ class AddFriendViewController: SUBaseViewController {
 
         searchText = text
 
-        UserManager.shared.searchUser(id: searchText) { [weak self] result in
+        UserManager.shared.searchUser(uid: searchText) { [weak self] result in
 
             switch result {
 
@@ -115,7 +115,7 @@ class AddFriendViewController: SUBaseViewController {
 
         request.to = searchText
 
-        request.from = userID
+        request.from = userUID ?? ""
 
         RequestManager.shared.sendRequest(request: &request) { result in
 

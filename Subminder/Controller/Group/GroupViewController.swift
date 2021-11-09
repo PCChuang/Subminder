@@ -11,6 +11,18 @@ class GroupViewController: SUBaseViewController {
 
     @IBOutlet weak var profileImage: UIImageView!
 
+    @IBOutlet weak var addGroupBtn: UIButton!
+
+    @IBOutlet weak var tableView: UITableView! {
+
+        didSet {
+            
+            tableView.dataSource = self
+            
+            tableView.delegate = self
+        }
+    }
+
     @IBOutlet weak var profileCollection: UICollectionView! {
 
         didSet {
@@ -21,7 +33,31 @@ class GroupViewController: SUBaseViewController {
         }
     }
 
+    let userUID = KeyChainManager.shared.userUID
+    
     let manager = ProfileManager()
+    
+    var usersInfo: [User] = []
+    
+    var groupsList: [String] = []
+    
+    var groupsInfo: [Group] = [] {
+        
+        didSet {
+            
+            tableView.reloadData()
+        }
+    }
+
+    var group: Group = Group(
+        
+        id: "",
+        name: "",
+        image: "",
+        hostUID: "",
+        userUIDs: [],
+        subscriptionID: ""
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +65,36 @@ class GroupViewController: SUBaseViewController {
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2.0
 
         setupCollectionView()
+
+        setupAddGroupBtn()
+
+        registerCell()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchUserGroupList(userUID: userUID ?? "")
+    }
+
+    @IBAction func navSelectGroupMember(_ sender: UIButton) {
+        
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "SelectGroupMember") as? SelectGroupMemberViewController {
+
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
+    private func setupAddGroupBtn() {
+
+        addGroupBtn.setTitle(nil, for: .normal)
+    }
+
+    private func registerCell() {
+
+        let nib = UINib(nibName: "GroupCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "GroupCell")
+        
     }
 
     private func setupCollectionView() {
@@ -90,6 +156,104 @@ extension GroupViewController: UICollectionViewDelegate, UICollectionViewDataSou
             if let controller = storyboard?.instantiateViewController(withIdentifier: "Friend") as? FriendViewController {
 
                 self.navigationController?.pushViewController(controller, animated: true)
+            }
+        }
+    }
+}
+
+extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        groupsInfo.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
+        guard let cell = cell as? GroupCell else {
+            return cell
+        }
+        
+        cell.setupCell(
+            subscriptionName: "123",
+            groupName: groupsInfo[indexPath.row].name,
+            numberOfMember: groupsInfo[indexPath.row].userUIDs.count + 1)
+        
+        return cell
+    }
+}
+
+// functions calling APIs
+extension GroupViewController {
+    
+    func addGroup(with group: inout Group) {
+
+        GroupManager.shared.createGroup(group: &group) { result in
+            
+            switch result {
+                
+            case .success:
+                
+                print("Add New Group, Success")
+                
+            case .failure(let error):
+                
+                print("Add New Group, failure: \(error)")
+            }
+        }
+    }
+    
+    func fetchUserGroupList(userUID: String) {
+        
+        UserManager.shared.searchUser(uid: userUID) { [weak self] result in
+
+            switch result {
+
+            case .success(let users):
+
+                print("fetchGroupList success")
+                
+                self?.groupsInfo.removeAll()
+                
+                for user in users {
+                    
+                    self?.usersInfo.append(user)
+                    
+                    let groups = user.groupList
+                    self?.groupsList = groups
+                    print(self?.groupsList)
+                    for group in groups {
+                        
+                        self?.fetchGroupInfo(groupID: group)
+                    }
+                }
+                
+            case .failure(let error):
+
+                print("fetchFriendList.failure: \(error)")
+            }
+        }
+    }
+    
+    func fetchGroupInfo(groupID: String) {
+        
+        GroupManager.shared.searchGroup(id: groupID) { [weak self] result in
+            
+            switch result {
+                
+            case .success(let groups):
+                
+                print("fetchGroupInfo success")
+
+                for group in groups {
+                    self?.groupsInfo.append(group)
+                    print(self?.groupsInfo)
+                }
+
+            case .failure(let error):
+
+                print("fetchGroupInfo.failure: \(error)")
             }
         }
     }

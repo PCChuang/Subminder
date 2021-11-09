@@ -9,8 +9,8 @@ import UIKit
 
 class AddSubTextCell: UITableViewCell {
 
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +21,13 @@ class AddSubTextCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setupCell(title: String, textField: String) {
+        
+        titleLbl.text = title
+        
+        nameTextField.text = textField
     }
     
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import nanopb
 
 class SummaryViewController: SUBaseViewController {
 
@@ -19,14 +20,20 @@ class SummaryViewController: SUBaseViewController {
         }
     }
 
+    let userUID = KeyChainManager.shared.userUID
+
     let currencyManager = CurrencyManager()
 
-    var datas: [Subscription] = [] {
+    var subscriptions: [Subscription] = [] {
 
         didSet {
             collectionView.reloadData()
         }
     }
+
+    var subscriptionsToEdit: [Subscription] = []
+    
+    var groupInfoOfSubs: [Group] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +43,6 @@ class SummaryViewController: SUBaseViewController {
         setupCollectionView()
 
         fetchData()
-
-        currencyManager.getConversionRate()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -48,7 +53,7 @@ class SummaryViewController: SUBaseViewController {
 
     func fetchData() {
 
-        SubsManager.shared.fetchSubs { [weak self] result in
+        SubsManager.shared.fetchSubs(uid: userUID ?? "") { [weak self] result in
 
             switch result {
 
@@ -56,10 +61,10 @@ class SummaryViewController: SUBaseViewController {
 
                 print("fetchSubs success")
 
-                self?.datas.removeAll()
+                self?.subscriptions.removeAll()
 
                 for subscription in subscriptions {
-                    self?.datas.append(subscription)
+                    self?.subscriptions.append(subscription)
                 }
 
             case .failure(let error):
@@ -72,13 +77,17 @@ class SummaryViewController: SUBaseViewController {
     func setupBarItems() {
 
         let customView = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        
         customView.text = "訂閱"
+        customView.textColor = .white
         customView.font = UIFont(name: "PingFang TC Medium", size: 18)
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             customView: customView
         )
 
-        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        navigationController?.navigationBar.isTranslucent = false
 
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(
@@ -133,22 +142,95 @@ class SummaryViewController: SUBaseViewController {
 extension SummaryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        datas.count
+        subscriptions.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SummaryCell", for: indexPath) as? SummaryCell else {
             fatalError()
         }
-        cell.name.text = datas[indexPath.item].name
-        cell.price.text = "NT$ \(datas[indexPath.item].exchangePrice)"
-        cell.cycle.text = datas[indexPath.item].cycle
-        cell.backgroundColor = UIColor.hexStringToUIColor(hex: datas[indexPath.item].color)
+        cell.name.text = subscriptions[indexPath.item].name
+        cell.price.text = "NT$ \(subscriptions[indexPath.item].exchangePrice)"
+        cell.cycle.text = subscriptions[indexPath.item].cycle
+        cell.backgroundColor = UIColor.hexStringToUIColor(hex: subscriptions[indexPath.item].color)
 
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd yyyy"
-        cell.dueDate.text = formatter.string(from: datas[indexPath.item].dueDate)
+        cell.dueDate.text = formatter.string(from: subscriptions[indexPath.item].dueDate)
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        var selectedSubscription: Subscription?
+
+        selectedSubscription = subscriptions[indexPath.item]
+
+        if let controller = storyboard?.instantiateViewController(identifier: "AddToSub") as? AddToSubViewController {
+
+            controller.subscription.id = selectedSubscription?.id ?? ""
+            
+            controller.group.id = selectedSubscription?.groupID ?? ""
+
+            fetchSubscriptionToEdit(subscriptionID: selectedSubscription?.id ?? "") {
+                
+                controller.subscriptionsInEdit = self.subscriptionsToEdit
+
+                DispatchQueue.main.async {
+
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+            }
+
+        }
+    }
+}
+
+extension SummaryViewController {
+
+    func fetchSubscriptionToEdit(subscriptionID: String, completion: @escaping () -> Void) {
+
+        SubsManager.shared.fetchSubsToEdit(subscriptionID: subscriptionID) { [weak self] result in
+            
+            switch result {
+
+            case .success(let subscriptions):
+
+                print("fetchSubs success")
+
+                self?.subscriptionsToEdit.removeAll()
+
+                for subscription in subscriptions {
+                    self?.subscriptionsToEdit.append(subscription)
+                }
+
+                completion()
+
+            case .failure(let error):
+
+                print("fetchData.failure: \(error)")
+            }
+        }
+    }
+    
+//    func fetchGroupInfo(groupID: String) {
+//        
+//        GroupManager.shared.searchGroup(id: groupID) { [weak self] result in
+//            
+//            switch result {
+//                
+//            case .success(let groups):
+//                
+//                print("fetchGroup success")
+//                
+//                for group in groups {
+//                    self?.groupInfoOfSubs.append(group)
+//                }
+//                
+//            case .failure(let error):
+//                
+//                print("fetchGroup.failure: \(error)")
+//            }
+//        }
+//    }
 }
