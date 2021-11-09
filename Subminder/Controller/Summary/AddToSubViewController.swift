@@ -20,7 +20,11 @@ class AddToSubViewController: SUBaseViewController {
             tableView.delegate = self
         }
     }
-
+    
+    @IBOutlet weak var publishBtn: UIButton!
+    
+    @IBOutlet weak var deleteBtn: UIButton!
+    
     @IBAction func onTapPublish(_ sender: UIButton) {
 
         self.subscription.groupID = self.group.id
@@ -195,6 +199,8 @@ class AddToSubViewController: SUBaseViewController {
         currenyManager.delegate = self
 
         setupBarItems()
+        
+        setupButtons()
 
         registerCell()
     }
@@ -205,10 +211,25 @@ class AddToSubViewController: SUBaseViewController {
         guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
         self.tableView.deselectRow(at: selectedIndexPath, animated: true)
     }
+    
+    func setupButtons() {
+        
+        publishBtn.layer.cornerRadius = 10
+        
+        publishBtn.titleLabel?.font = UIFont(name: "PingFang TC Medium", size: 16)
+        
+        deleteBtn.layer.cornerRadius = 10
+        
+        deleteBtn.titleLabel?.font = UIFont(name: "PingFang TC Medium", size: 16)
+    }
 
     func setupBarItems() {
 
         self.navigationItem.title = "新增訂閱項目"
+        
+        navigationController?.navigationBar.isTranslucent = false
+        
+        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
     }
 
     func publish(with subscription: inout Subscription) {

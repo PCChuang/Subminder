@@ -77,13 +77,17 @@ class SummaryViewController: SUBaseViewController {
     func setupBarItems() {
 
         let customView = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        
         customView.text = "訂閱"
+        customView.textColor = .white
         customView.font = UIFont(name: "PingFang TC Medium", size: 18)
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             customView: customView
         )
 
-        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        navigationController?.navigationBar.isTranslucent = false
 
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(

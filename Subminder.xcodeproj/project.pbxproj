@@ -306,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				F66A1C09271D0B0C000A863A /* SUTabBarViewController.swift */,
-				F66A1C35271D6ECA000A863A /* AddToSubViewController.swift */,
 				F66A1C50271EB8FC000A863A /* SUBaseViewController.swift */,
 			);
 			path = Base;
@@ -338,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				F66A1C2D271D6652000A863A /* SummaryViewController.swift */,
+				F66A1C35271D6ECA000A863A /* AddToSubViewController.swift */,
 				F66A1C5E271FAA3C000A863A /* CategoryViewController.swift */,
 			);
 			path = Summary;

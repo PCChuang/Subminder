@@ -47,30 +47,30 @@ private enum Tab {
 
         case .summary:
             return UITabBarItem(
-                title: nil,
-                image: UIImage(systemName: "rectangle.stack"),
-                selectedImage: UIImage(systemName: "rectangle.stack.fill")
+                title: "訂閱",
+                image: UIImage(named: "Icons_64px_stack"),
+                selectedImage: UIImage(named: "Icons_64px_stack")
             )
 
         case .statistics:
             return UITabBarItem(
-                title: nil,
-                image: UIImage(systemName: "chart.pie"),
-                selectedImage: UIImage(systemName: "chart.pie.fill")
+                title: "統計",
+                image: UIImage(named: "Icons_64px_PieChart"),
+                selectedImage: UIImage(named: "Icons_64px_PieChart")
             )
 
         case .setting:
             return UITabBarItem(
-                title: nil,
-                image: UIImage(systemName: "gearshape"),
-                selectedImage: UIImage(systemName: "gearshape.fill")
+                title: "設定",
+                image: UIImage(named: "Icons_64px_setting"),
+                selectedImage: UIImage(named: "Icons_64px_setting")
             )
 
         case .group:
             return UITabBarItem(
-                title: nil,
-                image: UIImage(systemName: "person.3"),
-                selectedImage: UIImage(systemName: "person.3.fill")
+                title: "群組",
+                image: UIImage(named: "Icons_64px_Group"),
+                selectedImage: UIImage(named: "Icons_64px_GroupSelected")
             )
         }
 
@@ -88,6 +88,11 @@ class SUTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         viewControllers = tabs.map({ $0.controller() })
         delegate = self
         self.selectedIndex = 1
+        
+        self.tabBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        self.tabBar.isTranslucent = false
+        self.tabBar.tintColor = UIColor.hexStringToUIColor(hex: "#F6DF4F")
+        self.tabBar.unselectedItemTintColor = .white
 
     }
 
