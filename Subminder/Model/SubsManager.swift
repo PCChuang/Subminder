@@ -88,6 +88,31 @@ class SubsManager {
             }
         }
     }
+    
+    func publishInBatch(userUIDs: [String], hostUID: String, subscription: inout Subscription, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("subscriptions").document()
+        subscription.id = document.documentID
+        subscription.userUID = hostUID
+        document.setData(subscription.toDict)
+        
+        for userUID in userUIDs {
+            
+            let document = db.collection("subscriptions").document()
+            subscription.id = document.documentID
+            subscription.userUID = userUID
+            document.setData(subscription.toDict) { error in
+
+                if let error = error {
+
+                    completion(.failure(error))
+                } else {
+
+                    completion(.success("Success"))
+                }
+            }
+        }
+    }
 
     func saveEditedSub(subscription: inout Subscription,subscriptionID: String, completion: @escaping (Result<String, Error>) -> Void) {
         

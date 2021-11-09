@@ -12,5 +12,6 @@ target 'Subminder' do
   pod 'FirebaseFirestoreSwift'
   pod 'CurrencyTextField'
   pod 'Firebase/Auth'
+  pod 'BEMCheckBox'
 
 end

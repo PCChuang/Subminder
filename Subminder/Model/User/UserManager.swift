@@ -62,9 +62,9 @@ class UserManager {
         }
     }
 
-    func searchUser(id: String = "", completion: @escaping (Result<[User], Error>) -> Void) {
+    func searchUser(uid: String = "", completion: @escaping (Result<[User], Error>) -> Void) {
         
-        db.collection("users").whereField("id", isEqualTo: id).getDocuments() { (querySnapshot, error) in
+        db.collection("users").whereField("uid", isEqualTo: uid).getDocuments() { (querySnapshot, error) in
 
             if let error = error {
 
@@ -93,6 +93,7 @@ class UserManager {
 
     func addFriend(userID: String, newFreind: String, completion: @escaping (Result<String, Error>) -> Void) {
 
+        // update user friendList by locating document.id
         let document = db.collection("users").document(userID)
 
         document.updateData(["friendList": FieldValue.arrayUnion([newFreind])]) { error in
@@ -102,6 +103,40 @@ class UserManager {
                 completion(.failure(error))
             } else {
 
+                completion(.success("Success"))
+            }
+        }
+    }
+    
+    func joinGroup(userIDs: [String], hostID: String, newGroup: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        // update users groupList
+        for userID in userIDs {
+            
+            let document = db.collection("users").document(userID)
+            
+            document.updateData(["groupList": FieldValue.arrayUnion([newGroup])]) { error in
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    completion(.success("Success"))
+                }
+            }
+        }
+        
+        // update host groupList
+        let document = db.collection("users").document(hostID)
+        
+        document.updateData(["groupList": FieldValue.arrayUnion([newGroup])]) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
                 completion(.success("Success"))
             }
         }

@@ -23,6 +23,8 @@ struct Subscription: Codable {
     var color: String
     var reminder: String
     var note: String
+    var groupID: String
+    var groupName: String
 
     enum CodinKeys: String, CodingKey {
 
@@ -40,6 +42,8 @@ struct Subscription: Codable {
         case color
         case reminder
         case note
+        case groupID
+        case groupName
     }
 
     var toDict: [String: Any] {
@@ -58,7 +62,9 @@ struct Subscription: Codable {
             "category": category as Any,
             "color": color as Any,
             "reminder": reminder as Any,
-            "note": note as Any
+            "note": note as Any,
+            "groupID": groupID as Any,
+            "groupName": groupName as Any
         ]
     }
 }

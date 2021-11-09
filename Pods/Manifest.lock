@@ -212,6 +212,7 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - BEMCheckBox (1.4.1)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
     - BoringSSL-GRPC/Interface (= 0.0.7)
@@ -308,6 +309,7 @@ PODS:
   - SwiftLint (0.44.0)
 
 DEPENDENCIES:
+  - BEMCheckBox
   - CurrencyTextField
   - Firebase/Auth
   - Firebase/Firestore
@@ -318,6 +320,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - BEMCheckBox
     - BoringSSL-GRPC
     - CurrencyTextField
     - Firebase
@@ -339,6 +342,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
+  BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   CurrencyTextField: 75d8ee80cf245925684b34c9a49ba886f258e2dc
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
@@ -358,6 +362,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SwiftLint: e96c0a8c770c7ebbc4d36c55baf9096bb65c4584
 
-PODFILE CHECKSUM: a0f7b194c6fb613ef0eb04ff7b7f55b34965384a
+PODFILE CHECKSUM: 7e793d6af30022f6710da95e8b0a5370f729e4bf
 
 COCOAPODS: 1.11.2
