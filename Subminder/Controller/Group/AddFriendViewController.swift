@@ -52,7 +52,9 @@ class AddFriendViewController: SUBaseViewController {
 
         self.navigationItem.title = "加入好友"
 
-        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        navigationController?.navigationBar.isTranslucent = false
     }
 
     func setupProfileView() {

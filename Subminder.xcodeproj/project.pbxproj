@@ -79,6 +79,8 @@
 		F69C0F0C27358E12005D2D84 /* GroupRemoveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F0A27358E12005D2D84 /* GroupRemoveCell.swift */; };
 		F69C0F0D27358E12005D2D84 /* GroupRemoveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C0F0B27358E12005D2D84 /* GroupRemoveCell.xib */; };
 		F69C0F1027365E06005D2D84 /* NameGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F0E27365E06005D2D84 /* NameGroupViewController.swift */; };
+		F69C0F34273C073D005D2D84 /* Payable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F33273C073C005D2D84 /* Payable.swift */; };
+		F69C0F36273C09B8005D2D84 /* PayableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F35273C09B8005D2D84 /* PayableManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,6 +161,8 @@
 		F69C0F0A27358E12005D2D84 /* GroupRemoveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRemoveCell.swift; sourceTree = "<group>"; };
 		F69C0F0B27358E12005D2D84 /* GroupRemoveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupRemoveCell.xib; sourceTree = "<group>"; };
 		F69C0F0E27365E06005D2D84 /* NameGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameGroupViewController.swift; sourceTree = "<group>"; };
+		F69C0F33273C073C005D2D84 /* Payable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payable.swift; sourceTree = "<group>"; };
+		F69C0F35273C09B8005D2D84 /* PayableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayableManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +358,7 @@
 				F60E2A3B272BEC200048A85E /* RequestManager.swift */,
 				F60E2A38272BEBD30048A85E /* AddToSub */,
 				F60E2A28272A95CC0048A85E /* Group */,
+				F69C0F32273C06F1005D2D84 /* Payable */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -389,6 +394,15 @@
 				F69C0EDA273270F6005D2D84 /* KeyChainManager.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		F69C0F32273C06F1005D2D84 /* Payable */ = {
+			isa = PBXGroup;
+			children = (
+				F69C0F33273C073C005D2D84 /* Payable.swift */,
+				F69C0F35273C09B8005D2D84 /* PayableManager.swift */,
+			);
+			path = Payable;
 			sourceTree = "<group>";
 		};
 		FD87C124CA64FF049EC8C084 /* Pods */ = {
@@ -575,6 +589,7 @@
 				F66A1C2C271D5551000A863A /* UIStoryboard+Extension.swift in Sources */,
 				F66A1C44271E75FA000A863A /* AddSubTextCell.swift in Sources */,
 				F66A1C3C271DB9C6000A863A /* SummaryCell.swift in Sources */,
+				F69C0F36273C09B8005D2D84 /* PayableManager.swift in Sources */,
 				F66A1C63271FF9FC000A863A /* User.swift in Sources */,
 				F69C0EDB273270F6005D2D84 /* KeyChainManager.swift in Sources */,
 				F60E2A35272B9AF30048A85E /* UserManager.swift in Sources */,
@@ -597,6 +612,7 @@
 				F66A1C54271EC53F000A863A /* AddSubCycleCell.swift in Sources */,
 				F60E2A41272D24EE0048A85E /* FriendRequestCell.swift in Sources */,
 				F66A1C5F271FAA3D000A863A /* CategoryViewController.swift in Sources */,
+				F69C0F34273C073D005D2D84 /* Payable.swift in Sources */,
 				F688858427292F4D00637295 /* AddSubPriceCell.swift in Sources */,
 				F69C0F1027365E06005D2D84 /* NameGroupViewController.swift in Sources */,
 				F66A1C2E271D6652000A863A /* SummaryViewController.swift in Sources */,

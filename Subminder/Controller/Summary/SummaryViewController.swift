@@ -153,6 +153,7 @@ extension SummaryViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.price.text = "NT$ \(subscriptions[indexPath.item].exchangePrice)"
         cell.cycle.text = subscriptions[indexPath.item].cycle
         cell.backgroundColor = UIColor.hexStringToUIColor(hex: subscriptions[indexPath.item].color)
+        cell.layer.cornerRadius = 10
 
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd yyyy"

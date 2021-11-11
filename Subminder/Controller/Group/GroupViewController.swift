@@ -56,7 +56,7 @@ class GroupViewController: SUBaseViewController {
         image: "",
         hostUID: "",
         userUIDs: [],
-        subscriptionID: ""
+        subscriptionName: ""
     )
 
     override func viewDidLoad() {
@@ -69,6 +69,8 @@ class GroupViewController: SUBaseViewController {
         setupAddGroupBtn()
 
         registerCell()
+        
+        setupBarItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,6 +122,13 @@ class GroupViewController: SUBaseViewController {
         flowLayout.minimumLineSpacing = 0
 
         profileCollection.collectionViewLayout = flowLayout
+    }
+    
+    private func setupBarItems() {
+        
+        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        navigationController?.navigationBar.isTranslucent = false
     }
 
 }
@@ -176,7 +185,7 @@ extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         cell.setupCell(
-            subscriptionName: "123",
+            subscriptionName: groupsInfo[indexPath.row].subscriptionName,
             groupName: groupsInfo[indexPath.row].name,
             numberOfMember: groupsInfo[indexPath.row].userUIDs.count + 1)
         

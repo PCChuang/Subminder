@@ -28,7 +28,7 @@ class NameGroupViewController: SUBaseViewController {
         image: "",
         hostUID: "",
         userUIDs: [],
-        subscriptionID: ""
+        subscriptionName: ""
     )
     
     var groupSubscription: Subscription = Subscription(
@@ -48,7 +48,9 @@ class NameGroupViewController: SUBaseViewController {
         reminder: "",
         note: "",
         groupID: "",
-        groupName: ""
+        groupName: "",
+        groupPriceTotal: 0,
+        groupMemberCount: 0
     )
 
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -109,7 +111,11 @@ class NameGroupViewController: SUBaseViewController {
         
         self.navigationItem.title = "群組名稱"
 
-        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        navigationController?.navigationBar.isTranslucent = false
+        
+        navigationController?.navigationBar.tintColor = .white
 
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(
@@ -176,6 +182,8 @@ extension NameGroupViewController {
         let hostID = hostsInfo.first?.id ?? ""
         
         group.name = groupNameTextField.text ?? ""
+        
+        group.subscriptionName = groupSubscriptionName ?? ""
         
         // create group collection
         GroupManager.shared.createGroup(group: &group) { result in

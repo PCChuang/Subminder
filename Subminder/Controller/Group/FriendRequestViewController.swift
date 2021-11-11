@@ -56,6 +56,10 @@ class FriendRequestViewController: SUBaseViewController {
     func setupBarItems() {
 
         self.navigationItem.title = "好友邀請"
+        
+        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        navigationController?.navigationBar.isTranslucent = false
     }
 
     func registerCell() {

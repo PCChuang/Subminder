@@ -14,7 +14,7 @@ struct Group: Codable {
     var image: String
     var hostUID: String
     var userUIDs: [String]
-    var subscriptionID: String
+    var subscriptionName: String
 
     enum CodingKeys: String, CodingKey {
 
@@ -23,7 +23,7 @@ struct Group: Codable {
         case image
         case hostUID
         case userUIDs
-        case subscriptionID
+        case subscriptionName
     }
     
     var toDict: [String: Any] {
@@ -34,7 +34,7 @@ struct Group: Codable {
             "image": image as Any,
             "hostUID": hostUID as Any,
             "userUIDs": userUIDs as Any,
-            "subscriptionID": subscriptionID as Any
+            "subscriptionName": subscriptionName as Any
         ]
     }
 }

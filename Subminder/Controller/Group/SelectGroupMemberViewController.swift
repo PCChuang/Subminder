@@ -121,7 +121,9 @@ class SelectGroupMemberViewController: SUBaseViewController {
         
         self.navigationItem.title = "邀請好友"
 
-        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        navigationController?.navigationBar.isTranslucent = false
 
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(

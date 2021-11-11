@@ -28,6 +28,7 @@ class AddToSubViewController: SUBaseViewController {
     @IBAction func onTapPublish(_ sender: UIButton) {
 
         self.subscription.groupID = self.group.id
+        self.subscription.groupMemberCount = self.group.userUIDs.count + 1
         
         switch group.id {
         case "":
@@ -90,7 +91,21 @@ class AddToSubViewController: SUBaseViewController {
                         self.saveSubscription()
                     } else {
                         
-                        self.publishInBatch(userUIDs: self.group.userUIDs, hostUID: self.userUID ?? "", with: &self.subscription)
+                        self.publishInBatch(
+                            userUIDs: self.group.userUIDs,
+                            hostUID: self.userUID ?? "",
+                            with: &self.subscription)
+                        
+                        self.payable.amount = self.subscription.price
+                        self.payable.nextPaymentDate = self.subscription.dueDate
+                        
+                        self.createNewPayableInBatch(
+                            totalAmount: self.subscription.groupPriceTotal,
+                            amount: self.payable.amount,
+                            nextPaymentDate: self.payable.nextPaymentDate,
+                            userUIDs: self.group.userUIDs,
+                            hostUID: self.userUID ?? "",
+                            with: &self.payable)
                     }
                     
                     DispatchQueue.main.async {
@@ -157,7 +172,9 @@ class AddToSubViewController: SUBaseViewController {
         reminder: "",
         note: "",
         groupID: "",
-        groupName: ""
+        groupName: "",
+        groupPriceTotal: 0,
+        groupMemberCount: 0
     )
     
     var group: Group = Group(
@@ -167,12 +184,21 @@ class AddToSubViewController: SUBaseViewController {
         image: "",
         hostUID: "",
         userUIDs: [],
-        subscriptionID: ""
+        subscriptionName: ""
+    )
+    
+    var payable: Payable = Payable(
+        
+        id: "",
+        groupID: "",
+        userUID: "",
+        amount: 0,
+        nextPaymentDate: Date()
     )
 
     var groupSubscriptionName: String?
     
-    var groupTotalAmount: Double = 0
+    var groupTotalAmount: Decimal = 0
 
     let reminderManager = LocalNotificationManager()
 
@@ -271,6 +297,25 @@ class AddToSubViewController: SUBaseViewController {
             }
         }
     }
+    
+    func createNewPayableInBatch(totalAmount: Decimal, amount: Decimal, nextPaymentDate: Date, userUIDs: [String], hostUID: String, with payable: inout Payable) {
+        
+        payable.groupID = group.id
+        
+        PayableManager.shared.createPayableInBatch(totalAmount: totalAmount, amount: amount, nextPaymentDate: nextPaymentDate, userUIDs: userUIDs, hostUID: hostUID, payable: &payable) { result in
+            
+            switch result {
+                
+            case .success:
+                
+                print("createNewPayable, success")
+                
+            case .failure(let error):
+                
+                print("createNewPayable.failure: \(error)")
+            }
+        }
+    }
 
     func save(with subscription: inout Subscription) {
         
@@ -349,6 +394,12 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                     return cell
                 }
                 cell.title.text = subSettings[indexPath.row]
+                
+                let subPrice = subscriptionsInEdit.first?.price
+                cell.priceTextField.text = "$\(subPrice ?? 0.00)"
+                
+                subscription.price = subPrice ?? 0
+                
                 cell.priceTextField.addTarget(self, action: #selector(onPriceChanged), for: .editingDidEnd)
                 return cell
 
@@ -535,22 +586,19 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                     return cell
                 }
                 
-                if userUID != group.hostUID {
-                    
-                    cell.priceTextField.isEnabled = false
-                }
-                
                 cell.title.text = groupSubSettings[indexPath.row]
                 
+                if subscriptionsInEdit.count > 0 {
+                    
+                    cell.priceTextField.isEnabled = false
+                    
+                    let groupPrice = subscriptionsInEdit.first?.groupPriceTotal ?? 0
+                    cell.priceTextField.text = "$\(groupPrice)"
+                    
+                    subscription.groupPriceTotal = groupPrice
+                }
+                
                 cell.priceTextField.addTarget(self, action: #selector(onPriceChanged), for: .editingDidEnd)
-
-                let text = cell.priceTextField.text ?? ""
-                
-                var priceInt: Int? = 0
-                
-                priceInt = Int(text)
-                
-                groupTotalAmount = Double(priceInt ?? 0)
 
                 return cell
                 
@@ -568,8 +616,8 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                 if subscriptionsInEdit.count > 0 {
                     
                     cell.currencyTextField.text = subscriptionsInEdit.first?.currency
-                    
-                    cell.currencyTextField.isEnabled = false
+//                    
+//                    cell.currencyTextField.isEnabled = false
                 }
                 
                 subscription.currency = cell.currencyTextField.text ?? ""
@@ -588,9 +636,24 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                 cell.nameTextField.isEnabled = false
                 
                 let totalAmount = groupTotalAmount
-                let numberOfMember = Double(group.userUIDs.count + 1)
+                let numberOfMember = Decimal(group.userUIDs.count + 1)
                 
-                cell.setupCell(title: groupSubSettings[indexPath.row], textField: "\(totalAmount / numberOfMember)")
+                let priceSplited = totalAmount / numberOfMember
+                
+                if subscriptionsInEdit.count > 0 {
+
+//                    let memberCount = Decimal(subscriptionsInEdit.first?.groupMemberCount ?? 0)
+//                    let groupTotal = subscriptionsInEdit.first?.groupPriceTotal ?? 0
+                    cell.titleLbl.text = groupSubSettings[indexPath.row]
+                    cell.nameTextField.text = "\(subscriptionsInEdit.first?.price ?? 0)"
+//                    subscription.price = groupTotal / memberCount
+                    subscription.price = subscriptionsInEdit.first?.price ?? 0
+                } else {
+                    
+                    cell.setupCell(title: groupSubSettings[indexPath.row], textField: "\(priceSplited)")
+                    
+                    subscription.price = priceSplited
+                }
                 
                 return cell
                 
@@ -634,6 +697,8 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                 
                 cell.title.text = groupSubSettings[indexPath.row]
                 
+                cell.delegate = self
+                
                 if subscriptionsInEdit.count > 0 {
                     
                     cell.cycleTextField.isEnabled = false
@@ -642,7 +707,6 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                     
                     subscription.cycle = cell.cycleTextField.text ?? ""
                 }
-                
                 
                 cell.cycleTextField.addTarget(self, action: #selector(onCycleChanged), for: .editingDidEnd)
                 
@@ -933,9 +997,17 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         if let number = formatter.number(from: priceString) {
             let price = number.decimalValue
             subscription.price = price
+            groupTotalAmount = price
+            
+            if group.id != "" {
+                subscription.groupPriceTotal = price
+            }
         }
         
-        tableView.reloadData()
+        if group.id != "" {
+            
+            tableView.reloadData()
+        }
     }
 
     @objc func onCurrencyChanged(_ sender: UITextField) {
