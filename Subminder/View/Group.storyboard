@@ -21,7 +21,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dean.juang" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6c4-Ab-aXf">
                                 <rect key="frame" x="32" y="104" width="104.5" height="28"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_36px_Profile_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="gQI-Zn-W5Z">
@@ -33,7 +33,7 @@
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bCu-Mn-J4f">
                                 <rect key="frame" x="124" y="148" width="274" height="60"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lPl-HT-S9e">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -54,24 +54,24 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="訂閱群組" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpI-QL-jcK">
                                 <rect key="frame" x="32" y="240" width="60" height="21"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1A-dU-KOO">
-                                <rect key="frame" x="334" y="231.5" width="48" height="38"/>
+                                <rect key="frame" x="336.5" y="233" width="45.5" height="35.5"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Icons_24px_Add02"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Icons_24px_Add01"/>
                                 <connections>
                                     <action selector="navSelectGroupMember:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="x7W-Di-YIV"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Fpv-b7-Mxp">
                                 <rect key="frame" x="16" y="277" width="382" height="585"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kpI-QL-jcK" firstAttribute="top" secondItem="gQI-Zn-W5Z" secondAttribute="bottom" constant="32" id="2pg-5K-UYy"/>
                             <constraint firstItem="gQI-Zn-W5Z" firstAttribute="top" secondItem="6c4-Ab-aXf" secondAttribute="bottom" constant="16" id="4A1-ID-zga"/>
@@ -103,6 +103,33 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="87.723214285714278"/>
         </scene>
+        <!--Group Setting View Controller-->
+        <scene sceneID="0da-cD-rKq">
+            <objects>
+                <viewController id="9AQ-4l-DS1" customClass="GroupSettingViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NZg-sB-vB7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yKG-Le-oDs">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tAw-pD-wDL"/>
+                        <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tAw-pD-wDL" firstAttribute="trailing" secondItem="yKG-Le-oDs" secondAttribute="trailing" id="O6n-PC-Ynb"/>
+                            <constraint firstItem="yKG-Le-oDs" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" id="RTX-Un-eaF"/>
+                            <constraint firstItem="tAw-pD-wDL" firstAttribute="bottom" secondItem="yKG-Le-oDs" secondAttribute="bottom" id="ene-WS-Yhb"/>
+                            <constraint firstItem="yKG-Le-oDs" firstAttribute="top" secondItem="tAw-pD-wDL" secondAttribute="top" id="tpc-eZ-w7N"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rcv-dI-vXX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2107" y="88"/>
+        </scene>
         <!--Select Group Member View Controller-->
         <scene sceneID="jhd-Ik-8wI">
             <objects>
@@ -113,11 +140,13 @@
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9w7-uH-0nA">
                                 <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yva-dj-fIM">
                                 <rect key="frame" x="0.0" y="95" width="414" height="92"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="2Qm-1w-Zna"/>
                                 </constraints>
@@ -140,7 +169,7 @@
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7P7-so-JJR">
                                 <rect key="frame" x="0.0" y="187" width="414" height="675"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IU7-3f-bNt"/>
@@ -184,6 +213,8 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="訂閱項目名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gC0-iV-6yZ">
                                 <rect key="frame" x="152" y="87" width="230" height="35"/>
+                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -193,18 +224,18 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用戶在收到邀請後就會加入群組。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2U-cB-3dV">
                                 <rect key="frame" x="32" y="188" width="225" height="21"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成員" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSM-Fn-Ota">
                                 <rect key="frame" x="32" y="225" width="30" height="21"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WIe-Bf-Z5n">
                                 <rect key="frame" x="8" y="246" width="406" height="92"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="LUt-qC-mNT"/>
                                 </constraints>
@@ -227,12 +258,14 @@
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入群組名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZEJ-AC-Nxd">
                                 <rect key="frame" x="152" y="130" width="230" height="35"/>
+                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hKq-8k-G87"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hKq-8k-G87" firstAttribute="trailing" secondItem="ZEJ-AC-Nxd" secondAttribute="trailing" constant="32" id="9ph-EV-4Lv"/>
                             <constraint firstItem="6Fk-Ao-rSz" firstAttribute="leading" secondItem="hKq-8k-G87" secondAttribute="leading" constant="16" id="ANS-Ds-b2W"/>
@@ -412,6 +445,9 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -424,7 +460,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icons_24px_Add02" width="24" height="24"/>
+        <image name="Icons_24px_Add01" width="21.5" height="21.5"/>
         <image name="Icons_36px_Profile_Normal" width="36" height="36"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">

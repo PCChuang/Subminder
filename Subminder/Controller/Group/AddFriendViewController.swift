@@ -39,6 +39,10 @@ class AddFriendViewController: SUBaseViewController {
     )
 
     var searchResults: [User] = []
+    
+    var friendsList: [String] = []
+    
+    var friendsInfo: [User] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +50,12 @@ class AddFriendViewController: SUBaseViewController {
         setupBarItems()
 
         setupProfileView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        fetchFriendList(userUID: userUID ?? "")
     }
 
     func setupBarItems() {
@@ -99,6 +109,11 @@ class AddFriendViewController: SUBaseViewController {
                     self?.sendRequestBtn.isHidden = false
 
                     self?.friendNameLbl.text = self?.searchResults[0].name
+                    
+                    if self?.friendsList.contains(self?.searchResults.first?.uid ?? "") == true {
+                        
+                        self?.disableSendBtn(title: "已經是朋友囉")
+                    }
                 } else {
 
                     self?.friendNameLbl.isHidden = false
@@ -125,18 +140,48 @@ class AddFriendViewController: SUBaseViewController {
 
             case .success:
                 print("onTapSend, success")
-                self.disableSendBtn()
+                self.disableSendBtn(title: "已發送好友邀請")
 
             case .failure(let error):
                 print("sendFriendRequest.failure: \(error)")
             }
         }
     }
+    
+    func fetchFriendList(userUID: String) {
+        
+        UserManager.shared.searchUser(uid: userUID) { [weak self] result in
 
-    func disableSendBtn() {
+            switch result {
+
+            case .success(let users):
+
+                print("fetchFriendList success")
+                
+                self?.friendsInfo.removeAll()
+
+                for user in users {
+
+                    let friends = user.friendList
+                    self?.friendsList = friends
+
+//                    for friend in friends {
+//
+//                        self?.fetchFriendInfo(friendUID: friend)
+//                    }
+                }
+
+            case .failure(let error):
+
+                print("fetchFriendList.failure: \(error)")
+            }
+        }
+    }
+
+    func disableSendBtn(title: String) {
 
         sendRequestBtn.isEnabled = false
-        sendRequestBtn.setTitle("已發送好友邀請", for: .disabled)
+        sendRequestBtn.setTitle(title, for: .disabled)
         sendRequestBtn.backgroundColor = .lightGray
         sendRequestBtn.tintColor = .white
     }

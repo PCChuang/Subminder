@@ -58,9 +58,58 @@ class GroupViewController: SUBaseViewController {
         userUIDs: [],
         subscriptionName: ""
     )
+    
+    var payables: [Payable] = []
+    
+    var subscriptions: [Subscription] = []
+    
+    var newGroupIDs = Set<String>() {
+
+        didSet {
+
+            for groupID in newGroupIDs {
+
+                PayableManager.shared.fetch(uid: userUID ?? "", groupID: groupID) { [weak self] result in
+
+                    guard let self = self else { return }
+
+                    switch result {
+
+                    case .success(let payable):
+                        self.payableCache[groupID] = payable.first?.amount
+
+                    case .failure(let error):
+                        print("fetchPayable.failure: \(error)")
+                    }
+                }
+            }
+        }
+    }
+    
+    var groupIDsSet = Set<String>() {
+        
+        didSet {
+            
+            if groupIDsSet != oldValue {
+                
+                newGroupIDs = groupIDsSet.subtracting(oldValue)
+            }
+        }
+    }
+    
+    var payableCache: [String: Decimal] = [:] {
+        
+        didSet {
+            
+            tableView.reloadData()
+            print("here is the cache========= \(payableCache)")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        print("here is the cache========= \(payableCache)")
 
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2.0
 
@@ -86,6 +135,52 @@ class GroupViewController: SUBaseViewController {
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
+    
+    func updateUserPayable(groupID: String) {
+            
+        // check payable cycle and amount/cycle
+        SubsManager.shared.fetchSubsForPayable(uid: userUID ?? "", groupID: groupID) { [weak self] result in
+            
+            switch result {
+                
+            case .success(let subscriptions):
+                
+                print("fetchSubscriptions success")
+                
+                self?.subscriptions.removeAll()
+                
+                for subscription in subscriptions {
+                    self?.subscriptions.append(subscription)
+                }
+                    
+//                    if payable.nextPaymentDate < Date() {
+//
+//                        var cycle: DateComponents?
+//
+//                        cycle = Calendar.current.dateComponents([.year, .month, .day], from: , to: <#T##Date#>)
+//
+//
+//                        PayableManager.shared.update(
+//                            payableID: payable.id,
+//                            groupID: payable.groupID,
+//                            userUID: userUID ?? "",
+//                            nextPaymentDate: <#T##Date#>,
+//                            amount: <#T##Decimal#>
+//                        )
+//                    }
+                    
+            case .failure(let error):
+                
+                print("fetchSubscriptions.failure \(error)")
+            }
+        }
+    }
+
+    
+//    func fetchUserOverduePayable(nextPaymentDate: Date) {
+//
+//        PayableManager.shared.fetchOverduePayable(nextPaymentDate: <#T##String#>, completion: <#T##(Result<[Payable], Error>) -> Void#>)
+//    }
     
     private func setupAddGroupBtn() {
 
@@ -187,7 +282,27 @@ extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setupCell(
             subscriptionName: groupsInfo[indexPath.row].subscriptionName,
             groupName: groupsInfo[indexPath.row].name,
-            numberOfMember: groupsInfo[indexPath.row].userUIDs.count + 1)
+            numberOfMember: groupsInfo[indexPath.row].userUIDs.count + 1
+        )
+        
+        if payables.count != 0 {
+            
+            if payableCache[groupsInfo[indexPath.row].id] ?? 0 < 0 {
+                
+                cell.payableLbl.backgroundColor = UIColor.hexStringToUIColor(hex: "#00896C")
+                cell.payableLbl.text = " 應收 "
+                cell.payableAmountLbl.text = " NT$ \(-(payableCache[groupsInfo[indexPath.row].id] ?? 0)) "
+            } else if payables[indexPath.row].amount == 0 {
+                
+                cell.payableLbl.backgroundColor = UIColor.hexStringToUIColor(hex: "#00896C")
+                cell.payableLbl.text = " 結清 "
+            } else {
+                
+                cell.payableLbl.backgroundColor = UIColor.hexStringToUIColor(hex: "#FFC408")
+                cell.payableLbl.text = " 應付 "
+                cell.payableAmountLbl.text = " \(payableCache[groupsInfo[indexPath.row].id] ?? 0) "
+            }
+        }
         
         return cell
     }
@@ -235,6 +350,10 @@ extension GroupViewController {
                     for group in groups {
                         
                         self?.fetchGroupInfo(groupID: group)
+//
+                        self?.fetchPayable(userUID: userUID, groupID: group)
+                        
+                        self?.groupIDsSet.insert(group)
                     }
                 }
                 
@@ -265,5 +384,56 @@ extension GroupViewController {
                 print("fetchGroupInfo.failure: \(error)")
             }
         }
+    }
+    
+    func fetchPayable(userUID: String, groupID: String) {
+            
+            PayableManager.shared.fetch(uid: userUID, groupID: groupID) { [weak self] result in
+                
+                switch result {
+                    
+                case .success(let payables):
+                    
+                    print("fetchPayable success")
+                    
+                    for payable in payables {
+                        
+                        self?.payables.append(payable)
+                        
+                        if payable.nextPaymentDate < Date() {
+                            
+                            var cycle: DateComponents?
+                            cycle = Calendar.current.dateComponents([.year, .month, .day], from: payable.startDate, to: payable.nextPaymentDate)
+                            
+                            PayableManager.shared.update(
+                                payableID: payable.id,
+                                groupID: payable.groupID,
+                                userUID: self?.userUID ?? "",
+                                nextPaymentDate: Calendar.current.date(byAdding: cycle ?? DateComponents(), to: payable.nextPaymentDate) ?? Date(),
+                                startDate: Calendar.current.date(byAdding: cycle ?? DateComponents(), to: payable.startDate) ?? Date(),
+                                cycleAmount: payable.cycleAmount,
+                                amount: payable.amount - payable.cycleAmount) { result in
+                                    
+                                    switch result {
+                                        
+                                    case .success:
+                                        
+                                        print("updatePayable, success")
+                                        
+                                    case .failure(let error):
+                                        
+                                        print("updatePayable.failure: \(error)")
+                                    }
+                                }
+                        }
+                    }
+                    
+                    print(self?.payables)
+                    
+                case .failure(let error):
+                    
+                    print("fetchPayable.failure: \(error)")
+                }
+            }
     }
 }

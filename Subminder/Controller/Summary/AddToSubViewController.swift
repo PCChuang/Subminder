@@ -98,6 +98,8 @@ class AddToSubViewController: SUBaseViewController {
                         
                         self.payable.amount = self.subscription.price
                         self.payable.nextPaymentDate = self.subscription.dueDate
+                        self.payable.startDate = self.subscription.startDate
+                        self.payable.cycleAmount = self.subscription.price
                         
                         self.createNewPayableInBatch(
                             totalAmount: self.subscription.groupPriceTotal,
@@ -105,6 +107,8 @@ class AddToSubViewController: SUBaseViewController {
                             nextPaymentDate: self.payable.nextPaymentDate,
                             userUIDs: self.group.userUIDs,
                             hostUID: self.userUID ?? "",
+                            startDate: self.payable.startDate,
+                            cycleAmount: self.payable.cycleAmount,
                             with: &self.payable)
                     }
                     
@@ -193,7 +197,9 @@ class AddToSubViewController: SUBaseViewController {
         groupID: "",
         userUID: "",
         amount: 0,
-        nextPaymentDate: Date()
+        nextPaymentDate: Date(),
+        startDate: Date(),
+        cycleAmount: 0
     )
 
     var groupSubscriptionName: String?
@@ -297,12 +303,29 @@ class AddToSubViewController: SUBaseViewController {
             }
         }
     }
-    
-    func createNewPayableInBatch(totalAmount: Decimal, amount: Decimal, nextPaymentDate: Date, userUIDs: [String], hostUID: String, with payable: inout Payable) {
-        
+
+    func createNewPayableInBatch(
+        totalAmount: Decimal,
+        amount: Decimal,
+        nextPaymentDate: Date,
+        userUIDs: [String],
+        hostUID: String,
+        startDate: Date,
+        cycleAmount: Decimal,
+        with payable: inout Payable
+    ) {
         payable.groupID = group.id
         
-        PayableManager.shared.createPayableInBatch(totalAmount: totalAmount, amount: amount, nextPaymentDate: nextPaymentDate, userUIDs: userUIDs, hostUID: hostUID, payable: &payable) { result in
+        PayableManager.shared.createPayableInBatch(
+            totalAmount: totalAmount,
+            amount: amount,
+            nextPaymentDate: nextPaymentDate,
+            userUIDs: userUIDs,
+            hostUID: hostUID,
+            startDate: startDate,
+            cycleAmount: cycleAmount,
+            payable: &payable
+        ) { result in
             
             switch result {
                 

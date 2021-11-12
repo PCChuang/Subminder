@@ -81,6 +81,9 @@
 		F69C0F1027365E06005D2D84 /* NameGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F0E27365E06005D2D84 /* NameGroupViewController.swift */; };
 		F69C0F34273C073D005D2D84 /* Payable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F33273C073C005D2D84 /* Payable.swift */; };
 		F69C0F36273C09B8005D2D84 /* PayableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F35273C09B8005D2D84 /* PayableManager.swift */; };
+		F69C0F38273D1AF7005D2D84 /* GroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F37273D1AF7005D2D84 /* GroupSettingViewController.swift */; };
+		F69C0F3B273D1C3D005D2D84 /* GroupSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F39273D1C3D005D2D84 /* GroupSettingTableViewCell.swift */; };
+		F69C0F3C273D1C3D005D2D84 /* GroupSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C0F3A273D1C3D005D2D84 /* GroupSettingTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,6 +166,9 @@
 		F69C0F0E27365E06005D2D84 /* NameGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameGroupViewController.swift; sourceTree = "<group>"; };
 		F69C0F33273C073C005D2D84 /* Payable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payable.swift; sourceTree = "<group>"; };
 		F69C0F35273C09B8005D2D84 /* PayableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayableManager.swift; sourceTree = "<group>"; };
+		F69C0F37273D1AF7005D2D84 /* GroupSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingViewController.swift; sourceTree = "<group>"; };
+		F69C0F39273D1C3D005D2D84 /* GroupSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingTableViewCell.swift; sourceTree = "<group>"; };
+		F69C0F3A273D1C3D005D2D84 /* GroupSettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupSettingTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +204,8 @@
 				F69C0F0727353408005D2D84 /* GroupInviteCell.xib */,
 				F69C0F0A27358E12005D2D84 /* GroupRemoveCell.swift */,
 				F69C0F0B27358E12005D2D84 /* GroupRemoveCell.xib */,
+				F69C0F39273D1C3D005D2D84 /* GroupSettingTableViewCell.swift */,
+				F69C0F3A273D1C3D005D2D84 /* GroupSettingTableViewCell.xib */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -217,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				F66A1C33271D667B000A863A /* GroupViewController.swift */,
+				F69C0F37273D1AF7005D2D84 /* GroupSettingViewController.swift */,
 				F60E2A2D272AAA3B0048A85E /* FriendViewController.swift */,
 				F60E2A32272AE60B0048A85E /* AddFriendViewController.swift */,
 				F60E2A3D272D22520048A85E /* FriendRequestViewController.swift */,
@@ -479,6 +488,7 @@
 				F69C0F0927353408005D2D84 /* GroupInviteCell.xib in Resources */,
 				F66A1C12271D0B10000A863A /* LaunchScreen.storyboard in Resources */,
 				F66A1C0F271D0B10000A863A /* Assets.xcassets in Resources */,
+				F69C0F3C273D1C3D005D2D84 /* GroupSettingTableViewCell.xib in Resources */,
 				F69C0EDF2734E186005D2D84 /* GroupCell.xib in Resources */,
 				F688856D2723D73E00637295 /* AddSubCategoryCell.xib in Resources */,
 				F66A1C45271E75FA000A863A /* AddSubTextCell.xib in Resources */,
@@ -569,6 +579,8 @@
 			files = (
 				F66A1C58271F0F0F000A863A /* AddSubDateCell.swift in Sources */,
 				F60E2A442730E5A50048A85E /* AuthViewController.swift in Sources */,
+				F69C0F38273D1AF7005D2D84 /* GroupSettingViewController.swift in Sources */,
+				F69C0F3B273D1C3D005D2D84 /* GroupSettingTableViewCell.swift in Sources */,
 				F66A1C6727200D71000A863A /* SubsManager.swift in Sources */,
 				F66A1C34271D667B000A863A /* GroupViewController.swift in Sources */,
 				F66A1C692721AA54000A863A /* UIColor+Extension.swift in Sources */,

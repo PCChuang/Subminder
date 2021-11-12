@@ -14,6 +14,8 @@ struct Payable: Codable {
     var userUID: String
     var amount: Decimal
     var nextPaymentDate: Date
+    var startDate: Date
+    var cycleAmount: Decimal
     
     enum CodingKeys: String, CodingKey {
         
@@ -22,6 +24,8 @@ struct Payable: Codable {
         case userUID
         case amount
         case nextPaymentDate
+        case startDate
+        case cycleAmount
     }
     
     var toDict: [String: Any] {
@@ -31,7 +35,9 @@ struct Payable: Codable {
             "groupID": groupID as Any,
             "userUID": userUID as Any,
             "amount": amount as Any,
-            "nextPaymentDate": nextPaymentDate as Any
+            "nextPaymentDate": nextPaymentDate as Any,
+            "startDate": startDate as Any,
+            "cycleAmount": cycleAmount as Any
         ]
     }
 }

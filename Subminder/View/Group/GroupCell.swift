@@ -17,9 +17,22 @@ class GroupCell: UITableViewCell {
     
     @IBOutlet weak var memberCountLbl: UILabel!
     
+    @IBOutlet weak var payableLbl: UILabel!
+    
+    @IBOutlet weak var payableAmountLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        payableLbl.layer.masksToBounds = true
+        payableLbl.layer.cornerRadius = 6
+        payableLbl.textColor = .white
+        
+        payableAmountLbl.layer.masksToBounds = true
+        payableAmountLbl.layer.cornerRadius = 6
+        payableAmountLbl.textColor = .white
+        payableAmountLbl.backgroundColor = .gray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

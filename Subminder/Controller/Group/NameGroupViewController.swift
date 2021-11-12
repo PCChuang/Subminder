@@ -128,21 +128,30 @@ class NameGroupViewController: SUBaseViewController {
     
     @objc func navAddToSub() {
         
-        createGroup()
-        
-        let summaryStoryboard = UIStoryboard(name: "Summary", bundle: nil)
-        
-        if let controller = summaryStoryboard.instantiateViewController(withIdentifier: "AddToSub") as? AddToSubViewController {
+        if groupNameTextField.text == "" {
             
-//            controller.group.id = self.group.id
-//
-//            controller.group.name = self.group.name
+            showAlert(title: "Oops!", message: "請輸入訂閱項目名稱")
+        } else if groupSubscriptionName == "" {
             
-            controller.group = self.group
+            showAlert(title: "Oops!", message: "請輸入群組名稱")
+        } else {
             
-            controller.groupSubscriptionName = self.groupSubscriptionName
-
-            self.navigationController?.pushViewController(controller, animated: true)
+            createGroup()
+            
+            let summaryStoryboard = UIStoryboard(name: "Summary", bundle: nil)
+            
+            if let controller = summaryStoryboard.instantiateViewController(withIdentifier: "AddToSub") as? AddToSubViewController {
+                
+                //            controller.group.id = self.group.id
+                //
+                //            controller.group.name = self.group.name
+                
+                controller.group = self.group
+                
+                controller.groupSubscriptionName = self.groupSubscriptionName
+                
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
         }
     }
 }
@@ -235,5 +244,16 @@ extension NameGroupViewController {
                 print("fetchHostInfo.failure: \(error)")
             }
         }
+    }
+    
+    func showAlert(title: String, message: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "好", style: .default, handler: nil)
+        
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }
