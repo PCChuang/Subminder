@@ -1,14 +1,18 @@
 //
-//  GroupSettingTableViewCell.swift
+//  GroupMemberTableViewCell.swift
 //  Subminder
 //
-//  Created by PoChieh Chuang on 2021/11/11.
+//  Created by PoChieh Chuang on 2021/11/12.
 //
 
 import UIKit
 
-class GroupSettingTableViewCell: UITableViewCell {
+class GroupMemberTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var nameLbl: UILabel!
+    
+    @IBOutlet weak var memberImg: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,4 +24,8 @@ class GroupSettingTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupCell(name: String) {
+        
+        nameLbl.text = name
+    }
 }

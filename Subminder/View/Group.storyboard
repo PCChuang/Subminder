@@ -106,29 +106,81 @@
         <!--Group Setting View Controller-->
         <scene sceneID="0da-cD-rKq">
             <objects>
-                <viewController id="9AQ-4l-DS1" customClass="GroupSettingViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupSetting" hidesBottomBarWhenPushed="YES" id="9AQ-4l-DS1" customClass="GroupSettingViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NZg-sB-vB7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yKG-Le-oDs">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="760"/>
+                                <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIM-Fe-dqZ">
+                                <rect key="frame" x="16" y="820" width="382" height="42"/>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.87450980389999999" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="mY2-Br-vTL"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="已付款，通知主揪">
+                                    <fontDescription key="titleFontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="paymentConfirmBtnDidTap:" destination="9AQ-4l-DS1" eventType="touchUpInside" id="Xfi-jp-tkV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tAw-pD-wDL"/>
                         <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="gIM-Fe-dqZ" firstAttribute="top" secondItem="yKG-Le-oDs" secondAttribute="bottom" constant="16" id="2zM-4O-4Yx"/>
+                            <constraint firstItem="gIM-Fe-dqZ" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" constant="16" id="5uZ-eX-oPP"/>
+                            <constraint firstItem="tAw-pD-wDL" firstAttribute="trailing" secondItem="gIM-Fe-dqZ" secondAttribute="trailing" constant="16" id="81K-PG-jJb"/>
                             <constraint firstItem="tAw-pD-wDL" firstAttribute="trailing" secondItem="yKG-Le-oDs" secondAttribute="trailing" id="O6n-PC-Ynb"/>
                             <constraint firstItem="yKG-Le-oDs" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" id="RTX-Un-eaF"/>
-                            <constraint firstItem="tAw-pD-wDL" firstAttribute="bottom" secondItem="yKG-Le-oDs" secondAttribute="bottom" id="ene-WS-Yhb"/>
+                            <constraint firstItem="gIM-Fe-dqZ" firstAttribute="bottom" secondItem="tAw-pD-wDL" secondAttribute="bottom" id="Zff-yn-fUY"/>
                             <constraint firstItem="yKG-Le-oDs" firstAttribute="top" secondItem="tAw-pD-wDL" secondAttribute="top" id="tpc-eZ-w7N"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="paymentConfirmBtn" destination="gIM-Fe-dqZ" id="wr4-HN-Rp1"/>
+                        <outlet property="tableView" destination="yKG-Le-oDs" id="jjy-gY-22F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcv-dI-vXX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2107" y="88"/>
+            <point key="canvasLocation" x="2105.7971014492755" y="87.723214285714278"/>
+        </scene>
+        <!--Send Billing Request View Controller-->
+        <scene sceneID="DQ0-dl-yHa">
+            <objects>
+                <viewController storyboardIdentifier="SendBillingRequest" id="nrT-Qj-syF" customClass="SendBillingRequestViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rar-Hk-YQd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Cz8-h3-4zN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iOu-Ow-BsG"/>
+                        <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="iOu-Ow-BsG" firstAttribute="trailing" secondItem="Cz8-h3-4zN" secondAttribute="trailing" id="0Bl-jQ-5tB"/>
+                            <constraint firstItem="Cz8-h3-4zN" firstAttribute="leading" secondItem="iOu-Ow-BsG" secondAttribute="leading" id="FFt-LN-3ja"/>
+                            <constraint firstItem="iOu-Ow-BsG" firstAttribute="bottom" secondItem="Cz8-h3-4zN" secondAttribute="bottom" id="d5c-BD-Ifb"/>
+                            <constraint firstItem="Cz8-h3-4zN" firstAttribute="top" secondItem="iOu-Ow-BsG" secondAttribute="top" id="rPf-q7-wk5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Cz8-h3-4zN" id="IUF-z8-i4K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OyF-1F-IbG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3181" y="88"/>
         </scene>
         <!--Select Group Member View Controller-->
         <scene sceneID="jhd-Ik-8wI">

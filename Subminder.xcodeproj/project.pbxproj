@@ -20,6 +20,13 @@
 		F60E2A41272D24EE0048A85E /* FriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A3F272D24EE0048A85E /* FriendRequestCell.swift */; };
 		F60E2A42272D24EE0048A85E /* FriendRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60E2A40272D24EE0048A85E /* FriendRequestCell.xib */; };
 		F60E2A442730E5A50048A85E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A432730E5A50048A85E /* AuthViewController.swift */; };
+		F60F8172273F9D20006045CA /* SendBillingRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F8171273F9D20006045CA /* SendBillingRequestViewController.swift */; };
+		F60F8175273FB634006045CA /* BillingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F8174273FB634006045CA /* BillingRequest.swift */; };
+		F60F8177273FB7C6006045CA /* BillingRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F8176273FB7C6006045CA /* BillingRequestManager.swift */; };
+		F60F817A273FCF2C006045CA /* PaymentInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F8178273FCF2C006045CA /* PaymentInfoTableViewCell.swift */; };
+		F60F817B273FCF2C006045CA /* PaymentInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60F8179273FCF2C006045CA /* PaymentInfoTableViewCell.xib */; };
+		F60F817D27400BA8006045CA /* BillingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F817C27400BA8006045CA /* BillingHistory.swift */; };
+		F60F817F27401106006045CA /* BillingHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F817E27401106006045CA /* BillingHistoryManager.swift */; };
 		F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C05271D0B0C000A863A /* AppDelegate.swift */; };
 		F66A1C08271D0B0C000A863A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C07271D0B0C000A863A /* SceneDelegate.swift */; };
 		F66A1C0A271D0B0C000A863A /* SUTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C09271D0B0C000A863A /* SUTabBarViewController.swift */; };
@@ -82,8 +89,12 @@
 		F69C0F34273C073D005D2D84 /* Payable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F33273C073C005D2D84 /* Payable.swift */; };
 		F69C0F36273C09B8005D2D84 /* PayableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F35273C09B8005D2D84 /* PayableManager.swift */; };
 		F69C0F38273D1AF7005D2D84 /* GroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F37273D1AF7005D2D84 /* GroupSettingViewController.swift */; };
-		F69C0F3B273D1C3D005D2D84 /* GroupSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F39273D1C3D005D2D84 /* GroupSettingTableViewCell.swift */; };
-		F69C0F3C273D1C3D005D2D84 /* GroupSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C0F3A273D1C3D005D2D84 /* GroupSettingTableViewCell.xib */; };
+		F69C0F3B273D1C3D005D2D84 /* GroupMemberTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F39273D1C3D005D2D84 /* GroupMemberTitleTableViewCell.swift */; };
+		F69C0F3C273D1C3D005D2D84 /* GroupMemberTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C0F3A273D1C3D005D2D84 /* GroupMemberTitleTableViewCell.xib */; };
+		F69C0F3F273E4FB9005D2D84 /* GroupMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F3D273E4FB9005D2D84 /* GroupMemberTableViewCell.swift */; };
+		F69C0F40273E4FB9005D2D84 /* GroupMemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C0F3E273E4FB9005D2D84 /* GroupMemberTableViewCell.xib */; };
+		F69C0F42273E66F2005D2D84 /* MemberHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0F41273E66F2005D2D84 /* MemberHeaderView.swift */; };
+		F69C0F44273E670F005D2D84 /* MemberHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C0F43273E670F005D2D84 /* MemberHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +114,13 @@
 		F60E2A3F272D24EE0048A85E /* FriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestCell.swift; sourceTree = "<group>"; };
 		F60E2A40272D24EE0048A85E /* FriendRequestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendRequestCell.xib; sourceTree = "<group>"; };
 		F60E2A432730E5A50048A85E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		F60F8171273F9D20006045CA /* SendBillingRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendBillingRequestViewController.swift; sourceTree = "<group>"; };
+		F60F8174273FB634006045CA /* BillingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingRequest.swift; sourceTree = "<group>"; };
+		F60F8176273FB7C6006045CA /* BillingRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingRequestManager.swift; sourceTree = "<group>"; };
+		F60F8178273FCF2C006045CA /* PaymentInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInfoTableViewCell.swift; sourceTree = "<group>"; };
+		F60F8179273FCF2C006045CA /* PaymentInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentInfoTableViewCell.xib; sourceTree = "<group>"; };
+		F60F817C27400BA8006045CA /* BillingHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingHistory.swift; sourceTree = "<group>"; };
+		F60F817E27401106006045CA /* BillingHistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingHistoryManager.swift; sourceTree = "<group>"; };
 		F66A1C02271D0B0C000A863A /* Subminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66A1C05271D0B0C000A863A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F66A1C07271D0B0C000A863A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,8 +185,12 @@
 		F69C0F33273C073C005D2D84 /* Payable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payable.swift; sourceTree = "<group>"; };
 		F69C0F35273C09B8005D2D84 /* PayableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayableManager.swift; sourceTree = "<group>"; };
 		F69C0F37273D1AF7005D2D84 /* GroupSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingViewController.swift; sourceTree = "<group>"; };
-		F69C0F39273D1C3D005D2D84 /* GroupSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingTableViewCell.swift; sourceTree = "<group>"; };
-		F69C0F3A273D1C3D005D2D84 /* GroupSettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupSettingTableViewCell.xib; sourceTree = "<group>"; };
+		F69C0F39273D1C3D005D2D84 /* GroupMemberTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberTitleTableViewCell.swift; sourceTree = "<group>"; };
+		F69C0F3A273D1C3D005D2D84 /* GroupMemberTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupMemberTitleTableViewCell.xib; sourceTree = "<group>"; };
+		F69C0F3D273E4FB9005D2D84 /* GroupMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberTableViewCell.swift; sourceTree = "<group>"; };
+		F69C0F3E273E4FB9005D2D84 /* GroupMemberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupMemberTableViewCell.xib; sourceTree = "<group>"; };
+		F69C0F41273E66F2005D2D84 /* MemberHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberHeaderView.swift; sourceTree = "<group>"; };
+		F69C0F43273E670F005D2D84 /* MemberHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,8 +226,14 @@
 				F69C0F0727353408005D2D84 /* GroupInviteCell.xib */,
 				F69C0F0A27358E12005D2D84 /* GroupRemoveCell.swift */,
 				F69C0F0B27358E12005D2D84 /* GroupRemoveCell.xib */,
-				F69C0F39273D1C3D005D2D84 /* GroupSettingTableViewCell.swift */,
-				F69C0F3A273D1C3D005D2D84 /* GroupSettingTableViewCell.xib */,
+				F69C0F39273D1C3D005D2D84 /* GroupMemberTitleTableViewCell.swift */,
+				F69C0F3A273D1C3D005D2D84 /* GroupMemberTitleTableViewCell.xib */,
+				F69C0F3D273E4FB9005D2D84 /* GroupMemberTableViewCell.swift */,
+				F69C0F3E273E4FB9005D2D84 /* GroupMemberTableViewCell.xib */,
+				F69C0F41273E66F2005D2D84 /* MemberHeaderView.swift */,
+				F69C0F43273E670F005D2D84 /* MemberHeaderView.xib */,
+				F60F8178273FCF2C006045CA /* PaymentInfoTableViewCell.swift */,
+				F60F8179273FCF2C006045CA /* PaymentInfoTableViewCell.xib */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -226,6 +254,7 @@
 			children = (
 				F66A1C33271D667B000A863A /* GroupViewController.swift */,
 				F69C0F37273D1AF7005D2D84 /* GroupSettingViewController.swift */,
+				F60F8171273F9D20006045CA /* SendBillingRequestViewController.swift */,
 				F60E2A2D272AAA3B0048A85E /* FriendViewController.swift */,
 				F60E2A32272AE60B0048A85E /* AddFriendViewController.swift */,
 				F60E2A3D272D22520048A85E /* FriendRequestViewController.swift */,
@@ -250,6 +279,17 @@
 				F60E2A432730E5A50048A85E /* AuthViewController.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		F60F8173273FB5F9006045CA /* Billing */ = {
+			isa = PBXGroup;
+			children = (
+				F60F8174273FB634006045CA /* BillingRequest.swift */,
+				F60F8176273FB7C6006045CA /* BillingRequestManager.swift */,
+				F60F817C27400BA8006045CA /* BillingHistory.swift */,
+				F60F817E27401106006045CA /* BillingHistoryManager.swift */,
+			);
+			path = Billing;
 			sourceTree = "<group>";
 		};
 		F66A1BF9271D0B0C000A863A = {
@@ -368,6 +408,7 @@
 				F60E2A38272BEBD30048A85E /* AddToSub */,
 				F60E2A28272A95CC0048A85E /* Group */,
 				F69C0F32273C06F1005D2D84 /* Payable */,
+				F60F8173273FB5F9006045CA /* Billing */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -488,7 +529,7 @@
 				F69C0F0927353408005D2D84 /* GroupInviteCell.xib in Resources */,
 				F66A1C12271D0B10000A863A /* LaunchScreen.storyboard in Resources */,
 				F66A1C0F271D0B10000A863A /* Assets.xcassets in Resources */,
-				F69C0F3C273D1C3D005D2D84 /* GroupSettingTableViewCell.xib in Resources */,
+				F69C0F3C273D1C3D005D2D84 /* GroupMemberTitleTableViewCell.xib in Resources */,
 				F69C0EDF2734E186005D2D84 /* GroupCell.xib in Resources */,
 				F688856D2723D73E00637295 /* AddSubCategoryCell.xib in Resources */,
 				F66A1C45271E75FA000A863A /* AddSubTextCell.xib in Resources */,
@@ -497,14 +538,17 @@
 				F66A1C4D271E9CC2000A863A /* AddSubCell.xib in Resources */,
 				F66A1C25271D5467000A863A /* Setting.storyboard in Resources */,
 				F69C0F0D27358E12005D2D84 /* GroupRemoveCell.xib in Resources */,
+				F69C0F40273E4FB9005D2D84 /* GroupMemberTableViewCell.xib in Resources */,
 				F66A1C55271EC53F000A863A /* AddSubCycleCell.xib in Resources */,
 				F66A1C27271D5478000A863A /* Statistics.storyboard in Resources */,
+				F60F817B273FCF2C006045CA /* PaymentInfoTableViewCell.xib in Resources */,
 				F688858527292F4D00637295 /* AddSubPriceCell.xib in Resources */,
 				F66A1C5D271F18D0000A863A /* AddSubCurrencyCell.xib in Resources */,
 				F66A1C59271F0F0F000A863A /* AddSubDateCell.xib in Resources */,
 				F66A1C0D271D0B0C000A863A /* Main.storyboard in Resources */,
 				F66A1C3D271DB9C6000A863A /* SummaryCell.xib in Resources */,
 				F60E2A26272A8E270048A85E /* ProfileCell.xib in Resources */,
+				F69C0F44273E670F005D2D84 /* MemberHeaderView.xib in Resources */,
 				F66A1C23271D5402000A863A /* Summary.storyboard in Resources */,
 				F66A1C65272004DE000A863A /* GoogleService-Info.plist in Resources */,
 			);
@@ -580,7 +624,9 @@
 				F66A1C58271F0F0F000A863A /* AddSubDateCell.swift in Sources */,
 				F60E2A442730E5A50048A85E /* AuthViewController.swift in Sources */,
 				F69C0F38273D1AF7005D2D84 /* GroupSettingViewController.swift in Sources */,
-				F69C0F3B273D1C3D005D2D84 /* GroupSettingTableViewCell.swift in Sources */,
+				F69C0F42273E66F2005D2D84 /* MemberHeaderView.swift in Sources */,
+				F60F8172273F9D20006045CA /* SendBillingRequestViewController.swift in Sources */,
+				F69C0F3B273D1C3D005D2D84 /* GroupMemberTitleTableViewCell.swift in Sources */,
 				F66A1C6727200D71000A863A /* SubsManager.swift in Sources */,
 				F66A1C34271D667B000A863A /* GroupViewController.swift in Sources */,
 				F66A1C692721AA54000A863A /* UIColor+Extension.swift in Sources */,
@@ -588,6 +634,9 @@
 				F6888573272475BC00637295 /* AddSubReminderCell.swift in Sources */,
 				F66A1C0A271D0B0C000A863A /* SUTabBarViewController.swift in Sources */,
 				F60E2A2E272AAA3B0048A85E /* FriendViewController.swift in Sources */,
+				F60F8177273FB7C6006045CA /* BillingRequestManager.swift in Sources */,
+				F60F817D27400BA8006045CA /* BillingHistory.swift in Sources */,
+				F60F8175273FB634006045CA /* BillingRequest.swift in Sources */,
 				F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */,
 				F60E2A25272A8E270048A85E /* ProfileCell.swift in Sources */,
 				F69C0F0C27358E12005D2D84 /* GroupRemoveCell.swift in Sources */,
@@ -608,14 +657,17 @@
 				F66A1C36271D6ECA000A863A /* AddToSubViewController.swift in Sources */,
 				F66A1C30271D6664000A863A /* StatisticsViewController.swift in Sources */,
 				F66A1C08271D0B0C000A863A /* SceneDelegate.swift in Sources */,
+				F69C0F3F273E4FB9005D2D84 /* GroupMemberTableViewCell.swift in Sources */,
 				F66A1C51271EB8FC000A863A /* SUBaseViewController.swift in Sources */,
 				F60E2A3A272BEC110048A85E /* Request.swift in Sources */,
+				F60F817A273FCF2C006045CA /* PaymentInfoTableViewCell.swift in Sources */,
 				F60E2A33272AE60C0048A85E /* AddFriendViewController.swift in Sources */,
 				F69C0EE32734FDA8005D2D84 /* GroupManager.swift in Sources */,
 				F60E2A3C272BEC200048A85E /* RequestManager.swift in Sources */,
 				F66A1C5C271F18D0000A863A /* AddSubCurrencyCell.swift in Sources */,
 				F688857B2728F5EF00637295 /* String+Extension.swift in Sources */,
 				F66A1C32271D666F000A863A /* SettingViewController.swift in Sources */,
+				F60F817F27401106006045CA /* BillingHistoryManager.swift in Sources */,
 				F66A1C4F271EA171000A863A /* SubSetting.swift in Sources */,
 				F60E2A2C272A98070048A85E /* ProfileManager.swift in Sources */,
 				F66A1C4C271E9CC2000A863A /* AddSubCell.swift in Sources */,

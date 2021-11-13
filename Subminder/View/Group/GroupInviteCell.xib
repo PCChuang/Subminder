@@ -60,11 +60,6 @@
             <point key="canvasLocation" x="139" y="102"/>
         </tableViewCell>
     </objects>
-    <designables>
-        <designable name="b30-tg-acR">
-            <size key="intrinsicContentSize" width="20" height="20"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Icons_36px_Profile_Selected" width="36" height="36"/>
         <systemColor name="systemBackgroundColor">

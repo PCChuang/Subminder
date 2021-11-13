@@ -153,34 +153,12 @@ class GroupViewController: SUBaseViewController {
                     self?.subscriptions.append(subscription)
                 }
                     
-//                    if payable.nextPaymentDate < Date() {
-//
-//                        var cycle: DateComponents?
-//
-//                        cycle = Calendar.current.dateComponents([.year, .month, .day], from: , to: <#T##Date#>)
-//
-//
-//                        PayableManager.shared.update(
-//                            payableID: payable.id,
-//                            groupID: payable.groupID,
-//                            userUID: userUID ?? "",
-//                            nextPaymentDate: <#T##Date#>,
-//                            amount: <#T##Decimal#>
-//                        )
-//                    }
-                    
             case .failure(let error):
                 
                 print("fetchSubscriptions.failure \(error)")
             }
         }
     }
-
-    
-//    func fetchUserOverduePayable(nextPaymentDate: Date) {
-//
-//        PayableManager.shared.fetchOverduePayable(nextPaymentDate: <#T##String#>, completion: <#T##(Result<[Payable], Error>) -> Void#>)
-//    }
     
     private func setupAddGroupBtn() {
 
@@ -305,6 +283,24 @@ extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var selectedGroup: Group?
+        
+        selectedGroup = groupsInfo[indexPath.row]
+        
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "GroupSetting") as? GroupSettingViewController {
+            
+            guard let selectedGroup = selectedGroup else {
+                return
+            }
+            
+            controller.group = selectedGroup
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }
 

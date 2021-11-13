@@ -89,10 +89,19 @@ class SUTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         delegate = self
         self.selectedIndex = 1
         
-        self.tabBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
-        self.tabBar.isTranslucent = false
+//        self.tabBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+//        self.tabBar.isTranslucent = false
         self.tabBar.tintColor = UIColor.hexStringToUIColor(hex: "#F6DF4F")
         self.tabBar.unselectedItemTintColor = .white
+        
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor.hexStringToUIColor(hex: "#94959A")
+            
+            self.tabBar.standardAppearance = appearance
+            self.tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+        }
 
     }
 

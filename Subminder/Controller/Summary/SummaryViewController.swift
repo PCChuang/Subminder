@@ -84,10 +84,16 @@ class SummaryViewController: SUBaseViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             customView: customView
         )
-
-        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
         
-        navigationController?.navigationBar.isTranslucent = false
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+
+//        cnavigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+//
+//        navigationController?.navigationBar.isTranslucent = false
 
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(
