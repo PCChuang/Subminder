@@ -149,4 +149,20 @@ class PayableManager {
             }
         }
     }
+    
+    func updateAmount(payableID: String, amount: Decimal, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("payable").document(payableID)
+        
+        document.updateData(["amount": amount]) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success("Success"))
+            }
+        }
+    }
 }

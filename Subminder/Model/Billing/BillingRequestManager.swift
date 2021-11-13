@@ -59,4 +59,30 @@ class BillingRequestManager {
             }
         }
     }
+    
+    func delete(userUID: String, senderUID: String, groupID: String, completion: @escaping (Result<String, Error>) -> Void) {
+        // swiftlint:disable next line_length
+        db.collection("billingRequests").whereField("hostUID", isEqualTo: userUID).whereField("userUID", isEqualTo: senderUID).whereField("groupID", isEqualTo: groupID).getDocuments() { (querySnapshot, error) in
+
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+
+                for document in querySnapshot!.documents {
+
+                    self.db.collection("billingRequests").document(document.documentID).delete() { error in
+
+                        if let error = error {
+
+                            completion(.failure(error))
+                        } else {
+
+                            completion(.success(document.documentID))
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -78,6 +78,10 @@ class SendBillingRequestViewController: UIViewController {
         }
     }
     
+    var hostPayables: [Payable] = []
+    
+    var payables: [Payable] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -85,6 +89,8 @@ class SendBillingRequestViewController: UIViewController {
             
             fetchRequest()
         }
+        
+        fetchHostPayable()
         
         registerCell()
         
@@ -165,6 +171,11 @@ extension SendBillingRequestViewController: UITableViewDelegate, UITableViewData
                     date: dateString,
                     note: requestsFetched[indexPath.row].note)
                 
+                cell.confirmBtn.tag = indexPath.row
+                cell.confirmBtn.addTarget(self, action: #selector(updatePayableAndRequest), for: .touchUpInside)
+                
+                cell.cancelBtn.tag = indexPath.row
+                cell.cancelBtn.addTarget(self, action: #selector(cancelUserRequest), for: .touchUpInside)
                 
                 return cell
             }
@@ -219,9 +230,67 @@ extension SendBillingRequestViewController: UITableViewDelegate, UITableViewData
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    @objc func updatePayableAndRequest(_ sender: UIButton) {
+
+        // update user's payable
+        PayableManager.shared.updateAmount(payableID: payables[sender.tag].id, amount: payables[sender.tag].amount - requestsFetched[sender.tag].paymentAmount) { result in
+                
+                switch result {
+                    
+                case .success:
+                    
+                    print("updatePayable, success")
+                    
+                case .failure(let error):
+                    
+                    print("updatePayable.failure: \(error)")
+                }
+            }
         
-        return UITableView.automaticDimension
+        // update host's payable
+        guard let hostPayable = hostPayables.first else { return }
+        
+        PayableManager.shared.updateAmount(payableID: hostPayable.id, amount: hostPayable.amount + requestsFetched[sender.tag].paymentAmount) { result in
+            
+            switch result {
+                
+            case .success:
+                
+                print("updatePayable, success")
+                
+            case .failure(let error):
+                
+                print("updatePayable.failure: \(error)")
+            }
+        }
+        
+        // delete billing request
+        closeBillingRequest(userUID: userUID ?? "", senderUID: requestsFetched[sender.tag].userUID)
+        
+        // create billing history
+        billingHistory.paymentAmount = requestsFetched[sender.tag].paymentAmount
+        billingHistory.note = requestsFetched[sender.tag].note
+        billingHistory.paymentDate = requestsFetched[sender.tag].paymentDate
+        billingHistory.userUID = requestsFetched[sender.tag].userUID
+        createHistory(with: &billingHistory)
+        
+        deleteRow(sender: sender)
+    }
+    
+    func deleteRow(sender: UIButton) {
+        
+        let hitPoint = sender.convert(CGPoint.zero, to: tableView)
+        if let indexPath = tableView.indexPathForRow(at: hitPoint) {
+            
+            requestsFetched.remove(at: indexPath.row)
+        }
+    }
+    
+    @objc func cancelUserRequest(_ sender: UIButton) {
+        
+        closeBillingRequest(userUID: userUID ?? "", senderUID: requestsFetched[sender.tag].userUID)
+        
+        deleteRow(sender: sender)
     }
     
     @objc func onPaymentDateChanged(_ sender: UITextField) {
@@ -301,6 +370,9 @@ extension SendBillingRequestViewController {
                     let senderUID = billingRequest.userUID
                     self?.senderUIDs.append(senderUID)
                     self?.fetchSenderInfo(senderUID: senderUID)
+                    self?.fetchUserPayable(userUID: senderUID)
+                    
+                    print("===requestFetched \(self?.requestsFetched)")
                 }
                 
             case .failure(let error):
@@ -331,9 +403,49 @@ extension SendBillingRequestViewController {
         }
     }
     
+    func fetchHostPayable() {
+        
+        PayableManager.shared.fetch(uid: userUID ?? "", groupID: group.id) { [weak self] result in
+            
+            switch result {
+                
+            case .success(let payables):
+                
+                for payable in payables {
+                    
+                    self?.hostPayables.append(payable)
+                    print("===hostPayable \(self?.hostPayables)")
+                }
+                
+            case .failure(let error):
+                
+                print("fetchHostPayable.failure: \(error)")
+            }
+        }
+    }
+    
+    func fetchUserPayable(userUID: String) {
+        
+        PayableManager.shared.fetch(uid: userUID, groupID: group.id) { [weak self] result in
+            
+            switch result {
+                
+            case .success(let payables):
+                
+                for payable in payables {
+                    
+                    self?.payables.append(payable)
+                }
+                
+            case .failure(let error):
+                
+                print("fetchUserPayable.failure: \(error)")
+            }
+        }
+    }
+    
     func createHistory(with billingHistory: inout BillingHistory) {
         
-        billingHistory.userUID = userUID ?? ""
         billingHistory.groupID = group.id
         billingHistory.hostUID = group.hostUID
         
@@ -348,6 +460,23 @@ extension SendBillingRequestViewController {
             case .failure(let error):
                 
                 print("CreateHistory.failure: \(error)")
+            }
+        }
+    }
+    
+    func closeBillingRequest(userUID: String, senderUID: String) {
+        
+        BillingRequestManager.shared.delete(userUID: userUID, senderUID: senderUID, groupID: group.id) { result in
+
+            switch result {
+
+            case .success(let userUID):
+
+                print(userUID)
+
+            case .failure(let error):
+
+                print("closeBillingRequest.failure: \(error)")
             }
         }
     }
