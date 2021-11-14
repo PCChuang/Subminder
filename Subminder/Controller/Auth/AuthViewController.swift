@@ -9,6 +9,7 @@ import UIKit
 import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
+import Lottie
 
 class AuthViewController: SUBaseViewController {
 
@@ -28,8 +29,18 @@ class AuthViewController: SUBaseViewController {
 
     var checkUserResults: [User] = []
 
+    @IBOutlet weak var animationView: AnimationView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        animationView.contentMode = .scaleAspectFit
+        
+        animationView.loopMode = .loop
+        
+        animationView.animationSpeed = 0.5
+        
+        animationView.play()
 
         setupSignInButton()
     }

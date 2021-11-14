@@ -80,14 +80,14 @@ private enum Tab {
 
 class SUTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
-    private let tabs: [Tab] = [.setting, .summary, .statistics, .group]
+    private let tabs: [Tab] = [.summary, .group, .statistics, .setting]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         viewControllers = tabs.map({ $0.controller() })
         delegate = self
-        self.selectedIndex = 1
+        self.selectedIndex = 0
         
 //        self.tabBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
 //        self.tabBar.isTranslucent = false
