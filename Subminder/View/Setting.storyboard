@@ -46,9 +46,25 @@
                     <view key="view" contentMode="scaleToFill" id="OJ2-A7-lkT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_36px_Profile_Normal" translatesAutoresizingMaskIntoConstraints="NO" id="RGH-Qu-GVD">
+                                <rect key="frame" x="147" y="160" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="09F-BA-Ya6"/>
+                                    <constraint firstAttribute="height" constant="120" id="sKC-h4-ANz"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="zAY-Fv-pe9"/>
                         <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="RGH-Qu-GVD" firstAttribute="centerX" secondItem="OJ2-A7-lkT" secondAttribute="centerX" id="Bld-Vq-F6f"/>
+                            <constraint firstItem="RGH-Qu-GVD" firstAttribute="top" secondItem="zAY-Fv-pe9" secondAttribute="top" constant="116" id="yBp-5S-Cr4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="profileImg" destination="RGH-Qu-GVD" id="wUR-BD-0kN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Srs-hj-uNu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,4 +92,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="87.723214285714278"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icons_36px_Profile_Normal" width="36" height="36"/>
+    </resources>
 </document>
