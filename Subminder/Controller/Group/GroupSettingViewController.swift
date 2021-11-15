@@ -130,7 +130,7 @@ extension GroupSettingViewController: UITableViewDataSource, UITableViewDelegate
             
         default:
             
-            return 1
+            return 0
         }
     }
     
@@ -246,7 +246,7 @@ extension GroupSettingViewController {
                 
                 print("fetchMemberInfo success")
                 
-                self?.membersInfo.removeAll()
+//                self?.membersInfo.removeAll()
                 
                 for user in users {
                     

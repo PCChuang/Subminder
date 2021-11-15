@@ -78,6 +78,10 @@ class AddFriendViewController: SUBaseViewController {
         friendNameLbl.isHidden = true
 
         sendRequestBtn.isHidden = true
+        
+        sendRequestBtn.layer.cornerRadius = 10
+        
+        sendRequestBtn.titleLabel?.font = UIFont(name: "PingFang TC Medium", size: 13)
     }
 
     func searchFriend() {

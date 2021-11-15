@@ -27,11 +27,12 @@
 		F60F817B273FCF2C006045CA /* PaymentInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60F8179273FCF2C006045CA /* PaymentInfoTableViewCell.xib */; };
 		F60F817D27400BA8006045CA /* BillingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F817C27400BA8006045CA /* BillingHistory.swift */; };
 		F60F817F27401106006045CA /* BillingHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F817E27401106006045CA /* BillingHistoryManager.swift */; };
-		F60F8181274053E9006045CA /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = F60F8180274053E9006045CA /* welcome.json */; };
 		F60F81842740FA92006045CA /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F81822740FA92006045CA /* SettingCell.swift */; };
 		F60F81852740FA92006045CA /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60F81832740FA92006045CA /* SettingCell.xib */; };
 		F60F81892740FEBD006045CA /* PersonalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F81882740FEBD006045CA /* PersonalSettingViewController.swift */; };
 		F60F818B274116FD006045CA /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F818A274116FD006045CA /* StorageManager.swift */; };
+		F60F818D27415E8D006045CA /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = F60F818C27415E8D006045CA /* welcome.json */; };
+		F60F818F27415F25006045CA /* under-construction.json in Resources */ = {isa = PBXBuildFile; fileRef = F60F818E27415F25006045CA /* under-construction.json */; };
 		F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C05271D0B0C000A863A /* AppDelegate.swift */; };
 		F66A1C08271D0B0C000A863A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C07271D0B0C000A863A /* SceneDelegate.swift */; };
 		F66A1C0A271D0B0C000A863A /* SUTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C09271D0B0C000A863A /* SUTabBarViewController.swift */; };
@@ -126,11 +127,12 @@
 		F60F8179273FCF2C006045CA /* PaymentInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentInfoTableViewCell.xib; sourceTree = "<group>"; };
 		F60F817C27400BA8006045CA /* BillingHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingHistory.swift; sourceTree = "<group>"; };
 		F60F817E27401106006045CA /* BillingHistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingHistoryManager.swift; sourceTree = "<group>"; };
-		F60F8180274053E9006045CA /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		F60F81822740FA92006045CA /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		F60F81832740FA92006045CA /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
 		F60F81882740FEBD006045CA /* PersonalSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSettingViewController.swift; sourceTree = "<group>"; };
 		F60F818A274116FD006045CA /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		F60F818C27415E8D006045CA /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = welcome.json; path = ../../welcome.json; sourceTree = "<group>"; };
+		F60F818E27415F25006045CA /* under-construction.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "under-construction.json"; sourceTree = "<group>"; };
 		F66A1C02271D0B0C000A863A /* Subminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66A1C05271D0B0C000A863A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F66A1C07271D0B0C000A863A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -349,7 +351,8 @@
 				F66A1C1F271D4FD6000A863A /* Controller */,
 				F66A1C20271D4FFB000A863A /* View */,
 				F66A1C0E271D0B10000A863A /* Assets.xcassets */,
-				F60F8180274053E9006045CA /* welcome.json */,
+				F60F818E27415F25006045CA /* under-construction.json */,
+				F60F818C27415E8D006045CA /* welcome.json */,
 				F66A1C13271D0B10000A863A /* Info.plist */,
 				F66A1C64272004DE000A863A /* GoogleService-Info.plist */,
 			);
@@ -560,7 +563,6 @@
 				F69C0F0927353408005D2D84 /* GroupInviteCell.xib in Resources */,
 				F60F81852740FA92006045CA /* SettingCell.xib in Resources */,
 				F66A1C12271D0B10000A863A /* LaunchScreen.storyboard in Resources */,
-				F60F8181274053E9006045CA /* welcome.json in Resources */,
 				F66A1C0F271D0B10000A863A /* Assets.xcassets in Resources */,
 				F69C0F3C273D1C3D005D2D84 /* GroupMemberTitleTableViewCell.xib in Resources */,
 				F69C0EDF2734E186005D2D84 /* GroupCell.xib in Resources */,
@@ -572,6 +574,8 @@
 				F66A1C25271D5467000A863A /* Setting.storyboard in Resources */,
 				F69C0F0D27358E12005D2D84 /* GroupRemoveCell.xib in Resources */,
 				F69C0F40273E4FB9005D2D84 /* GroupMemberTableViewCell.xib in Resources */,
+				F60F818F27415F25006045CA /* under-construction.json in Resources */,
+				F60F818D27415E8D006045CA /* welcome.json in Resources */,
 				F66A1C55271EC53F000A863A /* AddSubCycleCell.xib in Resources */,
 				F66A1C27271D5478000A863A /* Statistics.storyboard in Resources */,
 				F60F817B273FCF2C006045CA /* PaymentInfoTableViewCell.xib in Resources */,

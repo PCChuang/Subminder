@@ -158,7 +158,7 @@ extension SelectGroupMemberViewController: UICollectionViewDataSource, UICollect
 
         guard let removalCell = cell as? GroupRemoveCell else { return cell }
         
-        removalCell.setupCell(friendName: selectedFriends[indexPath.item].name, hideRemovalBtn: false)
+        removalCell.setupCell(friendName: selectedFriends[indexPath.item].name, hideRemovalBtn: true)
 
         return removalCell
     }

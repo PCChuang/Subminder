@@ -33,11 +33,15 @@ class FriendRequestCell: UITableViewCell {
 
     func setupCell(friendName: String) {
 
-        friendImg.image = UIImage(named: "Icons_36px_Profile_Selected")
+        friendImg.layer.cornerRadius = friendImg.frame.width / 2
 
         friendNameLbl.text = friendName
 
+        confirmBtn.layer.cornerRadius = 6
+        
         confirmBtn.titleLabel?.font =  UIFont(name: "PingFang TC", size: 13)
+        deleteBtn.layer.cornerRadius = 6
+        
 
         deleteBtn.titleLabel?.font =  UIFont(name: "PingFang TC", size: 13)
     }

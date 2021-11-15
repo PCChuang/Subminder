@@ -105,7 +105,8 @@ extension FriendRequestViewController: UITableViewDataSource, UITableViewDelegat
     // update friend lists of sender and receiver
     @objc func acceptRequest(_ sender: UIButton) {
 
-        UserManager.shared.addFriend(userID: sendersInfo[sender.tag].id, newFreind: senderUIDs[sender.tag]) { result in
+        // sendersInfo[sender.tag].id
+        UserManager.shared.addFriend(userID: receiversInfo.first?.id ?? "", newFreind: senderUIDs[sender.tag]) { result in
 
             switch result {
 
@@ -180,7 +181,7 @@ extension FriendRequestViewController {
     // fetch received friend request
     func fetchFriendRequest() {
 
-        guard let receiverID = receiversInfo.first?.id else { return }
+        guard let receiverID = userUID else { return }
         RequestManager.shared.fetchRequest(id: receiverID) { [weak self] result in
 
             switch result {

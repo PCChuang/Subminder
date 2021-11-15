@@ -92,17 +92,26 @@ class SUTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 //        self.tabBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
 //        self.tabBar.isTranslucent = false
         self.tabBar.tintColor = UIColor.hexStringToUIColor(hex: "#F6DF4F")
-        self.tabBar.unselectedItemTintColor = .white
-        
+//        self.tabBar.unselectedItemTintColor = .white
+        self.tabBarController?.tabBar.unselectedItemTintColor = .white
+
         if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = UIColor.hexStringToUIColor(hex: "#94959A")
             
+            appearance.compactInlineLayoutAppearance.normal.iconColor = .white
+            appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
+            
+            appearance.inlineLayoutAppearance.normal.iconColor = .white
+            appearance.inlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
+            
+            appearance.stackedLayoutAppearance.normal.iconColor = .white
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
+
             self.tabBar.standardAppearance = appearance
             self.tabBar.scrollEdgeAppearance = tabBar.standardAppearance
         }
-
     }
 
 }

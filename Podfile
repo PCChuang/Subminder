@@ -15,5 +15,6 @@ target 'Subminder' do
   pod 'BEMCheckBox'
   pod 'lottie-ios'
   pod 'Firebase/Storage'
+  pod 'Kingfisher'
 
 end

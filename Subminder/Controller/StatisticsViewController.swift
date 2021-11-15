@@ -6,22 +6,43 @@
 //
 
 import UIKit
+import Lottie
 
 class StatisticsViewController: SUBaseViewController {
 
+    @IBOutlet weak var animationView: AnimationView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupBarItems()
+        
+        animationView.contentMode = .scaleAspectFit
+        
+        animationView.loopMode = .loop
+        
+        animationView.animationSpeed = 0.5
+        
+        animationView.play()
     }
-    /*
-    // MARK: - Navigation
+    
+    private func setupBarItems() {
+        
+        self.navigationItem.title = "統計"
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        navigationController?.navigationBar.tintColor = .white
+        
+        let appearance = UINavigationBarAppearance()
+        
+        appearance.configureWithOpaqueBackground()
+        
+        appearance.backgroundColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
     }
-    */
 
 }

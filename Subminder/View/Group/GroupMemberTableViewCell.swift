@@ -16,6 +16,7 @@ class GroupMemberTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        memberImg.layer.cornerRadius = memberImg.frame.width / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

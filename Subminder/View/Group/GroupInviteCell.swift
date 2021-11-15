@@ -19,6 +19,8 @@ class GroupInviteCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        friendImg.layer.cornerRadius = friendImg.frame.width / 2
+        
         setupCheckBox()
     }
 
@@ -29,8 +31,6 @@ class GroupInviteCell: UITableViewCell {
     }
     
     func setupCell(friendName: String) {
-        
-        friendImg.image = UIImage(named: "Icons_36px_Profile_Selected")
         
         friendNameLbl.text = friendName
     }

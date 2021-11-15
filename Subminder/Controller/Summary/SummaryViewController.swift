@@ -85,10 +85,24 @@ class SummaryViewController: SUBaseViewController {
             customView: customView
         )
         
+//        let appearance = UINavigationBarAppearance()
+//        appearance.configureWithOpaqueBackground()
+//        appearance.backgroundColor = UIColor.hexStringToUIColor(hex: "#94959A")
+//        navigationController?.navigationBar.standardAppearance = appearance
+//        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        
+        navigationController?.navigationBar.tintColor = .white
+        
         let appearance = UINavigationBarAppearance()
+        
         appearance.configureWithOpaqueBackground()
+        
         appearance.backgroundColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
         navigationController?.navigationBar.standardAppearance = appearance
+        
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
 
 //        cnavigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")

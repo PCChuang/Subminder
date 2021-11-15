@@ -33,6 +33,8 @@ class PaymentInfoTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        friendImg.layer.cornerRadius = friendImg.frame.width / 2
+        
         setupLayer()
         
         setupBtn()

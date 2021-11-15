@@ -9,6 +9,8 @@ import UIKit
 
 class NameGroupViewController: SUBaseViewController {
     
+    @IBOutlet weak var groupImg: UIImageView!
+    
     @IBOutlet weak var groupNameTextField: UITextField!
     
     @IBAction func subscriptionName(_ sender: UITextField) {
@@ -67,6 +69,8 @@ class NameGroupViewController: SUBaseViewController {
         super.viewDidLoad()
         
         guard let userUID = KeyChainManager.shared.userUID else { return }
+        
+        groupImg.layer.cornerRadius = groupImg.frame.width / 2
         
         fetchHostInfo(hostUID: userUID)
 

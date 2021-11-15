@@ -1090,7 +1090,7 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                                                                                year: reminderDayComp.year,
                                                                                month: reminderDayComp.month,
                                                                                day: reminderDayComp.day,
-                                                                               hour: 12,
+                                                                               hour: 09,
                                                                                minute: 00))]
         reminderManager.schedule()
     }

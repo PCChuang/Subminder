@@ -25,6 +25,8 @@ class GroupCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        groupImg.layer.cornerRadius = groupImg.frame.width / 2
+        
         payableLbl.layer.masksToBounds = true
         payableLbl.layer.cornerRadius = 6
         payableLbl.textColor = .white
@@ -42,8 +44,6 @@ class GroupCell: UITableViewCell {
     }
     
     func setupCell(subscriptionName: String, groupName: String, numberOfMember: Int) {
-        
-        groupImg.image = UIImage(named: "Icons_36px_Profile_Selected")
         
         subscriptionLbl.text = subscriptionName
         

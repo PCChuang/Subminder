@@ -227,7 +227,7 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                     return
                 }
                 
-                // Mak a request to set user's display name on Firebase
+//                 Mak a request to set user's display name on Firebase
 //                let changeRequest = authDataResult?.user.createProfileChangeRequest()
 //                changeRequest?.displayName = appleIDCredential.fullName?.givenName
 //                changeRequest?.commitChanges(completion: { (error) in
