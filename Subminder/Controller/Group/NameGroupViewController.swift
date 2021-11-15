@@ -9,6 +9,8 @@ import UIKit
 
 class NameGroupViewController: SUBaseViewController {
     
+    @IBOutlet weak var groupImg: UIImageView!
+    
     @IBOutlet weak var groupNameTextField: UITextField!
     
     @IBAction func subscriptionName(_ sender: UITextField) {
@@ -28,7 +30,7 @@ class NameGroupViewController: SUBaseViewController {
         image: "",
         hostUID: "",
         userUIDs: [],
-        subscriptionID: ""
+        subscriptionName: ""
     )
     
     var groupSubscription: Subscription = Subscription(
@@ -48,7 +50,9 @@ class NameGroupViewController: SUBaseViewController {
         reminder: "",
         note: "",
         groupID: "",
-        groupName: ""
+        groupName: "",
+        groupPriceTotal: 0,
+        groupMemberCount: 0
     )
 
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -65,6 +69,8 @@ class NameGroupViewController: SUBaseViewController {
         super.viewDidLoad()
         
         guard let userUID = KeyChainManager.shared.userUID else { return }
+        
+        groupImg.layer.cornerRadius = groupImg.frame.width / 2
         
         fetchHostInfo(hostUID: userUID)
 
@@ -109,7 +115,11 @@ class NameGroupViewController: SUBaseViewController {
         
         self.navigationItem.title = "群組名稱"
 
-        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        navigationController?.navigationBar.isTranslucent = false
+        
+        navigationController?.navigationBar.tintColor = .white
 
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(
@@ -122,21 +132,30 @@ class NameGroupViewController: SUBaseViewController {
     
     @objc func navAddToSub() {
         
-        createGroup()
-        
-        let summaryStoryboard = UIStoryboard(name: "Summary", bundle: nil)
-        
-        if let controller = summaryStoryboard.instantiateViewController(withIdentifier: "AddToSub") as? AddToSubViewController {
+        if groupNameTextField.text == "" {
             
-//            controller.group.id = self.group.id
-//
-//            controller.group.name = self.group.name
+            showAlert(title: "Oops!", message: "請輸入訂閱項目名稱")
+        } else if groupSubscriptionName == "" {
             
-            controller.group = self.group
+            showAlert(title: "Oops!", message: "請輸入群組名稱")
+        } else {
             
-            controller.groupSubscriptionName = self.groupSubscriptionName
-
-            self.navigationController?.pushViewController(controller, animated: true)
+            createGroup()
+            
+            let summaryStoryboard = UIStoryboard(name: "Summary", bundle: nil)
+            
+            if let controller = summaryStoryboard.instantiateViewController(withIdentifier: "AddToSub") as? AddToSubViewController {
+                
+                //            controller.group.id = self.group.id
+                //
+                //            controller.group.name = self.group.name
+                
+                controller.group = self.group
+                
+                controller.groupSubscriptionName = self.groupSubscriptionName
+                
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
         }
     }
 }
@@ -176,6 +195,8 @@ extension NameGroupViewController {
         let hostID = hostsInfo.first?.id ?? ""
         
         group.name = groupNameTextField.text ?? ""
+        
+        group.subscriptionName = groupSubscriptionName ?? ""
         
         // create group collection
         GroupManager.shared.createGroup(group: &group) { result in
@@ -227,5 +248,16 @@ extension NameGroupViewController {
                 print("fetchHostInfo.failure: \(error)")
             }
         }
+    }
+    
+    func showAlert(title: String, message: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "好", style: .default, handler: nil)
+        
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }
