@@ -18,7 +18,10 @@ class GroupInviteCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        friendImg.layer.cornerRadius = friendImg.frame.width / 2
+        
+        setupCheckBox()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,9 +32,14 @@ class GroupInviteCell: UITableViewCell {
     
     func setupCell(friendName: String) {
         
-        friendImg.image = UIImage(named: "Icons_36px_Profile_Selected")
-        
         friendNameLbl.text = friendName
+    }
+    
+    func setupCheckBox() {
+        
+        checkBox.onTintColor = UIColor.hexStringToUIColor(hex: "#F6DF4F")
+        checkBox.onFillColor = UIColor.hexStringToUIColor(hex: "#F6DF4F")
+        checkBox.onCheckColor = UIColor.hexStringToUIColor(hex: "#FFFFFF")
     }
     
 }

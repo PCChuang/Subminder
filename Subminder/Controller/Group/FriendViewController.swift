@@ -57,7 +57,11 @@ class FriendViewController: SUBaseViewController {
 
         self.navigationItem.title = "好友"
 
-        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        navigationController?.navigationBar.isTranslucent = false
+        
+        navigationController?.navigationBar.tintColor = .white
 
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(
@@ -67,7 +71,7 @@ class FriendViewController: SUBaseViewController {
                 action: #selector(navAddFriend)
             ),
             UIBarButtonItem(
-                image: UIImage(systemName: "mail"),
+                image: UIImage(named: "Icons_64px_Invite"),
                 style: .done,
                 target: self,
                 action: #selector(navFriendRequest)

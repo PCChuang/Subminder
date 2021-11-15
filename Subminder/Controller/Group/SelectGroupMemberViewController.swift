@@ -121,7 +121,9 @@ class SelectGroupMemberViewController: SUBaseViewController {
         
         self.navigationItem.title = "邀請好友"
 
-        navigationController?.navigationBar.tintColor = .label
+        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        navigationController?.navigationBar.isTranslucent = false
 
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(
@@ -156,7 +158,7 @@ extension SelectGroupMemberViewController: UICollectionViewDataSource, UICollect
 
         guard let removalCell = cell as? GroupRemoveCell else { return cell }
         
-        removalCell.setupCell(friendName: selectedFriends[indexPath.item].name, hideRemovalBtn: false)
+        removalCell.setupCell(friendName: selectedFriends[indexPath.item].name, hideRemovalBtn: true)
 
         return removalCell
     }

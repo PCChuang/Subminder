@@ -13,5 +13,8 @@ target 'Subminder' do
   pod 'CurrencyTextField'
   pod 'Firebase/Auth'
   pod 'BEMCheckBox'
+  pod 'lottie-ios'
+  pod 'Firebase/Storage'
+  pod 'Kingfisher'
 
 end

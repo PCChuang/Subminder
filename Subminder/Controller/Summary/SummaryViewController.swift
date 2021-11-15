@@ -84,10 +84,30 @@ class SummaryViewController: SUBaseViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             customView: customView
         )
-
-        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
         
-        navigationController?.navigationBar.isTranslucent = false
+//        let appearance = UINavigationBarAppearance()
+//        appearance.configureWithOpaqueBackground()
+//        appearance.backgroundColor = UIColor.hexStringToUIColor(hex: "#94959A")
+//        navigationController?.navigationBar.standardAppearance = appearance
+//        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        
+        navigationController?.navigationBar.tintColor = .white
+        
+        let appearance = UINavigationBarAppearance()
+        
+        appearance.configureWithOpaqueBackground()
+        
+        appearance.backgroundColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+
+//        cnavigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+//
+//        navigationController?.navigationBar.isTranslucent = false
 
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(
@@ -153,6 +173,7 @@ extension SummaryViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.price.text = "NT$ \(subscriptions[indexPath.item].exchangePrice)"
         cell.cycle.text = subscriptions[indexPath.item].cycle
         cell.backgroundColor = UIColor.hexStringToUIColor(hex: subscriptions[indexPath.item].color)
+        cell.layer.cornerRadius = 10
 
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd yyyy"

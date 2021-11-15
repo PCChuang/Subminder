@@ -25,6 +25,8 @@ struct Subscription: Codable {
     var note: String
     var groupID: String
     var groupName: String
+    var groupPriceTotal: Decimal
+    var groupMemberCount: Int
 
     enum CodinKeys: String, CodingKey {
 
@@ -44,6 +46,8 @@ struct Subscription: Codable {
         case note
         case groupID
         case groupName
+        case groupPriceTotal
+        case groupMemberCount
     }
 
     var toDict: [String: Any] {
@@ -64,7 +68,9 @@ struct Subscription: Codable {
             "reminder": reminder as Any,
             "note": note as Any,
             "groupID": groupID as Any,
-            "groupName": groupName as Any
+            "groupName": groupName as Any,
+            "groupPriceTotal": groupPriceTotal as Any,
+            "groupMemberCount": groupMemberCount as Any
         ]
     }
 }

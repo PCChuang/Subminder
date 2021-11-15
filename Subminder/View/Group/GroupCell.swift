@@ -17,9 +17,24 @@ class GroupCell: UITableViewCell {
     
     @IBOutlet weak var memberCountLbl: UILabel!
     
+    @IBOutlet weak var payableLbl: UILabel!
+    
+    @IBOutlet weak var payableAmountLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        groupImg.layer.cornerRadius = groupImg.frame.width / 2
+        
+        payableLbl.layer.masksToBounds = true
+        payableLbl.layer.cornerRadius = 6
+        payableLbl.textColor = .white
+        
+        payableAmountLbl.layer.masksToBounds = true
+        payableAmountLbl.layer.cornerRadius = 6
+        payableAmountLbl.textColor = .white
+        payableAmountLbl.backgroundColor = .gray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,8 +44,6 @@ class GroupCell: UITableViewCell {
     }
     
     func setupCell(subscriptionName: String, groupName: String, numberOfMember: Int) {
-        
-        groupImg.image = UIImage(named: "Icons_36px_Profile_Selected")
         
         subscriptionLbl.text = subscriptionName
         
