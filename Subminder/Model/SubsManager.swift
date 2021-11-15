@@ -43,6 +43,34 @@ class SubsManager {
             }
         }
     }
+    
+    func fetchSubsForPayable(uid: String, groupID: String, completion: @escaping (Result<[Subscription], Error>) -> Void) {
+        
+        db.collection("subscriptions").whereField("userUID", isEqualTo: uid).whereField("groupID", isEqualTo: groupID).getDocuments() { (querySnapshot, error) in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                var subscriptions = [Subscription]()
+                
+                for document in querySnapshot!.documents {
+                    
+                    do {
+                        
+                        if let subscription = try document.data(as: Subscription.self, decoder: Firestore.Decoder()) {
+                            subscriptions.append(subscription)
+                        }
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
+                }
+                completion(.success(subscriptions))
+            }
+        }
+    }
 
     func fetchSubsToEdit(subscriptionID: String, completion: @escaping (Result<[Subscription], Error>) -> Void) {
         
@@ -72,6 +100,35 @@ class SubsManager {
             }
         }
     }
+    
+//    func fetchGroupSubs(completion: @escaping (Result<[Subscription], Error>) -> Void) {
+//        
+//        db.collection("subscriptions").whereField("", isEqualTo: subscriptionID).getDocuments() { (querySnapshot, error) in
+//
+//            if let error = error {
+//
+//                completion(.failure(error))
+//            } else {
+//
+//                var subscriptions = [Subscription]()
+//
+//                for document in querySnapshot!.documents {
+//
+//                    do {
+//                        if let subscription = try document.data(as: Subscription.self, decoder: Firestore.Decoder()) {
+//                            subscriptions.append(subscription)
+//                        }
+//
+//                    } catch {
+//
+//                        completion(.failure(error))
+//                    }
+//                }
+//
+//                completion(.success(subscriptions))
+//            }
+//        }
+//    }
 
     func publishSub(subscription: inout Subscription, completion: @escaping (Result<String, Error>) -> Void) {
 

@@ -80,20 +80,38 @@ private enum Tab {
 
 class SUTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
-    private let tabs: [Tab] = [.setting, .summary, .statistics, .group]
+    private let tabs: [Tab] = [.summary, .group, .statistics, .setting]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         viewControllers = tabs.map({ $0.controller() })
         delegate = self
-        self.selectedIndex = 1
+        self.selectedIndex = 0
         
-        self.tabBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
-        self.tabBar.isTranslucent = false
+//        self.tabBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+//        self.tabBar.isTranslucent = false
         self.tabBar.tintColor = UIColor.hexStringToUIColor(hex: "#F6DF4F")
-        self.tabBar.unselectedItemTintColor = .white
+//        self.tabBar.unselectedItemTintColor = .white
+        self.tabBarController?.tabBar.unselectedItemTintColor = .white
 
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor.hexStringToUIColor(hex: "#94959A")
+            
+            appearance.compactInlineLayoutAppearance.normal.iconColor = .white
+            appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
+            
+            appearance.inlineLayoutAppearance.normal.iconColor = .white
+            appearance.inlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
+            
+            appearance.stackedLayoutAppearance.normal.iconColor = .white
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
+
+            self.tabBar.standardAppearance = appearance
+            self.tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+        }
     }
 
 }

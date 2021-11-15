@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,10 +15,30 @@
                     <view key="view" contentMode="scaleToFill" id="zrK-RN-Stk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HrR-Ej-sps" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="20" y="102" width="374" height="464"/>
+                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HrR-Ej-sps" secondAttribute="height" multiplier="187:232" id="C9m-0B-EmH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="welcome"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="d51-e9-B7d"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="HrR-Ej-sps" firstAttribute="leading" secondItem="d51-e9-B7d" secondAttribute="leading" constant="20" id="eCK-bs-gNZ"/>
+                            <constraint firstItem="HrR-Ej-sps" firstAttribute="top" secondItem="zrK-RN-Stk" secondAttribute="topMargin" constant="14" id="mh5-ck-Q3E"/>
+                            <constraint firstItem="d51-e9-B7d" firstAttribute="trailing" secondItem="HrR-Ej-sps" secondAttribute="trailing" constant="20" id="n5C-XI-nXU"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5pm-qv-BX7"/>
+                    <connections>
+                        <outlet property="animationView" destination="HrR-Ej-sps" id="8h9-Si-AYv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qte-tP-rk5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,9 +80,7 @@
             <point key="canvasLocation" x="-878.26086956521749" y="107.8125"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
+    <designables>
+        <designable name="HrR-Ej-sps"/>
+    </designables>
 </document>

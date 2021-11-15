@@ -17,14 +17,14 @@ class GroupRemoveCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        friendImg.layer.cornerRadius = friendImg.frame.width / 2
 
         removalBtn.setTitle(nil, for: .normal)
         removalBtn.tintColor = .white
     }
     
     func setupCell(friendName: String, hideRemovalBtn: Bool) {
-        
-        friendImg.image = UIImage(named: "Icons_36px_Profile_Selected")
         
         friendNameLbl.text = friendName
         
