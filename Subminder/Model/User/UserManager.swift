@@ -142,13 +142,27 @@ class UserManager {
         }
     }
     
-    func updateProfile(userID: String, name: String, image: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateProfilePicture(userID: String, image: String, completion: @escaping (Result<String, Error>) -> Void) {
         
         let document = db.collection("users").document(userID)
         
-        document.updateData(["name": name,
-                             "image": image
-                            ]) { error in
+        document.updateData([ "image": image]) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success("Success"))
+            }
+        }
+    }
+    
+    func updateProfileName(userID: String, name: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("users").document(userID)
+        
+        document.updateData([ "name": name]) { error in
             
             if let error = error {
                 

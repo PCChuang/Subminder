@@ -227,17 +227,18 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                     return
                 }
                 
-//                 Mak a request to set user's display name on Firebase
-//                let changeRequest = authDataResult?.user.createProfileChangeRequest()
-//                changeRequest?.displayName = appleIDCredential.fullName?.givenName
-//                changeRequest?.commitChanges(completion: { (error) in
-//
-//                    if let error = error {
-//                        print(error.localizedDescription)
-//                    } else {
-//                        print("Updated display name: \(Auth.auth().currentUser!.displayName!)")
-//                    }
-//                })
+//                 Make a request to set user's display name on Firebase
+                let changeRequest = authDataResult?.user.createProfileChangeRequest()
+                changeRequest?.displayName = appleIDCredential.fullName?.givenName
+                changeRequest?.commitChanges(completion: { (error) in
+
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        self.user.name = Auth.auth().currentUser!.displayName ?? ""
+                        print("Updated display name: \(Auth.auth().currentUser!.displayName!)")
+                    }
+                })
             }
         }
     }
