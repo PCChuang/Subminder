@@ -9,6 +9,8 @@ import UIKit
 
 class SelectGroupMemberViewController: SUBaseViewController {
 
+    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var collectionView: UICollectionView! {
         
         didSet {
@@ -53,7 +55,7 @@ class SelectGroupMemberViewController: SUBaseViewController {
             
             collectionView.reloadData()
             
-//            collectionViewVisibility = true
+            changeCollectionViewConstraint()
         }
     }
     
@@ -66,9 +68,7 @@ class SelectGroupMemberViewController: SUBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        collectionView.isHidden = true
-//
-//        tableView.centerYAnchor.constraint(equalTo: tableView.superview!.centerYAnchor).isActive = true
+        changeCollectionViewConstraint()
         
         setupCollectionView()
         
@@ -81,6 +81,28 @@ class SelectGroupMemberViewController: SUBaseViewController {
         super.viewWillAppear(animated)
         
         fetchFriendList(userUID: userUID ?? "")
+    }
+    
+    func changeCollectionViewConstraint() {
+        
+        if selectedFriends.count == 0 {
+            
+            collectionViewHeightConstraint.constant = 0
+            UICollectionView.animate(withDuration: 0.3) {
+                
+                self.collectionView.layoutIfNeeded()
+            }
+        } else if selectedFriends.count == 1 {
+            
+            collectionViewHeightConstraint.constant = 92
+            UICollectionView.animate(withDuration: 0.2) {
+                
+                self.collectionView.layoutIfNeeded()
+            }
+        } else {
+            
+            collectionViewHeightConstraint.constant = 92
+        }
     }
     
     private func setupCollectionView() {
