@@ -199,6 +199,9 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                             
                             self.user.uid = user.uid
                             self.user.email = user.email ?? ""
+                            guard let firstName = appleIDCredential.fullName?.givenName else { return }
+                            guard let lastName = appleIDCredential.fullName?.familyName else { return }
+                            self.user.name = "\(firstName) \(lastName)"
 
                             self.addNewUser(with: &self.user)
                         }
@@ -228,17 +231,17 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                 }
                 
 //                 Make a request to set user's display name on Firebase
-                let changeRequest = authDataResult?.user.createProfileChangeRequest()
-                changeRequest?.displayName = appleIDCredential.fullName?.givenName
-                changeRequest?.commitChanges(completion: { (error) in
-
-                    if let error = error {
-                        print(error.localizedDescription)
-                    } else {
-                        self.user.name = Auth.auth().currentUser!.displayName ?? ""
-                        print("Updated display name: \(Auth.auth().currentUser!.displayName!)")
-                    }
-                })
+//                let changeRequest = authDataResult?.user.createProfileChangeRequest()
+//                changeRequest?.displayName = appleIDCredential.fullName?.givenName
+//                changeRequest?.commitChanges(completion: { (error) in
+//
+//                    if let error = error {
+//                        print(error.localizedDescription)
+//                    } else {
+//                        self.user.name = Auth.auth().currentUser!.displayName ?? ""
+//                        print("Updated display name: \(Auth.auth().currentUser!.displayName!)")
+//                    }
+//                })
             }
         }
     }

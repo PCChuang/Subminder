@@ -51,6 +51,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="copyImg" destination="qai-Qi-2F8" id="fe4-bw-3Jk"/>
                 <outlet property="idLbl" destination="LtM-Cy-2rq" id="TUA-Yp-dO5"/>
                 <outlet property="titleLbl" destination="Yg9-y4-pCQ" id="on0-4K-wyo"/>
             </connections>

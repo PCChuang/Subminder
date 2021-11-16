@@ -90,7 +90,7 @@ class AddFriendViewController: SUBaseViewController {
 
         searchText = text
 
-        UserManager.shared.searchUser(uid: searchText) { [weak self] result in
+        UserManager.shared.searchFriend(id: searchText) { [weak self] result in
 
             switch result {
 
@@ -98,11 +98,12 @@ class AddFriendViewController: SUBaseViewController {
 
                 print("searchFriend success")
 
+                // get info of searched user
                 for user in users {
                     self?.searchResults.append(user)
                 }
                 
-                print(self?.searchResults)
+//                print(self?.searchResults)
 
                 if self?.searchResults.count != 0 {
 
@@ -134,7 +135,9 @@ class AddFriendViewController: SUBaseViewController {
 
     func sendFriendRequest(with request: inout Request) {
 
-        request.to = searchText
+//        request.to = searchText
+        
+        request.to = searchResults.first?.uid ?? ""
 
         request.from = userUID ?? ""
 

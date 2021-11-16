@@ -13,6 +13,8 @@ class ProfileSettingCell: UITableViewCell {
     
     @IBOutlet weak var idLbl: UILabel!
     
+    @IBOutlet weak var copyImg: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

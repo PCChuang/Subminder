@@ -84,7 +84,6 @@ class GroupSettingViewController: UIViewController {
     
     func setupButtons() {
         
-        
         paymentConfirmBtn.layer.cornerRadius = 10
         
         paymentConfirmBtn.titleLabel?.font = UIFont(name: "PingFang TC Medium", size: 16)

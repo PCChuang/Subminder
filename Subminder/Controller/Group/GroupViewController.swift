@@ -12,7 +12,8 @@ class GroupViewController: SUBaseViewController {
     @IBOutlet weak var profileImage: UIImageView!
 
 //    @IBOutlet weak var addGroupBtn: UIButton!
-
+    @IBOutlet weak var nameLbl: UILabel!
+    
     @IBOutlet weak var addGroupImage: UIImageView!
     
     @IBOutlet weak var tableView: UITableView! {
@@ -48,6 +49,8 @@ class GroupViewController: SUBaseViewController {
         didSet {
             
             tableView.reloadData()
+            
+            setupProfileInfoView()
         }
     }
 
@@ -145,6 +148,19 @@ class GroupViewController: SUBaseViewController {
         fetchUserGroupList(userUID: userUID ?? "")
         
         fetchSubscriptions()
+    }
+    
+    func setupProfileInfoView() {
+        
+        guard let user = usersInfo.first else { return }
+        
+        nameLbl.text = user.name
+        
+        if let url = URL(string: user.image),
+           let data = try? Data(contentsOf: url) {
+            
+            self.profileImage.image = UIImage(data: data)
+        }
     }
 
     func setupAddGroupImage() {
@@ -400,6 +416,8 @@ extension GroupViewController {
     
     func fetchUserGroupList(userUID: String) {
         
+        self.groupsInfo.removeAll()
+        
         UserManager.shared.searchUser(uid: userUID) { [weak self] result in
 
             switch result {
@@ -408,7 +426,7 @@ extension GroupViewController {
 
                 print("fetchGroupList success")
                 
-                self?.groupsInfo.removeAll()
+                
                 
                 for user in users {
                     
@@ -424,6 +442,7 @@ extension GroupViewController {
                         self?.fetchPayable(userUID: userUID, groupID: group)
                         
                         self?.groupIDsSet.insert(group)
+                        
                     }
                 }
                 

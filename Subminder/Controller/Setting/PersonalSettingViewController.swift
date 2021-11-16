@@ -212,6 +212,12 @@ extension PersonalSettingViewController: UITableViewDelegate, UITableViewDataSou
             
             cell.idLbl.addGestureRecognizer(gesture)
             
+            cell.copyImg.isUserInteractionEnabled = true
+            
+            let copy = UITapGestureRecognizer(target: self, action: #selector(didTapIDLbl))
+            
+            cell.copyImg.addGestureRecognizer(copy)
+            
             return cell
             
         default:

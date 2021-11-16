@@ -13,7 +13,7 @@ private enum Tab {
 
     case setting
 
-    case statistics
+//    case statistics
 
     case group
 
@@ -25,7 +25,7 @@ private enum Tab {
 
         case .summary: controller = UIStoryboard.summary.instantiateInitialViewController()!
 
-        case .statistics: controller = UIStoryboard.statistics.instantiateInitialViewController()!
+//        case .statistics: controller = UIStoryboard.statistics.instantiateInitialViewController()!
 
         case .setting: controller = UIStoryboard.setting.instantiateInitialViewController()!
 
@@ -52,12 +52,12 @@ private enum Tab {
                 selectedImage: UIImage(named: "Icons_64px_stack")
             )
 
-        case .statistics:
-            return UITabBarItem(
-                title: "統計",
-                image: UIImage(named: "Icons_64px_PieChart"),
-                selectedImage: UIImage(named: "Icons_64px_PieChart")
-            )
+//        case .statistics:
+//            return UITabBarItem(
+//                title: "統計",
+//                image: UIImage(named: "Icons_64px_PieChart"),
+//                selectedImage: UIImage(named: "Icons_64px_PieChart")
+//            )
 
         case .setting:
             return UITabBarItem(
@@ -80,7 +80,9 @@ private enum Tab {
 
 class SUTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
-    private let tabs: [Tab] = [.summary, .group, .statistics, .setting]
+//    private let tabs: [Tab] = [.summary, .group, .statistics, .setting]
+    
+    private let tabs: [Tab] = [.summary, .group, .setting]
 
     override func viewDidLoad() {
         super.viewDidLoad()
