@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import nanopb
 
 class SummaryViewController: SUBaseViewController {
 
