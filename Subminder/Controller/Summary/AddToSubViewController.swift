@@ -101,15 +101,40 @@ class AddToSubViewController: SUBaseViewController {
                         self.payable.startDate = self.subscription.startDate
                         self.payable.cycleAmount = self.subscription.price
                         
-                        self.createNewPayableInBatch(
-                            totalAmount: self.subscription.groupPriceTotal,
-                            amount: self.payable.amount,
-                            nextPaymentDate: self.payable.nextPaymentDate,
-                            userUIDs: self.group.userUIDs,
-                            hostUID: self.userUID ?? "",
-                            startDate: self.payable.startDate,
-                            cycleAmount: self.payable.cycleAmount,
-                            with: &self.payable)
+                        self.group.subscriptionName = self.subscription.name
+                        
+                        // update subscriptionName in groups
+                        GroupManager.shared.updateGroupSubName(groupID: self.group.id, subscriptionName: self.group.subscriptionName) { result in
+                            
+                            switch result {
+                                
+                            case .success:
+                                
+                                print("updateGroup, success")
+                                
+                            case .failure(let error):
+                                
+                                print("updateGroup.failure: \(error)")
+                            }
+                        }
+                        
+                        for userUID in self.group.userUIDs {
+                            
+                            self.fectchAndUpdatePayable(userUID: userUID, groupID: self.group.id)
+                        }
+                        
+                        self.fectchAndUpdatePayable(userUID: self.group.hostUID, groupID: self.group.id)
+                        
+                        
+//                        self.createNewPayableInBatch(
+//                            totalAmount: self.subscription.groupPriceTotal,
+//                            amount: self.payable.amount,
+//                            nextPaymentDate: self.payable.nextPaymentDate,
+//                            userUIDs: self.group.userUIDs,
+//                            hostUID: self.userUID ?? "",
+//                            startDate: self.payable.startDate,
+//                            cycleAmount: self.payable.cycleAmount,
+//                            with: &self.payable)
                     }
                     
                     DispatchQueue.main.async {
@@ -224,6 +249,8 @@ class AddToSubViewController: SUBaseViewController {
         "顏色",
         "備註"
     ]
+    
+    var payables: [Payable] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -303,42 +330,113 @@ class AddToSubViewController: SUBaseViewController {
             }
         }
     }
-
-    func createNewPayableInBatch(
-        totalAmount: Decimal,
-        amount: Decimal,
-        nextPaymentDate: Date,
-        userUIDs: [String],
-        hostUID: String,
-        startDate: Date,
-        cycleAmount: Decimal,
-        with payable: inout Payable
-    ) {
-        payable.groupID = group.id
+    
+    // fetch and update user's payable
+    func fectchAndUpdatePayable(userUID: String, groupID: String) {
         
-        PayableManager.shared.createPayableInBatch(
-            totalAmount: totalAmount,
-            amount: amount,
-            nextPaymentDate: nextPaymentDate,
-            userUIDs: userUIDs,
-            hostUID: hostUID,
-            startDate: startDate,
-            cycleAmount: cycleAmount,
-            payable: &payable
-        ) { result in
+        PayableManager.shared.fetch(uid: userUID, groupID: groupID) { [weak self] result in
             
             switch result {
                 
-            case .success:
+            case .success(let payables):
                 
-                print("createNewPayable, success")
+                print("fetchPayable success")
+                
+                for payable in payables {
+                    
+                    self?.payables.append(payable)
+                    
+                    if userUID == self?.group.hostUID {
+                        
+                        PayableManager.shared.update(
+                            payableID: payable.id,
+                            groupID: payable.groupID,
+                            userUID: userUID,
+                            nextPaymentDate: self?.subscription.dueDate ?? Date(),
+                            startDate: self?.subscription.startDate ?? Date(),
+                            cycleAmount: self?.subscription.groupPriceTotal ?? 0,
+                            amount: -(self?.subscription.groupPriceTotal ?? 0)) { result in
+                                
+                                switch result {
+                                    
+                                case .success:
+                                    
+                                    print("updatePayable, success")
+                                    
+                                case .failure(let error):
+                                    
+                                    print("updatePayable.failure: \(error)")
+                                }
+                            }
+                    } else {
+                        
+                        PayableManager.shared.update(
+                            payableID: payable.id,
+                            groupID: payable.groupID,
+                            userUID: userUID,
+                            nextPaymentDate: self?.subscription.dueDate ?? Date(),
+                            startDate: self?.subscription.startDate ?? Date(),
+                            cycleAmount: self?.subscription.price ?? 0,
+                            amount: -(self?.subscription.price ?? 0)) { result in
+                                
+                                switch result {
+                                    
+                                case .success:
+                                    
+                                    print("updatePayable, success")
+                                    
+                                case .failure(let error):
+                                    
+                                    print("updatePayable.failure: \(error)")
+                                }
+                            }
+                    }
+                }
+                
+                print(self?.payables)
                 
             case .failure(let error):
                 
-                print("createNewPayable.failure: \(error)")
+                print("fetchPayable.failure: \(error)")
             }
         }
     }
+
+//    func createNewPayableInBatch(
+//        totalAmount: Decimal,
+//        amount: Decimal,
+//        nextPaymentDate: Date,
+//        userUIDs: [String],
+//        hostUID: String,
+//        startDate: Date,
+//        cycleAmount: Decimal,
+//        with payable: inout Payable
+//    ) {
+//        payable.groupID = group.id
+//
+//        PayableManager.shared.createPayableInBatch(
+//            totalAmount: totalAmount,
+//            amount: amount,
+//            nextPaymentDate: nextPaymentDate,
+//            userUIDs: userUIDs,
+//            hostUID: hostUID,
+//            startDate: startDate,
+//            cycleAmount: cycleAmount,
+//            payable: &payable
+//        ) { result in
+//
+//            switch result {
+//
+//            case .success:
+//
+//                print("createNewPayable, success")
+//
+//            case .failure(let error):
+//
+//                print("createNewPayable.failure: \(error)")
+//            }
+//        }
+//    }
 
     func save(with subscription: inout Subscription) {
         

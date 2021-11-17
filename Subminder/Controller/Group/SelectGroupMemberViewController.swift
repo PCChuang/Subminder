@@ -8,7 +8,7 @@
 import UIKit
 
 class SelectGroupMemberViewController: SUBaseViewController {
-
+    
     @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -149,7 +149,7 @@ class SelectGroupMemberViewController: SUBaseViewController {
 
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(
-                image: UIImage(named: "Icons_24px_Add01"),
+                title: "下一步",
                 style: .done,
                 target: self,
                 action: #selector(navNameGroupMember)
@@ -204,7 +204,7 @@ extension SelectGroupMemberViewController: UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        friendsInfo.count
+            return friendsInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -236,13 +236,13 @@ extension SelectGroupMemberViewController: UITableViewDataSource, UITableViewDel
         let friend = friendsInfo[indexPath.row]
         
         if selectedIndexPath == indexPath || cell?.checkBox.on == true {
-
+            
             selectedIndexPath = nil
-
+            
             tableView.deselectRow(at: indexPath, animated: false)
-
+            
             cell?.checkBox.on = false
-
+            
             selectedFriends.removeAll { $0.name == "\(friend.name)" }
             
             selectedIndexPathRow.removeAll { $0 == indexPath.row }

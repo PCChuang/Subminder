@@ -111,10 +111,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yKG-Le-oDs">
-                                <rect key="frame" x="0.0" y="44" width="414" height="760"/>
-                                <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIM-Fe-dqZ">
                                 <rect key="frame" x="16" y="820" width="382" height="42"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.87450980389999999" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -130,20 +126,52 @@
                                     <action selector="paymentConfirmBtnDidTap:" destination="9AQ-4l-DS1" eventType="touchUpInside" id="Xfi-jp-tkV"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TDm-To-7U6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="123"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.67843137249999996" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="123" id="FVb-xd-WZR"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pGb-sr-fMY">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dh0-nP-vki">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xqg-3l-wmG">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yKG-Le-oDs">
+                                <rect key="frame" x="0.0" y="167" width="414" height="653"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.67843137249999996" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <sections/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tAw-pD-wDL"/>
                         <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="gIM-Fe-dqZ" firstAttribute="top" secondItem="yKG-Le-oDs" secondAttribute="bottom" constant="16" id="2zM-4O-4Yx"/>
                             <constraint firstItem="gIM-Fe-dqZ" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" constant="16" id="5uZ-eX-oPP"/>
+                            <constraint firstItem="TDm-To-7U6" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" id="6cl-8X-3Xd"/>
                             <constraint firstItem="tAw-pD-wDL" firstAttribute="trailing" secondItem="gIM-Fe-dqZ" secondAttribute="trailing" constant="16" id="81K-PG-jJb"/>
-                            <constraint firstItem="tAw-pD-wDL" firstAttribute="trailing" secondItem="yKG-Le-oDs" secondAttribute="trailing" id="O6n-PC-Ynb"/>
-                            <constraint firstItem="yKG-Le-oDs" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" id="RTX-Un-eaF"/>
+                            <constraint firstItem="yKG-Le-oDs" firstAttribute="top" secondItem="TDm-To-7U6" secondAttribute="bottom" id="9JR-Al-OQr"/>
+                            <constraint firstItem="tAw-pD-wDL" firstAttribute="trailing" secondItem="TDm-To-7U6" secondAttribute="trailing" id="AyQ-td-PcG"/>
+                            <constraint firstItem="TDm-To-7U6" firstAttribute="top" secondItem="tAw-pD-wDL" secondAttribute="top" id="D3k-vD-mam"/>
+                            <constraint firstItem="yKG-Le-oDs" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" id="Hxr-hm-8aP"/>
+                            <constraint firstItem="gIM-Fe-dqZ" firstAttribute="top" secondItem="yKG-Le-oDs" secondAttribute="bottom" id="W6e-rF-hUi"/>
                             <constraint firstItem="gIM-Fe-dqZ" firstAttribute="bottom" secondItem="tAw-pD-wDL" secondAttribute="bottom" id="Zff-yn-fUY"/>
-                            <constraint firstItem="yKG-Le-oDs" firstAttribute="top" secondItem="tAw-pD-wDL" secondAttribute="top" id="tpc-eZ-w7N"/>
+                            <constraint firstItem="yKG-Le-oDs" firstAttribute="trailing" secondItem="tAw-pD-wDL" secondAttribute="trailing" id="g7P-MJ-adI"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="TDm-To-7U6" id="aXL-fr-nQv"/>
                         <outlet property="paymentConfirmBtn" destination="gIM-Fe-dqZ" id="wr4-HN-Rp1"/>
                         <outlet property="tableView" destination="yKG-Le-oDs" id="jjy-gY-22F"/>
                     </connections>
@@ -274,10 +302,10 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="訂閱項目名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gC0-iV-6yZ">
-                                <rect key="frame" x="152" y="87" width="230" height="35"/>
+                                <rect key="frame" x="152" y="87" width="230" height="34"/>
                                 <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="subscriptionName:" destination="obF-NI-2Ae" eventType="editingDidEnd" id="IEd-ga-bv5"/>
@@ -319,10 +347,10 @@
                                 </cells>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入群組名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZEJ-AC-Nxd">
-                                <rect key="frame" x="152" y="130" width="230" height="35"/>
+                                <rect key="frame" x="152" y="129" width="230" height="34"/>
                                 <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -350,6 +378,7 @@
                         <outlet property="collectionView" destination="WIe-Bf-Z5n" id="izZ-yc-H4c"/>
                         <outlet property="groupImg" destination="6Fk-Ao-rSz" id="T4D-q8-9jW"/>
                         <outlet property="groupNameTextField" destination="ZEJ-AC-Nxd" id="1Xp-o5-87z"/>
+                        <outlet property="subscriptionNameTextField" destination="gC0-iV-6yZ" id="OJ2-oH-IGa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NzZ-Jx-J4G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

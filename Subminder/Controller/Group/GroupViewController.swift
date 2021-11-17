@@ -188,29 +188,29 @@ class GroupViewController: SUBaseViewController {
 //        }
 //    }
     
-    func updateUserPayable(groupID: String) {
-            
-        // check payable cycle and amount/cycle
-        SubsManager.shared.fetchSubsForPayable(uid: userUID ?? "", groupID: groupID) { [weak self] result in
-            
-            switch result {
-                
-            case .success(let subscriptions):
-                
-                print("fetchSubscriptions success")
-                
-                self?.subscriptions.removeAll()
-                
-                for subscription in subscriptions {
-                    self?.subscriptions.append(subscription)
-                }
-                    
-            case .failure(let error):
-                
-                print("fetchSubscriptions.failure \(error)")
-            }
-        }
-    }
+//    func updateUserPayable(groupID: String) {
+//
+//        // check payable cycle and amount/cycle
+//        SubsManager.shared.fetchSubsForPayable(uid: userUID ?? "", groupID: groupID) { [weak self] result in
+//
+//            switch result {
+//
+//            case .success(let subscriptions):
+//
+//                print("fetchSubscriptions success")
+//
+//                self?.subscriptions.removeAll()
+//
+//                for subscription in subscriptions {
+//                    self?.subscriptions.append(subscription)
+//                }
+//
+//            case .failure(let error):
+//
+//                print("fetchSubscriptions.failure \(error)")
+//            }
+//        }
+//    }
     
 //    private func setupAddGroupBtn() {
 //
@@ -353,14 +353,14 @@ extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
             numberOfMember: groupsInfo[indexPath.row].userUIDs.count + 1
         )
         
-        if payables.count != 0 {
+        if payableCache.count != 0 {
             
             if payableCache[groupsInfo[indexPath.row].id] ?? 0 < 0 {
                 
                 cell.payableLbl.backgroundColor = UIColor.hexStringToUIColor(hex: "#00896C")
                 cell.payableLbl.text = " 應收 "
                 cell.payableAmountLbl.text = " NT$ \(-(payableCache[groupsInfo[indexPath.row].id] ?? 0)) "
-            } else if payables[indexPath.row].amount == 0 {
+            } else if payableCache[groupsInfo[indexPath.row].id] == 0 {
                 
                 cell.payableLbl.backgroundColor = UIColor.hexStringToUIColor(hex: "#00896C")
                 cell.payableLbl.text = " 結清 "
@@ -426,15 +426,12 @@ extension GroupViewController {
 
                 print("fetchGroupList success")
                 
-                
-                
                 for user in users {
                     
                     self?.usersInfo.append(user)
                     
                     let groups = user.groupList
                     self?.groupsList = groups
-                    print(self?.groupsList)
                     for group in groups {
                         
                         self?.fetchGroupInfo(groupID: group)
@@ -442,7 +439,6 @@ extension GroupViewController {
                         self?.fetchPayable(userUID: userUID, groupID: group)
                         
                         self?.groupIDsSet.insert(group)
-                        
                     }
                 }
                 
@@ -467,6 +463,8 @@ extension GroupViewController {
                     self?.groupsInfo.append(group)
                     print(self?.groupsInfo)
                 }
+                
+                self?.groupsInfo.sort { $0.id > $1.id }
 
             case .failure(let error):
 
@@ -489,6 +487,7 @@ extension GroupViewController {
                         
                         self?.payables.append(payable)
                         
+                        // update user's payable automatically
                         if payable.nextPaymentDate < Date() {
                             
                             var cycle: DateComponents?
