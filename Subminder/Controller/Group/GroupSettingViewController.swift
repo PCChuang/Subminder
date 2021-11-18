@@ -99,6 +99,8 @@ class GroupSettingViewController: UIViewController {
             
             fetchMemberInfo(userUID: userUID)
         }
+        
+        membersInfo.removeAll()
     }
     
     @IBAction func paymentConfirmBtnDidTap(_ sender: UIButton) {
@@ -354,11 +356,7 @@ extension GroupSettingViewController {
                 
             case .success(let users):
                 
-                self?.membersInfo.removeAll()
-                
                 print("fetchMemberInfo success")
-                
-//                self?.membersInfo.removeAll()
                 
                 for user in users {
                     
