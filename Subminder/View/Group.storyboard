@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8e4-87-lgT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8e4-87-lgT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -18,21 +18,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="編號89757" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6c4-Ab-aXf">
-                                <rect key="frame" x="32" y="104" width="74" height="21"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dean.juang" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6c4-Ab-aXf">
+                                <rect key="frame" x="32" y="104" width="104.5" height="28"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Subminder_logo_40" translatesAutoresizingMaskIntoConstraints="NO" id="gQI-Zn-W5Z">
-                                <rect key="frame" x="32" y="141" width="60" height="60"/>
+                                <rect key="frame" x="32" y="148" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Yzp-fN-zBf"/>
                                     <constraint firstAttribute="width" constant="60" id="yuX-8Y-LZP"/>
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bCu-Mn-J4f">
-                                <rect key="frame" x="124" y="141" width="274" height="60"/>
+                                <rect key="frame" x="124" y="148" width="274" height="60"/>
                                 <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lPl-HT-S9e">
                                     <size key="itemSize" width="128" height="128"/>
@@ -52,17 +52,17 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="訂閱群組" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpI-QL-jcK">
-                                <rect key="frame" x="32" y="233" width="60" height="21"/>
+                                <rect key="frame" x="32" y="240" width="60" height="21"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Fpv-b7-Mxp">
-                                <rect key="frame" x="16" y="270" width="382" height="592"/>
+                                <rect key="frame" x="16" y="277" width="382" height="585"/>
                                 <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_24px_Add01" translatesAutoresizingMaskIntoConstraints="NO" id="E16-BA-9gZ">
-                                <rect key="frame" x="357" y="231" width="25" height="25"/>
+                                <rect key="frame" x="357" y="238" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="2Pm-J7-Hw7"/>
                                     <constraint firstAttribute="height" constant="25" id="2je-0I-Bpk"/>
@@ -93,7 +93,6 @@
                     <navigationItem key="navigationItem" id="aLC-qY-J5m"/>
                     <connections>
                         <outlet property="addGroupImage" destination="E16-BA-9gZ" id="Nvr-hY-zy7"/>
-                        <outlet property="nameLbl" destination="6c4-Ab-aXf" id="901-fZ-628"/>
                         <outlet property="profileCollection" destination="bCu-Mn-J4f" id="x61-IY-XGm"/>
                         <outlet property="profileImage" destination="gQI-Zn-W5Z" id="Xct-1e-emx"/>
                         <outlet property="tableView" destination="Fpv-b7-Mxp" id="yaQ-R0-nmO"/>
@@ -111,6 +110,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yKG-Le-oDs">
+                                <rect key="frame" x="0.0" y="44" width="414" height="760"/>
+                                <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIM-Fe-dqZ">
                                 <rect key="frame" x="16" y="820" width="382" height="42"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.87450980389999999" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -126,52 +129,20 @@
                                     <action selector="paymentConfirmBtnDidTap:" destination="9AQ-4l-DS1" eventType="touchUpInside" id="Xfi-jp-tkV"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TDm-To-7U6">
-                                <rect key="frame" x="0.0" y="44" width="414" height="123"/>
-                                <color key="backgroundColor" red="0.68235294120000001" green="0.67843137249999996" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="123" id="FVb-xd-WZR"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pGb-sr-fMY">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dh0-nP-vki">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xqg-3l-wmG">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yKG-Le-oDs">
-                                <rect key="frame" x="0.0" y="167" width="414" height="653"/>
-                                <color key="backgroundColor" red="0.68235294120000001" green="0.67843137249999996" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <sections/>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tAw-pD-wDL"/>
                         <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="gIM-Fe-dqZ" firstAttribute="top" secondItem="yKG-Le-oDs" secondAttribute="bottom" constant="16" id="2zM-4O-4Yx"/>
                             <constraint firstItem="gIM-Fe-dqZ" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" constant="16" id="5uZ-eX-oPP"/>
-                            <constraint firstItem="TDm-To-7U6" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" id="6cl-8X-3Xd"/>
                             <constraint firstItem="tAw-pD-wDL" firstAttribute="trailing" secondItem="gIM-Fe-dqZ" secondAttribute="trailing" constant="16" id="81K-PG-jJb"/>
-                            <constraint firstItem="yKG-Le-oDs" firstAttribute="top" secondItem="TDm-To-7U6" secondAttribute="bottom" id="9JR-Al-OQr"/>
-                            <constraint firstItem="tAw-pD-wDL" firstAttribute="trailing" secondItem="TDm-To-7U6" secondAttribute="trailing" id="AyQ-td-PcG"/>
-                            <constraint firstItem="TDm-To-7U6" firstAttribute="top" secondItem="tAw-pD-wDL" secondAttribute="top" id="D3k-vD-mam"/>
-                            <constraint firstItem="yKG-Le-oDs" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" id="Hxr-hm-8aP"/>
-                            <constraint firstItem="gIM-Fe-dqZ" firstAttribute="top" secondItem="yKG-Le-oDs" secondAttribute="bottom" id="W6e-rF-hUi"/>
+                            <constraint firstItem="tAw-pD-wDL" firstAttribute="trailing" secondItem="yKG-Le-oDs" secondAttribute="trailing" id="O6n-PC-Ynb"/>
+                            <constraint firstItem="yKG-Le-oDs" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" id="RTX-Un-eaF"/>
                             <constraint firstItem="gIM-Fe-dqZ" firstAttribute="bottom" secondItem="tAw-pD-wDL" secondAttribute="bottom" id="Zff-yn-fUY"/>
-                            <constraint firstItem="yKG-Le-oDs" firstAttribute="trailing" secondItem="tAw-pD-wDL" secondAttribute="trailing" id="g7P-MJ-adI"/>
+                            <constraint firstItem="yKG-Le-oDs" firstAttribute="top" secondItem="tAw-pD-wDL" secondAttribute="top" id="tpc-eZ-w7N"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="TDm-To-7U6" id="aXL-fr-nQv"/>
                         <outlet property="paymentConfirmBtn" destination="gIM-Fe-dqZ" id="wr4-HN-Rp1"/>
                         <outlet property="tableView" destination="yKG-Le-oDs" id="jjy-gY-22F"/>
                     </connections>
@@ -218,11 +189,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9w7-uH-0nA">
+                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yva-dj-fIM">
-                                <rect key="frame" x="0.0" y="89" width="414" height="92"/>
+                                <rect key="frame" x="0.0" y="95" width="414" height="92"/>
                                 <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="92" id="ZNr-1B-Tai"/>
+                                    <constraint firstAttribute="height" constant="92" id="2Qm-1w-Zna"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="px6-JD-Ri0">
                                     <size key="itemSize" width="128" height="128"/>
@@ -241,41 +218,34 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請選擇要邀請加入訂閱群組的好友。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46S-Eo-RYf">
-                                <rect key="frame" x="16" y="60" width="382" height="21"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7P7-so-JJR">
-                                <rect key="frame" x="0.0" y="181" width="414" height="681"/>
+                                <rect key="frame" x="0.0" y="187" width="414" height="675"/>
                                 <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IU7-3f-bNt"/>
-                        <color key="backgroundColor" red="0.64722311499999996" green="0.65064883230000004" blue="0.66667133570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Yva-dj-fIM" firstAttribute="trailing" secondItem="IU7-3f-bNt" secondAttribute="trailing" id="4J8-8n-e5N"/>
-                            <constraint firstItem="Yva-dj-fIM" firstAttribute="top" secondItem="46S-Eo-RYf" secondAttribute="bottom" constant="8" symbolic="YES" id="A9s-Gd-j2E"/>
-                            <constraint firstItem="7P7-so-JJR" firstAttribute="trailing" secondItem="IU7-3f-bNt" secondAttribute="trailing" id="IlK-8S-Tky"/>
-                            <constraint firstItem="IU7-3f-bNt" firstAttribute="trailing" secondItem="46S-Eo-RYf" secondAttribute="trailing" constant="16" id="LjE-QH-oIE"/>
-                            <constraint firstItem="7P7-so-JJR" firstAttribute="top" secondItem="Yva-dj-fIM" secondAttribute="bottom" id="PJt-gw-F8F"/>
-                            <constraint firstItem="7P7-so-JJR" firstAttribute="leading" secondItem="IU7-3f-bNt" secondAttribute="leading" id="Qc7-I9-1JS"/>
-                            <constraint firstItem="46S-Eo-RYf" firstAttribute="leading" secondItem="IU7-3f-bNt" secondAttribute="leading" constant="16" id="SRv-3z-Rh4"/>
-                            <constraint firstItem="46S-Eo-RYf" firstAttribute="top" secondItem="IU7-3f-bNt" secondAttribute="top" constant="16" id="Vae-fr-BCM"/>
-                            <constraint firstItem="7P7-so-JJR" firstAttribute="bottom" secondItem="IU7-3f-bNt" secondAttribute="bottom" id="fA5-B6-pBa"/>
-                            <constraint firstItem="Yva-dj-fIM" firstAttribute="leading" secondItem="IU7-3f-bNt" secondAttribute="leading" id="fKI-IC-Gq5"/>
+                            <constraint firstItem="9w7-uH-0nA" firstAttribute="top" secondItem="IU7-3f-bNt" secondAttribute="top" id="DvE-nP-gAc"/>
+                            <constraint firstItem="IU7-3f-bNt" firstAttribute="bottom" secondItem="7P7-so-JJR" secondAttribute="bottom" id="F2G-W8-Hj4"/>
+                            <constraint firstItem="9w7-uH-0nA" firstAttribute="leading" secondItem="IU7-3f-bNt" secondAttribute="leading" id="KVb-HG-BJn"/>
+                            <constraint firstItem="Yva-dj-fIM" firstAttribute="leading" secondItem="IU7-3f-bNt" secondAttribute="leading" id="aOL-ZU-YBQ"/>
+                            <constraint firstItem="Yva-dj-fIM" firstAttribute="top" secondItem="9w7-uH-0nA" secondAttribute="bottom" id="eO1-bE-6Vk"/>
+                            <constraint firstItem="IU7-3f-bNt" firstAttribute="trailing" secondItem="7P7-so-JJR" secondAttribute="trailing" id="iFy-rq-dn6"/>
+                            <constraint firstItem="7P7-so-JJR" firstAttribute="leading" secondItem="IU7-3f-bNt" secondAttribute="leading" id="jQr-F5-DbW"/>
+                            <constraint firstItem="7P7-so-JJR" firstAttribute="top" secondItem="Yva-dj-fIM" secondAttribute="bottom" id="jau-w8-Im8"/>
+                            <constraint firstItem="9w7-uH-0nA" firstAttribute="trailing" secondItem="IU7-3f-bNt" secondAttribute="trailing" id="qS2-YV-z7q"/>
+                            <constraint firstItem="Yva-dj-fIM" firstAttribute="trailing" secondItem="IU7-3f-bNt" secondAttribute="trailing" id="vVu-jz-fEv"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Yva-dj-fIM" id="aU5-HL-27k"/>
-                        <outlet property="collectionViewHeightConstraint" destination="ZNr-1B-Tai" id="Jdc-dP-3Wr"/>
                         <outlet property="tableView" destination="7P7-so-JJR" id="NCv-zb-mi7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Op-ZJ-60A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1039.1304347826087" y="947.54464285714278"/>
+            <point key="canvasLocation" x="1040.5797101449275" y="947.54464285714278"/>
         </scene>
         <!--Name Group View Controller-->
         <scene sceneID="JUo-fS-EAY">
@@ -293,10 +263,10 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="訂閱項目名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gC0-iV-6yZ">
-                                <rect key="frame" x="152" y="87" width="230" height="34"/>
+                                <rect key="frame" x="152" y="87" width="230" height="35"/>
                                 <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="subscriptionName:" destination="obF-NI-2Ae" eventType="editingDidEnd" id="IEd-ga-bv5"/>
@@ -338,10 +308,10 @@
                                 </cells>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入群組名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZEJ-AC-Nxd">
-                                <rect key="frame" x="152" y="129" width="230" height="34"/>
+                                <rect key="frame" x="152" y="130" width="230" height="35"/>
                                 <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -369,7 +339,6 @@
                         <outlet property="collectionView" destination="WIe-Bf-Z5n" id="izZ-yc-H4c"/>
                         <outlet property="groupImg" destination="6Fk-Ao-rSz" id="T4D-q8-9jW"/>
                         <outlet property="groupNameTextField" destination="ZEJ-AC-Nxd" id="1Xp-o5-87z"/>
-                        <outlet property="subscriptionNameTextField" destination="gC0-iV-6yZ" id="OJ2-oH-IGa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NzZ-Jx-J4G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

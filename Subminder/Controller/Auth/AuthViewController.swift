@@ -44,18 +44,6 @@ class AuthViewController: SUBaseViewController {
 
         setupSignInButton()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        // Hide the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        // Show the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-    }
 
     func setupSignInButton() {
 
@@ -211,9 +199,6 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                             
                             self.user.uid = user.uid
                             self.user.email = user.email ?? ""
-                            guard let firstName = appleIDCredential.fullName?.givenName else { return }
-                            guard let lastName = appleIDCredential.fullName?.familyName else { return }
-                            self.user.name = "\(firstName) \(lastName)"
 
                             self.addNewUser(with: &self.user)
                         }
@@ -242,7 +227,7 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                     return
                 }
                 
-//                 Make a request to set user's display name on Firebase
+//                 Mak a request to set user's display name on Firebase
 //                let changeRequest = authDataResult?.user.createProfileChangeRequest()
 //                changeRequest?.displayName = appleIDCredential.fullName?.givenName
 //                changeRequest?.commitChanges(completion: { (error) in
@@ -250,7 +235,6 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
 //                    if let error = error {
 //                        print(error.localizedDescription)
 //                    } else {
-//                        self.user.name = Auth.auth().currentUser!.displayName ?? ""
 //                        print("Updated display name: \(Auth.auth().currentUser!.displayName!)")
 //                    }
 //                })
