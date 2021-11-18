@@ -13,6 +13,10 @@ class NameGroupViewController: SUBaseViewController {
     
     @IBOutlet weak var groupNameTextField: UITextField!
     
+    @IBAction func subscriptionName(_ sender: UITextField) {
+        
+        groupSubscriptionName = sender.text
+    }
     var membersInfo: [User] = []
     
     var hostsInfo: [User] = []
@@ -50,17 +54,6 @@ class NameGroupViewController: SUBaseViewController {
         groupPriceTotal: 0,
         groupMemberCount: 0
     )
-    
-    var payable: Payable = Payable(
-        
-        id: "",
-        groupID: "",
-        userUID: "",
-        amount: 0,
-        nextPaymentDate: Date(),
-        startDate: Date(),
-        cycleAmount: 0
-    )
 
     @IBOutlet weak var collectionView: UICollectionView! {
         
@@ -80,8 +73,6 @@ class NameGroupViewController: SUBaseViewController {
         groupImg.layer.cornerRadius = groupImg.frame.width / 2
         
         fetchHostInfo(hostUID: userUID)
-        
-        setupTextField()
 
         setupCollectionView()
         
@@ -91,13 +82,6 @@ class NameGroupViewController: SUBaseViewController {
     func createGroup() {
         
         self.add(with: &group)
-    }
-    
-    func setupTextField() {
-        
-        groupNameTextField.attributedPlaceholder = NSAttributedString(
-            string: "請輸入群組名稱",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     private func setupCollectionView() {
@@ -151,36 +135,28 @@ class NameGroupViewController: SUBaseViewController {
         if groupNameTextField.text == "" {
             
             showAlert(title: "Oops!", message: "請輸入訂閱項目名稱")
+        } else if groupSubscriptionName == "" {
+            
+            showAlert(title: "Oops!", message: "請輸入群組名稱")
         } else {
             
             createGroup()
             
-            _ = self.navigationController?.popToRootViewController(animated: true)
+            let summaryStoryboard = UIStoryboard(name: "Summary", bundle: nil)
+            
+            if let controller = summaryStoryboard.instantiateViewController(withIdentifier: "AddToSub") as? AddToSubViewController {
+                
+                //            controller.group.id = self.group.id
+                //
+                //            controller.group.name = self.group.name
+                
+                controller.group = self.group
+                
+                controller.groupSubscriptionName = self.groupSubscriptionName
+                
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
         }
-        
-//        if groupNameTextField.text == "" {
-//
-//            showAlert(title: "Oops!", message: "請輸入訂閱項目名稱")
-//        } else if groupSubscriptionName == "" {
-//
-//            showAlert(title: "Oops!", message: "請輸入群組名稱")
-//        } else {
-//
-//            createGroup()
-//
-////            let summaryStoryboard = UIStoryboard(name: "Summary", bundle: nil)
-////
-////            if let controller = summaryStoryboard.instantiateViewController(withIdentifier: "AddToSub") as? AddToSubViewController {
-////
-////                controller.group = self.group
-////
-////                controller.groupSubscriptionName = self.groupSubscriptionName
-////
-////                self.navigationController?.pushViewController(controller, animated: true)
-////            }
-//
-//            _ = self.navigationController?.popToRootViewController(animated: true)
-//        }
     }
 }
 
@@ -220,7 +196,7 @@ extension NameGroupViewController {
         
         group.name = groupNameTextField.text ?? ""
         
-//        group.subscriptionName = groupSubscriptionName ?? ""
+        group.subscriptionName = groupSubscriptionName ?? ""
         
         // create group collection
         GroupManager.shared.createGroup(group: &group) { result in
@@ -237,7 +213,7 @@ extension NameGroupViewController {
             }
         }
         
-        // update groupList of users and host
+        // update groupList users and host
         UserManager.shared.joinGroup(userIDs: userIDs, hostID: hostID, newGroup: group.id) { result in
             
             switch result {
@@ -251,32 +227,6 @@ extension NameGroupViewController {
                 print("joinGroup.failure: \(error)")
             }
         }
-        
-        // create payable for all members
-            payable.groupID = group.id
-            
-            PayableManager.shared.createPayableInBatch(
-                totalAmount: 0,
-                amount: 0,
-                nextPaymentDate: Date(),
-                userUIDs: group.userUIDs,
-                hostUID: group.hostUID,
-                startDate: Date(),
-                cycleAmount: 0,
-                payable: &payable
-            ) { result in
-                
-                switch result {
-                    
-                case .success:
-                    
-                    print("createNewPayable, success")
-                    
-                case .failure(let error):
-                    
-                    print("createNewPayable.failure: \(error)")
-                }
-            }
     }
     
     func fetchHostInfo(hostUID: String) {

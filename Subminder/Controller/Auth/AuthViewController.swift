@@ -29,63 +29,29 @@ class AuthViewController: SUBaseViewController {
 
     var checkUserResults: [User] = []
 
-    @IBOutlet weak var signInBtnView: UIView!
-    
     @IBOutlet weak var animationView: AnimationView!
-    
-    @IBOutlet weak var privacyPolicyTextField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         animationView.contentMode = .scaleAspectFit
-
+        
         animationView.loopMode = .loop
-
+        
         animationView.animationSpeed = 0.5
-
+        
         animationView.play()
 
         setupSignInButton()
-        
-        privacyPolicyTextField.addHyperLinksToText(originalText: "點擊登入代表您同意Subminder 隱私權政策 與 用戶許可協議",
-                                                   hyperLinks: ["隱私權政策": "https://www.privacypolicies.com/live/8c0d2849-6b23-48fd-9aac-bb3c6fd92a3a",
-                                                                "用戶許可協議": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
-                                                               ])
-        
-        privacyPolicyTextField.textColor = .white
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        // Hide the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        // Show the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
     func setupSignInButton() {
 
-        let button = ASAuthorizationAppleIDButton(type: .default, style: .white)
+        let button = ASAuthorizationAppleIDButton()
 
-//        button.center = signInBtnView.center
+        button.center = view.center
 
-        signInBtnView.addSubview(button)
-        
-        signInBtnView.layer.cornerRadius = 15
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: signInBtnView.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: signInBtnView.centerYAnchor),
-            button.widthAnchor.constraint(equalTo: signInBtnView.widthAnchor),
-            button.heightAnchor.constraint(equalTo: signInBtnView.heightAnchor)
-        ])
+        view.addSubview(button)
 
         button.addTarget(self, action: #selector(loginDidTap), for: .touchUpInside)
     }
@@ -233,9 +199,6 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                             
                             self.user.uid = user.uid
                             self.user.email = user.email ?? ""
-                            guard let firstName = appleIDCredential.fullName?.givenName else { return }
-                            guard let lastName = appleIDCredential.fullName?.familyName else { return }
-                            self.user.name = "\(firstName) \(lastName)"
 
                             self.addNewUser(with: &self.user)
                         }
@@ -264,7 +227,7 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
                     return
                 }
                 
-//                 Make a request to set user's display name on Firebase
+//                 Mak a request to set user's display name on Firebase
 //                let changeRequest = authDataResult?.user.createProfileChangeRequest()
 //                changeRequest?.displayName = appleIDCredential.fullName?.givenName
 //                changeRequest?.commitChanges(completion: { (error) in
@@ -272,7 +235,6 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
 //                    if let error = error {
 //                        print(error.localizedDescription)
 //                    } else {
-//                        self.user.name = Auth.auth().currentUser!.displayName ?? ""
 //                        print("Updated display name: \(Auth.auth().currentUser!.displayName!)")
 //                    }
 //                })
@@ -328,26 +290,4 @@ extension AuthViewController: ASAuthorizationControllerPresentationContextProvid
         
         return self.view.window!
     }
-}
-
-extension UITextView {
-
-  func addHyperLinksToText(originalText: String, hyperLinks: [String: String]) {
-    let style = NSMutableParagraphStyle()
-    style.alignment = .left
-    let attributedOriginalText = NSMutableAttributedString(string: originalText)
-    for (hyperLink, urlString) in hyperLinks {
-        let linkRange = attributedOriginalText.mutableString.range(of: hyperLink)
-        let fullRange = NSRange(location: 0, length: attributedOriginalText.length)
-        attributedOriginalText.addAttribute(NSAttributedString.Key.link, value: urlString, range: linkRange)
-        attributedOriginalText.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: fullRange)
-        attributedOriginalText.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "PingFang TC Medium", size: 10), range: fullRange)
-    }
-    
-    self.linkTextAttributes = [
-        NSAttributedString.Key.foregroundColor: UIColor.white,
-        NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-    ]
-    self.attributedText = attributedOriginalText
-  }
 }

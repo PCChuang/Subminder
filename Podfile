@@ -16,6 +16,5 @@ target 'Subminder' do
   pod 'lottie-ios'
   pod 'Firebase/Storage'
   pod 'Kingfisher'
-  pod 'Firebase/Crashlytics'
 
 end

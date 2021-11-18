@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F60447E72744AA8600D5AA32 /* GroupCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60447E52744AA8600D5AA32 /* GroupCardCell.swift */; };
-		F60447E82744AA8600D5AA32 /* GroupCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60447E62744AA8600D5AA32 /* GroupCardCell.xib */; };
-		F60447EB2744ADA500D5AA32 /* GroupCardEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60447E92744ADA400D5AA32 /* GroupCardEmptyCell.swift */; };
-		F60447EC2744ADA500D5AA32 /* GroupCardEmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60447EA2744ADA400D5AA32 /* GroupCardEmptyCell.xib */; };
-		F60447EE2744B06E00D5AA32 /* add.json in Resources */ = {isa = PBXBuildFile; fileRef = F60447ED2744B06E00D5AA32 /* add.json */; };
-		F60447F12744C77F00D5AA32 /* GroupEmptyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60447EF2744C77F00D5AA32 /* GroupEmptyCardCell.swift */; };
-		F60447F22744C77F00D5AA32 /* GroupEmptyCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60447F02744C77F00D5AA32 /* GroupEmptyCardCell.xib */; };
 		F60E2A25272A8E270048A85E /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A23272A8E270048A85E /* ProfileCell.swift */; };
 		F60E2A26272A8E270048A85E /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60E2A24272A8E270048A85E /* ProfileCell.xib */; };
 		F60E2A2A272A95FD0048A85E /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A29272A95FC0048A85E /* ProfileItem.swift */; };
@@ -40,9 +33,6 @@
 		F60F818B274116FD006045CA /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F818A274116FD006045CA /* StorageManager.swift */; };
 		F60F818D27415E8D006045CA /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = F60F818C27415E8D006045CA /* welcome.json */; };
 		F60F818F27415F25006045CA /* under-construction.json in Resources */ = {isa = PBXBuildFile; fileRef = F60F818E27415F25006045CA /* under-construction.json */; };
-		F60F81962742BA26006045CA /* ProfileSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F81942742BA26006045CA /* ProfileSettingCell.swift */; };
-		F60F81972742BA26006045CA /* ProfileSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60F81952742BA26006045CA /* ProfileSettingCell.xib */; };
-		F636CF64274622880010A5F4 /* signup.json in Resources */ = {isa = PBXBuildFile; fileRef = F636CF63274622880010A5F4 /* signup.json */; };
 		F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C05271D0B0C000A863A /* AppDelegate.swift */; };
 		F66A1C08271D0B0C000A863A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C07271D0B0C000A863A /* SceneDelegate.swift */; };
 		F66A1C0A271D0B0C000A863A /* SUTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C09271D0B0C000A863A /* SUTabBarViewController.swift */; };
@@ -117,13 +107,6 @@
 		9157265662BB91A160CA9892 /* Pods_Subminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Subminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		941C0287B03F46ADD04314C0 /* Pods-Subminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Subminder.release.xcconfig"; path = "Target Support Files/Pods-Subminder/Pods-Subminder.release.xcconfig"; sourceTree = "<group>"; };
 		C12ED895C7921079AEEC8C2C /* Pods-Subminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Subminder.debug.xcconfig"; path = "Target Support Files/Pods-Subminder/Pods-Subminder.debug.xcconfig"; sourceTree = "<group>"; };
-		F60447E52744AA8600D5AA32 /* GroupCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCardCell.swift; sourceTree = "<group>"; };
-		F60447E62744AA8600D5AA32 /* GroupCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCardCell.xib; sourceTree = "<group>"; };
-		F60447E92744ADA400D5AA32 /* GroupCardEmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCardEmptyCell.swift; sourceTree = "<group>"; };
-		F60447EA2744ADA400D5AA32 /* GroupCardEmptyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCardEmptyCell.xib; sourceTree = "<group>"; };
-		F60447ED2744B06E00D5AA32 /* add.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = add.json; sourceTree = "<group>"; };
-		F60447EF2744C77F00D5AA32 /* GroupEmptyCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEmptyCardCell.swift; sourceTree = "<group>"; };
-		F60447F02744C77F00D5AA32 /* GroupEmptyCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupEmptyCardCell.xib; sourceTree = "<group>"; };
 		F60E2A23272A8E270048A85E /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		F60E2A24272A8E270048A85E /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		F60E2A29272A95FC0048A85E /* ProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
@@ -150,9 +133,6 @@
 		F60F818A274116FD006045CA /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		F60F818C27415E8D006045CA /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = welcome.json; path = ../../welcome.json; sourceTree = "<group>"; };
 		F60F818E27415F25006045CA /* under-construction.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "under-construction.json"; sourceTree = "<group>"; };
-		F60F81942742BA26006045CA /* ProfileSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingCell.swift; sourceTree = "<group>"; };
-		F60F81952742BA26006045CA /* ProfileSettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingCell.xib; sourceTree = "<group>"; };
-		F636CF63274622880010A5F4 /* signup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signup.json; sourceTree = "<group>"; };
 		F66A1C02271D0B0C000A863A /* Subminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66A1C05271D0B0C000A863A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F66A1C07271D0B0C000A863A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -266,12 +246,6 @@
 				F69C0F43273E670F005D2D84 /* MemberHeaderView.xib */,
 				F60F8178273FCF2C006045CA /* PaymentInfoTableViewCell.swift */,
 				F60F8179273FCF2C006045CA /* PaymentInfoTableViewCell.xib */,
-				F60447E52744AA8600D5AA32 /* GroupCardCell.swift */,
-				F60447E62744AA8600D5AA32 /* GroupCardCell.xib */,
-				F60447E92744ADA400D5AA32 /* GroupCardEmptyCell.swift */,
-				F60447EA2744ADA400D5AA32 /* GroupCardEmptyCell.xib */,
-				F60447EF2744C77F00D5AA32 /* GroupEmptyCardCell.swift */,
-				F60447F02744C77F00D5AA32 /* GroupEmptyCardCell.xib */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -335,8 +309,6 @@
 			children = (
 				F60F81822740FA92006045CA /* SettingCell.swift */,
 				F60F81832740FA92006045CA /* SettingCell.xib */,
-				F60F81942742BA26006045CA /* ProfileSettingCell.swift */,
-				F60F81952742BA26006045CA /* ProfileSettingCell.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -379,8 +351,6 @@
 				F66A1C1F271D4FD6000A863A /* Controller */,
 				F66A1C20271D4FFB000A863A /* View */,
 				F66A1C0E271D0B10000A863A /* Assets.xcassets */,
-				F636CF63274622880010A5F4 /* signup.json */,
-				F60447ED2744B06E00D5AA32 /* add.json */,
 				F60F818E27415F25006045CA /* under-construction.json */,
 				F60F818C27415E8D006045CA /* welcome.json */,
 				F66A1C13271D0B10000A863A /* Info.plist */,
@@ -541,7 +511,6 @@
 				F66A1C00271D0B0C000A863A /* Resources */,
 				F66A1C19271D0E63000A863A /* Run SwiftLint */,
 				B44C399E34E5667140D75C03 /* [CP] Embed Pods Frameworks */,
-				F636CF622745FBB00010A5F4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -592,7 +561,6 @@
 			files = (
 				F6888574272475BC00637295 /* AddSubReminderCell.xib in Resources */,
 				F69C0F0927353408005D2D84 /* GroupInviteCell.xib in Resources */,
-				F60F81972742BA26006045CA /* ProfileSettingCell.xib in Resources */,
 				F60F81852740FA92006045CA /* SettingCell.xib in Resources */,
 				F66A1C12271D0B10000A863A /* LaunchScreen.storyboard in Resources */,
 				F66A1C0F271D0B10000A863A /* Assets.xcassets in Resources */,
@@ -601,7 +569,6 @@
 				F688856D2723D73E00637295 /* AddSubCategoryCell.xib in Resources */,
 				F66A1C45271E75FA000A863A /* AddSubTextCell.xib in Resources */,
 				F66A1C29271D5485000A863A /* Group.storyboard in Resources */,
-				F60447EE2744B06E00D5AA32 /* add.json in Resources */,
 				F60E2A42272D24EE0048A85E /* FriendRequestCell.xib in Resources */,
 				F66A1C4D271E9CC2000A863A /* AddSubCell.xib in Resources */,
 				F66A1C25271D5467000A863A /* Setting.storyboard in Resources */,
@@ -613,16 +580,12 @@
 				F66A1C27271D5478000A863A /* Statistics.storyboard in Resources */,
 				F60F817B273FCF2C006045CA /* PaymentInfoTableViewCell.xib in Resources */,
 				F688858527292F4D00637295 /* AddSubPriceCell.xib in Resources */,
-				F60447F22744C77F00D5AA32 /* GroupEmptyCardCell.xib in Resources */,
 				F66A1C5D271F18D0000A863A /* AddSubCurrencyCell.xib in Resources */,
 				F66A1C59271F0F0F000A863A /* AddSubDateCell.xib in Resources */,
 				F66A1C0D271D0B0C000A863A /* Main.storyboard in Resources */,
-				F636CF64274622880010A5F4 /* signup.json in Resources */,
 				F66A1C3D271DB9C6000A863A /* SummaryCell.xib in Resources */,
-				F60447E82744AA8600D5AA32 /* GroupCardCell.xib in Resources */,
 				F60E2A26272A8E270048A85E /* ProfileCell.xib in Resources */,
 				F69C0F44273E670F005D2D84 /* MemberHeaderView.xib in Resources */,
-				F60447EC2744ADA500D5AA32 /* GroupCardEmptyCell.xib in Resources */,
 				F66A1C23271D5402000A863A /* Summary.storyboard in Resources */,
 				F66A1C65272004DE000A863A /* GoogleService-Info.plist in Resources */,
 			);
@@ -670,25 +633,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F636CF622745FBB00010A5F4 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
-		};
 		F66A1C19271D0E63000A863A /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -729,7 +673,6 @@
 				F66A1C0A271D0B0C000A863A /* SUTabBarViewController.swift in Sources */,
 				F60E2A2E272AAA3B0048A85E /* FriendViewController.swift in Sources */,
 				F60F8177273FB7C6006045CA /* BillingRequestManager.swift in Sources */,
-				F60F81962742BA26006045CA /* ProfileSettingCell.swift in Sources */,
 				F60F817D27400BA8006045CA /* BillingHistory.swift in Sources */,
 				F60F8175273FB634006045CA /* BillingRequest.swift in Sources */,
 				F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */,
@@ -753,7 +696,6 @@
 				F66A1C36271D6ECA000A863A /* AddToSubViewController.swift in Sources */,
 				F66A1C30271D6664000A863A /* StatisticsViewController.swift in Sources */,
 				F66A1C08271D0B0C000A863A /* SceneDelegate.swift in Sources */,
-				F60447E72744AA8600D5AA32 /* GroupCardCell.swift in Sources */,
 				F69C0F3F273E4FB9005D2D84 /* GroupMemberTableViewCell.swift in Sources */,
 				F66A1C51271EB8FC000A863A /* SUBaseViewController.swift in Sources */,
 				F60E2A3A272BEC110048A85E /* Request.swift in Sources */,
@@ -763,12 +705,10 @@
 				F60E2A3C272BEC200048A85E /* RequestManager.swift in Sources */,
 				F66A1C5C271F18D0000A863A /* AddSubCurrencyCell.swift in Sources */,
 				F688857B2728F5EF00637295 /* String+Extension.swift in Sources */,
-				F60447F12744C77F00D5AA32 /* GroupEmptyCardCell.swift in Sources */,
 				F66A1C32271D666F000A863A /* SettingViewController.swift in Sources */,
 				F60F817F27401106006045CA /* BillingHistoryManager.swift in Sources */,
 				F66A1C4F271EA171000A863A /* SubSetting.swift in Sources */,
 				F60E2A2C272A98070048A85E /* ProfileManager.swift in Sources */,
-				F60447EB2744ADA500D5AA32 /* GroupCardEmptyCell.swift in Sources */,
 				F66A1C4C271E9CC2000A863A /* AddSubCell.swift in Sources */,
 				F68885812729261800637295 /* Double+Extension.swift in Sources */,
 				F68885792728551500637295 /* CurrencyManager.swift in Sources */,
@@ -933,17 +873,14 @@
 				CODE_SIGN_ENTITLEMENTS = Subminder/Subminder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2FTGGYY3M4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Subminder/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -970,17 +907,14 @@
 				CODE_SIGN_ENTITLEMENTS = Subminder/Subminder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2FTGGYY3M4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Subminder/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

@@ -1,97 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NkU-RA-Mgy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NkU-RA-Mgy">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Auth View Controller-->
         <scene sceneID="iLc-XB-weI">
             <objects>
-                <viewController storyboardIdentifier="Auth" hidesBottomBarWhenPushed="YES" id="xfx-Sj-May" customClass="AuthViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Auth" id="xfx-Sj-May" customClass="AuthViewController" customModule="Subminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zrK-RN-Stk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNu-JT-0MC">
-                                <rect key="frame" x="32" y="780" width="350" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HrR-Ej-sps" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="20" y="102" width="374" height="464"/>
+                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="j1W-pu-rMV"/>
+                                    <constraint firstAttribute="width" secondItem="HrR-Ej-sps" secondAttribute="height" multiplier="187:232" id="C9m-0B-EmH"/>
                                 </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="哈囉，" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2X-2s-izs">
-                                <rect key="frame" x="32" y="120" width="382" height="35"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歡迎來到Subminder。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMq-eV-U1J">
-                                <rect key="frame" x="32" y="171" width="382" height="35"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登入帳號開始管理你的訂閱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JrM-2P-q25">
-                                <rect key="frame" x="32" y="222" width="382" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="9Bt-X5-FJL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="點擊登入代表您同意Subminder 隱私權政策 與 用戶許可協議" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gPf-FT-skt">
-                                <rect key="frame" x="66" y="738" width="282" height="26"/>
-                                <color key="backgroundColor" red="0.58057713509999997" green="0.58389973640000004" blue="0.60392713549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="C3s-Nv-qVV"/>
-                                    <constraint firstAttribute="width" constant="282" id="tmX-2t-OTf"/>
-                                </constraints>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="10"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1yn-xH-Z4z" customClass="AnimationView" customModule="Lottie">
-                                <rect key="frame" x="32" y="316" width="350" height="350"/>
-                                <color key="backgroundColor" red="0.58057713509999997" green="0.58389973640000004" blue="0.60392713549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="signup"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="welcome"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="d51-e9-B7d"/>
-                        <color key="backgroundColor" red="0.58057713509999997" green="0.58389973640000004" blue="0.60392713549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="d51-e9-B7d" firstAttribute="trailing" secondItem="kMq-eV-U1J" secondAttribute="trailing" symbolic="YES" id="4yc-wm-pei"/>
-                            <constraint firstItem="d51-e9-B7d" firstAttribute="trailing" secondItem="CNu-JT-0MC" secondAttribute="trailing" constant="32" id="5dG-o2-HiH"/>
-                            <constraint firstItem="gPf-FT-skt" firstAttribute="centerX" secondItem="d51-e9-B7d" secondAttribute="centerX" id="70y-T1-IX3"/>
-                            <constraint firstItem="S2X-2s-izs" firstAttribute="leading" secondItem="d51-e9-B7d" secondAttribute="leading" constant="32" id="7C6-7S-siW"/>
-                            <constraint firstItem="d51-e9-B7d" firstAttribute="bottom" secondItem="CNu-JT-0MC" secondAttribute="bottom" constant="32" id="7bB-g6-7CL"/>
-                            <constraint firstItem="d51-e9-B7d" firstAttribute="trailing" secondItem="JrM-2P-q25" secondAttribute="trailing" symbolic="YES" id="DtN-ws-YDP"/>
-                            <constraint firstItem="gPf-FT-skt" firstAttribute="top" secondItem="1yn-xH-Z4z" secondAttribute="bottom" constant="72" id="LyZ-Ww-bwu"/>
-                            <constraint firstItem="d51-e9-B7d" firstAttribute="trailing" secondItem="S2X-2s-izs" secondAttribute="trailing" symbolic="YES" id="QNE-HQ-CZp"/>
-                            <constraint firstItem="kMq-eV-U1J" firstAttribute="top" secondItem="S2X-2s-izs" secondAttribute="bottom" constant="16" id="T6i-Ou-9dr"/>
-                            <constraint firstItem="JrM-2P-q25" firstAttribute="top" secondItem="kMq-eV-U1J" secondAttribute="bottom" constant="16" id="X6d-Sj-tjf"/>
-                            <constraint firstItem="CNu-JT-0MC" firstAttribute="top" secondItem="gPf-FT-skt" secondAttribute="bottom" constant="16" id="YSI-CI-0KI"/>
-                            <constraint firstItem="1yn-xH-Z4z" firstAttribute="top" secondItem="JrM-2P-q25" secondAttribute="bottom" constant="73" id="aPA-li-Typ"/>
-                            <constraint firstItem="S2X-2s-izs" firstAttribute="top" secondItem="zrK-RN-Stk" secondAttribute="topMargin" constant="32" id="cs0-sK-5qz"/>
-                            <constraint firstItem="1yn-xH-Z4z" firstAttribute="leading" secondItem="d51-e9-B7d" secondAttribute="leading" constant="32" id="g6e-af-DHk"/>
-                            <constraint firstItem="kMq-eV-U1J" firstAttribute="leading" secondItem="d51-e9-B7d" secondAttribute="leading" constant="32" id="hZo-Kr-9ZO"/>
-                            <constraint firstItem="CNu-JT-0MC" firstAttribute="leading" secondItem="d51-e9-B7d" secondAttribute="leading" constant="32" id="jvL-Qc-Qk0"/>
-                            <constraint firstItem="JrM-2P-q25" firstAttribute="leading" secondItem="d51-e9-B7d" secondAttribute="leading" constant="32" id="kbx-mv-o3n"/>
-                            <constraint firstItem="d51-e9-B7d" firstAttribute="trailing" secondItem="1yn-xH-Z4z" secondAttribute="trailing" constant="32" id="xoH-Lr-ec1"/>
+                            <constraint firstItem="HrR-Ej-sps" firstAttribute="leading" secondItem="d51-e9-B7d" secondAttribute="leading" constant="20" id="eCK-bs-gNZ"/>
+                            <constraint firstItem="HrR-Ej-sps" firstAttribute="top" secondItem="zrK-RN-Stk" secondAttribute="topMargin" constant="14" id="mh5-ck-Q3E"/>
+                            <constraint firstItem="d51-e9-B7d" firstAttribute="trailing" secondItem="HrR-Ej-sps" secondAttribute="trailing" constant="20" id="n5C-XI-nXU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5pm-qv-BX7"/>
                     <connections>
-                        <outlet property="animationView" destination="1yn-xH-Z4z" id="sQa-d1-Ydt"/>
-                        <outlet property="privacyPolicyTextField" destination="gPf-FT-skt" id="fHf-Ik-2IW"/>
-                        <outlet property="signInBtnView" destination="CNu-JT-0MC" id="8av-CN-dD6"/>
+                        <outlet property="animationView" destination="HrR-Ej-sps" id="8h9-Si-AYv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qte-tP-rk5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -135,11 +81,6 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="1yn-xH-Z4z"/>
+        <designable name="HrR-Ej-sps"/>
     </designables>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

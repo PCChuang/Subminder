@@ -24,9 +24,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cCh-S5-9HZ">
-                        <rect key="frame" x="99" y="10" width="200" height="34"/>
+                        <rect key="frame" x="139" y="10" width="160" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="uGk-Mg-7rE"/>
+                            <constraint firstAttribute="width" constant="160" id="uGk-Mg-7rE"/>
                         </constraints>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
