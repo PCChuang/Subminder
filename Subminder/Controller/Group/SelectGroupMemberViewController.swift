@@ -8,7 +8,9 @@
 import UIKit
 
 class SelectGroupMemberViewController: SUBaseViewController {
-
+    
+    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var collectionView: UICollectionView! {
         
         didSet {
@@ -53,7 +55,7 @@ class SelectGroupMemberViewController: SUBaseViewController {
             
             collectionView.reloadData()
             
-//            collectionViewVisibility = true
+            changeCollectionViewConstraint()
         }
     }
     
@@ -66,9 +68,7 @@ class SelectGroupMemberViewController: SUBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        collectionView.isHidden = true
-//
-//        tableView.centerYAnchor.constraint(equalTo: tableView.superview!.centerYAnchor).isActive = true
+        changeCollectionViewConstraint()
         
         setupCollectionView()
         
@@ -81,6 +81,28 @@ class SelectGroupMemberViewController: SUBaseViewController {
         super.viewWillAppear(animated)
         
         fetchFriendList(userUID: userUID ?? "")
+    }
+    
+    func changeCollectionViewConstraint() {
+        
+        if selectedFriends.count == 0 {
+            
+            collectionViewHeightConstraint.constant = 0
+            UICollectionView.animate(withDuration: 0.3) {
+                
+                self.collectionView.layoutIfNeeded()
+            }
+        } else if selectedFriends.count == 1 {
+            
+            collectionViewHeightConstraint.constant = 92
+            UICollectionView.animate(withDuration: 0.2) {
+                
+                self.collectionView.layoutIfNeeded()
+            }
+        } else {
+            
+            collectionViewHeightConstraint.constant = 92
+        }
     }
     
     private func setupCollectionView() {
@@ -127,7 +149,7 @@ class SelectGroupMemberViewController: SUBaseViewController {
 
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(
-                image: UIImage(named: "Icons_24px_Add01"),
+                title: "下一步",
                 style: .done,
                 target: self,
                 action: #selector(navNameGroupMember)
@@ -182,7 +204,7 @@ extension SelectGroupMemberViewController: UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        friendsInfo.count
+            return friendsInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -214,13 +236,13 @@ extension SelectGroupMemberViewController: UITableViewDataSource, UITableViewDel
         let friend = friendsInfo[indexPath.row]
         
         if selectedIndexPath == indexPath || cell?.checkBox.on == true {
-
+            
             selectedIndexPath = nil
-
+            
             tableView.deselectRow(at: indexPath, animated: false)
-
+            
             cell?.checkBox.on = false
-
+            
             selectedFriends.removeAll { $0.name == "\(friend.name)" }
             
             selectedIndexPathRow.removeAll { $0 == indexPath.row }
