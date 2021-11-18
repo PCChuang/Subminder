@@ -354,6 +354,8 @@ extension GroupSettingViewController {
                 
             case .success(let users):
                 
+                self?.membersInfo.removeAll()
+                
                 print("fetchMemberInfo success")
                 
 //                self?.membersInfo.removeAll()

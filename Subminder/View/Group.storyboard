@@ -218,14 +218,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9w7-uH-0nA">
-                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
-                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="barTintColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yva-dj-fIM">
-                                <rect key="frame" x="0.0" y="132" width="414" height="92"/>
+                                <rect key="frame" x="0.0" y="89" width="414" height="92"/>
                                 <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="ZNr-1B-Tai"/>
@@ -248,13 +242,13 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請選擇要邀請加入訂閱群組的好友。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46S-Eo-RYf">
-                                <rect key="frame" x="16" y="103" width="382" height="21"/>
+                                <rect key="frame" x="16" y="60" width="382" height="21"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7P7-so-JJR">
-                                <rect key="frame" x="0.0" y="224" width="414" height="638"/>
+                                <rect key="frame" x="0.0" y="181" width="414" height="681"/>
                                 <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                         </subviews>
@@ -263,17 +257,14 @@
                         <constraints>
                             <constraint firstItem="Yva-dj-fIM" firstAttribute="trailing" secondItem="IU7-3f-bNt" secondAttribute="trailing" id="4J8-8n-e5N"/>
                             <constraint firstItem="Yva-dj-fIM" firstAttribute="top" secondItem="46S-Eo-RYf" secondAttribute="bottom" constant="8" symbolic="YES" id="A9s-Gd-j2E"/>
-                            <constraint firstItem="9w7-uH-0nA" firstAttribute="top" secondItem="IU7-3f-bNt" secondAttribute="top" id="DvE-nP-gAc"/>
                             <constraint firstItem="7P7-so-JJR" firstAttribute="trailing" secondItem="IU7-3f-bNt" secondAttribute="trailing" id="IlK-8S-Tky"/>
-                            <constraint firstItem="9w7-uH-0nA" firstAttribute="leading" secondItem="IU7-3f-bNt" secondAttribute="leading" id="KVb-HG-BJn"/>
                             <constraint firstItem="IU7-3f-bNt" firstAttribute="trailing" secondItem="46S-Eo-RYf" secondAttribute="trailing" constant="16" id="LjE-QH-oIE"/>
                             <constraint firstItem="7P7-so-JJR" firstAttribute="top" secondItem="Yva-dj-fIM" secondAttribute="bottom" id="PJt-gw-F8F"/>
                             <constraint firstItem="7P7-so-JJR" firstAttribute="leading" secondItem="IU7-3f-bNt" secondAttribute="leading" id="Qc7-I9-1JS"/>
                             <constraint firstItem="46S-Eo-RYf" firstAttribute="leading" secondItem="IU7-3f-bNt" secondAttribute="leading" constant="16" id="SRv-3z-Rh4"/>
+                            <constraint firstItem="46S-Eo-RYf" firstAttribute="top" secondItem="IU7-3f-bNt" secondAttribute="top" constant="16" id="Vae-fr-BCM"/>
                             <constraint firstItem="7P7-so-JJR" firstAttribute="bottom" secondItem="IU7-3f-bNt" secondAttribute="bottom" id="fA5-B6-pBa"/>
                             <constraint firstItem="Yva-dj-fIM" firstAttribute="leading" secondItem="IU7-3f-bNt" secondAttribute="leading" id="fKI-IC-Gq5"/>
-                            <constraint firstItem="46S-Eo-RYf" firstAttribute="top" secondItem="9w7-uH-0nA" secondAttribute="bottom" constant="8" id="gw2-9W-Z1l"/>
-                            <constraint firstItem="9w7-uH-0nA" firstAttribute="trailing" secondItem="IU7-3f-bNt" secondAttribute="trailing" id="qS2-YV-z7q"/>
                         </constraints>
                     </view>
                     <connections>

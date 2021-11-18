@@ -587,19 +587,19 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                 cell.cycleTextField.addTarget(self, action: #selector(onDurationChanged), for: .editingDidEnd)
                 return cell
 
+//            case 6:
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCategoryCell", for: indexPath)
+//                guard let cell = cell as? AddSubCategoryCell else {
+//                    return cell
+//                }
+//                cell.title.text = subSettings[indexPath.row]
+//                cell.category.text = subscriptionsInEdit.first?.category
+//
+//                cell.category.text = category
+//
+//                return cell
+
             case 6:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCategoryCell", for: indexPath)
-                guard let cell = cell as? AddSubCategoryCell else {
-                    return cell
-                }
-                cell.title.text = subSettings[indexPath.row]
-                cell.category.text = subscriptionsInEdit.first?.category
-
-                cell.category.text = category
-
-                return cell
-
-            case 7:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCell", for: indexPath)
                 guard let cell = cell as? AddSubCell else {
                     return cell
@@ -624,7 +624,7 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                 }
                 return cell
                 
-            case 8:
+            case 7:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubReminderCell", for: indexPath)
                 guard let cell = cell as? AddSubReminderCell else {
                     return cell
@@ -637,7 +637,7 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
 
                 return cell
 
-            case 9:
+            case 8:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubTextCell", for: indexPath)
                 guard let cell = cell as? AddSubTextCell else {
                     return cell
@@ -667,11 +667,10 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                 if subscriptionsInEdit.count > 0 {
                     
                     cell.nameTextField.text = subscriptionsInEdit.first?.name
-
-                } else {
-                    
-                    cell.nameTextField.text = groupSubscriptionName
                 }
+                
+                cell.nameTextField.attributedPlaceholder = NSAttributedString(string: "請輸入訂閱項目名稱",
+                                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
                 
                 subscription.name = cell.nameTextField.text ?? ""
                 
@@ -918,12 +917,13 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                 
                 cell.titleLbl.text = groupSubSettings[indexPath.row]
                 
-                cell.nameTextField.placeholder = "輸入備註"
+                cell.nameTextField.attributedPlaceholder = NSAttributedString(string: "請輸入備註",
+                                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
                 
                 if subscriptionsInEdit.count > 0 {
                     
                     cell.nameTextField.text = subscriptionsInEdit.first?.note
-                    subscription.note = cell.nameTextField.text ?? ""
+//                    subscription.note = cell.nameTextField.text ?? ""
                 }
                 
                 cell.nameTextField.addTarget(self, action: #selector(onNoteChanged), for: .editingDidEnd)
@@ -943,7 +943,8 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                     return cell
                 }
                 cell.titleLbl.text = subSettings[indexPath.row]
-                cell.nameTextField.placeholder = "輸入名稱"
+                cell.nameTextField.attributedPlaceholder = NSAttributedString(string: "請輸入訂閱項目名稱",
+                                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
                 cell.nameTextField.addTarget(self, action: #selector(onNameChanged), for: .editingDidEnd)
                 return cell
                 
@@ -1000,18 +1001,18 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                 cell.cycleTextField.addTarget(self, action: #selector(onDurationChanged), for: .editingDidEnd)
                 return cell
                 
+//            case 6:
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCategoryCell", for: indexPath)
+//                guard let cell = cell as? AddSubCategoryCell else {
+//                    return cell
+//                }
+//                cell.title.text = subSettings[indexPath.row]
+//
+//                cell.category.text = category
+//
+//                return cell
+                
             case 6:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCategoryCell", for: indexPath)
-                guard let cell = cell as? AddSubCategoryCell else {
-                    return cell
-                }
-                cell.title.text = subSettings[indexPath.row]
-                
-                cell.category.text = category
-                
-                return cell
-                
-            case 7:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubCell", for: indexPath)
                 guard let cell = cell as? AddSubCell else {
                     return cell
@@ -1024,7 +1025,7 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                 subscription.color = subColorHex ?? ""
                 return cell
                 
-            case 8:
+            case 7:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubReminderCell", for: indexPath)
                 guard let cell = cell as? AddSubReminderCell else {
                     return cell
@@ -1035,13 +1036,14 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
                 
                 return cell
                 
-            case 9:
+            case 8:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddSubTextCell", for: indexPath)
                 guard let cell = cell as? AddSubTextCell else {
                     return cell
                 }
                 cell.titleLbl.text = subSettings[indexPath.row]
-                cell.nameTextField.placeholder = "輸入備註"
+                cell.nameTextField.attributedPlaceholder = NSAttributedString(string: "請輸入備註",
+                                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
                 cell.nameTextField.addTarget(self, action: #selector(onNoteChanged), for: .editingDidEnd)
                 return cell
                 
@@ -1074,13 +1076,13 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
             
             switch indexPath.row {
                 
-            case 6:
-                if let controller = storyboard?.instantiateViewController(identifier: "Category") as? CategoryViewController {
-                    self.navigationController?.pushViewController(controller, animated: true)
-                    controller.delegate = self
-                }
+//            case 6:
+//                if let controller = storyboard?.instantiateViewController(identifier: "Category") as? CategoryViewController {
+//                    self.navigationController?.pushViewController(controller, animated: true)
+//                    controller.delegate = self
+//                }
                 
-            case 7:
+            case 6:
                 
                 let colorPicker = UIColorPickerViewController()
                 

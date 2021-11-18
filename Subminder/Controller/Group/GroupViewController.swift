@@ -48,6 +48,8 @@ class GroupViewController: SUBaseViewController {
         
         didSet {
             
+            groupsInfo.sort { $0.id > $1.id }
+            
             tableView.reloadData()
             
             setupProfileInfoView()
@@ -293,6 +295,8 @@ extension GroupViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         profileCell.totalLbl.textAlignment = .center
         
+        profileCell.itemLbl.textAlignment = .center
+        
         switch indexPath.item {
             
         case 0:
@@ -347,11 +351,21 @@ extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
         
-        cell.setupCell(
-            subscriptionName: groupsInfo[indexPath.row].subscriptionName,
-            groupName: groupsInfo[indexPath.row].name,
-            numberOfMember: groupsInfo[indexPath.row].userUIDs.count + 1
-        )
+        if groupsInfo[indexPath.row].subscriptionName == "" {
+            
+            cell.setupCell(
+                subscriptionName: "待新增",
+                groupName: groupsInfo[indexPath.row].name,
+                numberOfMember: groupsInfo[indexPath.row].userUIDs.count + 1
+            )
+        } else {
+            
+            cell.setupCell(
+                subscriptionName: groupsInfo[indexPath.row].subscriptionName,
+                groupName: groupsInfo[indexPath.row].name,
+                numberOfMember: groupsInfo[indexPath.row].userUIDs.count + 1
+            )
+        }
         
         if payableCache.count != 0 {
             
@@ -364,6 +378,7 @@ extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
                 
                 cell.payableLbl.backgroundColor = UIColor.hexStringToUIColor(hex: "#00896C")
                 cell.payableLbl.text = " 結清 "
+                cell.payableAmountLbl.text = ""
             } else {
                 
                 cell.payableLbl.backgroundColor = UIColor.hexStringToUIColor(hex: "#FFC408")
@@ -464,7 +479,7 @@ extension GroupViewController {
                     print(self?.groupsInfo)
                 }
                 
-                self?.groupsInfo.sort { $0.id > $1.id }
+//                self?.groupsInfo.sort { $0.id > $1.id }
 
             case .failure(let error):
 

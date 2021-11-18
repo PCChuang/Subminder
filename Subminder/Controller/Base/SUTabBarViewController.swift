@@ -91,10 +91,12 @@ class SUTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         delegate = self
         self.selectedIndex = 0
         
-//        self.tabBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
-//        self.tabBar.isTranslucent = false
+        // iOS 13
+        self.tabBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
+        self.tabBar.isTranslucent = false
+        self.tabBar.unselectedItemTintColor = .white
+        
         self.tabBar.tintColor = UIColor.hexStringToUIColor(hex: "#F6DF4F")
-//        self.tabBar.unselectedItemTintColor = .white
         self.tabBarController?.tabBar.unselectedItemTintColor = .white
 
         if #available(iOS 15.0, *) {
