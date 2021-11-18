@@ -79,6 +79,15 @@ class AddToSubViewController: SUBaseViewController {
                 controller.addAction(okAction)
                 
                 present(controller, animated: true, completion: nil)
+            } else if subscription.cycle == "" {
+                
+                let controller = UIAlertController(title: "Oops!", message: "請輸入付款週期", preferredStyle: .alert)
+                
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                
+                controller.addAction(okAction)
+                
+                present(controller, animated: true, completion: nil)
             } else {
                 
                 // call currency API when clicking publish
@@ -355,7 +364,7 @@ class AddToSubViewController: SUBaseViewController {
                             nextPaymentDate: self?.subscription.dueDate ?? Date(),
                             startDate: self?.subscription.startDate ?? Date(),
                             cycleAmount: self?.subscription.groupPriceTotal ?? 0,
-                            amount: -(self?.subscription.groupPriceTotal ?? 0)) { result in
+                            amount: -(self?.subscription.groupPriceTotal ?? 0) + (self?.subscription.price ?? 0)) { result in
                                 
                                 switch result {
                                     
@@ -377,7 +386,7 @@ class AddToSubViewController: SUBaseViewController {
                             nextPaymentDate: self?.subscription.dueDate ?? Date(),
                             startDate: self?.subscription.startDate ?? Date(),
                             cycleAmount: self?.subscription.price ?? 0,
-                            amount: -(self?.subscription.price ?? 0)) { result in
+                            amount: self?.subscription.price ?? 0) { result in
                                 
                                 switch result {
                                     
