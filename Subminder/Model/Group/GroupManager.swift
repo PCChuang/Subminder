@@ -61,4 +61,20 @@ class GroupManager {
             }
         }
     }
+    
+    func updateGroupSubName(groupID: String, subscriptionName: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("groups").document(groupID)
+        
+        document.updateData(["subscriptionName": subscriptionName]) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success("Success"))
+            }
+        }
+    }
 }

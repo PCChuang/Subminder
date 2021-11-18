@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GroupEmptyCardCell" id="gTV-IL-0wX" customClass="GroupEmptyCardCell" customModule="Subminder" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="群組訂閱內容尚未新增，主揪快點擊新增吧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AC-eN-huw">
+                        <rect key="frame" x="17.5" y="16" width="285" height="21"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UdW-7y-kPu" customClass="AnimationView" customModule="Lottie">
+                        <rect key="frame" x="145" y="45" width="30" height="30"/>
+                        <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="Kat-gn-M24"/>
+                            <constraint firstAttribute="height" constant="30" id="LQU-hC-0NC"/>
+                            <constraint firstAttribute="width" constant="30" id="lSy-QP-lfe"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="lu9-vN-b2f"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="add"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="UdW-7y-kPu" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="MvO-rT-nnb"/>
+                <constraint firstItem="9AC-eN-huw" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Yfd-2d-WWZ"/>
+                <constraint firstItem="UdW-7y-kPu" firstAttribute="top" secondItem="9AC-eN-huw" secondAttribute="bottom" constant="8" symbolic="YES" id="jLs-iq-XjF"/>
+                <constraint firstItem="9AC-eN-huw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="zHr-Ck-8MZ"/>
+            </constraints>
+            <connections>
+                <outlet property="animationView" destination="UdW-7y-kPu" id="kWf-AY-SVi"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="105.46875"/>
+        </collectionViewCell>
+    </objects>
+    <designables>
+        <designable name="UdW-7y-kPu"/>
+    </designables>
+</document>
