@@ -29,20 +29,31 @@ class AuthViewController: SUBaseViewController {
 
     var checkUserResults: [User] = []
 
+    @IBOutlet weak var signInBtnView: UIView!
+    
     @IBOutlet weak var animationView: AnimationView!
+    
+    @IBOutlet weak var privacyPolicyTextField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         animationView.contentMode = .scaleAspectFit
-        
+
         animationView.loopMode = .loop
-        
+
         animationView.animationSpeed = 0.5
-        
+
         animationView.play()
 
         setupSignInButton()
+        
+        privacyPolicyTextField.addHyperLinksToText(originalText: "點擊登入代表您同意Subminder 隱私權政策 與 用戶許可協議",
+                                                   hyperLinks: ["隱私權政策": "https://www.privacypolicies.com/live/8c0d2849-6b23-48fd-9aac-bb3c6fd92a3a",
+                                                                "用戶許可協議": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+                                                               ])
+        
+        privacyPolicyTextField.textColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,11 +70,22 @@ class AuthViewController: SUBaseViewController {
 
     func setupSignInButton() {
 
-        let button = ASAuthorizationAppleIDButton()
+        let button = ASAuthorizationAppleIDButton(type: .default, style: .white)
 
-        button.center = view.center
+//        button.center = signInBtnView.center
 
-        view.addSubview(button)
+        signInBtnView.addSubview(button)
+        
+        signInBtnView.layer.cornerRadius = 15
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            button.centerXAnchor.constraint(equalTo: signInBtnView.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: signInBtnView.centerYAnchor),
+            button.widthAnchor.constraint(equalTo: signInBtnView.widthAnchor),
+            button.heightAnchor.constraint(equalTo: signInBtnView.heightAnchor)
+        ])
 
         button.addTarget(self, action: #selector(loginDidTap), for: .touchUpInside)
     }
@@ -306,4 +328,26 @@ extension AuthViewController: ASAuthorizationControllerPresentationContextProvid
         
         return self.view.window!
     }
+}
+
+extension UITextView {
+
+  func addHyperLinksToText(originalText: String, hyperLinks: [String: String]) {
+    let style = NSMutableParagraphStyle()
+    style.alignment = .left
+    let attributedOriginalText = NSMutableAttributedString(string: originalText)
+    for (hyperLink, urlString) in hyperLinks {
+        let linkRange = attributedOriginalText.mutableString.range(of: hyperLink)
+        let fullRange = NSRange(location: 0, length: attributedOriginalText.length)
+        attributedOriginalText.addAttribute(NSAttributedString.Key.link, value: urlString, range: linkRange)
+        attributedOriginalText.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: fullRange)
+        attributedOriginalText.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "PingFang TC Medium", size: 10), range: fullRange)
+    }
+    
+    self.linkTextAttributes = [
+        NSAttributedString.Key.foregroundColor: UIColor.white,
+        NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+    ]
+    self.attributedText = attributedOriginalText
+  }
 }

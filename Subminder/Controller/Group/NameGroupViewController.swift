@@ -13,12 +13,6 @@ class NameGroupViewController: SUBaseViewController {
     
     @IBOutlet weak var groupNameTextField: UITextField!
     
-    @IBOutlet weak var subscriptionNameTextField: UITextField!
-    
-    @IBAction func subscriptionName(_ sender: UITextField) {
-        
-        groupSubscriptionName = sender.text
-    }
     var membersInfo: [User] = []
     
     var hostsInfo: [User] = []
@@ -103,10 +97,6 @@ class NameGroupViewController: SUBaseViewController {
         
         groupNameTextField.attributedPlaceholder = NSAttributedString(
             string: "請輸入群組名稱",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        
-        subscriptionNameTextField.attributedPlaceholder = NSAttributedString(
-            string: "請輸入訂閱項目名稱",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     

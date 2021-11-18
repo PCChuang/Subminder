@@ -42,6 +42,7 @@
 		F60F818F27415F25006045CA /* under-construction.json in Resources */ = {isa = PBXBuildFile; fileRef = F60F818E27415F25006045CA /* under-construction.json */; };
 		F60F81962742BA26006045CA /* ProfileSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F81942742BA26006045CA /* ProfileSettingCell.swift */; };
 		F60F81972742BA26006045CA /* ProfileSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60F81952742BA26006045CA /* ProfileSettingCell.xib */; };
+		F636CF64274622880010A5F4 /* signup.json in Resources */ = {isa = PBXBuildFile; fileRef = F636CF63274622880010A5F4 /* signup.json */; };
 		F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C05271D0B0C000A863A /* AppDelegate.swift */; };
 		F66A1C08271D0B0C000A863A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C07271D0B0C000A863A /* SceneDelegate.swift */; };
 		F66A1C0A271D0B0C000A863A /* SUTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C09271D0B0C000A863A /* SUTabBarViewController.swift */; };
@@ -151,6 +152,7 @@
 		F60F818E27415F25006045CA /* under-construction.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "under-construction.json"; sourceTree = "<group>"; };
 		F60F81942742BA26006045CA /* ProfileSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingCell.swift; sourceTree = "<group>"; };
 		F60F81952742BA26006045CA /* ProfileSettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingCell.xib; sourceTree = "<group>"; };
+		F636CF63274622880010A5F4 /* signup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signup.json; sourceTree = "<group>"; };
 		F66A1C02271D0B0C000A863A /* Subminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66A1C05271D0B0C000A863A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F66A1C07271D0B0C000A863A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				F66A1C1F271D4FD6000A863A /* Controller */,
 				F66A1C20271D4FFB000A863A /* View */,
 				F66A1C0E271D0B10000A863A /* Assets.xcassets */,
+				F636CF63274622880010A5F4 /* signup.json */,
 				F60447ED2744B06E00D5AA32 /* add.json */,
 				F60F818E27415F25006045CA /* under-construction.json */,
 				F60F818C27415E8D006045CA /* welcome.json */,
@@ -538,6 +541,7 @@
 				F66A1C00271D0B0C000A863A /* Resources */,
 				F66A1C19271D0E63000A863A /* Run SwiftLint */,
 				B44C399E34E5667140D75C03 /* [CP] Embed Pods Frameworks */,
+				F636CF622745FBB00010A5F4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -613,6 +617,7 @@
 				F66A1C5D271F18D0000A863A /* AddSubCurrencyCell.xib in Resources */,
 				F66A1C59271F0F0F000A863A /* AddSubDateCell.xib in Resources */,
 				F66A1C0D271D0B0C000A863A /* Main.storyboard in Resources */,
+				F636CF64274622880010A5F4 /* signup.json in Resources */,
 				F66A1C3D271DB9C6000A863A /* SummaryCell.xib in Resources */,
 				F60447E82744AA8600D5AA32 /* GroupCardCell.xib in Resources */,
 				F60E2A26272A8E270048A85E /* ProfileCell.xib in Resources */,
@@ -664,6 +669,25 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F636CF622745FBB00010A5F4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		F66A1C19271D0E63000A863A /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -909,14 +933,17 @@
 				CODE_SIGN_ENTITLEMENTS = Subminder/Subminder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2FTGGYY3M4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Subminder/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -943,14 +970,17 @@
 				CODE_SIGN_ENTITLEMENTS = Subminder/Subminder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2FTGGYY3M4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Subminder/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
