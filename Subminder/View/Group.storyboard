@@ -292,16 +292,6 @@
                                     <constraint firstAttribute="width" constant="120" id="Meo-9L-ckq"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="訂閱項目名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gC0-iV-6yZ">
-                                <rect key="frame" x="152" y="87" width="230" height="34"/>
-                                <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="subscriptionName:" destination="obF-NI-2Ae" eventType="editingDidEnd" id="IEd-ga-bv5"/>
-                                </connections>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用戶在收到邀請後就會加入群組。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2U-cB-3dV">
                                 <rect key="frame" x="32" y="188" width="225" height="21"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
@@ -338,7 +328,7 @@
                                 </cells>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入群組名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZEJ-AC-Nxd">
-                                <rect key="frame" x="152" y="129" width="230" height="34"/>
+                                <rect key="frame" x="152" y="103" width="230" height="34"/>
                                 <color key="backgroundColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
@@ -351,25 +341,21 @@
                             <constraint firstItem="hKq-8k-G87" firstAttribute="trailing" secondItem="ZEJ-AC-Nxd" secondAttribute="trailing" constant="32" id="9ph-EV-4Lv"/>
                             <constraint firstItem="6Fk-Ao-rSz" firstAttribute="leading" secondItem="hKq-8k-G87" secondAttribute="leading" constant="16" id="ANS-Ds-b2W"/>
                             <constraint firstItem="6Fk-Ao-rSz" firstAttribute="top" secondItem="hKq-8k-G87" secondAttribute="top" constant="16" id="GK7-q2-TZ9"/>
+                            <constraint firstItem="ZEJ-AC-Nxd" firstAttribute="centerY" secondItem="6Fk-Ao-rSz" secondAttribute="centerY" id="It2-rL-qyS"/>
                             <constraint firstItem="WIe-Bf-Z5n" firstAttribute="leading" secondItem="hKq-8k-G87" secondAttribute="leading" constant="8" id="TBg-gZ-qGj"/>
                             <constraint firstItem="b2U-cB-3dV" firstAttribute="leading" secondItem="hKq-8k-G87" secondAttribute="leading" constant="32" id="Tsu-el-apD"/>
                             <constraint firstItem="WIe-Bf-Z5n" firstAttribute="top" secondItem="iSM-Fn-Ota" secondAttribute="bottom" id="WLt-Gb-8bR"/>
                             <constraint firstItem="ZEJ-AC-Nxd" firstAttribute="leading" secondItem="6Fk-Ao-rSz" secondAttribute="trailing" constant="16" id="YTn-fs-mwZ"/>
                             <constraint firstItem="iSM-Fn-Ota" firstAttribute="leading" secondItem="hKq-8k-G87" secondAttribute="leading" constant="32" id="ax0-g3-AhT"/>
-                            <constraint firstItem="ZEJ-AC-Nxd" firstAttribute="top" secondItem="gC0-iV-6yZ" secondAttribute="bottom" constant="8" symbolic="YES" id="dIH-op-Ib6"/>
                             <constraint firstItem="WIe-Bf-Z5n" firstAttribute="trailing" secondItem="hKq-8k-G87" secondAttribute="trailing" id="dli-Kh-nS0"/>
-                            <constraint firstItem="gC0-iV-6yZ" firstAttribute="leading" secondItem="6Fk-Ao-rSz" secondAttribute="trailing" constant="16" id="hf7-Ih-M59"/>
                             <constraint firstItem="iSM-Fn-Ota" firstAttribute="top" secondItem="b2U-cB-3dV" secondAttribute="bottom" constant="16" id="pnR-wY-0MF"/>
-                            <constraint firstItem="hKq-8k-G87" firstAttribute="trailing" secondItem="gC0-iV-6yZ" secondAttribute="trailing" constant="32" id="r1u-Mc-uHx"/>
                             <constraint firstItem="b2U-cB-3dV" firstAttribute="top" secondItem="6Fk-Ao-rSz" secondAttribute="bottom" constant="8" id="x3B-ny-zUo"/>
-                            <constraint firstItem="gC0-iV-6yZ" firstAttribute="top" secondItem="hKq-8k-G87" secondAttribute="top" constant="43" id="zK2-DP-BTR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="WIe-Bf-Z5n" id="izZ-yc-H4c"/>
                         <outlet property="groupImg" destination="6Fk-Ao-rSz" id="T4D-q8-9jW"/>
                         <outlet property="groupNameTextField" destination="ZEJ-AC-Nxd" id="1Xp-o5-87z"/>
-                        <outlet property="subscriptionNameTextField" destination="gC0-iV-6yZ" id="OJ2-oH-IGa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NzZ-Jx-J4G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
