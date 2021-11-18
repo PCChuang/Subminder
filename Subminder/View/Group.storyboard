@@ -156,7 +156,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tAw-pD-wDL"/>
-                        <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.68235294117647061" green="0.67843137254901964" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="gIM-Fe-dqZ" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" constant="16" id="5uZ-eX-oPP"/>
                             <constraint firstItem="TDm-To-7U6" firstAttribute="leading" secondItem="tAw-pD-wDL" secondAttribute="leading" id="6cl-8X-3Xd"/>
