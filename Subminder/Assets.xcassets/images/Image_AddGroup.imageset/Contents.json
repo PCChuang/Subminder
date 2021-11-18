@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "IMG_7493.jpg",
+      "filename" : "addGroup@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "addGroup@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "addGroup@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
