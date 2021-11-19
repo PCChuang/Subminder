@@ -134,7 +134,6 @@ class AddToSubViewController: SUBaseViewController {
                         
                         self.fectchAndUpdatePayable(userUID: self.group.hostUID, groupID: self.group.id)
                         
-                        
 //                        self.createNewPayableInBatch(
 //                            totalAmount: self.subscription.groupPriceTotal,
 //                            amount: self.payable.amount,
@@ -154,7 +153,10 @@ class AddToSubViewController: SUBaseViewController {
             }
         }
 
-        setReminder()
+        if reminderDayComp != nil {
+            
+            setReminder()
+        }
 
     }
 
@@ -181,7 +183,7 @@ class AddToSubViewController: SUBaseViewController {
         }
     }
 
-    var reminderDayComp = DateComponents()
+    var reminderDayComp: DateComponents?
 
     var currencies: [String] = []
 
@@ -1185,22 +1187,33 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
 
     // set up reminder
     func reminderDidSet(_ dateComponent: DateComponents, _ cell: AddSubReminderCell) {
-        guard let day = dateComponent.day else { return }
-        let dateComp = DateComponents(day: -day)
+        let day = dateComponent.day
+        let dateComp = DateComponents(day: -(day ?? 0))
         guard let reminderDay = Calendar.current.date(byAdding: dateComp, to: subscription.dueDate) else { return }
-        reminderDayComp = Calendar.current.dateComponents([.day, .month, .year], from: reminderDay as Date)
+        
+        if day == nil {
+            
+            reminderDayComp = nil
+        } else {
+            
+            reminderDayComp = Calendar.current.dateComponents([.day, .month, .year], from: reminderDay as Date)
+        }
+        
+        print("reminder === \(day)")
+        print("reminderDayComp === \(reminderDayComp)")
     }
 
     func setReminder() {
 
-        reminderManager.notifications = [Notification(id: "reminder - \(subscription.id)",
+        reminderManager.notifications = [Notification(id: "reminder - \(userUID ?? ""), \(subscription.name)",
                                                       title: "\(subscription.name) 付款時間到囉!",
                                                       dateTime: DateComponents(calendar: Calendar.current,
-                                                                               year: reminderDayComp.year,
-                                                                               month: reminderDayComp.month,
-                                                                               day: reminderDayComp.day,
-                                                                               hour: 09,
-                                                                               minute: 00))]
+                                                                               year: reminderDayComp?.year,
+                                                                               month: reminderDayComp?.month,
+                                                                               day: reminderDayComp?.day,
+                                                                               hour: 14,
+                                                                               minute: 37))]
+        
         reminderManager.schedule()
     }
 
