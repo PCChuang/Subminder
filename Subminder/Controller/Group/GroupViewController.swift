@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Lottie
 
 class GroupViewController: SUBaseViewController {
 
+    @IBOutlet weak var animationView: AnimationView!
+    
     @IBOutlet weak var profileImage: UIImageView!
 
 //    @IBOutlet weak var addGroupBtn: UIButton!
@@ -40,7 +43,13 @@ class GroupViewController: SUBaseViewController {
     
     let manager = ProfileManager()
     
-    var usersInfo: [User] = []
+    var usersInfo: [User] = [] {
+        
+        didSet {
+            
+            profileCollection.reloadData()
+        }
+    }
     
     var groupsList: [String] = []
     
@@ -147,9 +156,47 @@ class GroupViewController: SUBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchUserGroupList(userUID: userUID ?? "")
+        animationView.isHidden = false
+        
+//        loader.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 40.0)
+//
+//        loader.center = self.loaderView.center
+//
+//        self.loaderView.addSubview(loader)
+        
+        loadViewQueue()
         
         fetchSubscriptions()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        self.loader.startAnimating()
+        
+        animationView.contentMode = .scaleAspectFit
+
+        animationView.loopMode = .loop
+
+        animationView.animationSpeed = 0.5
+
+        animationView.play()
+    }
+    
+    func loadViewQueue() {
+        
+        let queue = DispatchQueue(label: "com.pcchuang.queue")
+        
+        queue.asyncAfter(deadline: .now() + 1) {
+            
+            DispatchQueue.main.async {
+                
+                self.fetchUserGroupList(userUID: self.userUID ?? "") {
+                    
+                    self.animationView.isHidden = true
+                }
+            }
+        }
     }
     
     func setupProfileInfoView() {
@@ -429,7 +476,7 @@ extension GroupViewController {
         }
     }
     
-    func fetchUserGroupList(userUID: String) {
+    func fetchUserGroupList(userUID: String, completion: @escaping () -> Void) {
         
         self.groupsInfo.removeAll()
         
@@ -440,6 +487,8 @@ extension GroupViewController {
             case .success(let users):
 
                 print("fetchGroupList success")
+                
+                self?.groupIDsSet.removeAll()
                 
                 for user in users {
                     
@@ -456,6 +505,8 @@ extension GroupViewController {
                         self?.groupIDsSet.insert(group)
                     }
                 }
+                
+                completion()
                 
             case .failure(let error):
 
