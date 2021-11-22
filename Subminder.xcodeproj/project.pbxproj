@@ -14,6 +14,7 @@
 		F60447EE2744B06E00D5AA32 /* add.json in Resources */ = {isa = PBXBuildFile; fileRef = F60447ED2744B06E00D5AA32 /* add.json */; };
 		F60447F12744C77F00D5AA32 /* GroupEmptyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60447EF2744C77F00D5AA32 /* GroupEmptyCardCell.swift */; };
 		F60447F22744C77F00D5AA32 /* GroupEmptyCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60447F02744C77F00D5AA32 /* GroupEmptyCardCell.xib */; };
+		F6071CD8274A21EA0041EB45 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = F6071CD7274A21EA0041EB45 /* loading.json */; };
 		F60E2A25272A8E270048A85E /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A23272A8E270048A85E /* ProfileCell.swift */; };
 		F60E2A26272A8E270048A85E /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60E2A24272A8E270048A85E /* ProfileCell.xib */; };
 		F60E2A2A272A95FD0048A85E /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A29272A95FC0048A85E /* ProfileItem.swift */; };
@@ -124,6 +125,7 @@
 		F60447ED2744B06E00D5AA32 /* add.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = add.json; sourceTree = "<group>"; };
 		F60447EF2744C77F00D5AA32 /* GroupEmptyCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEmptyCardCell.swift; sourceTree = "<group>"; };
 		F60447F02744C77F00D5AA32 /* GroupEmptyCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupEmptyCardCell.xib; sourceTree = "<group>"; };
+		F6071CD7274A21EA0041EB45 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		F60E2A23272A8E270048A85E /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		F60E2A24272A8E270048A85E /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		F60E2A29272A95FC0048A85E /* ProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				F66A1C1F271D4FD6000A863A /* Controller */,
 				F66A1C20271D4FFB000A863A /* View */,
 				F66A1C0E271D0B10000A863A /* Assets.xcassets */,
+				F6071CD7274A21EA0041EB45 /* loading.json */,
 				F636CF63274622880010A5F4 /* signup.json */,
 				F60447ED2744B06E00D5AA32 /* add.json */,
 				F60F818E27415F25006045CA /* under-construction.json */,
@@ -616,6 +619,7 @@
 				F60447F22744C77F00D5AA32 /* GroupEmptyCardCell.xib in Resources */,
 				F66A1C5D271F18D0000A863A /* AddSubCurrencyCell.xib in Resources */,
 				F66A1C59271F0F0F000A863A /* AddSubDateCell.xib in Resources */,
+				F6071CD8274A21EA0041EB45 /* loading.json in Resources */,
 				F66A1C0D271D0B0C000A863A /* Main.storyboard in Resources */,
 				F636CF64274622880010A5F4 /* signup.json in Resources */,
 				F66A1C3D271DB9C6000A863A /* SummaryCell.xib in Resources */,

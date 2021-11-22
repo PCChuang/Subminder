@@ -88,10 +88,12 @@ extension AddSubReminderCell: UIPickerViewDataSource, UIPickerViewDelegate {
 
         switch component {
 
+            // pickerview layout and set dateComponent
         case 0:
             if pickerView.selectedRow(inComponent: 0) == 0 {
                 pickerView.selectRow(0, inComponent: 1, animated: true)
                 pickerView.selectRow(0, inComponent: 2, animated: true)
+                dateComponent.day = nil
             } else if pickerView.selectedRow(inComponent: 0) == 1 {
                 pickerView.selectRow(0, inComponent: 1, animated: true)
                 pickerView.selectRow(0, inComponent: 2, animated: true)

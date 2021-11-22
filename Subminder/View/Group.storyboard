@@ -68,12 +68,22 @@
                                     <constraint firstAttribute="height" constant="25" id="2je-0I-Bpk"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hd0-iH-Hg7" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.58057713509999997" green="0.58389973640000004" blue="0.60392713549999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="loading"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.58039215686274503" green="0.58431372549019611" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Hd0-iH-Hg7" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="1wF-fK-TFK"/>
                             <constraint firstItem="kpI-QL-jcK" firstAttribute="top" secondItem="gQI-Zn-W5Z" secondAttribute="bottom" constant="32" id="2pg-5K-UYy"/>
                             <constraint firstItem="gQI-Zn-W5Z" firstAttribute="top" secondItem="6c4-Ab-aXf" secondAttribute="bottom" constant="16" id="4A1-ID-zga"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Hd0-iH-Hg7" secondAttribute="trailing" id="6sf-vy-eMP"/>
+                            <constraint firstAttribute="bottom" secondItem="Hd0-iH-Hg7" secondAttribute="bottom" id="KCV-jt-x4c"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Fpv-b7-Mxp" secondAttribute="bottom" id="MNg-AI-szI"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Fpv-b7-Mxp" secondAttribute="trailing" constant="16" id="N5x-3Q-wUC"/>
                             <constraint firstItem="bCu-Mn-J4f" firstAttribute="leading" secondItem="gQI-Zn-W5Z" secondAttribute="trailing" constant="32" id="NiP-vd-Yc0"/>
@@ -85,6 +95,7 @@
                             <constraint firstItem="bCu-Mn-J4f" firstAttribute="bottom" secondItem="gQI-Zn-W5Z" secondAttribute="bottom" id="pDI-bv-Eo0"/>
                             <constraint firstItem="6c4-Ab-aXf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="qZJ-4b-Md5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bCu-Mn-J4f" secondAttribute="trailing" constant="16" id="r1c-0f-QuN"/>
+                            <constraint firstItem="Hd0-iH-Hg7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="rQZ-Ub-eb7"/>
                             <constraint firstItem="Fpv-b7-Mxp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="t2w-7n-9BU"/>
                             <constraint firstItem="kpI-QL-jcK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="zSI-AV-MkI"/>
                             <constraint firstItem="gQI-Zn-W5Z" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="zzX-73-gxk"/>
@@ -93,6 +104,7 @@
                     <navigationItem key="navigationItem" id="aLC-qY-J5m"/>
                     <connections>
                         <outlet property="addGroupImage" destination="E16-BA-9gZ" id="Nvr-hY-zy7"/>
+                        <outlet property="animationView" destination="Hd0-iH-Hg7" id="Q1a-6a-ZA1"/>
                         <outlet property="nameLbl" destination="6c4-Ab-aXf" id="901-fZ-628"/>
                         <outlet property="profileCollection" destination="bCu-Mn-J4f" id="x61-IY-XGm"/>
                         <outlet property="profileImage" destination="gQI-Zn-W5Z" id="Xct-1e-emx"/>
@@ -530,6 +542,9 @@
             <point key="canvasLocation" x="131.8840579710145" y="87.723214285714278"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Hd0-iH-Hg7"/>
+    </designables>
     <resources>
         <image name="Icons_24px_Add01" width="21.5" height="21.5"/>
         <image name="Subminder_logo_40" width="40" height="40"/>
