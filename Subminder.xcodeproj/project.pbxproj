@@ -15,6 +15,8 @@
 		F60447F12744C77F00D5AA32 /* GroupEmptyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60447EF2744C77F00D5AA32 /* GroupEmptyCardCell.swift */; };
 		F60447F22744C77F00D5AA32 /* GroupEmptyCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60447F02744C77F00D5AA32 /* GroupEmptyCardCell.xib */; };
 		F6071CD8274A21EA0041EB45 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = F6071CD7274A21EA0041EB45 /* loading.json */; };
+		F6071CDA274CEBC50041EB45 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6071CD9274CEBC40041EB45 /* UICollectionViewCell+Extension.swift */; };
+		F6071CDC274CEC3E0041EB45 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6071CDB274CEC3E0041EB45 /* UITableViewCell+Extension.swift */; };
 		F60E2A25272A8E270048A85E /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A23272A8E270048A85E /* ProfileCell.swift */; };
 		F60E2A26272A8E270048A85E /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60E2A24272A8E270048A85E /* ProfileCell.xib */; };
 		F60E2A2A272A95FD0048A85E /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A29272A95FC0048A85E /* ProfileItem.swift */; };
@@ -126,6 +128,8 @@
 		F60447EF2744C77F00D5AA32 /* GroupEmptyCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEmptyCardCell.swift; sourceTree = "<group>"; };
 		F60447F02744C77F00D5AA32 /* GroupEmptyCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupEmptyCardCell.xib; sourceTree = "<group>"; };
 		F6071CD7274A21EA0041EB45 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		F6071CD9274CEBC40041EB45 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		F6071CDB274CEC3E0041EB45 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		F60E2A23272A8E270048A85E /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		F60E2A24272A8E270048A85E /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		F60E2A29272A95FC0048A85E /* ProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
@@ -435,6 +439,8 @@
 			children = (
 				F66A1C2B271D5551000A863A /* UIStoryboard+Extension.swift */,
 				F66A1C682721AA54000A863A /* UIColor+Extension.swift */,
+				F6071CD9274CEBC40041EB45 /* UICollectionViewCell+Extension.swift */,
+				F6071CDB274CEC3E0041EB45 /* UITableViewCell+Extension.swift */,
 				F688857A2728F5EF00637295 /* String+Extension.swift */,
 				F688857C2729222B00637295 /* Decimal+Extension.swift */,
 				F68885802729261800637295 /* Double+Extension.swift */,
@@ -739,6 +745,7 @@
 				F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */,
 				F60E2A25272A8E270048A85E /* ProfileCell.swift in Sources */,
 				F69C0F0C27358E12005D2D84 /* GroupRemoveCell.swift in Sources */,
+				F6071CDC274CEC3E0041EB45 /* UITableViewCell+Extension.swift in Sources */,
 				F69C0EE12734EAF6005D2D84 /* Group.swift in Sources */,
 				F6888570272461AA00637295 /* NotificationManager.swift in Sources */,
 				F69C0F0827353408005D2D84 /* GroupInviteCell.swift in Sources */,
@@ -771,6 +778,7 @@
 				F66A1C32271D666F000A863A /* SettingViewController.swift in Sources */,
 				F60F817F27401106006045CA /* BillingHistoryManager.swift in Sources */,
 				F66A1C4F271EA171000A863A /* SubSetting.swift in Sources */,
+				F6071CDA274CEBC50041EB45 /* UICollectionViewCell+Extension.swift in Sources */,
 				F60E2A2C272A98070048A85E /* ProfileManager.swift in Sources */,
 				F60447EB2744ADA500D5AA32 /* GroupCardEmptyCell.swift in Sources */,
 				F66A1C4C271E9CC2000A863A /* AddSubCell.swift in Sources */,

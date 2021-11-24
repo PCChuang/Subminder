@@ -8,7 +8,22 @@
 import Foundation
 import UIKit
 
+private enum SUColor: String {
+    
+    // swiftlint:disable identifier_name
+    case G1
+}
+
 extension UIColor {
+    
+    static let G1 = SUColor(.G1)
+    
+    // swiftlint:enable identifier_name
+    
+    private static func SUColor(_ color: SUColor) -> UIColor? {
+        
+        return UIColor(named: color.rawValue)
+    }
     
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         var hexFormatted: String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()

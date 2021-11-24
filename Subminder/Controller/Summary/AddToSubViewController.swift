@@ -61,9 +61,6 @@ class AddToSubViewController: SUBaseViewController {
                     DispatchQueue.main.async {
                         
                         _ = self.navigationController?.popViewController(animated: true)
-                        //                    if let controller = self.storyboard?.instantiateViewController(identifier: "Summary") as? SummaryViewController {
-                        //                        self.navigationController?.pushViewController(controller, animated: true)
-                        //                    }
                     }
                 }
             }
@@ -133,16 +130,6 @@ class AddToSubViewController: SUBaseViewController {
                         }
                         
                         self.fectchAndUpdatePayable(userUID: self.group.hostUID, groupID: self.group.id)
-                        
-//                        self.createNewPayableInBatch(
-//                            totalAmount: self.subscription.groupPriceTotal,
-//                            amount: self.payable.amount,
-//                            nextPaymentDate: self.payable.nextPaymentDate,
-//                            userUIDs: self.group.userUIDs,
-//                            hostUID: self.userUID ?? "",
-//                            startDate: self.payable.startDate,
-//                            cycleAmount: self.payable.cycleAmount,
-//                            with: &self.payable)
                     }
                     
                     DispatchQueue.main.async {
@@ -296,10 +283,6 @@ class AddToSubViewController: SUBaseViewController {
     func setupBarItems() {
 
         self.navigationItem.title = "新增訂閱項目"
-        
-        navigationController?.navigationBar.isTranslucent = false
-        
-        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
     }
 
     func publish(with subscription: inout Subscription) {
@@ -412,42 +395,6 @@ class AddToSubViewController: SUBaseViewController {
             }
         }
     }
-
-//    func createNewPayableInBatch(
-//        totalAmount: Decimal,
-//        amount: Decimal,
-//        nextPaymentDate: Date,
-//        userUIDs: [String],
-//        hostUID: String,
-//        startDate: Date,
-//        cycleAmount: Decimal,
-//        with payable: inout Payable
-//    ) {
-//        payable.groupID = group.id
-//
-//        PayableManager.shared.createPayableInBatch(
-//            totalAmount: totalAmount,
-//            amount: amount,
-//            nextPaymentDate: nextPaymentDate,
-//            userUIDs: userUIDs,
-//            hostUID: hostUID,
-//            startDate: startDate,
-//            cycleAmount: cycleAmount,
-//            payable: &payable
-//        ) { result in
-//
-//            switch result {
-//
-//            case .success:
-//
-//                print("createNewPayable, success")
-//
-//            case .failure(let error):
-//
-//                print("createNewPayable.failure: \(error)")
-//            }
-//        }
-//    }
 
     func save(with subscription: inout Subscription) {
         
@@ -1279,36 +1226,6 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
     }
 }
 
-extension AddToSubViewController {
-    
-    func registerCell() {
-        
-        let nib = UINib(nibName: "AddSubCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "AddSubCell")
-
-        let textNib = UINib(nibName: "AddSubTextCell", bundle: nil)
-        tableView.register(textNib, forCellReuseIdentifier: "AddSubTextCell")
-
-        let priceNib = UINib(nibName: "AddSubPriceCell", bundle: nil)
-        tableView.register(priceNib, forCellReuseIdentifier: "AddSubPriceCell")
-        
-        let pickerNib = UINib(nibName: "AddSubCycleCell", bundle: nil)
-        tableView.register(pickerNib, forCellReuseIdentifier: "AddSubCycleCell")
-
-        let dateNib = UINib(nibName: "AddSubDateCell", bundle: nil)
-        tableView.register(dateNib, forCellReuseIdentifier: "AddSubDateCell")
-
-        let currencyNib = UINib(nibName: "AddSubCurrencyCell", bundle: nil)
-        tableView.register(currencyNib, forCellReuseIdentifier: "AddSubCurrencyCell")
-
-        let categoryNib = UINib(nibName: "AddSubCategoryCell", bundle: nil)
-        tableView.register(categoryNib, forCellReuseIdentifier: "AddSubCategoryCell")
-
-        let reminderNib = UINib(nibName: "AddSubReminderCell", bundle: nil)
-        tableView.register(reminderNib, forCellReuseIdentifier: "AddSubReminderCell")
-    }
-}
-
 // Get data for category page
 extension AddToSubViewController: CategoryDelegate {
 
@@ -1330,5 +1247,35 @@ extension AddToSubViewController: CurrencyManagerDelegate {
     func manager(_ manager: CurrencyManager, didGet values: [Double]) {
 
         self.values = values
+    }
+}
+
+extension AddToSubViewController {
+    
+    func registerCell() {
+        
+        let nib = UINib(nibName: AddSubCell.identifier, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: AddSubCell.identifier)
+
+        let textNib = UINib(nibName: AddSubTextCell.identifier, bundle: nil)
+        tableView.register(textNib, forCellReuseIdentifier: AddSubTextCell.identifier)
+
+        let priceNib = UINib(nibName: AddSubPriceCell.identifier, bundle: nil)
+        tableView.register(priceNib, forCellReuseIdentifier: AddSubPriceCell.identifier)
+        
+        let pickerNib = UINib(nibName: AddSubCycleCell.identifier, bundle: nil)
+        tableView.register(pickerNib, forCellReuseIdentifier: AddSubCycleCell.identifier)
+
+        let dateNib = UINib(nibName: AddSubDateCell.identifier, bundle: nil)
+        tableView.register(dateNib, forCellReuseIdentifier: AddSubDateCell.identifier)
+
+        let currencyNib = UINib(nibName: AddSubCurrencyCell.identifier, bundle: nil)
+        tableView.register(currencyNib, forCellReuseIdentifier: AddSubCurrencyCell.identifier)
+
+        let categoryNib = UINib(nibName: AddSubCategoryCell.identifier, bundle: nil)
+        tableView.register(categoryNib, forCellReuseIdentifier: AddSubCategoryCell.identifier)
+
+        let reminderNib = UINib(nibName: AddSubReminderCell.identifier, bundle: nil)
+        tableView.register(reminderNib, forCellReuseIdentifier: AddSubReminderCell.identifier)
     }
 }
