@@ -19,6 +19,7 @@
 		F6071CDC274CEC3E0041EB45 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6071CDB274CEC3E0041EB45 /* UITableView+Extension.swift */; };
 		F6071CDE274DDC1A0041EB45 /* SubscriptionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6071CDD274DDC1A0041EB45 /* SubscriptionProvider.swift */; };
 		F6071CE0275780670041EB45 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6071CDF275780670041EB45 /* DateManager.swift */; };
+		F6071CE82758A1CF0041EB45 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6071CE72758A1CF0041EB45 /* Keys.plist */; };
 		F60E2A25272A8E270048A85E /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A23272A8E270048A85E /* ProfileCell.swift */; };
 		F60E2A26272A8E270048A85E /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60E2A24272A8E270048A85E /* ProfileCell.xib */; };
 		F60E2A2A272A95FD0048A85E /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A29272A95FC0048A85E /* ProfileItem.swift */; };
@@ -133,6 +134,7 @@
 		F6071CDB274CEC3E0041EB45 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		F6071CDD274DDC1A0041EB45 /* SubscriptionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionProvider.swift; sourceTree = "<group>"; };
 		F6071CDF275780670041EB45 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		F6071CE72758A1CF0041EB45 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		F60E2A23272A8E270048A85E /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		F60E2A24272A8E270048A85E /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		F60E2A29272A95FC0048A85E /* ProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				F60F818E27415F25006045CA /* under-construction.json */,
 				F60F818C27415E8D006045CA /* welcome.json */,
 				F66A1C13271D0B10000A863A /* Info.plist */,
+				F6071CE72758A1CF0041EB45 /* Keys.plist */,
 				F66A1C64272004DE000A863A /* GoogleService-Info.plist */,
 			);
 			path = Subminder;
@@ -630,6 +633,7 @@
 				F66A1C59271F0F0F000A863A /* AddSubDateCell.xib in Resources */,
 				F6071CD8274A21EA0041EB45 /* loading.json in Resources */,
 				F66A1C0D271D0B0C000A863A /* Main.storyboard in Resources */,
+				F6071CE82758A1CF0041EB45 /* Keys.plist in Resources */,
 				F636CF64274622880010A5F4 /* signup.json in Resources */,
 				F66A1C3D271DB9C6000A863A /* SummaryCell.xib in Resources */,
 				F60447E82744AA8600D5AA32 /* GroupCardCell.xib in Resources */,
