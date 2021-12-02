@@ -27,8 +27,17 @@ class CurrencyManager {
         let configuration = URLSessionConfiguration.default
 
         let session = URLSession(configuration: configuration)
+        
+        var keys: NSDictionary?
+        
+        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
+            
+            keys = NSDictionary(contentsOfFile: path)
+        }
+        
+        let apiKeyString = keys?["apiKey"] as? String ?? ""
 
-        guard let url = URL(string: "https://apilayer.net/api/live?access_key=2a6f4e22f7dde24f64f38725d7a0897d&currencies=TWD,USD,EUR,JPY,GBP,AUD,CAD,CHF,CNY,HKD,NZD&source=TWD&format=1") else {
+        guard let url = URL(string: "https://apilayer.net/api/live?access_key=\(apiKeyString)&currencies=TWD,USD,EUR,JPY,GBP,AUD,CAD,CHF,CNY,HKD,NZD&source=TWD&format=1") else {
             return
         }
 

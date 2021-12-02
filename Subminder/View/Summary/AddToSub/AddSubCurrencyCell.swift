@@ -14,7 +14,7 @@ protocol CurrencyCellDelegate: AnyObject {
 
 class AddSubCurrencyCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
 
     @IBOutlet weak var currencyTextField: UITextField!
 
@@ -55,6 +55,13 @@ class AddSubCurrencyCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setupCell(title: String, textField: String) {
+        
+        titleLbl.text = title
+        
+        currencyTextField.text = textField
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

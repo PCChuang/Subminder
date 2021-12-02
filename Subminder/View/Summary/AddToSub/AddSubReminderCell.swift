@@ -14,7 +14,7 @@ protocol ReminderDelegate: AnyObject {
 
 class AddSubReminderCell: UITableViewCell {
 
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var reminderTextField: UITextField!
 
     weak var delegate: ReminderDelegate?
@@ -133,5 +133,12 @@ extension AddSubReminderCell: UIPickerViewDataSource, UIPickerViewDelegate {
         reminderTextField.text = "\(reminderDay[day]) \(reminderCycle[cycle])\(reminderSuffix[suffix])"
 
         delegate?.reminderDidSet(dateComponent, self)
+    }
+    
+    func setupCell(title: String, textField: String) {
+        
+        titleLbl.text = title
+        
+        reminderTextField.text = textField
     }
 }

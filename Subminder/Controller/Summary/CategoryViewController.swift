@@ -107,7 +107,7 @@ extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = cell as? AddSubCell else {
             return cell
         }
-        cell.title.text = categories[indexPath.row]
+        cell.titleLbl.text = categories[indexPath.row]
         cell.nextPageBtn.isHidden = true
         cell.colorView.isHidden = true
         return cell

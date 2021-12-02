@@ -191,7 +191,7 @@ extension SendBillingRequestViewController: UITableViewDelegate, UITableViewData
                     return cell
                 }
                 
-                cell.title.text = paymentInputFields[indexPath.row]
+                cell.titleLbl.text = paymentInputFields[indexPath.row]
                 cell.dateTextField.addTarget(self, action: #selector(onPaymentDateChanged), for: .editingDidEnd)
                 
                 return cell
@@ -202,7 +202,7 @@ extension SendBillingRequestViewController: UITableViewDelegate, UITableViewData
                 guard let cell = cell as? AddSubPriceCell else {
                     return cell
                 }
-                cell.title.text = paymentInputFields[indexPath.row]
+                cell.titleLbl.text = paymentInputFields[indexPath.row]
                 
                 cell.priceTextField.addTarget(self, action: #selector(onAmountChanged), for: .editingDidEnd)
                 

@@ -192,6 +192,29 @@ extension GroupSettingViewController: UICollectionViewDataSource, UICollectionVi
                 
                 controller.group = self.group
                 
+                let subscriptionProvider = SubscriptionProvider(subscription: Subscription(
+                    
+                    userUID: "",
+                    id: "",
+                    name: "",
+                    price: 0,
+                    currency: "",
+                    exchangePrice: 0,
+                    startDate: Date(),
+                    dueDate: Date(),
+                    cycle: "",
+                    duration: "",
+                    category: "",
+                    color: "",
+                    reminder: "",
+                    note: "",
+                    groupID: "",
+                    groupName: "",
+                    groupPriceTotal: 0,
+                    groupMemberCount: 0))
+                
+                controller.subscriptionProvider = subscriptionProvider
+                
                 self.navigationController?.pushViewController(controller, animated: true)
             }
         }
