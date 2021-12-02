@@ -10,7 +10,7 @@ import CurrencyTextField
 
 class AddSubPriceCell: UITableViewCell {
 
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var priceTextField: CurrencyTextField!
 
     override func awakeFromNib() {
@@ -22,6 +22,13 @@ class AddSubPriceCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setupCell(title: String, textField: String) {
+        
+        titleLbl.text = title
+        
+        priceTextField.text = textField
     }
     
 }
