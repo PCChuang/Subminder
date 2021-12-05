@@ -86,7 +86,7 @@ Implemented `Sign In with Apple` with `Firebase Authentication` to build a secur
 Provided users with options to customize personal subscriptions.
 
 <p>
-<img src="https://i.imgur.com/I3VRdNO.gif" width="185" height="400"/>
+<img src="https://i.imgur.com/bSVC63H.gif" width="185" height="400"/>
 </p>
 
 #### # Reminder
@@ -156,7 +156,7 @@ To create a new group, user needs to invite friends and give a name to the group
 After group is created, the host of the group can create group subscription by tapping the group cell. The subscription price will be split equally based on the number of group members. Once the host creates the subscription, all members will receive a new group subscription card accordingly in their summary tab.
 
 <p>
-<img src="https://i.imgur.com/cnKx5Tp.gif" width="185" height="400"/>
+<img src="https://i.imgur.com/YyGHu0R.gif" width="185" height="400"/>
 </p>
 
 #### # Send Payment Information
