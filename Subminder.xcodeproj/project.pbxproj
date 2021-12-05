@@ -15,6 +15,11 @@
 		F60447F12744C77F00D5AA32 /* GroupEmptyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60447EF2744C77F00D5AA32 /* GroupEmptyCardCell.swift */; };
 		F60447F22744C77F00D5AA32 /* GroupEmptyCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60447F02744C77F00D5AA32 /* GroupEmptyCardCell.xib */; };
 		F6071CD8274A21EA0041EB45 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = F6071CD7274A21EA0041EB45 /* loading.json */; };
+		F6071CDA274CEBC50041EB45 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6071CD9274CEBC40041EB45 /* UICollectionViewCell+Extension.swift */; };
+		F6071CDC274CEC3E0041EB45 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6071CDB274CEC3E0041EB45 /* UITableView+Extension.swift */; };
+		F6071CDE274DDC1A0041EB45 /* SubscriptionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6071CDD274DDC1A0041EB45 /* SubscriptionProvider.swift */; };
+		F6071CE0275780670041EB45 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6071CDF275780670041EB45 /* DateManager.swift */; };
+		F6071CE82758A1CF0041EB45 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6071CE72758A1CF0041EB45 /* Keys.plist */; };
 		F60E2A25272A8E270048A85E /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A23272A8E270048A85E /* ProfileCell.swift */; };
 		F60E2A26272A8E270048A85E /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F60E2A24272A8E270048A85E /* ProfileCell.xib */; };
 		F60E2A2A272A95FD0048A85E /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E2A29272A95FC0048A85E /* ProfileItem.swift */; };
@@ -67,7 +72,6 @@
 		F66A1C45271E75FA000A863A /* AddSubTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66A1C43271E75FA000A863A /* AddSubTextCell.xib */; };
 		F66A1C4C271E9CC2000A863A /* AddSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C4A271E9CC2000A863A /* AddSubCell.swift */; };
 		F66A1C4D271E9CC2000A863A /* AddSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66A1C4B271E9CC2000A863A /* AddSubCell.xib */; };
-		F66A1C4F271EA171000A863A /* SubSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C4E271EA171000A863A /* SubSetting.swift */; };
 		F66A1C51271EB8FC000A863A /* SUBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C50271EB8FC000A863A /* SUBaseViewController.swift */; };
 		F66A1C54271EC53F000A863A /* AddSubCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C52271EC53F000A863A /* AddSubCycleCell.swift */; };
 		F66A1C55271EC53F000A863A /* AddSubCycleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66A1C53271EC53F000A863A /* AddSubCycleCell.xib */; };
@@ -126,6 +130,11 @@
 		F60447EF2744C77F00D5AA32 /* GroupEmptyCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEmptyCardCell.swift; sourceTree = "<group>"; };
 		F60447F02744C77F00D5AA32 /* GroupEmptyCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupEmptyCardCell.xib; sourceTree = "<group>"; };
 		F6071CD7274A21EA0041EB45 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		F6071CD9274CEBC40041EB45 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		F6071CDB274CEC3E0041EB45 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		F6071CDD274DDC1A0041EB45 /* SubscriptionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionProvider.swift; sourceTree = "<group>"; };
+		F6071CDF275780670041EB45 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		F6071CE72758A1CF0041EB45 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		F60E2A23272A8E270048A85E /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		F60E2A24272A8E270048A85E /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		F60E2A29272A95FC0048A85E /* ProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
@@ -179,7 +188,6 @@
 		F66A1C43271E75FA000A863A /* AddSubTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubTextCell.xib; sourceTree = "<group>"; };
 		F66A1C4A271E9CC2000A863A /* AddSubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubCell.swift; sourceTree = "<group>"; };
 		F66A1C4B271E9CC2000A863A /* AddSubCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubCell.xib; sourceTree = "<group>"; };
-		F66A1C4E271EA171000A863A /* SubSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSetting.swift; sourceTree = "<group>"; };
 		F66A1C50271EB8FC000A863A /* SUBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUBaseViewController.swift; sourceTree = "<group>"; };
 		F66A1C52271EC53F000A863A /* AddSubCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubCycleCell.swift; sourceTree = "<group>"; };
 		F66A1C53271EC53F000A863A /* AddSubCycleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubCycleCell.xib; sourceTree = "<group>"; };
@@ -309,6 +317,7 @@
 			children = (
 				F688856F272461AA00637295 /* NotificationManager.swift */,
 				F68885782728551500637295 /* CurrencyManager.swift */,
+				F6071CDF275780670041EB45 /* DateManager.swift */,
 			);
 			path = AddToSub;
 			sourceTree = "<group>";
@@ -387,6 +396,7 @@
 				F60F818E27415F25006045CA /* under-construction.json */,
 				F60F818C27415E8D006045CA /* welcome.json */,
 				F66A1C13271D0B10000A863A /* Info.plist */,
+				F6071CE72758A1CF0041EB45 /* Keys.plist */,
 				F66A1C64272004DE000A863A /* GoogleService-Info.plist */,
 			);
 			path = Subminder;
@@ -435,6 +445,8 @@
 			children = (
 				F66A1C2B271D5551000A863A /* UIStoryboard+Extension.swift */,
 				F66A1C682721AA54000A863A /* UIColor+Extension.swift */,
+				F6071CD9274CEBC40041EB45 /* UICollectionViewCell+Extension.swift */,
+				F6071CDB274CEC3E0041EB45 /* UITableView+Extension.swift */,
 				F688857A2728F5EF00637295 /* String+Extension.swift */,
 				F688857C2729222B00637295 /* Decimal+Extension.swift */,
 				F68885802729261800637295 /* Double+Extension.swift */,
@@ -465,8 +477,8 @@
 		F66A1C3F271E6E68000A863A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F66A1C4E271EA171000A863A /* SubSetting.swift */,
 				F66A1C60271FF7AB000A863A /* Subscription.swift */,
+				F6071CDD274DDC1A0041EB45 /* SubscriptionProvider.swift */,
 				F66A1C6627200D71000A863A /* SubsManager.swift */,
 				F60F818A274116FD006045CA /* StorageManager.swift */,
 				F69C0ED9273270CE005D2D84 /* User */,
@@ -621,6 +633,7 @@
 				F66A1C59271F0F0F000A863A /* AddSubDateCell.xib in Resources */,
 				F6071CD8274A21EA0041EB45 /* loading.json in Resources */,
 				F66A1C0D271D0B0C000A863A /* Main.storyboard in Resources */,
+				F6071CE82758A1CF0041EB45 /* Keys.plist in Resources */,
 				F636CF64274622880010A5F4 /* signup.json in Resources */,
 				F66A1C3D271DB9C6000A863A /* SummaryCell.xib in Resources */,
 				F60447E82744AA8600D5AA32 /* GroupCardCell.xib in Resources */,
@@ -739,6 +752,7 @@
 				F66A1C06271D0B0C000A863A /* AppDelegate.swift in Sources */,
 				F60E2A25272A8E270048A85E /* ProfileCell.swift in Sources */,
 				F69C0F0C27358E12005D2D84 /* GroupRemoveCell.swift in Sources */,
+				F6071CDC274CEC3E0041EB45 /* UITableView+Extension.swift in Sources */,
 				F69C0EE12734EAF6005D2D84 /* Group.swift in Sources */,
 				F6888570272461AA00637295 /* NotificationManager.swift in Sources */,
 				F69C0F0827353408005D2D84 /* GroupInviteCell.swift in Sources */,
@@ -750,6 +764,7 @@
 				F66A1C2C271D5551000A863A /* UIStoryboard+Extension.swift in Sources */,
 				F66A1C44271E75FA000A863A /* AddSubTextCell.swift in Sources */,
 				F66A1C3C271DB9C6000A863A /* SummaryCell.swift in Sources */,
+				F6071CE0275780670041EB45 /* DateManager.swift in Sources */,
 				F69C0F36273C09B8005D2D84 /* PayableManager.swift in Sources */,
 				F66A1C63271FF9FC000A863A /* User.swift in Sources */,
 				F69C0EDB273270F6005D2D84 /* KeyChainManager.swift in Sources */,
@@ -758,6 +773,7 @@
 				F66A1C30271D6664000A863A /* StatisticsViewController.swift in Sources */,
 				F66A1C08271D0B0C000A863A /* SceneDelegate.swift in Sources */,
 				F60447E72744AA8600D5AA32 /* GroupCardCell.swift in Sources */,
+				F6071CDE274DDC1A0041EB45 /* SubscriptionProvider.swift in Sources */,
 				F69C0F3F273E4FB9005D2D84 /* GroupMemberTableViewCell.swift in Sources */,
 				F66A1C51271EB8FC000A863A /* SUBaseViewController.swift in Sources */,
 				F60E2A3A272BEC110048A85E /* Request.swift in Sources */,
@@ -770,7 +786,7 @@
 				F60447F12744C77F00D5AA32 /* GroupEmptyCardCell.swift in Sources */,
 				F66A1C32271D666F000A863A /* SettingViewController.swift in Sources */,
 				F60F817F27401106006045CA /* BillingHistoryManager.swift in Sources */,
-				F66A1C4F271EA171000A863A /* SubSetting.swift in Sources */,
+				F6071CDA274CEBC50041EB45 /* UICollectionViewCell+Extension.swift in Sources */,
 				F60E2A2C272A98070048A85E /* ProfileManager.swift in Sources */,
 				F60447EB2744ADA500D5AA32 /* GroupCardEmptyCell.swift in Sources */,
 				F66A1C4C271E9CC2000A863A /* AddSubCell.swift in Sources */,

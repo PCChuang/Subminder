@@ -9,7 +9,7 @@ import UIKit
 
 class AddSubDateCell: UITableViewCell {
 
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
 
     let datePicker = UIDatePicker()
@@ -41,5 +41,12 @@ class AddSubDateCell: UITableViewCell {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd yyyy"
         return formatter.string(from: date)
+    }
+    
+    func setupCell(title: String, textField: String) {
+        
+        titleLbl.text = title
+        
+        dateTextField.text = textField
     }
 }

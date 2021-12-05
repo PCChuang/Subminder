@@ -14,7 +14,7 @@ protocol DateComponentDelegate: AnyObject {
 
 class AddSubCycleCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var cycleTextField: UITextField!
 
     weak var delegate: DateComponentDelegate?
@@ -109,4 +109,10 @@ class AddSubCycleCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSo
         delegate?.dateComponentDidChange(dateComponent, self)
     }
 
+    func setupCell(title: String, textField: String) {
+        
+        titleLbl.text = title
+        
+        cycleTextField.text = textField
+    }
 }
