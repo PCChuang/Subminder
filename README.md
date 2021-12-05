@@ -83,10 +83,11 @@ Implemented `Sign In with Apple` with `Firebase Authentication` to build a secur
 
 #### # Add Personal Subscriptions with Customization
 
-Provided users with options to customize personal subscriptions.
+Provided users with options to add customized personal subscriptions.
 
 <p>
-<img src="https://i.imgur.com/bSVC63H.gif" width="185" height="400"/>
+<img src="https://i.imgur.com/VBgriXG.png" width="185" height="400"/>
+<img src="https://i.imgur.com/X95jaHP.png" width="185" height="400"/>
 </p>
 
 #### # Reminder
