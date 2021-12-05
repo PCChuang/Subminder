@@ -14,6 +14,9 @@
   <a href="https://apple.co/3FWRtpX">
 <img src="https://i.imgur.com/X9tPvTS.png" width="120" height="40"/>
 </a>
+
+<p align="center">
+<img src="https://img.shields.io/github/v/release/PCChuang/Subminder?style=for-the-badge"/>
 </p>
 </div>
 
