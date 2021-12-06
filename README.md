@@ -178,8 +178,6 @@ Host in group can check the payment information sent from members. After accepta
 
 Renewed payment status accordingly with `Date` implementation. By checking user's log-in date,  if it is later than due date of subscription, payment status of the user will be updated automatically.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ### Settings
 
 #### Profile Settings
@@ -190,8 +188,6 @@ Renewed payment status accordingly with `Date` implementation. By checking user'
 <p>
 <img src="https://i.imgur.com/S4o6sCy.png" width="185" height="400"/>
 </p>
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Highlights -->
 ## Highlights
