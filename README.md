@@ -81,11 +81,9 @@ Implemented `Sign In with Apple` with `Firebase Authentication` to build a secur
 <img src="https://i.imgur.com/80t2ps7.png" width="185" height="400"/>
 </p>
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ### Personal Subscription
 
-#### # Add Personal Subscriptions with Customization
+#### Add Personal Subscriptions with Customization
 
 Provided users with options to add customized personal subscriptions.
 
@@ -94,7 +92,7 @@ Provided users with options to add customized personal subscriptions.
 <img src="https://i.imgur.com/X95jaHP.png" width="185" height="400"/>
 </p>
 
-#### # Reminder
+#### Reminder
 
 Sent reminder notification according to user's setting by implemented `User Notifications`.
 
@@ -102,7 +100,7 @@ Sent reminder notification according to user's setting by implemented `User Noti
 <img src="https://i.imgur.com/L2fNTTi.jpg" width="185" height="400"/>
 </p>
 
-#### # Sort
+#### Sort
 
 User can sort subscriptions by subscription price or billing due date.
 
@@ -110,7 +108,7 @@ User can sort subscriptions by subscription price or billing due date.
 <img src="https://i.imgur.com/nKaNVm3.gif" width="185" height="400"/>
 </p>
 
-#### # Edit/Delete Subscription
+#### Edit/Delete Subscription
 
 With a tap on subscriptions, user will be able to edit/delete selected subscription.
 
@@ -118,11 +116,9 @@ With a tap on subscriptions, user will be able to edit/delete selected subscript
 <img src="https://i.imgur.com/etCPi23.gif" width="185" height="400"/>
 </p>
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ### Friend
 
-#### # Search User and Send Friend Request
+#### Search User and Send Friend Request
 
 User can search another user with ID and send friend request. (User ID can be found in `setting` tab)
 
@@ -130,15 +126,13 @@ User can search another user with ID and send friend request. (User ID can be fo
 <img src="https://i.imgur.com/AWqWtMI.gif" width="185" height="400"/>
 </p>
 
-#### # Confirm Friend Request
+#### Confirm Friend Request
 
 User can accept/decline friend requests. After acceptance, new friends will appear in user's friend list.
 
 <p>
 <img src="https://i.imgur.com/XQ0OUSr.gif" width="185" height="400"/>
 </p>
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Group
 
@@ -148,7 +142,7 @@ User can create group for shared subscriptions with friends to track subscriptio
 <img src="https://i.imgur.com/nGWqyxe.png" width="185" height="400"/>
 </p>
 
-#### # Create Group
+#### Create Group
 
 To create a new group, user needs to invite friends and give a name to the group. Invited friends will be added to the group automatically when the group is created.
 
@@ -156,7 +150,7 @@ To create a new group, user needs to invite friends and give a name to the group
 <img src="https://i.imgur.com/0wV3vHT.gif" width="185" height="400"/>
 </p>
 
-#### # Create Group Subscription
+#### Create Group Subscription
 
 After group is created, the host of the group can create group subscription by tapping the group cell. The subscription price will be split equally based on the number of group members. Once the host creates the subscription, all members will receive a new group subscription card accordingly in their summary tab.
 
@@ -164,7 +158,7 @@ After group is created, the host of the group can create group subscription by t
 <img src="https://i.imgur.com/YyGHu0R.gif" width="185" height="400"/>
 </p>
 
-#### # Send Payment Information
+#### Send Payment Information
 
 Members in group can send payment information to the host for payment check.
 
@@ -172,7 +166,7 @@ Members in group can send payment information to the host for payment check.
 <img src="https://i.imgur.com/tRfObG0.gif" width="185" height="400"/>
 </p>
 
-#### # Confirm Payment
+#### Confirm Payment
 
 Host in group can check the payment information sent from members. After acceptance, the payment status of host and members will be updated.
 
@@ -180,15 +174,13 @@ Host in group can check the payment information sent from members. After accepta
 <img src="https://i.imgur.com/iEy0fPp.gif" width="185" height="400"/>
 </p>
 
-#### # Renew Payment Status
+#### Renew Payment Status
 
 Renewed payment status accordingly with `Date` implementation. By checking user's log-in date,  if it is later than due date of subscription, payment status of the user will be updated automatically.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ### Settings
 
-#### # Profile Settings
+#### Profile Settings
 
 - Applied `UIImagePickerController` to create image picker to allow users to upload profile image from camera/photo library.
 - Implemented `UIPasteboard` and users can easily copy their own ID.
@@ -196,8 +188,6 @@ Renewed payment status accordingly with `Date` implementation. By checking user'
 <p>
 <img src="https://i.imgur.com/S4o6sCy.png" width="185" height="400"/>
 </p>
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Highlights -->
 ## Highlights
