@@ -11,6 +11,8 @@ import UIKit
 
 class AddToSubViewController: SUBaseViewController {
 
+    // MARK: - Properties
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var publishBtn: UIButton!
@@ -228,11 +230,21 @@ class AddToSubViewController: SUBaseViewController {
         
         publishBtn.layer.cornerRadius = 10
         
-        publishBtn.titleLabel?.font = UIFont(name: "PingFang TC Medium", size: 16)
-        
         deleteBtn.layer.cornerRadius = 10
         
-        deleteBtn.titleLabel?.font = UIFont(name: "PingFang TC Medium", size: 16)
+        let font = "PingFang TC Medium"
+        
+        let aTextPublish = NSAttributedString(string: "保存",
+                                              attributes: [NSAttributedString.Key.font: UIFont(name: font,
+                                                                                               size: 16) as Any])
+        
+        publishBtn.setAttributedTitle(aTextPublish, for: .normal)
+        
+        let aTextDelete = NSAttributedString(string: "刪除",
+                                             attributes: [NSAttributedString.Key.font: UIFont(name: font,
+                                                                                              size: 16) as Any])
+        
+        deleteBtn.setAttributedTitle(aTextDelete, for: .normal)
     }
 
     func setupBarItems() {
@@ -242,13 +254,9 @@ class AddToSubViewController: SUBaseViewController {
     
     private func showAlert(message: String) {
         
-        let controller = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
+        let alert = AlertManager.simpleConfirmAlert(in: self, title: "Oops", message: message, confirmTitle: "OK")
         
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        
-        controller.addAction(okAction)
-        
-        present(controller, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func setupPayable() {
@@ -261,7 +269,8 @@ class AddToSubViewController: SUBaseViewController {
     
     func updateGroupSubscriptionName() {
         
-        GroupManager.shared.updateGroupSubName(groupID: self.group.id, subscriptionName: self.group.subscriptionName) { result in
+        GroupManager.shared.updateGroupSubName(groupID: self.group.id,
+                                               subscriptionName: self.group.subscriptionName) { result in
             
             switch result {
                 
@@ -1132,29 +1141,27 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
     func showDiscardAlert() {
 
         DispatchQueue.main.async {
-
-            let alertController = UIAlertController(title: "刪除項目", message: "即將刪除項目，確認要刪除嗎?", preferredStyle: .alert)
-
-            let okAction = UIAlertAction(title: "確認", style: .default) { _ in
-
+            
+            let alert = AlertManager.submitConfirmAlert(in: self,
+                                                        title: "刪除項目",
+                                                        message: "即將刪除項目，確認要刪除嗎?",
+                                                        confirmTitle: "確認",
+                                                        confirmHandler: {
+                
                 if self.subscriptionsInEdit.count > 0 {
-
+                    
                     self.deleteSubscription {
                         _ = self.navigationController?.popViewController(animated: true)
                     }
                 } else {
-
+                    
                     _ = self.navigationController?.popViewController(animated: true)
                 }
-            }
-
-            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-
-            alertController.addAction(okAction)
-
-            alertController.addAction(cancelAction)
-
-            self.present(alertController, animated: true, completion: nil)
+                
+            },
+                                                        cancelTitle: "取消")
+            
+            self.present(alert, animated: true, completion: nil)
         }
     }
 
