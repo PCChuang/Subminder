@@ -120,6 +120,8 @@ class AddToSubViewController: SUBaseViewController {
     var payables: [Payable] = []
     
     var totalPriceAmount: Decimal = 0
+    
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,6 +139,8 @@ class AddToSubViewController: SUBaseViewController {
         guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
         self.tableView.deselectRow(at: selectedIndexPath, animated: true)
     }
+    
+    // MARK: - Private Implementation
     
     @IBAction func onTapPublish(_ sender: UIButton) {
 
@@ -353,9 +357,65 @@ class AddToSubViewController: SUBaseViewController {
             }
         }
     }
+    
+    func publishSubscription() {
+
+        subscriptionProvider.publish(with: &subscription)
+    }
+
+    func saveSubscription() {
+        
+        subscriptionProvider.save(with: &subscription)
+    }
+
+    func deleteSubscription(completion: @escaping () -> Void) {
+
+        subscriptionProvider.delete()
+        completion()
+    }
+
+    func showDiscardAlert() {
+
+        DispatchQueue.main.async {
+            
+            let alert = AlertManager.submitConfirmAlert(in: self,
+                                                        title: "刪除項目",
+                                                        message: "即將刪除項目，確認要刪除嗎?",
+                                                        confirmTitle: "確認",
+                                                        confirmHandler: {
+                
+                if self.subscriptionsInEdit.count > 0 {
+                    
+                    self.deleteSubscription {
+                        _ = self.navigationController?.popViewController(animated: true)
+                    }
+                } else {
+                    
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
+                
+            },
+                                                        cancelTitle: "取消")
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    func calculateRate(index: Int) {
+
+        currencyValue = values[index]
+
+        exchangePrice = (subscription.price).doubleValue / currencyValue
+        
+        print(currencyValue, exchangePrice)
+
+        subscription.exchangePrice = exchangePrice.rounded(toPlaces: 2)
+    }
 }
 
-extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UIColorPickerViewControllerDelegate, DateComponentDelegate, ReminderDelegate, CurrencyCellDelegate {
+// MARK: - UITableViewDataSource
+
+extension AddToSubViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -963,52 +1023,8 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
             }
         }
     }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        if group.id != "" {
-            
-            switch indexPath.row {
-                
-            case 9:
-                
-                presentColorPicker()
-                
-            default:
-                
-                tableView.deselectRow(at: indexPath, animated: true)
-            }
-        } else {
-            
-            switch indexPath.row {
-                
-            case 7:
-                
-                presentColorPicker()
-                
-            default:
-                
-                tableView.deselectRow(at: indexPath, animated: true)
-            }
-        }
-    }
     
-    func presentColorPicker() {
-        
-        let colorPicker = UIColorPickerViewController()
-        
-        colorPicker.delegate = self
-        
-        present(colorPicker, animated: true)
-    }
-
-    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-
-        let color = viewController.selectedColor
-        subColor = color
-        colorIsSelected = true
-        tableView.reloadData()
-    }
+    // MARK: - UITextField Implementation
 
     @objc func onTextChanged(_ sender: UITextField) {
         
@@ -1087,13 +1103,46 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
     @objc func onReminderChanged(_ sender: UITextField) {
         subscription.reminder = sender.text ?? ""
     }
+}
 
-    func dateComponentDidChange(_ dateComponent: DateComponents, _ cell: AddSubCycleCell) {
-        let dueDate = Calendar.current.date(byAdding: cell.dateComponent, to: subscription.startDate)
-        subscription.dueDate = dueDate ?? Date()
+// MARK: - UITableViewDelegate
+
+extension AddToSubViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        if group.id != "" {
+            
+            switch indexPath.row {
+                
+            case 9:
+                
+                presentColorPicker()
+                
+            default:
+                
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        } else {
+            
+            switch indexPath.row {
+                
+            case 7:
+                
+                presentColorPicker()
+                
+            default:
+                
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
     }
+}
 
-    // set up reminder
+// MARK: - Reminder Delegate
+
+extension AddToSubViewController: ReminderDelegate {
+    
     func reminderDidSet(_ dateComponent: DateComponents, _ cell: AddSubReminderCell) {
         let day = dateComponent.day
         let dateComp = DateComponents(day: -(day ?? 0))
@@ -1121,64 +1170,47 @@ extension AddToSubViewController: UITableViewDataSource, UITableViewDelegate, UI
         
         reminderManager.schedule()
     }
+}
 
-    func publishSubscription() {
+// MARK: - DateCompnent Delegate
 
-        subscriptionProvider.publish(with: &subscription)
+extension AddToSubViewController: DateComponentDelegate {
+    
+    func dateComponentDidChange(_ dateComponent: DateComponents, _ cell: AddSubCycleCell) {
+        let dueDate = Calendar.current.date(byAdding: cell.dateComponent, to: subscription.startDate)
+        subscription.dueDate = dueDate ?? Date()
     }
+}
 
-    func saveSubscription() {
-        
-        subscriptionProvider.save(with: &subscription)
-    }
+// MARK: - Currency Cell Delegate
 
-    func deleteSubscription(completion: @escaping () -> Void) {
-
-        subscriptionProvider.delete()
-        completion()
-    }
-
-    func showDiscardAlert() {
-
-        DispatchQueue.main.async {
-            
-            let alert = AlertManager.submitConfirmAlert(in: self,
-                                                        title: "刪除項目",
-                                                        message: "即將刪除項目，確認要刪除嗎?",
-                                                        confirmTitle: "確認",
-                                                        confirmHandler: {
-                
-                if self.subscriptionsInEdit.count > 0 {
-                    
-                    self.deleteSubscription {
-                        _ = self.navigationController?.popViewController(animated: true)
-                    }
-                } else {
-                    
-                    _ = self.navigationController?.popViewController(animated: true)
-                }
-                
-            },
-                                                        cancelTitle: "取消")
-            
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-
+extension AddToSubViewController: CurrencyCellDelegate {
+    
     func currencyRateDidChange(_ cell: AddSubCurrencyCell, _ index: Int) {
 
         selectedCurrencyIndex = index
     }
+}
 
-    func calculateRate(index: Int) {
+// MARK: - UIColorPickerViewControllerDelegate
 
-        currencyValue = values[index]
-
-        exchangePrice = (subscription.price).doubleValue / currencyValue
+extension AddToSubViewController: UIColorPickerViewControllerDelegate {
+    
+    func presentColorPicker() {
         
-        print(currencyValue, exchangePrice)
+        let colorPicker = UIColorPickerViewController()
+        
+        colorPicker.delegate = self
+        
+        present(colorPicker, animated: true)
+    }
 
-        subscription.exchangePrice = exchangePrice.rounded(toPlaces: 2)
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+
+        let color = viewController.selectedColor
+        subColor = color
+        colorIsSelected = true
+        tableView.reloadData()
     }
 }
 
