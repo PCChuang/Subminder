@@ -10,9 +10,10 @@ import SVProgressHUD
 
 class GroupViewController: SUBaseViewController {
     
+    // MARK: - Properties
+    
     @IBOutlet weak var profileImage: UIImageView!
 
-//    @IBOutlet weak var addGroupBtn: UIButton!
     @IBOutlet weak var nameLbl: UILabel!
     
     @IBOutlet weak var addGroupImage: UIImageView!
@@ -136,16 +137,14 @@ class GroupViewController: SUBaseViewController {
         }
     }
 
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        print("here is the cache========= \(payableCache)")
 
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2.0
 
         setupCollectionView()
-
-//        setupAddGroupBtn()
         
         setupAddGroupImage()
 
@@ -161,6 +160,8 @@ class GroupViewController: SUBaseViewController {
         
         fetchSubscriptions()
     }
+    
+    // MARK: - Private Implementation
     
     func loadViewQueue() {
         
@@ -207,43 +208,6 @@ class GroupViewController: SUBaseViewController {
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
-    
-//    @IBAction func navSelectGroupMember(_ sender: UIButton) {
-//
-//        if let controller = storyboard?.instantiateViewController(withIdentifier: "SelectGroupMember") as? SelectGroupMemberViewController {
-//
-//            self.navigationController?.pushViewController(controller, animated: true)
-//        }
-//    }
-    
-//    func updateUserPayable(groupID: String) {
-//
-//        // check payable cycle and amount/cycle
-//        SubsManager.shared.fetchSubsForPayable(uid: userUID ?? "", groupID: groupID) { [weak self] result in
-//
-//            switch result {
-//
-//            case .success(let subscriptions):
-//
-//                print("fetchSubscriptions success")
-//
-//                self?.subscriptions.removeAll()
-//
-//                for subscription in subscriptions {
-//                    self?.subscriptions.append(subscription)
-//                }
-//
-//            case .failure(let error):
-//
-//                print("fetchSubscriptions.failure \(error)")
-//            }
-//        }
-//    }
-    
-//    private func setupAddGroupBtn() {
-//
-//        addGroupBtn.setTitle(nil, for: .normal)
-//    }
 
     private func registerCell() {
 
@@ -278,10 +242,6 @@ class GroupViewController: SUBaseViewController {
     }
     
     private func setupBarItems() {
-//
-//        navigationController?.navigationBar.barTintColor = UIColor.hexStringToUIColor(hex: "#94959A")
-//
-//        navigationController?.navigationBar.isTranslucent = false
         
         self.navigationItem.title = "群組"
 
@@ -301,6 +261,8 @@ class GroupViewController: SUBaseViewController {
     }
 
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension GroupViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -348,6 +310,8 @@ extension GroupViewController: UICollectionViewDelegate, UICollectionViewDataSou
 
         return profileCell
     }
+    
+    // MARK: - UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
@@ -362,6 +326,8 @@ extension GroupViewController: UICollectionViewDelegate, UICollectionViewDataSou
         }
     }
 }
+
+// MARK: - UITableViewDataSource
 
 extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
 
@@ -418,6 +384,8 @@ extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    // MARK: - UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         var selectedGroup: Group?
@@ -437,7 +405,8 @@ extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-// functions calling APIs
+// MARK: - API Methods
+
 extension GroupViewController {
     
     func addGroup(with group: inout Group) {
@@ -480,7 +449,7 @@ extension GroupViewController {
                     for group in groups {
                         
                         self?.fetchGroupInfo(groupID: group)
-//
+
                         self?.fetchPayable(userUID: userUID, groupID: group)
                         
                         self?.groupIDsSet.insert(group)
@@ -510,8 +479,6 @@ extension GroupViewController {
                     self?.groupsInfo.append(group)
                     print(self?.groupsInfo)
                 }
-                
-//                self?.groupsInfo.sort { $0.id > $1.id }
 
             case .failure(let error):
 
