@@ -329,6 +329,7 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.12)
+  - SVProgressHUD (2.2.5)
   - SwiftLint (0.44.0)
 
 DEPENDENCIES:
@@ -341,6 +342,7 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - IQKeyboardManagerSwift
   - lottie-ios
+  - SVProgressHUD
   - SwiftLint
 
 SPEC REPOS:
@@ -368,6 +370,7 @@ SPEC REPOS:
     - lottie-ios
     - nanopb
     - PromisesObjC
+    - SVProgressHUD
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -394,8 +397,9 @@ SPEC CHECKSUMS:
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: e96c0a8c770c7ebbc4d36c55baf9096bb65c4584
 
-PODFILE CHECKSUM: d32e2d910cad128962493ae8aa1162b7c6bbd79e
+PODFILE CHECKSUM: bd983d851617bc908561ecc3c6695083547316d4
 
 COCOAPODS: 1.11.2
