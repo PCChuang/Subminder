@@ -6,11 +6,9 @@
 //
 
 import UIKit
-import Lottie
+import SVProgressHUD
 
 class GroupViewController: SUBaseViewController {
-
-    @IBOutlet weak var animationView: AnimationView!
     
     @IBOutlet weak var profileImage: UIImageView!
 
@@ -59,9 +57,12 @@ class GroupViewController: SUBaseViewController {
             
             groupsInfo.sort { $0.id > $1.id }
             
-            tableView.reloadData()
-            
-            setupProfileInfoView()
+            DispatchQueue.main.async {
+                
+                self.tableView.reloadData()
+                
+                self.setupProfileInfoView()
+            }
         }
     }
 
@@ -156,44 +157,22 @@ class GroupViewController: SUBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        animationView.isHidden = false
-        
-//        loader.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 40.0)
-//
-//        loader.center = self.loaderView.center
-//
-//        self.loaderView.addSubview(loader)
-        
         loadViewQueue()
         
         fetchSubscriptions()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        self.loader.startAnimating()
-        
-        animationView.contentMode = .scaleAspectFit
-
-        animationView.loopMode = .loop
-
-        animationView.animationSpeed = 0.5
-
-        animationView.play()
     }
     
     func loadViewQueue() {
         
         let queue = DispatchQueue(label: "com.pcchuang.queue")
         
-        queue.asyncAfter(deadline: .now() + 1) {
+        SVProgressHUD.show()
+        
+        queue.async {
             
-            DispatchQueue.main.async {
-                
-                self.fetchUserGroupList(userUID: self.userUID ?? "") {
-                    
-                    self.animationView.isHidden = true
+            self.fetchUserGroupList(userUID: self.userUID ?? "") {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
             }
         }
@@ -433,6 +412,8 @@ extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.payableAmountLbl.text = " NT$ \(payableCache[groupsInfo[indexPath.row].id] ?? 0) "
             }
         }
+        
+        SVProgressHUD.dismiss()
         
         return cell
     }
