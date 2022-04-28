@@ -176,14 +176,11 @@ class GroupViewController: SUBaseViewController {
     }
     
     func setupProfileInfoView() {
-        
-        guard let user = usersInfo.first else { return }
-        
+        guard let user = SubminderDataModel.shared.currentUserInfo else { return }
         nameLbl.text = user.name
         
         if let url = URL(string: user.image),
            let data = try? Data(contentsOf: url) {
-            
             self.profileImage.image = UIImage(data: data)
         }
     }
@@ -439,6 +436,8 @@ extension GroupViewController {
                 for user in users {
                     
                     self?.usersInfo.append(user)
+                    
+                    SubminderDataModel.shared.currentUserInfo = user
                     
                     let groups = user.groupList
                     self?.groupsList = groups
