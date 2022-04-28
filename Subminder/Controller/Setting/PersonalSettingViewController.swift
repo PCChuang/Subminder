@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class PersonalSettingViewController: UIViewController {
 
+    // MARK: - Properties
+    
     @IBOutlet weak var pictureTitleLbl: UILabel!
     
     @IBOutlet weak var profileImg: UIImageView!
@@ -37,12 +40,12 @@ class PersonalSettingViewController: UIViewController {
     
     var profileSettingTitles = ["用戶名稱", "個人ID"]
     
+    var isProfilePicUpdated: Bool = false
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        fetchUserData()
-        
-        setupImg()
         
         setupPictureTitleLbl()
         
@@ -54,8 +57,16 @@ class PersonalSettingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        fetchUserData()
+        // fetch data only when there is no data in data model to enhance loading speed
+        let currentUserInfo = SubminderDataModel.shared.currentUserInfo
+        if currentUserInfo == nil {
+            fetchUserDataAndSetupProfilePic()
+        }
+        
+        setupImg()
     }
+    
+    // MARK: - Private Implementation
 
     func setupBarItems() {
         
@@ -84,7 +95,7 @@ class PersonalSettingViewController: UIViewController {
     
     @objc func updateProfile() {
         
-        guard let user = usersInfo.first else { return }
+        guard let user = SubminderDataModel.shared.currentUserInfo else { return }
         
         guard let image = self.profileImg.image,
               let data = image.jpegData(compressionQuality: 0.15) else {
@@ -107,6 +118,7 @@ class PersonalSettingViewController: UIViewController {
                         print("update user picture success")
                         
                         self.imageUrl = downloadUrl
+                        SubminderDataModel.shared.currentUserInfo?.image = downloadUrl // update data in data model
                     
                     case .failure(let error):
                         
@@ -127,6 +139,8 @@ class PersonalSettingViewController: UIViewController {
             case .success:
                 
                 print("update user name success")
+                
+                SubminderDataModel.shared.currentUserInfo?.name = self.newUserName // update data in data model
             
             case .failure(let error):
                 
@@ -140,14 +154,19 @@ class PersonalSettingViewController: UIViewController {
     func setupImg() {
         
         profileImg.isUserInteractionEnabled = true
-        
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapImage))
-        
         profileImg.addGestureRecognizer(gesture)
         
         profileImg.layer.masksToBounds = true
-        
         profileImg.layer.cornerRadius = profileImg.frame.size.width / 2.0
+        
+        if !isProfilePicUpdated {
+            guard let imageUrl = SubminderDataModel.shared.currentUserInfo?.image else { return }
+            if let url = URL(string: imageUrl),
+               let data = try? Data(contentsOf: url) {
+                profileImg.image = UIImage(data: data)
+            }
+        }
     }
     
     func setupPictureTitleLbl() {
@@ -159,12 +178,41 @@ class PersonalSettingViewController: UIViewController {
         pictureTitleLbl.addGestureRecognizer(gesture)
     }
     
+    func registerCell() {
+        
+        let nib = UINib(nibName: "AddSubTextCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "AddSubTextCell")
+        
+        let idNib = UINib(nibName: "ProfileSettingCell", bundle: nil)
+        tableView.register(idNib, forCellReuseIdentifier: "ProfileSettingCell")
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alert = AlertManager.simpleConfirmAlert(in: self, title: title, message: message, confirmTitle: "好")
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @objc func didTapImage() {
         
         presentPhotoActionSheet()
     }
+    
+    @objc func onUserNameChanged(_ sender: UITextField) {
+        
+        newUserName = sender.text ?? ""
+    }
+    
+    @objc func didTapIDLbl() {
+        
+        guard let user = SubminderDataModel.shared.currentUserInfo else { return }
+        
+        UIPasteboard.general.string = "\(user.id)"
+        
+        showAlert(title: "系統提示", message: "ID已經複製到剪貼簿囉")
+    }
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension PersonalSettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -179,15 +227,17 @@ extension PersonalSettingViewController: UITableViewDelegate, UITableViewDataSou
             return cell
         }
         
-        let user = usersInfo.first
+        guard let currentUserInfo = SubminderDataModel.shared.currentUserInfo else { return cell }
         
         switch indexPath.row {
             
         case 0:
             
+            cell.titleLbl.textColor = UIColor(hex: "F6DF4F")
+            
             cell.titleLbl.text = profileSettingTitles[indexPath.row]
             
-            cell.nameTextField.text = user?.name
+            cell.nameTextField.text = currentUserInfo.name
             
             newUserName = cell.nameTextField.text ?? ""
             
@@ -204,7 +254,7 @@ extension PersonalSettingViewController: UITableViewDelegate, UITableViewDataSou
             
             let title = profileSettingTitles[indexPath.row]
             
-            cell.setupCell(title: title, id: user?.id ?? "")
+            cell.setupCell(title: title, id: currentUserInfo.id)
             
             cell.idLbl.isUserInteractionEnabled = true
             
@@ -224,29 +274,6 @@ extension PersonalSettingViewController: UITableViewDelegate, UITableViewDataSou
             
             return cell
         }
-        
-//        return UITableViewCell()
-    }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        guard let user = usersInfo.first else { return }
-//
-//        UIPasteboard.generalPasteboard().string = user.id
-//    }
-    
-    @objc func onUserNameChanged(_ sender: UITextField) {
-        
-        newUserName = sender.text ?? ""
-    }
-    
-    @objc func didTapIDLbl() {
-        
-        guard let user = usersInfo.first else { return }
-        
-        UIPasteboard.general.string = "\(user.id)"
-        
-        showAlert(title: "系統提示", message: "ID已經複製到剪貼簿囉")
     }
 }
 
@@ -281,31 +308,32 @@ extension PersonalSettingViewController: UIImagePickerControllerDelegate, UINavi
     
     func presentCamera() {
         
-        let vc = UIImagePickerController()
+        let viewController = UIImagePickerController()
         
-        vc.sourceType = .camera
+        viewController.sourceType = .camera
         
-        vc.delegate = self
+        viewController.delegate = self
         
-        vc.allowsEditing = true
+        viewController.allowsEditing = true
         
-        present(vc, animated: true)
+        present(viewController, animated: true)
     }
     
     func presentPhotoPicker() {
         
-        let vc = UIImagePickerController()
+        let viewController = UIImagePickerController()
         
-        vc.sourceType = .photoLibrary
+        viewController.sourceType = .photoLibrary
         
-        vc.delegate = self
+        viewController.delegate = self
         
-        vc.allowsEditing = true
+        viewController.allowsEditing = true
         
-        present(vc, animated: true)
+        present(viewController, animated: true)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         picker.dismiss(animated: true, completion: nil)
         
@@ -313,6 +341,7 @@ extension PersonalSettingViewController: UIImagePickerControllerDelegate, UINavi
             return
         }
         
+        self.isProfilePicUpdated = true
         self.profileImg.image = selectedImage
     }
     
@@ -322,11 +351,15 @@ extension PersonalSettingViewController: UIImagePickerControllerDelegate, UINavi
     }
 }
 
+// MARK: - API Methods
+
 extension PersonalSettingViewController {
     
-    func fetchUserData() {
+    func fetchUserDataAndSetupProfilePic() {
         
         guard let userUID = KeyChainManager.shared.userUID else { return }
+        
+        SVProgressHUD.show()
         
         UserManager.shared.searchUser(uid: userUID) { [weak self] result in
             
@@ -339,13 +372,19 @@ extension PersonalSettingViewController {
                 for user in users {
                     self?.usersInfo.append(user)
                     
-                    self?.imageUrl = self?.usersInfo.first?.image ?? ""
+                    SubminderDataModel.shared.currentUserInfo = user
                     
-                    if let url = URL(string: self?.imageUrl ?? ""),
-                       let data = try? Data(contentsOf: url) {
-                        
-                        self?.profileImg.image = UIImage(data: data)
+                    guard let imageUrl = SubminderDataModel.shared.currentUserInfo?.image else { return }
+
+                    if !(self?.isProfilePicUpdated ?? false) {
+                        if let url = URL(string: imageUrl),
+                           let data = try? Data(contentsOf: url) {
+                            
+                            self?.profileImg.image = UIImage(data: data)
+                        }
                     }
+                    
+                    SVProgressHUD.dismiss()
                 }
                 
             case .failure(let error):
@@ -353,28 +392,5 @@ extension PersonalSettingViewController {
                 print("fetchUserData.failure: \(error)")
             }
         }
-    }
-}
-
-extension  PersonalSettingViewController {
-    
-    func registerCell() {
-        
-        let nib = UINib(nibName: "AddSubTextCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "AddSubTextCell")
-        
-        let idNib = UINib(nibName: "ProfileSettingCell", bundle: nil)
-        tableView.register(idNib, forCellReuseIdentifier: "ProfileSettingCell")
-    }
-    
-    func showAlert(title: String, message: String) {
-        
-        let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "好", style: .default, handler: nil)
-        
-        controller.addAction(okAction)
-        
-        present(controller, animated: true, completion: nil)
     }
 }

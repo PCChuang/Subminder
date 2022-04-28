@@ -171,23 +171,16 @@ class GroupViewController: SUBaseViewController {
         
         queue.async {
             
-            self.fetchUserGroupList(userUID: self.userUID ?? "") {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
+            self.fetchUserGroupList(userUID: self.userUID ?? "")
         }
     }
     
     func setupProfileInfoView() {
-        
-        guard let user = usersInfo.first else { return }
-        
+        guard let user = SubminderDataModel.shared.currentUserInfo else { return }
         nameLbl.text = user.name
         
         if let url = URL(string: user.image),
            let data = try? Data(contentsOf: url) {
-            
             self.profileImage.image = UIImage(data: data)
         }
     }
@@ -426,7 +419,7 @@ extension GroupViewController {
         }
     }
     
-    func fetchUserGroupList(userUID: String, completion: @escaping () -> Void) {
+    func fetchUserGroupList(userUID: String) {
         
         self.groupsInfo.removeAll()
         
@@ -444,6 +437,8 @@ extension GroupViewController {
                     
                     self?.usersInfo.append(user)
                     
+                    SubminderDataModel.shared.currentUserInfo = user
+                    
                     let groups = user.groupList
                     self?.groupsList = groups
                     for group in groups {
@@ -455,8 +450,6 @@ extension GroupViewController {
                         self?.groupIDsSet.insert(group)
                     }
                 }
-                
-                completion()
                 
             case .failure(let error):
 

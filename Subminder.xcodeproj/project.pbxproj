@@ -97,6 +97,7 @@
 		F68885812729261800637295 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68885802729261800637295 /* Double+Extension.swift */; };
 		F688858427292F4D00637295 /* AddSubPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688858227292F4D00637295 /* AddSubPriceCell.swift */; };
 		F688858527292F4D00637295 /* AddSubPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F688858327292F4D00637295 /* AddSubPriceCell.xib */; };
+		F68F9C85281A36A70096394D /* SubminderDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68F9C84281A36A70096394D /* SubminderDataModel.swift */; };
 		F69C0EDB273270F6005D2D84 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0EDA273270F6005D2D84 /* KeyChainManager.swift */; };
 		F69C0EDE2734E186005D2D84 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0EDC2734E186005D2D84 /* GroupCell.swift */; };
 		F69C0EDF2734E186005D2D84 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C0EDD2734E186005D2D84 /* GroupCell.xib */; };
@@ -215,6 +216,7 @@
 		F68885802729261800637295 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		F688858227292F4D00637295 /* AddSubPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubPriceCell.swift; sourceTree = "<group>"; };
 		F688858327292F4D00637295 /* AddSubPriceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubPriceCell.xib; sourceTree = "<group>"; };
+		F68F9C84281A36A70096394D /* SubminderDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubminderDataModel.swift; sourceTree = "<group>"; };
 		F69C0EDA273270F6005D2D84 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		F69C0EDC2734E186005D2D84 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		F69C0EDD2734E186005D2D84 /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 				F69C0F32273C06F1005D2D84 /* Payable */,
 				F60F8173273FB5F9006045CA /* Billing */,
 				F67BC53B281240CF005BDFA0 /* Alert */,
+				F68F9C84281A36A70096394D /* SubminderDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				F60E2A25272A8E270048A85E /* ProfileCell.swift in Sources */,
 				F69C0F0C27358E12005D2D84 /* GroupRemoveCell.swift in Sources */,
 				F6071CDC274CEC3E0041EB45 /* UITableView+Extension.swift in Sources */,
+				F68F9C85281A36A70096394D /* SubminderDataModel.swift in Sources */,
 				F69C0EE12734EAF6005D2D84 /* Group.swift in Sources */,
 				F6888570272461AA00637295 /* NotificationManager.swift in Sources */,
 				F69C0F0827353408005D2D84 /* GroupInviteCell.swift in Sources */,

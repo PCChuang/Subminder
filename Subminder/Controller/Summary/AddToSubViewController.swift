@@ -259,7 +259,6 @@ class AddToSubViewController: SUBaseViewController {
     private func showAlert(message: String) {
         
         let alert = AlertManager.simpleConfirmAlert(in: self, title: "Oops", message: message, confirmTitle: "OK")
-        
         self.present(alert, animated: true, completion: nil)
     }
     
