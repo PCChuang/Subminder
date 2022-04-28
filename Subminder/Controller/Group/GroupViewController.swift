@@ -171,11 +171,7 @@ class GroupViewController: SUBaseViewController {
         
         queue.async {
             
-            self.fetchUserGroupList(userUID: self.userUID ?? "") {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
+            self.fetchUserGroupList(userUID: self.userUID ?? "")
         }
     }
     
@@ -426,7 +422,7 @@ extension GroupViewController {
         }
     }
     
-    func fetchUserGroupList(userUID: String, completion: @escaping () -> Void) {
+    func fetchUserGroupList(userUID: String) {
         
         self.groupsInfo.removeAll()
         
@@ -455,8 +451,6 @@ extension GroupViewController {
                         self?.groupIDsSet.insert(group)
                     }
                 }
-                
-                completion()
                 
             case .failure(let error):
 
