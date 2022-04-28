@@ -38,6 +38,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 self.window?.rootViewController = authNavController
             }
         }
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.window = self.window
     }
 
     func changeRootViewController(_ viewController: UIViewController, animated: Bool = true) {

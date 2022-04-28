@@ -85,6 +85,7 @@
 		F66A1C65272004DE000A863A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F66A1C64272004DE000A863A /* GoogleService-Info.plist */; };
 		F66A1C6727200D71000A863A /* SubsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C6627200D71000A863A /* SubsManager.swift */; };
 		F66A1C692721AA54000A863A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66A1C682721AA54000A863A /* UIColor+Extension.swift */; };
+		F67BC53D281240F6005BDFA0 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BC53C281240F6005BDFA0 /* AlertManager.swift */; };
 		F688856C2723D73E00637295 /* AddSubCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688856A2723D73E00637295 /* AddSubCategoryCell.swift */; };
 		F688856D2723D73E00637295 /* AddSubCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F688856B2723D73E00637295 /* AddSubCategoryCell.xib */; };
 		F6888570272461AA00637295 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688856F272461AA00637295 /* NotificationManager.swift */; };
@@ -96,6 +97,7 @@
 		F68885812729261800637295 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68885802729261800637295 /* Double+Extension.swift */; };
 		F688858427292F4D00637295 /* AddSubPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F688858227292F4D00637295 /* AddSubPriceCell.swift */; };
 		F688858527292F4D00637295 /* AddSubPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F688858327292F4D00637295 /* AddSubPriceCell.xib */; };
+		F68F9C85281A36A70096394D /* SubminderDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68F9C84281A36A70096394D /* SubminderDataModel.swift */; };
 		F69C0EDB273270F6005D2D84 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0EDA273270F6005D2D84 /* KeyChainManager.swift */; };
 		F69C0EDE2734E186005D2D84 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C0EDC2734E186005D2D84 /* GroupCell.swift */; };
 		F69C0EDF2734E186005D2D84 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69C0EDD2734E186005D2D84 /* GroupCell.xib */; };
@@ -201,6 +203,7 @@
 		F66A1C64272004DE000A863A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F66A1C6627200D71000A863A /* SubsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubsManager.swift; sourceTree = "<group>"; };
 		F66A1C682721AA54000A863A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		F67BC53C281240F6005BDFA0 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		F688856A2723D73E00637295 /* AddSubCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubCategoryCell.swift; sourceTree = "<group>"; };
 		F688856B2723D73E00637295 /* AddSubCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubCategoryCell.xib; sourceTree = "<group>"; };
 		F688856E2724462200637295 /* Subminder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Subminder.entitlements; sourceTree = "<group>"; };
@@ -213,6 +216,7 @@
 		F68885802729261800637295 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		F688858227292F4D00637295 /* AddSubPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubPriceCell.swift; sourceTree = "<group>"; };
 		F688858327292F4D00637295 /* AddSubPriceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSubPriceCell.xib; sourceTree = "<group>"; };
+		F68F9C84281A36A70096394D /* SubminderDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubminderDataModel.swift; sourceTree = "<group>"; };
 		F69C0EDA273270F6005D2D84 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		F69C0EDC2734E186005D2D84 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		F69C0EDD2734E186005D2D84 /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
@@ -488,8 +492,18 @@
 				F60E2A28272A95CC0048A85E /* Group */,
 				F69C0F32273C06F1005D2D84 /* Payable */,
 				F60F8173273FB5F9006045CA /* Billing */,
+				F67BC53B281240CF005BDFA0 /* Alert */,
+				F68F9C84281A36A70096394D /* SubminderDataModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F67BC53B281240CF005BDFA0 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				F67BC53C281240F6005BDFA0 /* AlertManager.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		F68885692723030000637295 /* AddToSub */ = {
@@ -739,6 +753,7 @@
 				F60F8172273F9D20006045CA /* SendBillingRequestViewController.swift in Sources */,
 				F69C0F3B273D1C3D005D2D84 /* GroupMemberTitleTableViewCell.swift in Sources */,
 				F66A1C6727200D71000A863A /* SubsManager.swift in Sources */,
+				F67BC53D281240F6005BDFA0 /* AlertManager.swift in Sources */,
 				F66A1C34271D667B000A863A /* GroupViewController.swift in Sources */,
 				F66A1C692721AA54000A863A /* UIColor+Extension.swift in Sources */,
 				F69C0EDE2734E186005D2D84 /* GroupCell.swift in Sources */,
@@ -753,6 +768,7 @@
 				F60E2A25272A8E270048A85E /* ProfileCell.swift in Sources */,
 				F69C0F0C27358E12005D2D84 /* GroupRemoveCell.swift in Sources */,
 				F6071CDC274CEC3E0041EB45 /* UITableView+Extension.swift in Sources */,
+				F68F9C85281A36A70096394D /* SubminderDataModel.swift in Sources */,
 				F69C0EE12734EAF6005D2D84 /* Group.swift in Sources */,
 				F6888570272461AA00637295 /* NotificationManager.swift in Sources */,
 				F69C0F0827353408005D2D84 /* GroupInviteCell.swift in Sources */,
