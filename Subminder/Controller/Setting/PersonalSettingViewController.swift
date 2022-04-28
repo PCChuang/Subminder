@@ -204,7 +204,7 @@ class PersonalSettingViewController: UIViewController {
     
     @objc func didTapIDLbl() {
         
-        guard let user = usersInfo.first else { return }
+        guard let user = SubminderDataModel.shared.currentUserInfo else { return }
         
         UIPasteboard.general.string = "\(user.id)"
         
@@ -232,6 +232,8 @@ extension PersonalSettingViewController: UITableViewDelegate, UITableViewDataSou
         switch indexPath.row {
             
         case 0:
+            
+            cell.titleLbl.textColor = UIColor(hex: "F6DF4F")
             
             cell.titleLbl.text = profileSettingTitles[indexPath.row]
             

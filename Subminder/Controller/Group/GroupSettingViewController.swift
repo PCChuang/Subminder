@@ -117,11 +117,16 @@ class GroupSettingViewController: UIViewController {
         
         paymentConfirmBtn.layer.cornerRadius = 10
         
-        paymentConfirmBtn.titleLabel?.font = UIFont(name: "PingFang TC Medium", size: 16)
+        let font = "PingFang TC Medium"
         
         if userUID == group.hostUID {
-            
-            paymentConfirmBtn.setTitle("確認分母付款", for: .normal)
+            let aText = NSAttributedString(string: "確認分母付款",
+                                           attributes: [NSAttributedString.Key.font: UIFont(name: font, size: 16) as Any])
+            paymentConfirmBtn.setAttributedTitle(aText, for: .normal)
+        } else {
+            let aText = NSAttributedString(string: "已付款，通知主揪",
+                                           attributes: [NSAttributedString.Key.font: UIFont(name: font, size: 16) as Any])
+            paymentConfirmBtn.setAttributedTitle(aText, for: .normal)
         }
     }
     
