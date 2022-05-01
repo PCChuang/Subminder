@@ -171,7 +171,12 @@ class GroupViewController: SUBaseViewController {
         
         queue.async {
             
-            self.fetchUserGroupList(userUID: self.userUID ?? "")
+            self.fetchUserGroupList(userUID: self.userUID ?? "") {
+                DispatchQueue.main.async {
+                    self.setupProfileInfoView() // 避免第一次載入畫面時name label沒有更新
+                    SVProgressHUD.dismiss()
+                }
+            }
         }
     }
     
@@ -286,13 +291,13 @@ extension GroupViewController: UICollectionViewDelegate, UICollectionViewDataSou
             
         case 1:
             
-            let userInfo = usersInfo.first
+            let userInfo = SubminderDataModel.shared.currentUserInfo
             
             profileCell.totalLbl.text = "\(userInfo?.friendList.count ?? 0)"
             
         case 2:
             
-            let userInfo = usersInfo.first
+            let userInfo = SubminderDataModel.shared.currentUserInfo
             
             profileCell.totalLbl.text = "\(userInfo?.groupList.count ?? 0)"
             
@@ -372,8 +377,6 @@ extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
-        SVProgressHUD.dismiss()
-        
         return cell
     }
     
@@ -419,7 +422,7 @@ extension GroupViewController {
         }
     }
     
-    func fetchUserGroupList(userUID: String) {
+    func fetchUserGroupList(userUID: String, completion: @escaping () -> Void) {
         
         self.groupsInfo.removeAll()
         
@@ -450,6 +453,8 @@ extension GroupViewController {
                         self?.groupIDsSet.insert(group)
                     }
                 }
+                
+                completion()
                 
             case .failure(let error):
 
